@@ -1,10 +1,26 @@
 <script setup lang="ts">
 import Button from "primevue/button";
-import Tag from 'primevue/tag';
+import Tag from "primevue/tag";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import {
+  faListCheck,
+  faWandSparkles,
+  faGamepad,
+  faShieldHeart,
+  faRotate,
+  faWrench
+} from "@fortawesome/free-solid-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+
+function onGetStarted() {
+  window.open("https://github.com/rommapp/romm?tab=readme-ov-file#installation", "_blank");
+}
 </script>
 
 <template>
-  <nav class="sticky top-0 z-40 w-full backdrop-blur-lg backdrop-brightness-90 transition-colors border-b border-b-neutral-800">
+  <nav
+    class="sticky top-0 z-40 w-full backdrop-blur-lg backdrop-brightness-90 transition-colors border-b border-b-slate-800"
+  >
     <div class="flex justify-between items-center px-10 py-2">
       <div class="flex items-center">
         <img
@@ -15,21 +31,21 @@ import Tag from 'primevue/tag';
         <span class="text-900 text-2xl font-semibold ml-1">RomM</span>
         <Tag value="v3.1.0" severity="primary" class="ml-3 text-xs"></Tag>
       </div>
-      <div class="md:flex items-center"> 
-        <a href="#" class="text-900 hover:text-blue-500">Features</a>
-        <a href="#" class="text-900 hover:text-blue-500 ml-4">Pricing</a>
-        <a href="#" class="text-900 hover:text-blue-500 ml-4">Docs</a>
-        <a href="#" class="text-900 hover:text-blue-500 ml-4">Blog</a>
-        <a href="#" class="text-900 hover:text-blue-500 ml-4">Contact</a>
-        <span class="mx-4 text-neutral-800">|</span>
-        <a href="#" class="text-900 hover:text-blue-500">Github</a>
+      <div class="md:flex items-center">
+        <a href="#features" class="text-900 hover:text-blue-500">Features</a>
+        <a href="https://github.com/rommapp/romm/wiki" target="_blank"class="text-900 hover:text-blue-500 ml-6">Wiki</a>
+        <a href="mailto:romm@fastmail.com" class="text-900 hover:text-blue-500 ml-6">Contact</a>
+        <a href="https://github.com/rommapp/romm" target="_blank" class="text-900 hover:text-blue-500 border-l ml-6 pl-6 border-slate-800">
+          <FontAwesomeIcon :icon="faGithub" class="text-2xl" />
+        </a>
       </div>
       <div class="md:hidden">
         <i class="pi pi-bars text-2xl"></i>
       </div>
     </div>
   </nav>
-  <div class="md:grid grid-cols-2 pl-10">
+
+  <div class="md:grid grid-cols-2 pl-10 mb-20 bg-slate-950">
     <div class="text-center md:text-left flex items-center">
       <section>
         <span class="block text-6xl font-bold mb-1">
@@ -45,8 +61,7 @@ import Tag from 'primevue/tag';
           plays on emulators.
         </p>
 
-        <Button type="button" class="mr-3 p-button-raised">Get Started</Button>
-        <Button type="button" class="p-button-outlined">Live Demo</Button>
+        <Button type="button" class="mr-3 p-button-raised" v-on:click="onGetStarted">Install Now</Button>
       </section>
     </div>
     <div>
@@ -58,98 +73,83 @@ import Tag from 'primevue/tag';
     </div>
   </div>
 
-  <div class="surface-section px-4 py-8 md:px-6 lg:px-8 text-center">
-    <div class="mb-3 font-bold text-3xl">
-      <span class="text-900">One Product, </span>
-      <span class="text-blue-600">Many Solutions</span>
-    </div>
-    <div class="text-700 mb-6">
-      Ac turpis egestas maecenas pharetra convallis posuere morbi leo urna.
+  <div
+    id="features"
+    class="surface-section px-4 py-8 md:px-6 lg:px-8 text-center bg-slate-950"
+  >
+    <div class="text-700 mb-12 text-2xl">
+      The <span class="text-purple-500">most powerful</span> all-in-one app for
+      managing your game collection.
     </div>
     <div class="grid grid-cols-3 grid-rows-2">
-      <div class="mb-4 px-5">
-        <span
-          class="p-3 shadow-2 mb-3 inline-block surface-card"
-          style="border-radius: 10px"
-        >
-          <i class="pi pi-desktop text-4xl text-blue-500"></i>
+      <div class="mb-12 px-6">
+        <span class="p-3 shadow-2 mb-4 inline-block rounded-md bg-slate-900">
+          <FontAwesomeIcon
+            :icon="faWandSparkles"
+            class="text-4xl text-purple-500"
+          />
+        </span>
+        <div class="text-900 text-xl mb-3 font-medium">Magical metadata</div>
+        <div class="text-700 line-height-3 px-6">
+          Enrich your collection with cover art and detailed metadata from IGDB
+          and MobyGames.
+        </div>
+      </div>
+      <div class="mb-12 px-6">
+        <span class="p-3 shadow-2 mb-4 inline-block rounded-md bg-slate-900">
+          <FontAwesomeIcon :icon="faListCheck" class="text-4xl text-purple-500" />
         </span>
         <div class="text-900 text-xl mb-3 font-medium">
-          Built for Developers
+          Broad platform support
         </div>
-        <span class="text-700 line-height-3"
-          >Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-          dolore eu fugiat nulla pariatur.</span
-        >
-      </div>
-      <div class="mb-4 px-5">
-        <span
-          class="p-3 shadow-2 mb-3 inline-block surface-card"
-          style="border-radius: 10px"
-        >
-          <i class="pi pi-lock text-4xl text-blue-500"></i>
-        </span>
-        <div class="text-900 text-xl mb-3 font-medium">
-          End-to-End Encryption
+        <div class="text-700 line-height-3 px-6">
+          Retro or modern, RomM has you covered with support for 400+ gaming platforms.
         </div>
-        <span class="text-700 line-height-3"
-          >Risus nec feugiat in fermentum posuere urna nec. Posuere sollicitudin
-          aliquam ultrices sagittis.</span
-        >
       </div>
-      <div class="col-12 md:col-4 mb-4 px-5">
-        <span
-          class="p-3 shadow-2 mb-3 inline-block surface-card"
-          style="border-radius: 10px"
-        >
-          <i class="pi pi-check-circle text-4xl text-blue-500"></i>
+      <div class="mb-12 px-6">
+        <span class="p-3 shadow-2 mb-4 inline-block rounded-md bg-slate-900">
+          <FontAwesomeIcon :icon="faGamepad" class="text-4xl text-purple-500" />
         </span>
-        <div class="text-900 text-xl mb-3 font-medium">Easy to Use</div>
-        <span class="text-700 line-height-3"
-          >Ornare suspendisse sed nisi lacus sed viverra tellus. Neque volutpat
-          ac tincidunt vitae semper.</span
-        >
-      </div>
-      <div class="col-12 md:col-4 mb-4 px-5">
-        <span
-          class="p-3 shadow-2 mb-3 inline-block surface-card"
-          style="border-radius: 10px"
-        >
-          <i class="pi pi-globe text-4xl text-blue-500"></i>
-        </span>
-        <div class="text-900 text-xl mb-3 font-medium">
-          Fast & Global Support
+        <div class="text-900 text-xl mb-3 font-medium">Seamless gameplay</div>
+        <div class="text-700 line-height-3 px-6">
+          With EmulatorJS built-in, play your favorite games in your browser, no
+          setup required.
         </div>
-        <span class="text-700 line-height-3"
-          >Fermentum et sollicitudin ac orci phasellus egestas tellus rutrum
-          tellus.</span
-        >
       </div>
-      <div class="col-12 md:col-4 mb-4 px-5">
-        <span
-          class="p-3 shadow-2 mb-3 inline-block surface-card"
-          style="border-radius: 10px"
-        >
-          <i class="pi pi-github text-4xl text-blue-500"></i>
+      <div class="mb-12 px-6">
+        <span class="p-3 shadow-2 mb-4 inline-block rounded-md bg-slate-900">
+          <FontAwesomeIcon :icon="faRotate" class="text-4xl text-purple-500" />
         </span>
-        <div class="text-900 text-xl mb-3 font-medium">Open Source</div>
-        <span class="text-700 line-height-3"
-          >Nec tincidunt praesent semper feugiat. Sed adipiscing diam donec
-          adipiscing tristique risus nec feugiat.
-        </span>
+        <div class="text-900 text-xl mb-3 font-medium flex items-center justify-center">
+          <span>Device sync</span>
+          <Tag value="COMING SOON" severity="primary" class="text-xs whitespace-nowrap ml-2"></Tag>
+        </div>
+        <div class="text-700 line-height-3 px-6">
+          Sync your games, saves and emulator settings across your devices with ease.
+        </div>
       </div>
-      <div class="col-12 md:col-4 md:mb-4 mb-0 px-3">
-        <span
-          class="p-3 shadow-2 mb-3 inline-block surface-card"
-          style="border-radius: 10px"
-        >
-          <i class="pi pi-shield text-4xl text-blue-500"></i>
+      <div class="mb-12 px-6">
+        <span class="p-3 shadow-2 mb-4 inline-block rounded-md bg-slate-900">
+          <FontAwesomeIcon :icon="faGithub" class="text-4xl text-purple-500" />
         </span>
-        <div class="text-900 text-xl mb-3 font-medium">Trusted Security</div>
-        <span class="text-700 line-height-3"
-          >Mattis rhoncus urna neque viverra justo nec ultrices. Id cursus metus
-          aliquam eleifend.</span
-        >
+        <div class="text-900 text-xl mb-3 font-medium">Open source</div>
+        <div class="text-700 line-height-3 px-6">
+          Built by the community, for the community.<br />
+          Fully transparent and licensed under AGPL-3.0.
+        </div>
+      </div>
+      <div class="mb-12 px-6">
+        <span class="p-3 shadow-2 mb-4 inline-block rounded-md bg-slate-900">
+          <FontAwesomeIcon
+            :icon="faShieldHeart"
+            class="text-4xl text-purple-500"
+          />
+        </span>
+        <div class="text-900 text-xl mb-3 font-medium">Private and secure</div>
+        <div class="text-700 line-height-3 px-6">
+          Maintain total control of your data.<br />
+          Built with security in mind and regularly updated.
+        </div>
       </div>
     </div>
   </div>

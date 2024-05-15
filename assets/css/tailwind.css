@@ -6,3 +6,7 @@
   @tailwind utilities;
   @tailwind variants;
 }
+
+body {
+  background-color: rgb(2 6 23);
+}
