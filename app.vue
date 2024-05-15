@@ -1,9 +1,6 @@
 <script setup lang="ts">
-import { useNuxtApp } from "#app";
 import Button from "primevue/button";
 import Tag from 'primevue/tag';
-
-const nuxtApp = useNuxtApp();
 </script>
 
 <template>
@@ -11,7 +8,7 @@ const nuxtApp = useNuxtApp();
     <div class="flex justify-between items-center px-10 py-2">
       <div class="flex items-center">
         <img
-          :src="`/_nuxt/assets/images/blocks/logos/romm-${nuxtApp.$config.theme}.svg`"
+          :src="`images/blocks/logos/romm-dark.svg`"
           alt="romm logo"
           class="w-10 h-10"
         />
@@ -54,7 +51,7 @@ const nuxtApp = useNuxtApp();
     </div>
     <div>
       <img
-        :src="`/_nuxt/assets/images/blocks/hero/hero-${nuxtApp.$config.theme}.png`"
+        :src="`images/blocks/hero/hero-dark.png`"
         alt="list of games in library"
         class="hero md:ml-auto block md:h-full object-cover w-full md:w-auto"
       />

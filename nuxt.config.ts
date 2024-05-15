@@ -1,26 +1,20 @@
 import { defineNuxtConfig } from "nuxt/config";
 
-const baseUrl = "_nuxt/node_modules/primevue/resources/";
-
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxtjs/tailwindcss", "nuxt-primevue"],
   plugins: [{ src: "~/plugins/theme.ts", mode: "client" }],
   primevue: {
-    cssLayerOrder: "tailwind-base, primevue, tailwind-utilities"
+    cssLayerOrder: "tailwind-base, primevue, tailwind-utilities",
+    components: {
+      include: ["Button", "Tag"],
+    },
   },
   runtimeConfig: {
     theme: "dark",
   },
-  app: {
-    head: {
-      link: [
-        {
-          id: "theme-link",
-          rel: "stylesheet",
-          href: baseUrl + "themes/aura-dark-purple/theme.css",
-        },
-      ],
-    },
+  build: {
+    transpile: ["primevue"],
   },
+  css: ["primevue/resources/themes/aura-dark-purple/theme.css"],
 });
