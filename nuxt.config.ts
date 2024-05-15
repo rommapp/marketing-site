@@ -16,5 +16,8 @@ export default defineNuxtConfig({
   build: {
     transpile: ["primevue"],
   },
+  nitro: {
+    preset: "github-pages"
+  },
   css: ["primevue/resources/themes/aura-dark-purple/theme.css"],
 });
