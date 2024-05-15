@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   modules: ["@nuxtjs/tailwindcss", "nuxt-primevue"],
   plugins: [{ src: "~/plugins/theme.ts", mode: "client" }],
   primevue: {
-    cssLayerOrder: "tailwind-base, primevue, tailwind-utilities",
+    cssLayerOrder: "tailwind-base, primevue, tailwind-utilities"
   },
   runtimeConfig: {
     theme: "dark",

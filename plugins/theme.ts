@@ -3,9 +3,10 @@ import { defineNuxtPlugin } from "#app";
 
 export default defineNuxtPlugin((nuxtApp) => {
   if (process.client) {
-    const mediaMatch = window.matchMedia("(prefers-color-scheme: dark)");
     const { $primevue } = nuxtApp.vueApp.config.globalProperties;
+    $primevue.config.ripple = true;
     
+    const mediaMatch = window.matchMedia("(prefers-color-scheme: dark)");
     function handleColorSchemeChange(matches: boolean) {
       // Set the theme in the runtime config
       nuxtApp.$config.theme = matches ? "dark" : "light";
