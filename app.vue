@@ -9,7 +9,7 @@ import Button from "primevue/button";
         <span class="block text-6xl font-bold mb-1">
           Your beautiful, powerful,
         </span>
-        <div class="text-6xl text-primary font-bold mb-3">
+        <div class="text-6xl text-purple-500 font-bold mb-3">
           self-hosted rom manager
         </div>
         <p class="mt-0 mb-4 surface-700 leading-relaxed">
@@ -38,10 +38,6 @@ import Button from "primevue/button";
     </div>
   </div>
 </template>
-
-<style>
-@import "assets/css/main.css";
-</style>
 
 <style scoped>
 .hero {
