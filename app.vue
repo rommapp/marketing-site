@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Button from "primevue/button";
 import Tag from "primevue/tag";
+import Divider from "primevue/divider";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
   faListCheck,
@@ -11,7 +12,6 @@ import {
   faStar,
   faUsers,
   faArrowDown,
-  faSkullCrossbones,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faDiscord } from "@fortawesome/free-brands-svg-icons";
 
@@ -77,7 +77,7 @@ function onJoinDiscord() {
     </div>
   </nav>
 
-  <div class="md:grid grid-cols-2 pl-10 mb-20 bg-slate-950">
+  <div class="md:grid grid-cols-2 pl-10 mb-10 bg-slate-950">
     <div class="text-center md:text-left flex items-center">
       <section>
         <span class="block text-6xl font-bold mb-1">
@@ -127,7 +127,7 @@ function onJoinDiscord() {
           />
         </span>
         <div class="text-900 text-xl mb-3 font-medium">Magical metadata</div>
-        <div class="text-700 line-height-3 px-6">
+        <div class="text-700 line-height-3 px-2 xl:px-6">
           Enrich your collection with cover art and detailed metadata from
           <a
             href="https://www.igdb.com/"
@@ -158,7 +158,7 @@ function onJoinDiscord() {
         <div class="text-900 text-xl mb-3 font-medium">
           Broad platform support
         </div>
-        <div class="text-700 line-height-3 px-6">
+        <div class="text-700 line-height-3 px-2 xl:px-6">
           Retro or modern, RomM has you covered with support for
           <a
             href="https://github.com/rommapp/romm/wiki/Supported-Platforms"
@@ -176,7 +176,7 @@ function onJoinDiscord() {
           <FontAwesomeIcon :icon="faGamepad" class="text-4xl text-purple-500" />
         </span>
         <div class="text-900 text-xl mb-3 font-medium">Seamless gameplay</div>
-        <div class="text-700 line-height-3 px-6">
+        <div class="text-700 line-height-3 px-2 xl:px-6">
           With
           <a
             href="https://emulatorjs.org/"
@@ -203,7 +203,7 @@ function onJoinDiscord() {
             class="text-xs whitespace-nowrap ml-2"
           ></Tag>
         </div>
-        <div class="text-700 line-height-3 px-6">
+        <div class="text-700 line-height-3 px-2 xl:px-6">
           Sync your games, saves and emulator settings across your devices with
           ease.
         </div>
@@ -213,7 +213,7 @@ function onJoinDiscord() {
           <FontAwesomeIcon :icon="faGithub" class="text-4xl text-purple-500" />
         </span>
         <div class="text-900 text-xl mb-3 font-medium">Open source</div>
-        <div class="text-700 line-height-3 px-6">
+        <div class="text-700 line-height-3 px-2 xl:px-6">
           Built by the community, for the community.<br />
           Fully transparent and licensed under AGPL-3.0.
         </div>
@@ -226,7 +226,7 @@ function onJoinDiscord() {
           />
         </span>
         <div class="text-900 text-xl mb-3 font-medium">Private and secure</div>
-        <div class="text-700 line-height-3 px-6">
+        <div class="text-700 line-height-3 px-2 xl:px-6">
           Maintain total control of your data.<br />
           Built with security in mind and regularly updated.
         </div>
@@ -234,7 +234,7 @@ function onJoinDiscord() {
     </div>
   </div>
 
-  <div class="surface-section px-4 py-12 md:px-6 lg:px-8 bg-slate-900">
+  <div id="discord" class="surface-section px-4 py-12 md:px-6 lg:px-8">
     <div class="text-700 text-center">
       <div class="text-purple-600 font-bold mb-3">
         <i class="pi pi-discord"></i>&nbsp;POWERED BY FRIENDSHIP
@@ -253,48 +253,64 @@ function onJoinDiscord() {
     </div>
   </div>
 
-  <div class="surface-section px-4 py-8 mt-6 md:px-6 lg:px-8 flex flex-col items-center">
-    <div class="text-4xl text-700 font-bold">
-      People love RomM
-    </div>
+  <div
+    class="surface-section px-4 py-8 my-6 md:px-6 lg:px-8 flex flex-col items-center"
+  >
+    <div class="text-4xl text-700 font-bold mb-1">People ❤️ RomM</div>
 
-    <div class="flex flex-row justify-around mt-8 w-6/12">
-      <div class="px-4">
+    <div class="surface-section flex flex-row justify-around mt-8">
+      <div class="px-4 xl:px-6">
         <div class="flex items-center">
           <FontAwesomeIcon :icon="faStar" class="text-2xl text-purple-500" />
           <div class="font-bold ml-3 text-2xl">1,300+</div>
         </div>
         <div class="ml-10">Github stars</div>
       </div>
-      <div class="px-4">
+      <div class="px-4 xl:px-6">
         <div class="flex items-center">
           <FontAwesomeIcon :icon="faUsers" class="text-2xl text-purple-500" />
           <div class="font-bold ml-3 text-2xl">700+</div>
         </div>
         <div class="ml-10">Discord members</div>
       </div>
-      <div class="px-4">
+      <div class="px-4 xl:px-6">
         <div class="flex items-center">
-          <FontAwesomeIcon :icon="faArrowDown" class="text-2xl text-purple-500" />
+          <FontAwesomeIcon
+            :icon="faArrowDown"
+            class="text-2xl text-purple-500"
+          />
           <div class="font-bold ml-3 text-2xl">100,000+</div>
         </div>
         <div class="ml-8">Docker pulls</div>
       </div>
-      <div class="px-4">
-        <div class="flex items-center">
-          <FontAwesomeIcon :icon="faSkullCrossbones" class="text-2xl text-purple-500" />
-          <div class="font-bold ml-3 text-2xl">0</div>
-        </div>
-        <div class="ml-9">Pirated games 😉</div>
+    </div>
+  </div>
+
+  <Divider class="before:border-t-slate-900 w-11/12 m-auto" />
+
+  <footer
+    class="surface-section py-8 grid grid-cols-3 w-11/12 m-auto"
+  >
+    <div class="flex items-center">
+      <img
+        :src="`images/blocks/logos/romm-mono-dark.svg`"
+        alt="romm logo"
+        class="w-8 h-8"
+      />
+      <div class="text-700 text-xl ml-2">
+        romm<span class="text-purple-500">.</span>app
       </div>
     </div>
+    <div class="text-700 text-md mt-1 text-center">Own your games.</div>
 
-    <!-- <div class="grid grid-cols-3 grid-rows-2">
-      <div class="p-4 rounded bg-slate-900">
-
-      </div>
-    </div> -->
-  </div>
+    <a
+      href="https://github.com/rommapp/marketing-site"
+      target="_blank"
+      class="text-900 hover:text-purple-500 text-end"
+    >
+      <FontAwesomeIcon :icon="faGithub" class="text-2xl" />
+    </a>
+  </footer>
 </template>
 
 <style scoped>
@@ -308,5 +324,15 @@ function onJoinDiscord() {
   @media screen and (max-width: 767px) {
     display: none;
   }
+}
+
+#discord {
+  background: rgb(2, 6, 23);
+  background: linear-gradient(
+    128deg,
+    rgba(2, 6, 23, 1) 0%,
+    rgba(23, 2, 40, 1) 50%,
+    rgba(2, 6, 23, 1) 100%
+  );
 }
 </style>
