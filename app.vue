@@ -262,32 +262,38 @@ function onJoinDiscord() {
       <div class="px-4">
         <div class="flex items-center">
           <FontAwesomeIcon :icon="faStar" class="text-2xl text-purple-500" />
-          <div class="font-bold ml-3 text-2xl">1300+</div>
+          <div class="font-bold ml-3 text-2xl">1,300+</div>
         </div>
-        <div class="mt-2">stars on Github</div>
+        <div class="ml-10">Github stars</div>
       </div>
       <div class="px-4">
         <div class="flex items-center">
           <FontAwesomeIcon :icon="faUsers" class="text-2xl text-purple-500" />
           <div class="font-bold ml-3 text-2xl">700+</div>
         </div>
-        <div class="mt-2">members on Discord</div>
+        <div class="ml-10">Discord members</div>
       </div>
       <div class="px-4">
         <div class="flex items-center">
           <FontAwesomeIcon :icon="faArrowDown" class="text-2xl text-purple-500" />
           <div class="font-bold ml-3 text-2xl">100,000+</div>
         </div>
-        <div class="mt-2">pulls on Docker</div>
+        <div class="ml-8">Docker pulls</div>
       </div>
       <div class="px-4">
         <div class="flex items-center">
           <FontAwesomeIcon :icon="faSkullCrossbones" class="text-2xl text-purple-500" />
           <div class="font-bold ml-3 text-2xl">0</div>
         </div>
-        <div class="mt-2">pirated games</div>
+        <div class="ml-9">Pirated games 😉</div>
       </div>
     </div>
+
+    <!-- <div class="grid grid-cols-3 grid-rows-2">
+      <div class="p-4 rounded bg-slate-900">
+
+      </div>
+    </div> -->
   </div>
 </template>
 
