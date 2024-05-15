@@ -39,7 +39,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Static HTML export with Nuxt
-        run: npm run generate
+        run: npx nuxi build --preset github-pages
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
