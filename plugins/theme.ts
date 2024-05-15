@@ -7,6 +7,9 @@ export default defineNuxtPlugin((nuxtApp) => {
     const { $primevue } = nuxtApp.vueApp.config.globalProperties;
     
     function handleColorSchemeChange(matches: boolean) {
+      // Set the theme in the runtime config
+      nuxtApp.$config.theme = matches ? "dark" : "light";
+      
       if (matches) {
         $primevue.changeTheme(
           "aura-light-purple",

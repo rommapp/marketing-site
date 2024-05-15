@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import { useNuxtApp } from "#app";
 import Button from "primevue/button";
+
+const nuxtApp = useNuxtApp();
 </script>
 
 <template>
@@ -19,19 +22,13 @@ import Button from "primevue/button";
           plays on emulators.
         </p>
 
-        <Button
-          type="button"
-          class="mr-3 p-button-raised"
-        >Get Started</Button>
-        <Button
-          type="button"
-          class="p-button-outlined"
-        >Live Demo</Button>
+        <Button type="button" class="mr-3 p-button-raised">Get Started</Button>
+        <Button type="button" class="p-button-outlined">Live Demo</Button>
       </section>
     </div>
     <div>
       <img
-        src="assets/images/blocks/hero/hero-dark.png"
+        :src="`/_nuxt/assets/images/blocks/hero/hero-${nuxtApp.$config.theme}.png`"
         alt="list of games in library"
         class="hero md:ml-auto block md:h-full object-cover w-full md:w-auto"
       />
@@ -43,12 +40,12 @@ import Button from "primevue/button";
 .hero {
   object-position: top right;
 
-  @media screen and (min-width: 768px){
+  @media screen and (min-width: 768px) {
     clip-path: polygon(10% 0, 100% 0%, 100% 100%, 2% 100%);
   }
 
-  @media screen and (max-width: 767px){
-    display: none;  
+  @media screen and (max-width: 767px) {
+    display: none;
   }
-} 
+}
 </style>
