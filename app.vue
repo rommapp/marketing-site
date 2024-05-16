@@ -33,16 +33,19 @@ const menuItems: MenuItem[] = [
     label: "Features",
     url: "#features",
     key: "features",
+    target: "_self",
   },
   {
     label: "Wiki",
     url: "https://github.com/rommapp/romm/wiki",
     key: "wiki",
+    target: "_blank",
   },
   {
     label: "Contact",
     url: "mailto:romm@fastmail.com",
     key: "contact",
+    target: "_blank",
   },
 ];
 </script>
@@ -75,22 +78,16 @@ const menuItems: MenuItem[] = [
         </a>
       </div>
     </template>
-    <template #item="{ item, props, hasSubmenu, root }">
-      <a v-ripple class="flex items-center" v-bind="props.action">
+    <template #item="{ item, props }">
+      <a
+        v-ripple
+        class="flex items-center"
+        v-bind="props.action"
+        :href="item.url"
+        :target="item.target"
+      >
         <span :class="item.icon" />
         <span class="ml-2">{{ item.label }}</span>
-        <span
-          v-if="item.shortcut"
-          class="ml-auto border border-surface-200 dark:border-surface-500 rounded-md bg-surface-100 dark:bg-surface-800 text-xs p-1"
-          >{{ item.shortcut }}</span
-        >
-        <i
-          v-if="hasSubmenu"
-          :class="[
-            'pi pi-angle-down text-primary',
-            { 'pi-angle-down ml-2': root, 'pi-angle-right ml-auto': !root },
-          ]"
-        ></i>
       </a>
     </template>
     <template #end>
@@ -99,7 +96,7 @@ const menuItems: MenuItem[] = [
         target="_blank"
         class="text-900 hover:text-purple-500 border-l ml-4 pl-6 border-slate-800"
       >
-        <font-awesome-icon :icon="faGithub" class="text-2xl" />
+        <font-awesome-icon :icon="faGithub" class="text-2xl" aria-label="github repo" />
       </a>
     </template>
   </Menubar>
@@ -133,6 +130,7 @@ const menuItems: MenuItem[] = [
     <div>
       <nuxt-img
         :src="`images/blocks/hero/hero-dark.png`"
+        preset="responsive"
         alt="list of games in library"
         class="hero md:ml-auto block md:h-full object-cover w-full md:w-auto"
       />
@@ -337,10 +335,14 @@ const menuItems: MenuItem[] = [
       />
       <div class="text-700 text-xl ml-2">
         romm<span class="text-purple-500">.</span>app
-        <div class="text-700 text-sm text-center sm:hidden">Own your games.</div>
+        <div class="text-700 text-sm text-center sm:hidden">
+          Own your games.
+        </div>
       </div>
     </div>
-    <div class="text-700 text-md text-center hidden sm:block">Own your games.</div>
+    <div class="text-700 text-md text-center hidden sm:block">
+      Own your games.
+    </div>
     <a
       href="https://github.com/rommapp/marketing-site"
       target="_blank"

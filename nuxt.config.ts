@@ -25,7 +25,7 @@ export default defineNuxtConfig({
     format: ['webp'],
     provider: 'ipx',
     presets: {
-      default: {
+      responsive: {
         modifiers: {
           format: 'webp'
         }
@@ -34,6 +34,10 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
+      htmlAttrs: {
+        lang: "en",
+        dir: "ltr",
+      },
       charset: "utf-8",
       viewport: "width=device-width, initial-scale=1",
       title: "The RomM Project",
