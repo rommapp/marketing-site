@@ -1,6 +1,8 @@
-# Nuxt 3 Minimal Starter
+# RomM Project Website
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+![opengraph image](https://raw.githubusercontent.com/rommapp/marketing-site/main/public/images/og/og-image.png)
+
+### This is the source code for the RomM Project website, hosted at [romm.app](https://romm.app).
 
 ## Setup
 
@@ -9,67 +11,26 @@ Make sure to install the dependencies:
 ```bash
 # npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
+## Development
+
+This site is built with [Nuxt.js](https://nuxtjs.org/) + [Tailwind CSS](https://tailwindcss.com/) + [PrimeVue](https://www.primefaces.org/primevue/) + [TypeScript](https://www.typescriptlang.org/).
 
 Start the development server on `http://localhost:3000`:
 
 ```bash
 # npm
 npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
 ## Production
 
-Build the application for production:
+The site automatically deploys to GitHub pages using GitHub Actions, when pushing to the `main` branch.
+
+Preview the production build locally:
 
 ```bash
 # npm
 npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
