@@ -128,7 +128,7 @@ const menuItems: MenuItem[] = [
 
         <p-button
           type="button"
-          class="mr-3 p-button-raised"
+          class="mr-3 px-6 p-button-raised md:text-lg"
           v-on:click="onGetStarted"
           >Install Now
         </p-button>
@@ -330,7 +330,7 @@ const menuItems: MenuItem[] = [
         Get help with your setup, share your ideas, and meet other fans of RomM
       </div>
       <p-button
-        class="font-bold px-5 py-3 p-button-raised p-button-rounded white-space-nowrap"
+        class="font-semibold px-5 py-3 p-button-raised p-button-rounded white-space-nowrap"
         v-on:click="onJoinDiscord"
       >
         <font-awesome-icon :icon="faDiscord" class="mr-2" />
@@ -400,7 +400,7 @@ const menuItems: MenuItem[] = [
       href="https://github.com/rommapp/marketing-site"
       target="_blank"
       class="text-900 hover:text-purple-500 text-end"
-      label="github repository"
+      title="github repository"
     >
       <font-awesome-icon :icon="faGithub" class="text-2xl h-4" />
     </a>
@@ -411,6 +411,12 @@ const menuItems: MenuItem[] = [
 .p-menubar.p-menubar-mobile,
 .p-menubar.p-menubar-mobile .p-menubar-root-list {
   background-color: theme("colors.slate.950");
+}
+
+.p-button {
+  background-color: theme("colors.purple.500");
+  border-color: theme("colors.purple.500");
+  color: theme("colors.white");
 }
 </style>
 
