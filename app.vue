@@ -414,9 +414,19 @@ const menuItems: MenuItem[] = [
 }
 
 .p-button {
-  background-color: theme("colors.purple.500");
-  border-color: theme("colors.purple.500");
+  background-color: theme("colors.purple.600");
+  border-color: theme("colors.purple.600");
   color: theme("colors.white");
+
+  &:hover {
+    background-color: theme("colors.purple.500");
+    border-color: theme("colors.purple.500");
+  }
+
+  &:focus {
+    background-color: theme("colors.purple.400");
+    border-color: theme("colors.purple.400");
+  }
 }
 </style>
 
