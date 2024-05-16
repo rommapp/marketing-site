@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import { onMounted } from "vue";
 import Button from "primevue/button";
 import Tag from "primevue/tag";
 import Divider from "primevue/divider";
+import { useSeoMeta } from "#app";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
   faListCheck,
@@ -14,6 +16,17 @@ import {
   faArrowDown,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faDiscord } from "@fortawesome/free-brands-svg-icons";
+
+onMounted(() => {
+  useSeoMeta({
+    ogTitle: "The RomM Project",
+    description: "RomM is a self-hosted rom manager for your game collection.",
+    ogDescription:
+      "RomM is a self-hosted rom manager for your game collection.",
+    ogImage: "https://romm.app/images/og/og-image.png",
+    twitterCard: "summary_large_image",
+  });
+});
 
 function onGetStarted() {
   window.open(
@@ -288,9 +301,7 @@ function onJoinDiscord() {
 
   <Divider class="before:border-t-slate-900 w-11/12 m-auto" />
 
-  <footer
-    class="surface-section py-8 grid grid-cols-3 w-11/12 m-auto"
-  >
+  <footer class="surface-section py-8 grid grid-cols-3 w-11/12 m-auto">
     <div class="flex items-center">
       <img
         :src="`images/blocks/logos/romm-mono-dark.svg`"
