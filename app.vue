@@ -54,7 +54,7 @@ const menuItems: MenuItem[] = [
   <Menubar
     :model="menuItems"
     :pt="{
-      root: 'sticky top-0 z-40 rounded-none w-full px-4 md:px-8 bg-transparent backdrop-blur-lg backdrop-brightness-90 transition-colors border-0 border-b border-b-slate-800',
+      root: 'sticky top-0 z-40 rounded-none w-full px-4 md:px-8 bg-transparent backdrop-blur-lg dark:backdrop-brightness-90 transition-colors border-0 border-b border-b-slate-100 dark:border-b-slate-800',
       menu: 'ml-auto bg-transparent border-x-0',
       button: 'ml-auto text-white',
       end: 'ml-0',
@@ -94,7 +94,7 @@ const menuItems: MenuItem[] = [
       <a
         href="https://github.com/rommapp/romm"
         target="_blank"
-        class="text-900 hover:text-purple-500 border-l ml-4 pl-6 border-slate-800"
+        class="text-900 hover:text-purple-500 border-l ml-4 pl-6 border-slate-100 dark:border-slate-800"
         title="github repository"
       >
         <font-awesome-icon :icon="faGithub" class="text-2xl h-4" />
@@ -102,7 +102,7 @@ const menuItems: MenuItem[] = [
     </template>
   </Menubar>
 
-  <div class="md:grid grid-cols-2 px-10 md:px-0 md:pl-10 md:mb-10 bg-slate-950">
+  <div class="md:grid grid-cols-2 px-10 md:px-0 md:pl-10 md:mb-10">
     <div class="text-center md:text-left flex items-center">
       <section class="py-8">
         <span class="block text-4xl sm:text-5xl md:text-6xl font-bold mb-2">
@@ -139,17 +139,14 @@ const menuItems: MenuItem[] = [
     </div>
   </div>
 
-  <div
-    id="features"
-    class="surface-section px-6 py-8 lg:px-8 text-center bg-slate-950"
-  >
+  <div id="features" class="surface-section px-6 py-8 lg:px-8 text-center">
     <div class="text-700 mb-12 text-2xl">
       The <span class="text-purple-500">most powerful</span> all-in-one app for
       managing your game collection.
     </div>
     <div class="grid grid-rows-6 md:grid-cols-3 md:grid-rows-2">
       <div class="mb-10 md:mb-12 md:px-6">
-        <span class="p-3 shadow-2 mb-4 inline-block rounded-md bg-slate-900">
+        <span class="p-3 shadow-2 mb-4 inline-block rounded-md bg-slate-100 dark:bg-slate-900">
           <font-awesome-icon
             :icon="faWandSparkles"
             class="text-4xl text-purple-500"
@@ -178,7 +175,7 @@ const menuItems: MenuItem[] = [
         </div>
       </div>
       <div class="mb-10 md:mb-12 md:px-6">
-        <span class="p-3 shadow-2 mb-4 inline-block rounded-md bg-slate-900">
+        <span class="p-3 shadow-2 mb-4 inline-block rounded-md bg-slate-100 dark:bg-slate-900">
           <font-awesome-icon
             :icon="faListCheck"
             class="text-4xl text-purple-500"
@@ -201,7 +198,7 @@ const menuItems: MenuItem[] = [
         </div>
       </div>
       <div class="mb-10 md:mb-12 md:px-6">
-        <span class="p-3 shadow-2 mb-4 inline-block rounded-md bg-slate-900">
+        <span class="p-3 shadow-2 mb-4 inline-block rounded-md bg-slate-100 dark:bg-slate-900">
           <font-awesome-icon
             :icon="faGamepad"
             class="text-4xl text-purple-500"
@@ -222,7 +219,7 @@ const menuItems: MenuItem[] = [
         </div>
       </div>
       <div class="mb-10 md:mb-12 md:px-6">
-        <span class="p-3 shadow-2 mb-4 inline-block rounded-md bg-slate-900">
+        <span class="p-3 shadow-2 mb-4 inline-block rounded-md bg-slate-100 dark:bg-slate-900">
           <font-awesome-icon
             :icon="faRotate"
             class="text-4xl text-purple-500"
@@ -244,7 +241,7 @@ const menuItems: MenuItem[] = [
         </div>
       </div>
       <div class="mb-10 md:mb-12 md:px-6">
-        <span class="p-3 shadow-2 mb-4 inline-block rounded-md bg-slate-900">
+        <span class="p-3 shadow-2 mb-4 inline-block rounded-md bg-slate-100 dark:bg-slate-900">
           <font-awesome-icon
             :icon="faGithub"
             class="text-4xl text-purple-500"
@@ -257,7 +254,7 @@ const menuItems: MenuItem[] = [
         </div>
       </div>
       <div class="mb-10 md:mb-12 md:px-6">
-        <span class="p-3 shadow-2 mb-4 inline-block rounded-md bg-slate-900">
+        <span class="p-3 shadow-2 mb-4 inline-block rounded-md bg-slate-100 dark:bg-slate-900">
           <font-awesome-icon
             :icon="faShieldHeart"
             class="text-4xl text-purple-500"
@@ -324,16 +321,16 @@ const menuItems: MenuItem[] = [
     </div>
   </div>
 
-  <divider class="before:border-t-slate-900 m-auto" />
+  <divider class="before:border-t-slate-100 dark:before:border-t-slate-900 m-auto" />
 
   <footer
-    class="surface-section py-4 md:py-8 px-4 md:px-8 flex items-center justify-between sm:grid grid-cols-3 m-auto"
+    class="surface-section py-4 px-4 md:px-8 flex items-center justify-between sm:grid grid-cols-3 m-auto"
   >
     <div class="flex items-center">
       <nuxt-img
         :src="`images/blocks/logos/romm-mono-dark.svg`"
         alt="romm logo"
-        class="w-8 h-8"
+        class="w-8 h-8 footer-logo"
         loading="lazy"
       />
       <div class="text-700 text-xl ml-2">
@@ -350,6 +347,7 @@ const menuItems: MenuItem[] = [
       href="https://github.com/rommapp/marketing-site"
       target="_blank"
       class="text-900 hover:text-purple-500 text-end"
+      label="github repository"
     >
       <font-awesome-icon :icon="faGithub" class="text-2xl h-4" />
     </a>
@@ -377,12 +375,26 @@ const menuItems: MenuItem[] = [
 }
 
 #discord {
-  background: rgb(2, 6, 23);
   background: linear-gradient(
     128deg,
-    rgba(2, 6, 23, 1) 0%,
-    rgba(23, 2, 40, 1) 50%,
-    rgba(2, 6, 23, 1) 100%
+    theme("colors.purple.50") 0%,
+    theme("colors.purple.100") 50%,
+    theme("colors.purple.50") 100%
   );
+
+  @media (prefers-color-scheme: dark) {
+    background: linear-gradient(
+      128deg,
+      theme("colors.slate.950") 0%,
+      #1d0332 50%,
+      theme("colors.slate.950") 100%
+    );
+  }
+}
+
+.footer-logo {
+  @media (prefers-color-scheme: light) {
+    filter: invert(1);
+  }
 }
 </style>

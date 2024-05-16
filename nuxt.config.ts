@@ -19,18 +19,17 @@ export default defineNuxtConfig({
   nitro: {
     preset: "github-pages",
   },
-  css: ["primevue/resources/themes/aura-dark-purple/theme.css"],
   image: {
     quality: 80,
-    format: ['webp'],
-    provider: 'ipx',
+    format: ["webp"],
+    provider: "ipx",
     presets: {
       responsive: {
         modifiers: {
-          format: 'webp'
-        }
-      }
-    }
+          format: "webp",
+        },
+      },
+    },
   },
   app: {
     head: {
@@ -41,6 +40,19 @@ export default defineNuxtConfig({
       charset: "utf-8",
       viewport: "width=device-width, initial-scale=1",
       title: "The RomM Project",
+      link: [
+        {
+          rel: "stylesheet",
+          href: "https://unpkg.com/primevue@3.52.0/resources/themes/aura-light-purple/theme.css",
+          id: "theme-link",
+        },
+      ],
+      script: [
+        {
+          children:
+            'let m=window.matchMedia("(prefers-color-scheme: dark)");if(m.matches){const e=document.getElementById("theme-link");e.href=e.href.replace("light","dark");document.documentElement.classList.add("dark")}',
+        },
+      ],
       meta: [
         { name: "author", content: "The RomM Team" },
         { name: "keywords", content: "romm, rom, manager, game, collection" },
