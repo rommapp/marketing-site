@@ -2,12 +2,12 @@ import { defineNuxtConfig } from "nuxt/config";
 
 export default defineNuxtConfig({
   devtools: { enabled: false },
-  modules: ["@nuxtjs/tailwindcss", "nuxt-primevue"],
+  modules: ["@nuxtjs/tailwindcss", "nuxt-primevue", "@nuxt/image"],
   plugins: [{ src: "~/plugins/theme.ts", mode: "client" }],
   primevue: {
     cssLayerOrder: "tailwind-base, primevue, tailwind-utilities",
     components: {
-      include: ["Button", "Tag", "Divider"],
+      include: ["Button", "Tag", "Divider", "Menubar"],
     },
   },
   runtimeConfig: {
@@ -20,6 +20,18 @@ export default defineNuxtConfig({
     preset: "github-pages",
   },
   css: ["primevue/resources/themes/aura-dark-purple/theme.css"],
+  image: {
+    quality: 80,
+    format: ['webp'],
+    provider: 'ipx',
+    presets: {
+      default: {
+        modifiers: {
+          format: 'webp'
+        }
+      }
+    }
+  },
   app: {
     head: {
       charset: "utf-8",
