@@ -95,8 +95,9 @@ const menuItems: MenuItem[] = [
         href="https://github.com/rommapp/romm"
         target="_blank"
         class="text-900 hover:text-purple-500 border-l ml-4 pl-6 border-slate-800"
+        title="github repository"
       >
-        <font-awesome-icon :icon="faGithub" class="text-2xl" aria-label="github repo" />
+        <font-awesome-icon :icon="faGithub" class="text-2xl h-4" />
       </a>
     </template>
   </Menubar>
@@ -133,6 +134,7 @@ const menuItems: MenuItem[] = [
         preset="responsive"
         alt="list of games in library"
         class="hero md:ml-auto block md:h-full object-cover w-full md:w-auto"
+        :placeholder="[2190, 1550, 40, 20]"
       />
     </div>
   </div>
@@ -332,6 +334,7 @@ const menuItems: MenuItem[] = [
         :src="`images/blocks/logos/romm-mono-dark.svg`"
         alt="romm logo"
         class="w-8 h-8"
+        loading="lazy"
       />
       <div class="text-700 text-xl ml-2">
         romm<span class="text-purple-500">.</span>app
@@ -348,7 +351,7 @@ const menuItems: MenuItem[] = [
       target="_blank"
       class="text-900 hover:text-purple-500 text-end"
     >
-      <font-awesome-icon :icon="faGithub" class="text-2xl" />
+      <font-awesome-icon :icon="faGithub" class="text-2xl h-4" />
     </a>
   </footer>
 </template>
