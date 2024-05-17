@@ -136,10 +136,17 @@ const menuItems: MenuItem[] = [
     </div>
     <div>
       <nuxt-img
-        :src="`images/blocks/hero/hero-${$config.theme}.png`"
+        :src="`images/blocks/hero/hero-dark.png`"
         preset="responsive"
         alt="list of games in library"
-        class="hero md:ml-auto block md:h-full object-cover w-full md:w-auto"
+        class="hero md:ml-auto md:h-full object-cover w-full md:w-auto hidden dark:block"
+        :placeholder="[2190, 1550, 40, 20]"
+      />
+      <nuxt-img
+        :src="`images/blocks/hero/hero-light.png`"
+        preset="responsive"
+        alt="list of games in library"
+        class="hero md:ml-auto block md:h-full object-cover w-full md:w-auto dark:hidden"
         :placeholder="[2190, 1550, 40, 20]"
       />
     </div>
