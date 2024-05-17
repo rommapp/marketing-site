@@ -54,9 +54,9 @@ const menuItems: MenuItem[] = [
   <Menubar
     :model="menuItems"
     :pt="{
-      root: 'sticky top-0 z-40 rounded-none w-full px-4 md:px-8 bg-transparent backdrop-blur-lg dark:backdrop-brightness-90 transition-colors border-0 border-b border-b-slate-100 dark:border-b-slate-800',
+      root: 'sticky top-0 z-40 rounded-none w-full px-4 md:px-8 bg-slate-50 dark:bg-transparent backdrop-blur-lg dark:backdrop-brightness-90 transition-colors border-0 border-b border-b-slate-100 dark:border-b-slate-800',
       menu: 'ml-auto bg-transparent border-x-0',
-      button: 'ml-auto text-white',
+      button: 'ml-auto dark:text-white',
       end: 'ml-0',
     }"
   >
@@ -136,7 +136,7 @@ const menuItems: MenuItem[] = [
     </div>
     <div>
       <nuxt-img
-        :src="`images/blocks/hero/hero-dark.png`"
+        :src="`images/blocks/hero/hero-${$config.theme}.png`"
         preset="responsive"
         alt="list of games in library"
         class="hero md:ml-auto block md:h-full object-cover w-full md:w-auto"
@@ -410,7 +410,11 @@ const menuItems: MenuItem[] = [
 <style>
 .p-menubar.p-menubar-mobile,
 .p-menubar.p-menubar-mobile .p-menubar-root-list {
-  background-color: theme("colors.slate.950");
+  background-color: theme("colors.slate.50");
+
+  @media (prefers-color-scheme: dark) {
+    background-color: theme("colors.slate.950");
+  }
 }
 
 .p-button {
