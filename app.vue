@@ -55,7 +55,7 @@ const menuItems: MenuItem[] = [
     <Menubar
       :model="menuItems"
       :pt="{
-        root: 'sticky top-3 mb-6 z-40 px-4 md:px-8 bg-white dark:bg-transparent backdrop-blur-lg dark:backdrop-brightness-90 transition-colors border-slate-100 dark:border-slate-800 rounded-md',
+        root: 'sticky top-3 mb-6 mx-4 z-40 px-4 md:px-8 bg-white dark:bg-transparent backdrop-blur-lg dark:backdrop-brightness-90 transition-colors border-slate-100 dark:border-slate-800 rounded-md',
         menu: 'ml-auto bg-transparent border-x-0',
         button: 'ml-auto dark:text-white',
         end: 'ml-0',
