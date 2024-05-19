@@ -313,6 +313,24 @@ function onJoinDiscord() {
   </div>
 </template>
 
+<style>
+.p-button {
+  background-color: theme("colors.purple.600");
+  border-color: theme("colors.purple.600");
+  color: theme("colors.white");
+
+  &:hover {
+    background-color: theme("colors.purple.500");
+    border-color: theme("colors.purple.500");
+  }
+
+  &:focus {
+    background-color: theme("colors.purple.400");
+    border-color: theme("colors.purple.400");
+  }
+}
+</style>
+
 <style scoped>
 .hero {
   object-position: top right;
