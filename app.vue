@@ -29,58 +29,60 @@ const menuItems: MenuItem[] = [
 </script>
 
 <template>
-  <Menubar
-    :model="menuItems"
-    :pt="{
-      root: 'sticky top-3 mb-6 mx-4 z-40 px-4 md:px-8 bg-white dark:bg-transparent backdrop-blur-lg dark:backdrop-brightness-90 transition-colors border-slate-100 dark:border-slate-800 rounded-md',
-      menu: 'ml-auto bg-transparent border-x-0',
-      button: 'ml-auto dark:text-white',
-      end: 'ml-0',
-    }"
-  >
-    <template #start>
-      <div class="flex items-center">
-        <a href="/" class="flex items-center">
-          <nuxt-img
-            :src="`images/blocks/logos/romm-dark.svg`"
-            alt="romm logo"
-            class="w-10 h-10"
-          />
-          <span class="text-900 text-2xl font-semibold ml-1">RomM</span>
-        </a>
+  <div class="max-w-[100rem] mx-auto">
+    <Menubar
+      :model="menuItems"
+      :pt="{
+        root: 'sticky top-3 mb-6 z-40 px-4 md:px-8 bg-white dark:bg-transparent backdrop-blur-lg dark:backdrop-brightness-90 transition-colors border-slate-100 dark:border-slate-800 rounded-md',
+        menu: 'ml-auto bg-transparent border-x-0',
+        button: 'ml-auto dark:text-white',
+        end: 'ml-0',
+      }"
+    >
+      <template #start>
+        <div class="flex items-center">
+          <a href="/" class="flex items-center">
+            <nuxt-img
+              :src="`images/blocks/logos/romm-dark.svg`"
+              alt="romm logo"
+              class="w-10 h-10"
+            />
+            <span class="text-900 text-2xl font-semibold ml-1">RomM</span>
+          </a>
+          <a
+            href="https://github.com/rommapp/romm/releases/latest"
+            target="_blank"
+          >
+            <tag value="v3.1.0" severity="primary" class="ml-3 text-xs"></tag>
+          </a>
+        </div>
+      </template>
+      <template #item="{ item, props }">
         <a
-          href="https://github.com/rommapp/romm/releases/latest"
-          target="_blank"
+          v-ripple
+          class="flex items-center"
+          v-bind="props.action"
+          :href="item.url"
+          :target="item.target"
         >
-          <tag value="v3.1.0" severity="primary" class="ml-3 text-xs"></tag>
+          <span :class="item.icon" />
+          <span class="ml-2">{{ item.label }}</span>
         </a>
-      </div>
-    </template>
-    <template #item="{ item, props }">
-      <a
-        v-ripple
-        class="flex items-center"
-        v-bind="props.action"
-        :href="item.url"
-        :target="item.target"
-      >
-        <span :class="item.icon" />
-        <span class="ml-2">{{ item.label }}</span>
-      </a>
-    </template>
-    <template #end>
-      <a
-        href="https://github.com/rommapp/romm"
-        target="_blank"
-        class="text-900 hover:text-purple-500 border-l ml-4 pl-6 border-slate-100 dark:border-slate-800"
-        title="github repository"
-      >
-        <font-awesome-icon :icon="faGithub" class="text-2xl h-4" />
-      </a>
-    </template>
-  </Menubar>
+      </template>
+      <template #end>
+        <a
+          href="https://github.com/rommapp/romm"
+          target="_blank"
+          class="text-900 hover:text-purple-500 border-l ml-4 pl-6 border-slate-100 dark:border-slate-800"
+          title="github repository"
+        >
+          <font-awesome-icon :icon="faGithub" class="text-2xl h-4" />
+        </a>
+      </template>
+    </Menubar>
 
-  <NuxtPage />
+    <NuxtPage />
+  </div>
 
   <divider
     class="before:border-t-slate-100 dark:before:border-t-slate-900 m-auto"

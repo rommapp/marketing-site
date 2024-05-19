@@ -27,9 +27,7 @@ function onJoinDiscord() {
 </script>
 
 <template>
-  <div
-    class="md:grid grid-cols-2 px-6 md:px-0 md:pl-10 md:mb-10 max-w-[100rem] mx-auto"
-  >
+  <div class="md:grid grid-cols-2 px-6 md:px-0 md:pl-10 md:mb-10">
     <div class="text-left flex items-center">
       <section class="py-8">
         <span class="block text-4xl sm:text-5xl md:text-6xl font-bold mb-2">
@@ -79,10 +77,7 @@ function onJoinDiscord() {
     </div>
   </div>
 
-  <div
-    id="features"
-    class="surface-section px-6 py-8 lg:px-8 md:text-center max-w-[100rem] mx-auto"
-  >
+  <div id="features" class="surface-section px-6 py-8 lg:px-8 md:text-center">
     <div class="text-700 mb-10 md:mb-12 text-2xl">
       The <span class="text-purple-500">most powerful</span> all-in-one app for
       managing your game collection.
@@ -280,7 +275,7 @@ function onJoinDiscord() {
   </div>
 
   <div
-    class="surface-section px-6 py-8 my-6 md:px-4 lg:px-8 flex flex-col md:items-center max-w-[100rem] mx-auto"
+    class="surface-section px-6 py-8 my-6 md:px-4 lg:px-8 flex flex-col md:items-center"
   >
     <div class="text-4xl text-700 font-bold mb-1">People ❤️ RomM</div>
 
