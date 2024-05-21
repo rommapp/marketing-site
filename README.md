@@ -2,9 +2,9 @@
 
 ![opengraph image](https://raw.githubusercontent.com/rommapp/marketing-site/main/public/images/og/og-image.png)
 
-### This is the source code for the RomM Project website, hosted at [romm.app](https://romm.app).
+## This is the source code for the RomM Project website, hosted at [romm.app](https://romm.app)
 
-## Setup
+### Setup
 
 Make sure to install the dependencies:
 
@@ -13,7 +13,7 @@ Make sure to install the dependencies:
 npm install
 ```
 
-## Development
+### Development
 
 This site is built with [Nuxt.js](https://nuxtjs.org/) + [Tailwind CSS](https://tailwindcss.com/) + [PrimeVue](https://www.primefaces.org/primevue/) + [TypeScript](https://www.typescriptlang.org/).
 
@@ -24,7 +24,7 @@ Start the development server on `http://localhost:3000`:
 npm run dev
 ```
 
-## Production
+### Production
 
 The site automatically deploys to GitHub pages using GitHub Actions, when pushing to the `main` branch.
 
