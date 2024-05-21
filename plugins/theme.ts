@@ -14,14 +14,14 @@ export default defineNuxtPlugin((nuxtApp) => {
         $primevue.changeTheme(
           "aura-light-purple",
           "aura-dark-purple",
-          "theme-link"
+          "theme-link",
         );
         document.documentElement.classList.add("dark");
       } else {
         $primevue.changeTheme(
           "aura-dark-purple",
           "aura-light-purple",
-          "theme-link"
+          "theme-link",
         );
         document.documentElement.classList.remove("dark");
       }
