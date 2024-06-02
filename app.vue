@@ -75,7 +75,7 @@ const menuItems: MenuItem[] = [
             href="https://github.com/rommapp/romm/releases/latest"
             target="_blank"
           >
-            <tag value="v3.1.0" severity="primary" class="ml-3 text-xs"></tag>
+            <tag value="v3.2.0" severity="primary" class="ml-3 text-xs"></tag>
           </a>
         </div>
       </template>
