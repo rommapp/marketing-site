@@ -366,7 +366,7 @@ const menuItems: MenuItem[] = [
               :icon="faStar"
               class="text-2xl text-purple-500"
             />
-            <div class="font-bold ml-3 text-2xl">1,300+</div>
+            <div class="font-bold ml-3 text-2xl">1,400+</div>
           </div>
           <div class="ml-10">Github stars</div>
         </div>
@@ -376,7 +376,7 @@ const menuItems: MenuItem[] = [
               :icon="faUsers"
               class="text-2xl text-purple-500"
             />
-            <div class="font-bold ml-3 text-2xl">700+</div>
+            <div class="font-bold ml-3 text-2xl">800+</div>
           </div>
           <div class="ml-10">Discord members</div>
         </div>
@@ -386,7 +386,7 @@ const menuItems: MenuItem[] = [
               :icon="faArrowDown"
               class="text-2xl text-purple-500"
             />
-            <div class="font-bold ml-3 text-2xl">100,000+</div>
+            <div class="font-bold ml-3 text-2xl">250,000+</div>
           </div>
           <div class="ml-8">Docker pulls</div>
         </div>
