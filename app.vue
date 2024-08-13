@@ -75,7 +75,7 @@ const menuItems: MenuItem[] = [
             href="https://github.com/rommapp/romm/releases/latest"
             target="_blank"
           >
-            <tag value="v3.2.0" severity="primary" class="ml-3 text-xs"></tag>
+            <tag value="v3.4.0" severity="primary" class="ml-3 text-xs"></tag>
           </a>
         </div>
       </template>
@@ -366,7 +366,7 @@ const menuItems: MenuItem[] = [
               :icon="faStar"
               class="text-2xl text-purple-500"
             />
-            <div class="font-bold ml-3 text-2xl">1,500+</div>
+            <div class="font-bold ml-3 text-2xl">1,700+</div>
           </div>
           <div class="ml-10">Github stars</div>
         </div>
@@ -376,7 +376,7 @@ const menuItems: MenuItem[] = [
               :icon="faUsers"
               class="text-2xl text-purple-500"
             />
-            <div class="font-bold ml-3 text-2xl">900+</div>
+            <div class="font-bold ml-3 text-2xl">1000+</div>
           </div>
           <div class="ml-10">Discord members</div>
         </div>
@@ -386,7 +386,7 @@ const menuItems: MenuItem[] = [
               :icon="faArrowDown"
               class="text-2xl text-purple-500"
             />
-            <div class="font-bold ml-3 text-2xl">300,000+</div>
+            <div class="font-bold ml-3 text-2xl">375,000+</div>
           </div>
           <div class="ml-8">Docker pulls</div>
         </div>
