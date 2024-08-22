@@ -104,7 +104,7 @@ const menuItems: MenuItem[] = [
         <a
           href="https://github.com/rommapp/romm"
           target="_blank"
-          class="text-900 hover:text-purple-500 pl-2"
+          class="text-900 hover:text-purple-500 pl-4"
           title="github repository"
         >
           <font-awesome-icon :icon="faGithub" class="text-2xl h-4" />
