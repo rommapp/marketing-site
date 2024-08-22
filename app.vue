@@ -14,6 +14,7 @@ import {
   faStar,
   faUsers,
   faArrowDown,
+  faDonate,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faDiscord } from "@fortawesome/free-brands-svg-icons";
 
@@ -93,9 +94,17 @@ const menuItems: MenuItem[] = [
       </template>
       <template #end>
         <a
-          href="https://github.com/rommapp/romm"
+          href="https://opencollective.com/romm"
           target="_blank"
           class="text-900 hover:text-purple-500 border-l ml-4 pl-6 border-slate-100 dark:border-slate-800"
+          title="support the project"
+        >
+          <font-awesome-icon :icon="faDonate" class="text-2xl h-4" />
+        </a>
+        <a
+          href="https://github.com/rommapp/romm"
+          target="_blank"
+          class="text-900 hover:text-purple-500 pl-2"
           title="github repository"
         >
           <font-awesome-icon :icon="faGithub" class="text-2xl h-4" />
