@@ -88,8 +88,7 @@ const menuItems: MenuItem[] = [
           :href="item.url"
           :target="item.target"
         >
-          <span :class="item.icon" />
-          <span class="ml-2">{{ item.label }}</span>
+          <span>{{ item.label }}</span>
         </a>
       </template>
       <template #end>
