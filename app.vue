@@ -68,7 +68,7 @@ const menuItems: MenuItem[] = [
             <nuxt-img
               :src="`images/blocks/logos/romm-dark.svg`"
               alt="romm logo"
-              class="w-10 h-10"
+              class="w-10 h-10 rounded-full"
             />
             <span class="text-900 text-2xl font-semibold ml-1">RomM</span>
           </a>
@@ -95,7 +95,7 @@ const menuItems: MenuItem[] = [
         <a
           href="https://opencollective.com/romm"
           target="_blank"
-          class="text-900 hover:text-purple-500 border-l ml-4 pl-6 border-slate-100 dark:border-slate-800"
+          class="text-900 hover:text-primary border-l ml-4 pl-6 border-slate-100 dark:border-slate-800"
           title="support the project"
         >
           <font-awesome-icon :icon="faDonate" class="text-2xl h-4" />
@@ -103,7 +103,7 @@ const menuItems: MenuItem[] = [
         <a
           href="https://github.com/rommapp/romm"
           target="_blank"
-          class="text-900 hover:text-purple-500 pl-4"
+          class="text-900 hover:text-primary pl-4"
           title="github repository"
         >
           <font-awesome-icon :icon="faGithub" class="text-2xl h-4" />
@@ -118,7 +118,7 @@ const menuItems: MenuItem[] = [
             Your beautiful, powerful,
           </span>
           <div
-            class="text-4xl sm:text-5xl md:text-6xl text-purple-500 font-bold mb-8 md:mb-4"
+            class="text-4xl sm:text-5xl md:text-6xl text-primary font-bold mb-8 md:mb-4"
           >
             self-hosted rom manager
           </div>
@@ -164,7 +164,7 @@ const menuItems: MenuItem[] = [
 
     <div id="features" class="surface-section px-6 py-8 lg:px-8 md:text-center">
       <div class="text-700 mb-10 md:mb-12 text-2xl">
-        The <span class="text-purple-500">most powerful</span> all-in-one app
+        The <span class="text-primary">most powerful</span> all-in-one app
         for managing your game collection.
       </div>
       <div class="grid grid-rows-6 md:grid-cols-3 md:grid-rows-2">
@@ -175,7 +175,7 @@ const menuItems: MenuItem[] = [
             >
               <font-awesome-icon
                 :icon="faWandSparkles"
-                class="text-3xl md:text-4xl w-8 md:w-10 text-purple-500"
+                class="text-3xl md:text-4xl w-8 md:w-10 text-primary"
               />
             </span>
           </div>
@@ -189,7 +189,7 @@ const menuItems: MenuItem[] = [
                 href="https://www.igdb.com/"
                 target="_blank"
                 rel="noopener"
-                class="underline hover:text-purple-500"
+                class="underline hover:text-primary"
               >
                 IGDB</a
               >
@@ -198,7 +198,7 @@ const menuItems: MenuItem[] = [
                 href="https://www.mobygames.com/"
                 target="_blank"
                 rel="noopener"
-                class="underline hover:text-purple-500"
+                class="underline hover:text-primary"
               >
                 MobyGames</a
               >.
@@ -212,7 +212,7 @@ const menuItems: MenuItem[] = [
             >
               <font-awesome-icon
                 :icon="faListCheck"
-                class="text-3xl md:text-4xl w-8 md:w-10 text-purple-500"
+                class="text-3xl md:text-4xl w-8 md:w-10 text-primary"
               />
             </span>
           </div>
@@ -226,7 +226,7 @@ const menuItems: MenuItem[] = [
                 href="https://github.com/rommapp/romm/wiki/Supported-Platforms"
                 target="_blank"
                 rel="noopener"
-                class="underline hover:text-purple-500"
+                class="underline hover:text-primary"
               >
                 400+</a
               >
@@ -241,7 +241,7 @@ const menuItems: MenuItem[] = [
             >
               <font-awesome-icon
                 :icon="faGamepad"
-                class="text-3xl md:text-4xl w-8 md:w-10 text-purple-500"
+                class="text-3xl md:text-4xl w-8 md:w-10 text-primary"
               />
             </span>
           </div>
@@ -255,7 +255,7 @@ const menuItems: MenuItem[] = [
                 href="https://emulatorjs.org/"
                 target="_blank"
                 rel="noopener"
-                class="underline hover:text-purple-500"
+                class="underline hover:text-primary"
               >
                 EmulatorJS</a
               >
@@ -271,7 +271,7 @@ const menuItems: MenuItem[] = [
             >
               <font-awesome-icon
                 :icon="faRotate"
-                class="text-3xl md:text-4xl w-8 md:w-10 text-purple-500"
+                class="text-3xl md:text-4xl w-8 md:w-10 text-primary"
               />
             </span>
           </div>
@@ -299,7 +299,7 @@ const menuItems: MenuItem[] = [
             >
               <font-awesome-icon
                 :icon="faGithub"
-                class="text-3xl md:text-4xl w-8 md:w-10 text-purple-500"
+                class="text-3xl md:text-4xl w-8 md:w-10 text-primary"
               />
             </span>
           </div>
@@ -320,7 +320,7 @@ const menuItems: MenuItem[] = [
             >
               <font-awesome-icon
                 :icon="faShieldHeart"
-                class="text-3xl md:text-4xl w-8 md:w-10 text-purple-500"
+                class="text-3xl md:text-4xl w-8 md:w-10 text-primary"
               />
             </span>
           </div>
@@ -342,7 +342,7 @@ const menuItems: MenuItem[] = [
       class="surface-section px-6 py-8 md:py-12 md:px-6 lg:px-8 rounded-lg"
     >
       <div class="text-700 md:text-center">
-        <div class="text-purple-600 font-bold mb-3">
+        <div class="text-primary-600 font-bold mb-3">
           <i class="pi pi-discord"></i>&nbsp;POWERED BY FRIENDSHIP
         </div>
         <div class="text-900 font-bold text-5xl mb-3">Join Our Community</div>
@@ -372,7 +372,7 @@ const menuItems: MenuItem[] = [
           <div class="flex items-center">
             <font-awesome-icon
               :icon="faStar"
-              class="text-2xl text-purple-500"
+              class="text-2xl text-primary"
             />
             <div class="font-bold ml-3 text-2xl">1,900+</div>
           </div>
@@ -382,7 +382,7 @@ const menuItems: MenuItem[] = [
           <div class="flex items-center">
             <font-awesome-icon
               :icon="faUsers"
-              class="text-2xl text-purple-500"
+              class="text-2xl text-primary"
             />
             <div class="font-bold ml-3 text-2xl">1000+</div>
           </div>
@@ -392,7 +392,7 @@ const menuItems: MenuItem[] = [
           <div class="flex items-center">
             <font-awesome-icon
               :icon="faArrowDown"
-              class="text-2xl text-purple-500"
+              class="text-2xl text-primary"
             />
             <div class="font-bold ml-3 text-2xl">375,000+</div>
           </div>
@@ -417,7 +417,7 @@ const menuItems: MenuItem[] = [
         loading="lazy"
       />
       <div class="text-700 text-lg md:text-xl ml-2">
-        romm<span class="text-purple-500">.</span>app
+        romm<span class="text-primary">.</span>app
         <div class="text-700 text-sm text-center sm:hidden">
           Own your games.
         </div>
@@ -429,7 +429,7 @@ const menuItems: MenuItem[] = [
     <a
       href="https://github.com/rommapp/marketing-site"
       target="_blank"
-      class="text-900 hover:text-purple-500 text-end"
+      class="text-900 hover:text-primary text-end"
       title="github repository"
     >
       <font-awesome-icon :icon="faGithub" class="text-2xl h-4" />
@@ -438,6 +438,7 @@ const menuItems: MenuItem[] = [
 </template>
 
 <style>
+body,
 .p-menubar.p-menubar-mobile,
 .p-menubar.p-menubar-mobile .p-menubar-root-list {
   background-color: theme("colors.slate.50");
@@ -448,18 +449,18 @@ const menuItems: MenuItem[] = [
 }
 
 .p-button {
-  background-color: theme("colors.purple.600");
-  border-color: theme("colors.purple.600");
+  background-color: theme("colors.primary.600");
+  border-color: theme("colors.primary.600");
   color: theme("colors.white");
 
   &:hover {
-    background-color: theme("colors.purple.500");
-    border-color: theme("colors.purple.500");
+    background-color: theme("colors.primary.500");
+    border-color: theme("colors.primary.500");
   }
 
   &:focus {
-    background-color: theme("colors.purple.400");
-    border-color: theme("colors.purple.400");
+    background-color: theme("colors.primary.400");
+    border-color: theme("colors.primary.400");
   }
 }
 </style>
@@ -480,9 +481,9 @@ const menuItems: MenuItem[] = [
 #discord {
   background: linear-gradient(
     128deg,
-    theme("colors.purple.50") 0%,
-    theme("colors.purple.100") 50%,
-    theme("colors.purple.50") 100%
+    theme("colors.primary.50") 0%,
+    theme("colors.primary.100") 50%,
+    theme("colors.primary.50") 100%
   );
 
   @media (prefers-color-scheme: dark) {
