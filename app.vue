@@ -21,8 +21,13 @@ import { faGithub, faDiscord } from "@fortawesome/free-brands-svg-icons";
 function onGetStarted() {
   window.open(
     "https://github.com/rommapp/romm?tab=readme-ov-file#installation",
-    "_blank"
+    "_blank",
+    "noopener"
   );
+}
+
+function onViewDemo() {
+  window.open("https://demo.romm.app", "_blank");
 }
 
 function onJoinDiscord() {
@@ -41,12 +46,21 @@ const menuItems: MenuItem[] = [
     url: "https://github.com/rommapp/romm/wiki",
     key: "wiki",
     target: "_blank",
+    rel: "noopener",
+  },
+  {
+    label: "Demo",
+    url: "https://demo.romm.app",
+    key: "demo",
+    target: "_blank",
+    rel: "noopener",
   },
   {
     label: "Contact",
     url: "mailto:romm@fastmail.com",
     key: "contact",
     target: "_blank",
+    rel: "noopener",
   },
 ];
 </script>
@@ -75,6 +89,7 @@ const menuItems: MenuItem[] = [
           <a
             href="https://github.com/rommapp/romm/releases/latest"
             target="_blank"
+            rel="noopener"
           >
             <tag value="v3.5.1" severity="primary" class="ml-3 text-xs"></tag>
           </a>
@@ -95,6 +110,7 @@ const menuItems: MenuItem[] = [
         <a
           href="https://opencollective.com/romm"
           target="_blank"
+          rel="noopener"
           class="text-900 hover:text-primary border-l ml-4 pl-6 border-slate-100 dark:border-slate-800"
           title="support the project"
         >
@@ -103,6 +119,7 @@ const menuItems: MenuItem[] = [
         <a
           href="https://github.com/rommapp/romm"
           target="_blank"
+          rel="noopener"
           class="text-900 hover:text-primary pl-4"
           title="github repository"
         >
@@ -137,10 +154,20 @@ const menuItems: MenuItem[] = [
           </div>
 
           <p-button
+            raised
             type="button"
-            class="mr-3 px-6 p-button-raised md:text-lg"
+            class="mr-3 px-6 md:text-lg"
             v-on:click="onGetStarted"
             >Install Now
+          </p-button>
+
+          <p-button
+            raised
+            outlined
+            type="button"
+            class="px-6 md:text-lg"
+            v-on:click="onViewDemo"
+            >View Demo
           </p-button>
         </section>
       </div>
@@ -188,7 +215,7 @@ const menuItems: MenuItem[] = [
               <a
                 href="https://www.igdb.com/"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 class="underline hover:text-primary"
               >
                 IGDB</a
@@ -197,7 +224,7 @@ const menuItems: MenuItem[] = [
               <a
                 href="https://www.mobygames.com/"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 class="underline hover:text-primary"
               >
                 MobyGames</a
@@ -225,7 +252,7 @@ const menuItems: MenuItem[] = [
               <a
                 href="https://github.com/rommapp/romm/wiki/Supported-Platforms"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 class="underline hover:text-primary"
               >
                 400+</a
@@ -254,7 +281,7 @@ const menuItems: MenuItem[] = [
               <a
                 href="https://emulatorjs.org/"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 class="underline hover:text-primary"
               >
                 EmulatorJS</a
@@ -351,7 +378,9 @@ const menuItems: MenuItem[] = [
           RomM
         </div>
         <p-button
-          class="font-semibold px-5 py-3 p-button-raised p-button-rounded white-space-nowrap"
+          raised
+          rounded
+          class="font-semibold px-5 py-3 white-space-nowrap"
           v-on:click="onJoinDiscord"
         >
           <font-awesome-icon :icon="faDiscord" class="mr-2" />
@@ -429,6 +458,7 @@ const menuItems: MenuItem[] = [
     <a
       href="https://github.com/rommapp/marketing-site"
       target="_blank"
+      rel="noopener"
       class="text-900 hover:text-primary text-end"
       title="github repository"
     >
@@ -461,6 +491,21 @@ body,
   &:focus {
     background-color: theme("colors.primary.400");
     border-color: theme("colors.primary.400");
+  }
+}
+
+.p-button-outlined {
+  background-color: transparent;
+  color: theme("colors.primary.600");
+
+  &:hover {
+    background-color: transparent;
+    color: theme("colors.primary.500");
+  }
+
+  &:focus {
+    background-color: transparent;
+    color: theme("colors.primary.400");
   }
 }
 </style>
