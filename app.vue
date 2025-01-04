@@ -413,7 +413,7 @@ const menuItems: MenuItem[] = [
               :icon="faUsers"
               class="text-2xl text-primary"
             />
-            <div class="font-bold ml-3 text-2xl">1000+</div>
+            <div class="font-bold ml-3 text-2xl">1,500+</div>
           </div>
           <div class="ml-10">Discord members</div>
         </div>
