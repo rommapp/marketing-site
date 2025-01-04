@@ -91,7 +91,7 @@ const menuItems: MenuItem[] = [
             target="_blank"
             rel="noopener"
           >
-            <tag value="v3.5.1" severity="primary" class="ml-3 text-xs"></tag>
+            <tag value="v3.6.0" severity="primary" class="ml-3 text-xs"></tag>
           </a>
         </div>
       </template>
@@ -403,7 +403,7 @@ const menuItems: MenuItem[] = [
               :icon="faStar"
               class="text-2xl text-primary"
             />
-            <div class="font-bold ml-3 text-2xl">1,900+</div>
+            <div class="font-bold ml-3 text-2xl">2,700+</div>
           </div>
           <div class="ml-10">Github stars</div>
         </div>
@@ -423,7 +423,7 @@ const menuItems: MenuItem[] = [
               :icon="faArrowDown"
               class="text-2xl text-primary"
             />
-            <div class="font-bold ml-3 text-2xl">375,000+</div>
+            <div class="font-bold ml-3 text-2xl">650,000+</div>
           </div>
           <div class="ml-8">Docker pulls</div>
         </div>
