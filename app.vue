@@ -365,7 +365,7 @@ const menuItems: MenuItem[] = [
       </div>
     </div>
 
-    <div class="surface-section px-6 py-8 md:py-12 md:px-6 lg:px-8 rounded-lg bg-light-surface dark:bg-dark-surface">
+    <div id="discord" class="surface-section px-6 py-8 md:py-12 md:px-6 lg:px-8 rounded-lg bg-light-surface dark:bg-dark-surface">
       <div class="text-700 md:text-center">
         <div class="text-primary-600 font-bold mb-3">
           <i class="pi pi-discord"></i>&nbsp;POWERED BY FRIENDSHIP
@@ -515,6 +515,23 @@ body,
 
   @media screen and (max-width: 767px) {
     display: none;
+  }
+}
+
+#discord {
+  background: linear-gradient(
+    90deg,
+    theme("colors.light.background") 0%,
+    theme("colors.light.surface") 50%,
+    theme("colors.light.background") 100%
+  );
+  @media (prefers-color-scheme: dark) {
+    background: linear-gradient(
+      90deg,
+      theme("colors.dark.background") 0%,
+      theme("colors.dark.surface") 50%,
+      theme("colors.dark.background") 100%
+    );
   }
 }
 
