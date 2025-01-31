@@ -85,7 +85,7 @@ const menuItems: MenuItem[] = [
               alt="romm logo"
               class="w-8 h-8 rounded-full"
             />
-            <span class="text-900 text-2xl font-semibold ml-3">RomM</span>
+            <span class="text-900 text-2xl font-semibold ml-2">RomM</span>
           </a>
           <a
             href="https://github.com/rommapp/romm/releases/latest"
@@ -199,7 +199,7 @@ const menuItems: MenuItem[] = [
         <div class="mb-4 sm:mb-6 md:mb-12 md:px-6 flex gap-4 md:block">
           <div>
             <span
-              class="mt-1 md:mt-0 p-3 shadow-2 mb-4 inline-block rounded-md bg-light-background dark:bg-dark-background"
+              class="mt-1 md:mt-0 p-3 shadow-2 mb-4 inline-block rounded-md bg-light-surface dark:bg-dark-surface"
             >
               <font-awesome-icon
                 :icon="faWandSparkles"
@@ -236,7 +236,7 @@ const menuItems: MenuItem[] = [
         <div class="mb-4 sm:mb-6 md:mb-12 md:px-6 flex gap-4 md:block">
           <div>
             <span
-              class="mt-1 md:mt-0 p-3 shadow-2 mb-4 inline-block rounded-md bg-light-background dark:bg-dark-background"
+              class="mt-1 md:mt-0 p-3 shadow-2 mb-4 inline-block rounded-md bg-light-surface dark:bg-dark-surface"
             >
               <font-awesome-icon
                 :icon="faListCheck"
@@ -265,7 +265,7 @@ const menuItems: MenuItem[] = [
         <div class="mb-4 sm:mb-6 md:mb-12 md:px-6 flex gap-4 md:block">
           <div>
             <span
-              class="mt-1 md:mt-0 p-3 shadow-2 mb-4 inline-block rounded-md bg-light-background dark:bg-dark-background"
+              class="mt-1 md:mt-0 p-3 shadow-2 mb-4 inline-block rounded-md bg-light-surface dark:bg-dark-surface"
             >
               <font-awesome-icon
                 :icon="faGamepad"
@@ -295,7 +295,7 @@ const menuItems: MenuItem[] = [
         <div class="mb-4 sm:mb-6 md:mb-12 md:px-6 flex gap-4 md:block">
           <div>
             <span
-              class="mt-1 md:mt-0 p-3 shadow-2 mb-4 inline-block rounded-md bg-light-background dark:bg-dark-background"
+              class="mt-1 md:mt-0 p-3 shadow-2 mb-4 inline-block rounded-md bg-light-surface dark:bg-dark-surface"
             >
               <font-awesome-icon
                 :icon="faRotate"
@@ -323,7 +323,7 @@ const menuItems: MenuItem[] = [
         <div class="mb-4 sm:mb-6 md:mb-12 md:px-6 flex gap-4 md:block">
           <div>
             <span
-              class="mt-1 md:mt-0 p-3 shadow-2 mb-4 inline-block rounded-md bg-light-background dark:bg-dark-background"
+              class="mt-1 md:mt-0 p-3 shadow-2 mb-4 inline-block rounded-md bg-light-surface dark:bg-dark-surface"
             >
               <font-awesome-icon
                 :icon="faGithub"
@@ -344,7 +344,7 @@ const menuItems: MenuItem[] = [
         <div class="mb-4 sm:mb-6 md:mb-12 md:px-6 flex gap-4 md:block">
           <div>
             <span
-              class="mt-1 md:mt-0 p-3 shadow-2 mb-4 inline-block rounded-md bg-light-background dark:bg-dark-background"
+              class="mt-1 md:mt-0 p-3 shadow-2 mb-4 inline-block rounded-md bg-light-surface dark:bg-dark-surface"
             >
               <font-awesome-icon
                 :icon="faShieldHeart"
