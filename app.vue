@@ -83,9 +83,9 @@ const menuItems: MenuItem[] = [
             <nuxt-img
               :src="`images/blocks/logos/romm-dark.svg`"
               alt="romm logo"
-              class="w-10 h-10 rounded-full"
+              class="w-8 h-8 rounded-full"
             />
-            <span class="text-900 text-2xl font-semibold ml-1">RomM</span>
+            <span class="text-900 text-2xl font-semibold ml-3">RomM</span>
           </a>
           <a
             href="https://github.com/rommapp/romm/releases/latest"
@@ -440,7 +440,7 @@ const menuItems: MenuItem[] = [
       <nuxt-img
         :src="`images/blocks/logos/romm-mono-dark.svg`"
         alt="romm logo"
-        class="w-8 h-8 footer-logo"
+        class="w-6 h-6 footer-logo"
         loading="lazy"
       />
       <div class="text-700 text-lg md:text-xl ml-2">
