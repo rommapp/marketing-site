@@ -15,6 +15,7 @@ import {
   faUsers,
   faArrowDown,
   faDonate,
+  faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faDiscord } from "@fortawesome/free-brands-svg-icons";
 
@@ -70,7 +71,7 @@ const menuItems: MenuItem[] = [
     <Menubar
       :model="menuItems"
       :pt="{
-        root: 'sticky top-3 mb-6 mx-4 z-40 px-4 md:px-8 bg-white dark:bg-transparent backdrop-blur-lg dark:backdrop-brightness-90 transition-colors border-slate-100 dark:border-slate-800 rounded-md',
+        root: 'sticky top-3 mb-6 mx-4 z-40 px-4 md:px-8 bg-white dark:bg-transparent backdrop-blur-lg dark:backdrop-brightness-90 transition-colors border-light-toplayer dark:border-dark-toplayer rounded-md',
         menu: 'ml-auto bg-transparent border-x-0',
         button: 'ml-auto dark:text-white',
         end: 'ml-0',
@@ -91,7 +92,7 @@ const menuItems: MenuItem[] = [
             target="_blank"
             rel="noopener"
           >
-            <tag value="v3.6.0" severity="primary" class="ml-3 text-xs"></tag>
+            <tag value="v3.8.0" severity="primary" class="ml-3 text-xs"></tag>
           </a>
         </div>
       </template>
@@ -111,7 +112,7 @@ const menuItems: MenuItem[] = [
           href="https://opencollective.com/romm"
           target="_blank"
           rel="noopener"
-          class="text-900 hover:text-primary border-l ml-4 pl-6 border-slate-100 dark:border-slate-800"
+          class="hover:text-primary border-l ml-4 pl-6 border-light-toplayer dark:border-dark-toplayer"
           title="support the project"
         >
           <font-awesome-icon :icon="faDonate" class="text-2xl h-4" />
@@ -120,7 +121,7 @@ const menuItems: MenuItem[] = [
           href="https://github.com/rommapp/romm"
           target="_blank"
           rel="noopener"
-          class="text-900 hover:text-primary pl-4"
+          class="hover:text-primary pl-4"
           title="github repository"
         >
           <font-awesome-icon :icon="faGithub" class="text-2xl h-4" />
@@ -198,7 +199,7 @@ const menuItems: MenuItem[] = [
         <div class="mb-4 sm:mb-6 md:mb-12 md:px-6 flex gap-4 md:block">
           <div>
             <span
-              class="mt-1 md:mt-0 p-3 shadow-2 mb-4 inline-block rounded-md bg-slate-100 dark:bg-slate-900"
+              class="mt-1 md:mt-0 p-3 shadow-2 mb-4 inline-block rounded-md bg-light-background dark:bg-dark-background"
             >
               <font-awesome-icon
                 :icon="faWandSparkles"
@@ -235,7 +236,7 @@ const menuItems: MenuItem[] = [
         <div class="mb-4 sm:mb-6 md:mb-12 md:px-6 flex gap-4 md:block">
           <div>
             <span
-              class="mt-1 md:mt-0 p-3 shadow-2 mb-4 inline-block rounded-md bg-slate-100 dark:bg-slate-900"
+              class="mt-1 md:mt-0 p-3 shadow-2 mb-4 inline-block rounded-md bg-light-background dark:bg-dark-background"
             >
               <font-awesome-icon
                 :icon="faListCheck"
@@ -264,7 +265,7 @@ const menuItems: MenuItem[] = [
         <div class="mb-4 sm:mb-6 md:mb-12 md:px-6 flex gap-4 md:block">
           <div>
             <span
-              class="mt-1 md:mt-0 p-3 shadow-2 mb-4 inline-block rounded-md bg-slate-100 dark:bg-slate-900"
+              class="mt-1 md:mt-0 p-3 shadow-2 mb-4 inline-block rounded-md bg-light-background dark:bg-dark-background"
             >
               <font-awesome-icon
                 :icon="faGamepad"
@@ -294,7 +295,7 @@ const menuItems: MenuItem[] = [
         <div class="mb-4 sm:mb-6 md:mb-12 md:px-6 flex gap-4 md:block">
           <div>
             <span
-              class="mt-1 md:mt-0 p-3 shadow-2 mb-4 inline-block rounded-md bg-slate-100 dark:bg-slate-900"
+              class="mt-1 md:mt-0 p-3 shadow-2 mb-4 inline-block rounded-md bg-light-background dark:bg-dark-background"
             >
               <font-awesome-icon
                 :icon="faRotate"
@@ -322,7 +323,7 @@ const menuItems: MenuItem[] = [
         <div class="mb-4 sm:mb-6 md:mb-12 md:px-6 flex gap-4 md:block">
           <div>
             <span
-              class="mt-1 md:mt-0 p-3 shadow-2 mb-4 inline-block rounded-md bg-slate-100 dark:bg-slate-900"
+              class="mt-1 md:mt-0 p-3 shadow-2 mb-4 inline-block rounded-md bg-light-background dark:bg-dark-background"
             >
               <font-awesome-icon
                 :icon="faGithub"
@@ -343,7 +344,7 @@ const menuItems: MenuItem[] = [
         <div class="mb-4 sm:mb-6 md:mb-12 md:px-6 flex gap-4 md:block">
           <div>
             <span
-              class="mt-1 md:mt-0 p-3 shadow-2 mb-4 inline-block rounded-md bg-slate-100 dark:bg-slate-900"
+              class="mt-1 md:mt-0 p-3 shadow-2 mb-4 inline-block rounded-md bg-light-background dark:bg-dark-background"
             >
               <font-awesome-icon
                 :icon="faShieldHeart"
@@ -364,10 +365,7 @@ const menuItems: MenuItem[] = [
       </div>
     </div>
 
-    <div
-      id="discord"
-      class="surface-section px-6 py-8 md:py-12 md:px-6 lg:px-8 rounded-lg"
-    >
+    <div class="surface-section px-6 py-8 md:py-12 md:px-6 lg:px-8 rounded-lg bg-light-surface dark:bg-dark-surface">
       <div class="text-700 md:text-center">
         <div class="text-primary-600 font-bold mb-3">
           <i class="pi pi-discord"></i>&nbsp;POWERED BY FRIENDSHIP
@@ -392,7 +390,7 @@ const menuItems: MenuItem[] = [
     <div
       class="surface-section px-6 py-8 my-6 md:px-4 lg:px-8 flex flex-col md:items-center"
     >
-      <div class="text-4xl text-700 font-bold mb-1">People ❤️ RomM</div>
+      <div class="text-4xl text-700 font-bold mb-1">People <font-awesome-icon :icon="faHeart" class="text-3xl text-primary" /> RomM</div>
 
       <div
         class="surface-section flex flex-col sm:flex-row justify-around mt-4"
@@ -403,7 +401,7 @@ const menuItems: MenuItem[] = [
               :icon="faStar"
               class="text-2xl text-primary"
             />
-            <div class="font-bold ml-3 text-2xl">2,700+</div>
+            <div class="font-bold ml-3 text-2xl">3,000+</div>
           </div>
           <div class="ml-10">Github stars</div>
         </div>
@@ -413,7 +411,7 @@ const menuItems: MenuItem[] = [
               :icon="faUsers"
               class="text-2xl text-primary"
             />
-            <div class="font-bold ml-3 text-2xl">1,500+</div>
+            <div class="font-bold ml-3 text-2xl">2,000+</div>
           </div>
           <div class="ml-10">Discord members</div>
         </div>
@@ -423,7 +421,7 @@ const menuItems: MenuItem[] = [
               :icon="faArrowDown"
               class="text-2xl text-primary"
             />
-            <div class="font-bold ml-3 text-2xl">650,000+</div>
+            <div class="font-bold ml-3 text-2xl">875,000+</div>
           </div>
           <div class="ml-8">Docker pulls</div>
         </div>
@@ -432,7 +430,7 @@ const menuItems: MenuItem[] = [
   </div>
 
   <divider
-    class="before:border-t-slate-100 dark:before:border-t-slate-900 m-auto"
+    class="before:border-t-light-toplayer dark:before:border-t-dark-toplayer m-auto"
   />
 
   <footer
@@ -447,13 +445,10 @@ const menuItems: MenuItem[] = [
       />
       <div class="text-700 text-lg md:text-xl ml-2">
         romm<span class="text-primary">.</span>app
-        <div class="text-700 text-sm text-center sm:hidden">
-          Own your games.
-        </div>
       </div>
     </div>
     <div class="text-700 text-md text-center hidden sm:block">
-      Own your games.
+      Your collection, perfected.
     </div>
     <a
       href="https://github.com/rommapp/marketing-site"
@@ -471,10 +466,10 @@ const menuItems: MenuItem[] = [
 body,
 .p-menubar.p-menubar-mobile,
 .p-menubar.p-menubar-mobile .p-menubar-root-list {
-  background-color: theme("colors.slate.50");
+  background-color: theme("colors.light.background");
 
   @media (prefers-color-scheme: dark) {
-    background-color: theme("colors.slate.950");
+    background-color: theme("colors.dark.background");
   }
 }
 
@@ -520,24 +515,6 @@ body,
 
   @media screen and (max-width: 767px) {
     display: none;
-  }
-}
-
-#discord {
-  background: linear-gradient(
-    128deg,
-    theme("colors.primary.50") 0%,
-    theme("colors.primary.100") 50%,
-    theme("colors.primary.50") 100%
-  );
-
-  @media (prefers-color-scheme: dark) {
-    background: linear-gradient(
-      128deg,
-      theme("colors.slate.950") 0%,
-      #1d0332 50%,
-      theme("colors.slate.950") 100%
-    );
   }
 }
 
