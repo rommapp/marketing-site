@@ -81,7 +81,7 @@ const menuItems: MenuItem[] = [
         <div class="flex items-center">
           <a href="https://romm.app" class="flex items-center">
             <nuxt-img
-              :src="`images/blocks/logos/romm-dark.svg`"
+              :src="`images/blocks/logos/romm.svg`"
               alt="romm logo"
               class="w-8 h-8 rounded-full"
             />
@@ -438,7 +438,7 @@ const menuItems: MenuItem[] = [
   >
     <div class="flex items-center">
       <nuxt-img
-        :src="`images/blocks/logos/romm-mono-dark.svg`"
+        :src="`images/blocks/logos/romm-light.png`"
         alt="romm logo"
         class="w-6 h-6 footer-logo"
         loading="lazy"
