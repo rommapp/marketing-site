@@ -4,21 +4,26 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   modules: ["@nuxtjs/tailwindcss", "nuxt-primevue", "@nuxt/image"],
   plugins: [{ src: "~/plugins/theme.ts", mode: "client" }],
+
   primevue: {
     cssLayerOrder: "tailwind-base, primevue, tailwind-utilities",
     components: {
       include: ["Button", "Tag", "Divider", "Menubar"],
     },
   },
+
   runtimeConfig: {
     theme: "dark",
   },
+
   build: {
     transpile: ["primevue"],
   },
+
   nitro: {
     preset: "github-pages",
   },
+
   image: {
     quality: 80,
     format: ["webp"],
@@ -31,6 +36,7 @@ export default defineNuxtConfig({
       },
     },
   },
+
   app: {
     head: {
       htmlAttrs: {
@@ -86,4 +92,6 @@ export default defineNuxtConfig({
       ],
     },
   },
+
+  compatibilityDate: "2025-01-31",
 });
