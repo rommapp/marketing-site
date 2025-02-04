@@ -438,7 +438,7 @@ const menuItems: MenuItem[] = [
   >
     <div class="flex items-center">
       <nuxt-img
-        :src="`images/blocks/logos/romm-light.png`"
+        :src="`images/blocks/logos/romm-light.svg`"
         alt="romm logo"
         class="w-6 h-6 footer-logo"
         loading="lazy"
