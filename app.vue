@@ -92,7 +92,7 @@ const menuItems: MenuItem[] = [
             target="_blank"
             rel="noopener"
           >
-            <tag value="v3.8.0" severity="primary" class="ml-3 text-xs"></tag>
+            <tag value="v3.7.3" severity="primary" class="ml-3 text-xs"></tag>
           </a>
         </div>
       </template>
