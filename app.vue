@@ -19,22 +19,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faDiscord } from "@fortawesome/free-brands-svg-icons";
 
-function onGetStarted() {
-  window.open(
-    "https://github.com/rommapp/romm?tab=readme-ov-file#installation",
-    "_blank",
-    "noopener"
-  );
-}
-
-function onViewDemo() {
-  window.open("https://demo.romm.app", "_blank");
-}
-
-function onJoinDiscord() {
-  window.open("https://discord.gg/RGPJHNMMwJ", "_blank");
-}
-
 const menuItems: MenuItem[] = [
   {
     label: "Features",
@@ -43,8 +27,8 @@ const menuItems: MenuItem[] = [
     target: "_self",
   },
   {
-    label: "Wiki",
-    url: "https://github.com/rommapp/romm/wiki",
+    label: "Docs",
+    url: "https://docs.romm.app",
     key: "wiki",
     target: "_blank",
     rel: "noopener",
@@ -154,22 +138,21 @@ const menuItems: MenuItem[] = [
             </p>
           </div>
 
-          <p-button
-            raised
-            type="button"
-            class="mr-3 px-6 md:text-lg"
-            v-on:click="onGetStarted"
-            >Install Now
-          </p-button>
-
-          <p-button
-            raised
-            outlined
-            type="button"
-            class="px-6 md:text-lg"
-            v-on:click="onViewDemo"
-            >View Demo
-          </p-button>
+          <a href="https://docs.romm.app" target="_blank" rel="noopener">
+            <p-button raised type="button" class="mr-3 px-6 md:text-lg"
+              >Install Now
+            </p-button>
+          </a>
+          <a href="https://demo.romm.app" target="_blank" rel="noopener">
+            <p-button
+              raised
+              outlined
+              type="button"
+              class="px-6 md:text-lg"
+              v-on:click="onViewDemo"
+              >View Demo
+            </p-button>
+          </a>
         </section>
       </div>
       <div>
@@ -192,8 +175,8 @@ const menuItems: MenuItem[] = [
 
     <div id="features" class="surface-section px-6 py-8 lg:px-8 md:text-center">
       <div class="text-700 mb-10 md:mb-12 text-2xl">
-        The <span class="text-primary">most powerful</span> all-in-one app
-        for managing your game collection.
+        The <span class="text-primary">most powerful</span> all-in-one app for
+        managing your game collection.
       </div>
       <div class="grid grid-rows-6 md:grid-cols-3 md:grid-rows-2">
         <div class="mb-4 sm:mb-6 md:mb-12 md:px-6 flex gap-4 md:block">
@@ -365,7 +348,10 @@ const menuItems: MenuItem[] = [
       </div>
     </div>
 
-    <div id="discord" class="surface-section px-6 py-8 md:py-12 md:px-6 lg:px-8 rounded-lg bg-light-surface dark:bg-dark-surface">
+    <div
+      id="discord"
+      class="surface-section px-6 py-8 md:py-12 md:px-6 lg:px-8 rounded-lg bg-light-surface dark:bg-dark-surface"
+    >
       <div class="text-700 md:text-center">
         <div class="text-primary-600 font-bold mb-3">
           <i class="pi pi-discord"></i>&nbsp;POWERED BY FRIENDSHIP
@@ -375,42 +361,41 @@ const menuItems: MenuItem[] = [
           Get help with your setup, share your ideas, and meet other fans of
           RomM
         </div>
-        <p-button
-          raised
-          rounded
-          class="font-semibold px-5 py-3 white-space-nowrap"
-          v-on:click="onJoinDiscord"
-        >
-          <font-awesome-icon :icon="faDiscord" class="mr-2" />
-          Join us
-        </p-button>
+        <a href="https://discord.gg/RGPJHNMMwJ" target="_blank" rel="noopener">
+          <p-button
+            raised
+            rounded
+            class="font-semibold px-5 py-3 white-space-nowrap"
+            v-on:click="onJoinDiscord"
+          >
+            <font-awesome-icon :icon="faDiscord" class="mr-2" />
+            Join us
+          </p-button>
+        </a>
       </div>
     </div>
 
     <div
       class="surface-section px-6 py-8 my-6 md:px-4 lg:px-8 flex flex-col md:items-center"
     >
-      <div class="text-4xl text-700 font-bold mb-1">People <font-awesome-icon :icon="faHeart" class="text-3xl text-primary" /> RomM</div>
+      <div class="text-4xl text-700 font-bold mb-1">
+        People
+        <font-awesome-icon :icon="faHeart" class="text-3xl text-primary" /> RomM
+      </div>
 
       <div
         class="surface-section flex flex-col sm:flex-row justify-around mt-4"
       >
         <div class="pt-4 md:px-4 xl:px-6">
           <div class="flex items-center">
-            <font-awesome-icon
-              :icon="faStar"
-              class="text-2xl text-primary"
-            />
+            <font-awesome-icon :icon="faStar" class="text-2xl text-primary" />
             <div class="font-bold ml-3 text-2xl">3,000+</div>
           </div>
           <div class="ml-10">Github stars</div>
         </div>
         <div class="pt-4 md:px-4 xl:px-6">
           <div class="flex items-center">
-            <font-awesome-icon
-              :icon="faUsers"
-              class="text-2xl text-primary"
-            />
+            <font-awesome-icon :icon="faUsers" class="text-2xl text-primary" />
             <div class="font-bold ml-3 text-2xl">1,700+</div>
           </div>
           <div class="ml-10">Discord members</div>
