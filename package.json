@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --host --port 3004",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "fetch-stats": "node scripts/fetch-stats.js"
