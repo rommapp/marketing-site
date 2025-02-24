@@ -3,6 +3,7 @@ name: Build and Deploy Website
 on:
   workflow_dispatch:
     inputs:
+      # trunk-ignore(checkov/CKV_GHA_7)
       version:
         description: Version to publish
         required: true
