@@ -76,7 +76,11 @@ const menuItems: MenuItem[] = [
             target="_blank"
             rel="noopener"
           >
-            <tag value="v3.7.3" severity="primary" class="ml-3 text-xs"></tag>
+            <tag
+              value="v<romm_version>"
+              severity="primary"
+              class="ml-3 text-xs"
+            ></tag>
           </a>
         </div>
       </template>
@@ -144,12 +148,7 @@ const menuItems: MenuItem[] = [
             </p-button>
           </a>
           <a href="https://demo.romm.app" target="_blank" rel="noopener">
-            <p-button
-              raised
-              outlined
-              type="button"
-              class="px-6 md:text-lg"
-              v-on:click="onViewDemo"
+            <p-button raised outlined type="button" class="px-6 md:text-lg"
               >View Demo
             </p-button>
           </a>
@@ -366,7 +365,6 @@ const menuItems: MenuItem[] = [
             raised
             rounded
             class="font-semibold px-5 py-3 white-space-nowrap"
-            v-on:click="onJoinDiscord"
           >
             <font-awesome-icon :icon="faDiscord" class="mr-2" />
             Join us
