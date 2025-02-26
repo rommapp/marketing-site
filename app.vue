@@ -387,7 +387,7 @@ const menuItems: MenuItem[] = [
         <div class="pt-4 md:px-4 xl:px-6">
           <div class="flex items-center">
             <font-awesome-icon :icon="faStar" class="text-2xl text-primary" />
-            <div class="font-bold ml-3 text-2xl">3,000+</div>
+            <div class="font-bold ml-3 text-2xl">3,100+</div>
           </div>
           <div class="ml-10">Github stars</div>
         </div>
@@ -404,7 +404,7 @@ const menuItems: MenuItem[] = [
               :icon="faArrowDown"
               class="text-2xl text-primary"
             />
-            <div class="font-bold ml-3 text-2xl">875,000+</div>
+            <div class="font-bold ml-3 text-2xl">975,000+</div>
           </div>
           <div class="ml-8">Docker pulls</div>
         </div>
