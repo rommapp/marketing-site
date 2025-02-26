@@ -28,6 +28,31 @@ lint:
     - trivy@0.59.1
     - trufflehog@3.88.12
     - yamllint@1.35.1
+  files:
+    - name: vue
+      extensions: [vue]
+  definitions:
+    - name: eslint
+      files:
+        - javascript
+        - typescript
+      commands:
+        - name: lint
+          run_from: ${root_or_parent_with_any_config}
+    - name: prettier
+      files:
+        - typescript
+        - yaml
+        - css
+        - postcss
+        - html
+        - markdown
+        - json
+        - javascript
+        - graphql
+        - vue
+        - prettier_supported_configs
+
 actions:
   enabled:
     - trunk-announce
