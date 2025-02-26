@@ -568,10 +568,10 @@ body,
 
 @keyframes scroll {
   0% {
-    transform: translateX(0);
+    transform: translate(0);
   }
-  100% {
-    transform: translateX(-100%);
+  to {
+    transform: translate(calc(-100% - 6rem));
   }
 }
 
