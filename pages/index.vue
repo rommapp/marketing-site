@@ -267,7 +267,7 @@ import unraid from "~/assets/images/logos/unraid-wordmark.svg";
         operating system
       </div>
 
-      <div class="relative w-full m-auto md:w-8/12">
+      <div class="relative w-full m-auto md:w-11/12">
         <div
           class="fade-left h-[12rem] w-[12rem] block absolute top-0 left-0 z-20"
         />
@@ -343,7 +343,7 @@ import unraid from "~/assets/images/logos/unraid-wordmark.svg";
                 <img class="w-[100%]" :src="umbrel" alt="Umbrel" />
               </a>
               <a
-                href="https://unraid.net/"
+                href="https://unraid.net/community/apps?q=romm#r"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="w-full flex items-center justify-center aspect-square h-[12rem]"
