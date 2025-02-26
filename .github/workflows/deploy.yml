@@ -26,7 +26,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Replace version in Nuxt config
-        run: sed -i "s/<romm_version>/${{ github.event.inputs.version }}/g" app.vue
+        run: sed -i "s/<romm_version>/${{ github.event.inputs.version }}/g" AppHeader.vue
 
       - name: Setup Node
         uses: actions/setup-node@v4
