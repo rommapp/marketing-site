@@ -406,7 +406,7 @@ import unraid from "~/assets/images/logos/unraid-wordmark.svg";
         <div class="pt-4 md:px-4 xl:px-6">
           <div class="flex items-center">
             <FontAwesomeIcon :icon="faUsers" class="text-2xl text-primary" />
-            <div class="font-bold ml-3 text-2xl">1,700+</div>
+            <div class="font-bold ml-3 text-2xl">2,300+</div>
           </div>
           <div class="ml-10">Discord members</div>
         </div>
