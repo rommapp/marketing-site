@@ -272,9 +272,9 @@ import unraid from "~/assets/images/logos/unraid-wordmark.svg";
           class="fade-left h-[12rem] w-[12rem] block absolute top-0 left-0 z-20"
         />
         <div
-          class="overflow-hidden flex items-center justify-center flex-shrink-0 gap-20"
+          class="marquee-wrapper overflow-hidden flex items-center justify-center flex-shrink-0 gap-20"
         >
-          <div v-for="(_, i) in Array.from({ length: 3 })" :key="i">
+          <template v-for="(_, i) in Array.from({ length: 3 })" :key="i">
             <div
               class="marquee flex items-center flex-shrink-0 gap-20 justify-around min-w-[100%]"
             >
@@ -351,7 +351,7 @@ import unraid from "~/assets/images/logos/unraid-wordmark.svg";
                 <img class="w-[100%]" :src="unraid" alt="Unraid" />
               </a>
             </div>
-          </div>
+          </template>
         </div>
         <div
           class="fade-right h-[12rem] w-[12rem] block absolute top-0 right-0 z-20"
@@ -560,6 +560,10 @@ body,
       transparent
     );
   }
+}
+
+.marquee-wrapper:hover .marquee {
+  animation-play-state: paused;
 }
 
 .marquee {
