@@ -26,7 +26,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1
 
       - name: Replace version in Nuxt config
         run: sed -i "s/<romm_version>/${{ github.event.inputs.version }}/g" components/AppHeader.vue
