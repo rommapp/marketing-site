@@ -2,6 +2,8 @@
 import { default as PButton } from "primevue/button";
 import Tag from "primevue/tag";
 import Divider from "primevue/divider";
+import Galleria from "primevue/galleria";
+import Image from "primevue/image";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
   faListCheck,
@@ -25,6 +27,17 @@ import synology from "~/assets/images/logos/synology-wordmark.svg";
 import truenas from "~/assets/images/logos/truenas-wordmark.png";
 import umbrel from "~/assets/images/logos/umbrel-wordmark.png";
 import unraid from "~/assets/images/logos/unraid-wordmark.svg";
+import muos from "~/assets/images/logos/muos-logo.svg";
+import playnite from "~/assets/images/logos/playnite-logo.svg";
+import muosGamelist from "~/assets/images/screenshots/muos/gamelist.png";
+import muosCollection from "~/assets/images/screenshots/muos/collection.png";
+import muosPlatforms from "~/assets/images/screenshots/muos/platforms.png";
+
+const MUOS_IMAGES = [
+  { src: muosPlatforms, alt: "muOS Platforms" },
+  { src: muosGamelist, alt: "muOS Game List" },
+  { src: muosCollection, alt: "muOS Collection" },
+];
 </script>
 
 <template>
@@ -69,14 +82,14 @@ import unraid from "~/assets/images/logos/unraid-wordmark.svg";
         </section>
       </div>
       <div>
-        <NuxtImg
+        <Image
           :src="`images/blocks/hero/hero-dark.png`"
           preset="responsive"
           alt="list of games in library"
           class="hero md:ml-auto md:h-full object-cover w-full md:w-auto hidden dark:block"
           :placeholder="[2190, 1550, 40, 20]"
         />
-        <NuxtImg
+        <Image
           :src="`images/blocks/hero/hero-light.png`"
           preset="responsive"
           alt="list of games in library"
@@ -261,7 +274,7 @@ import unraid from "~/assets/images/logos/unraid-wordmark.svg";
       </div>
     </div>
 
-    <section id="platforms-section" class="mt-8">
+    <section id="platforms-section" class="mt-8 mb-12">
       <div class="text-700 text-2xl text-center">
         Available on <span class="text-primary">every major platform</span> and
         operating system
@@ -284,7 +297,7 @@ import unraid from "~/assets/images/logos/unraid-wordmark.svg";
                 rel="noopener noreferrer"
                 class="w-full flex items-center justify-center aspect-square h-[12rem]"
               >
-                <img class="w-[100%]" :src="casaos" alt="CasaOS" />
+                <Image class="w-[100%]" :src="casaos" alt="CasaOS" />
               </a>
               <a
                 href="https://www.cloudron.io/store/app.romm.cloudronapp.html"
@@ -292,7 +305,7 @@ import unraid from "~/assets/images/logos/unraid-wordmark.svg";
                 rel="noopener noreferrer"
                 class="w-full flex items-center justify-center aspect-square h-[12rem]"
               >
-                <img class="w-[100%]" :src="cloudron" alt="Cloudron" />
+                <Image class="w-[100%]" :src="cloudron" alt="Cloudron" />
               </a>
               <a
                 href="https://hub.docker.com/r/rommapp/romm"
@@ -300,7 +313,7 @@ import unraid from "~/assets/images/logos/unraid-wordmark.svg";
                 rel="noopener noreferrer"
                 class="w-full flex items-center justify-center aspect-square h-[12rem]"
               >
-                <img class="w-[100%]" :src="docker" alt="Docker" />
+                <Image class="w-[100%]" :src="docker" alt="Docker" />
               </a>
               <a
                 href="https://hexos.com/"
@@ -308,7 +321,7 @@ import unraid from "~/assets/images/logos/unraid-wordmark.svg";
                 rel="noopener noreferrer"
                 class="w-full flex items-center justify-center aspect-square h-[12rem]"
               >
-                <img class="w-[100%]" :src="hexos" alt="HexOS" />
+                <Image class="w-[100%]" :src="hexos" alt="HexOS" />
               </a>
               <a
                 href="https://www.portainer.io/"
@@ -316,7 +329,7 @@ import unraid from "~/assets/images/logos/unraid-wordmark.svg";
                 rel="noopener noreferrer"
                 class="w-full flex items-center justify-center aspect-square h-[12rem]"
               >
-                <img class="w-[100%]" :src="portainer" alt="Portainer" />
+                <Image class="w-[100%]" :src="portainer" alt="Portainer" />
               </a>
               <a
                 href="https://www.synology.com/"
@@ -324,7 +337,7 @@ import unraid from "~/assets/images/logos/unraid-wordmark.svg";
                 rel="noopener noreferrer"
                 class="w-full flex items-center justify-center aspect-square h-[12rem]"
               >
-                <img class="w-[100%]" :src="synology" alt="Synology" />
+                <Image class="w-[100%]" :src="synology" alt="Synology" />
               </a>
               <a
                 href="https://www.truenas.com/apps/#:~:text=romm"
@@ -332,7 +345,7 @@ import unraid from "~/assets/images/logos/unraid-wordmark.svg";
                 rel="noopener noreferrer"
                 class="w-full flex items-center justify-center aspect-square h-[12rem]"
               >
-                <img class="w-[100%]" :src="truenas" alt="TrueNAS" />
+                <Image class="w-[100%]" :src="truenas" alt="TrueNAS" />
               </a>
               <a
                 href="https://apps.umbrel.com/app/romm"
@@ -340,7 +353,7 @@ import unraid from "~/assets/images/logos/unraid-wordmark.svg";
                 rel="noopener noreferrer"
                 class="w-full flex items-center justify-center aspect-square h-[12rem]"
               >
-                <img class="w-[100%]" :src="umbrel" alt="Umbrel" />
+                <Image class="w-[100%]" :src="umbrel" alt="Umbrel" />
               </a>
               <a
                 href="https://unraid.net/community/apps?q=romm#r"
@@ -348,7 +361,7 @@ import unraid from "~/assets/images/logos/unraid-wordmark.svg";
                 rel="noopener noreferrer"
                 class="w-full flex items-center justify-center aspect-square h-[12rem]"
               >
-                <img class="w-[100%]" :src="unraid" alt="Unraid" />
+                <Image class="w-[100%]" :src="unraid" alt="Unraid" />
               </a>
             </div>
           </template>
@@ -356,6 +369,160 @@ import unraid from "~/assets/images/logos/unraid-wordmark.svg";
         <div
           class="fade-right h-[12rem] w-[12rem] block absolute top-0 right-0 z-20"
         />
+      </div>
+    </section>
+
+    <section id="apps-section" class="mb-12">
+      <div class="text-700 text-2xl text-center mb-16">
+        Native apps and integrations to
+        <span class="text-primary">play your games anywhere</span>
+      </div>
+
+      <div class="flex flex-col gap-24">
+        <div class="flex flex-row gap-16 md:gap-24 m-auto md:w-10/12">
+          <div
+            class="py-8 pr-12 shadow-2 rounded-lg bg-light-surface dark:bg-dark-surface"
+          >
+            <Galleria
+              :value="MUOS_IMAGES"
+              :numVisible="5"
+              circular
+              autoPlay
+              class="max-w-2xl mx-auto"
+              :showThumbnails="false"
+              showIndicators
+              changeItemOnIndicatorHover
+              indicatorsPosition="left"
+            >
+              <template #item="slotProps">
+                <Image
+                  :src="slotProps.item.src"
+                  :alt="slotProps.item.alt"
+                  class="w-full block shadow-lg"
+                  image-class="rounded-lg"
+                />
+              </template>
+            </Galleria>
+          </div>
+
+          <div class="flex flex-col md:flex-row items-start gap-6">
+            <div class="flex flex-col justify-between h-max pt-4 pb-8">
+              <div>
+                <div class="text-4xl font-bold mb-4">muOS App</div>
+                <div
+                  class="text-lg leading-relaxed md:max-w-screen-md lg:max-w-screen-lg"
+                >
+                  Browse and download games directly to your Anbernic device
+                  running muOS over Wi-Fi.
+                  <a
+                    href="https://muos.dev"
+                    target="_blank"
+                    rel="noopener"
+                    class="underline text-primary-600 hover:text-primary-700 active:text-primary-800 visited:text-primary-700"
+                    >muOS</a
+                  >
+                  is highly customizable alternative firmware for the
+                  <a
+                    href="https://muos.dev/devices/anbernic"
+                    target="_blank"
+                    rel="noopener"
+                    class="underline text-primary-600 hover:text-primary-700 active:text-primary-800 visited:text-primary-700"
+                  >
+                    Anbernic family
+                  </a>
+                  of retro handhelds.
+                </div>
+              </div>
+              <div class="flex flex-row items-end justify-between">
+                <PButton
+                  raised
+                  outlined
+                  size="large"
+                  as="a"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition duration-200 flex items-center gap-2"
+                  href="https://github.com/rommapp/muos-app?tab=readme-ov-file#installation"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Download
+                </PButton>
+                <Image :src="muos" alt="muOS" image-class="w-24 h-24" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-row-reverse gap-16 md:gap-24 m-auto md:w-10/12">
+          <div
+            class="py-8 pr-12 shadow-2 rounded-lg bg-light-surface dark:bg-dark-surface"
+          >
+            <Galleria
+              :value="MUOS_IMAGES"
+              :numVisible="5"
+              circular
+              autoPlay
+              class="max-w-2xl mx-auto"
+              :showThumbnails="false"
+              showIndicators
+              changeItemOnIndicatorHover
+              indicatorsPosition="left"
+            >
+              <template #item="slotProps">
+                <Image
+                  :src="slotProps.item.src"
+                  :alt="slotProps.item.alt"
+                  class="w-full block shadow-lg"
+                  image-class="rounded-lg"
+                />
+              </template>
+            </Galleria>
+          </div>
+
+          <div class="flex flex-col md:flex-row items-start gap-6">
+            <div class="flex flex-col justify-between h-max pt-4 pb-8">
+              <div>
+                <div class="text-4xl font-bold mb-4">Playnite Plugin</div>
+                <div
+                  class="text-lg leading-relaxed md:max-w-screen-md lg:max-w-screen-lg"
+                >
+                  Browse and download games directly to your Anbernic device
+                  running muOS over Wi-Fi.
+                  <a
+                    href="https://muos.dev"
+                    target="_blank"
+                    rel="noopener"
+                    class="underline text-primary-600 hover:text-primary-700 active:text-primary-800 visited:text-primary-700"
+                    >muOS</a
+                  >
+                  is highly customizable alternative firmware for the
+                  <a
+                    href="https://muos.dev/devices/anbernic"
+                    target="_blank"
+                    rel="noopener"
+                    class="underline text-primary-600 hover:text-primary-700 active:text-primary-800 visited:text-primary-700"
+                  >
+                    Anbernic family
+                  </a>
+                  of retro handhelds.
+                </div>
+              </div>
+              <div class="flex flex-row items-end justify-between">
+                <PButton
+                  raised
+                  outlined
+                  size="large"
+                  as="a"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition duration-200 flex items-center gap-2"
+                  href="https://github.com/rommapp/muos-app?tab=readme-ov-file#installation"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Download
+                </PButton>
+                <Image :src="playnite" alt="muOS" image-class="w-24 h-24" />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -432,7 +599,7 @@ import unraid from "~/assets/images/logos/unraid-wordmark.svg";
     class="surface-section py-4 px-4 md:px-8 flex items-center justify-between sm:grid grid-cols-3 m-auto"
   >
     <div class="flex items-center">
-      <NuxtImg
+      <Image
         :src="`images/blocks/logos/romm-light.svg`"
         alt="romm logo"
         class="w-6 h-6 footer-logo"
