@@ -410,13 +410,18 @@ const MUOS_IMAGES = [
           </div>
 
           <div class="flex flex-col md:flex-row items-start gap-6">
-            <div class="flex flex-col justify-between h-[100%] pt-4 pb-8">
+            <div class="flex flex-col justify-between h-[100%] py-6">
               <div>
-                <div class="flex items-center text-primary mb-6">
-                  <FontAwesomeIcon :icon="faGamepad" />
-                  <span class="uppercase ml-2">handheld</span>
+                <div class="flex flex-row justify-between pr-4 pb-3">
+                  <div>
+                    <div class="flex items-center text-primary mb-6">
+                      <FontAwesomeIcon :icon="faGamepad" />
+                      <span class="uppercase ml-2">handhelds</span>
+                    </div>
+                    <div class="text-2xl font-bold">muOS App</div>
+                  </div>
+                  <Image :src="muos" alt="muOS" image-class="w-24 h-24" />
                 </div>
-                <div class="text-2xl font-bold mb-4">muOS App</div>
                 <div
                   class="text-lg leading-relaxed md:max-w-screen-md lg:max-w-screen-lg"
                 >
@@ -448,11 +453,11 @@ const MUOS_IMAGES = [
                 class="flex flex-row items-end justify-between"
               >
                 <PButton raised outlined size="large"> Download </PButton>
-                <Image :src="muos" alt="muOS" image-class="w-24 h-24" />
               </a>
             </div>
           </div>
         </div>
+
         <div class="flex flex-row-reverse gap-16 md:gap-24 m-auto md:w-10/12">
           <div
             class="py-8 pr-12 shadow-2 rounded-lg bg-light-surface dark:bg-dark-surface"
@@ -480,13 +485,22 @@ const MUOS_IMAGES = [
           </div>
 
           <div class="flex flex-col md:flex-row items-start gap-6">
-            <div class="flex flex-col justify-between h-[100%] pt-4 pb-8">
+            <div class="flex flex-col justify-between h-[100%] py-6">
               <div>
-                <div class="flex items-center text-primary mb-6">
-                  <FontAwesomeIcon :icon="faWindows" />
-                  <span class="uppercase ml-2">windows</span>
+                <div class="flex flex-row justify-between pr-4 pb-3">
+                  <div>
+                    <div class="flex items-center text-primary mb-6">
+                      <FontAwesomeIcon :icon="faWindows" />
+                      <span class="uppercase ml-2">windows</span>
+                    </div>
+                    <div class="text-2xl font-bold">Playnite Plugin</div>
+                  </div>
+                  <Image
+                    :src="playnite"
+                    alt="Playnite"
+                    image-class="w-24 h-24"
+                  />
                 </div>
-                <div class="text-2xl font-bold mb-4">Playnite Plugin</div>
                 <div
                   class="text-lg leading-relaxed md:max-w-screen-md lg:max-w-screen-lg"
                 >
@@ -498,8 +512,8 @@ const MUOS_IMAGES = [
                     rel="noopener"
                     class="underline text-primary-600 hover:text-primary-700 active:text-primary-800 visited:text-primary-700"
                   >
-                    Playnite
-                  </a>
+                    Playnite</a
+                  >
                   is an open-source game library manager that provide a unified
                   interface for all of your games on PC. Now you can easily
                   organize and access your retro game collection alongside the
@@ -513,7 +527,6 @@ const MUOS_IMAGES = [
                 class="flex flex-row items-end justify-between"
               >
                 <PButton raised outlined size="large"> Install </PButton>
-                <Image :src="playnite" alt="muOS" image-class="w-24 h-24" />
               </a>
             </div>
           </div>
