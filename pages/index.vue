@@ -4,6 +4,7 @@ import Tag from "primevue/tag";
 import Divider from "primevue/divider";
 import Galleria from "primevue/galleria";
 import Image from "primevue/image";
+import Dialog from "primevue/dialog";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
   faListCheck,
@@ -41,6 +42,11 @@ import playniteDetails from "~/assets/images/screenshots/playnite/details.png";
 import playniteLibrary from "~/assets/images/screenshots/playnite/library.png";
 import playniteSettings from "~/assets/images/screenshots/playnite/settings.png";
 
+interface AppImage {
+  src: string;
+  alt: string;
+}
+
 const MUOS_IMAGES = [
   { src: muosPlatforms, alt: "muOS Platforms" },
   { src: muosGamelist, alt: "muOS Game List" },
@@ -52,6 +58,14 @@ const PLAYNITE_IMAGES = [
   { src: playniteDetails, alt: "Playnite Details" },
   { src: playniteSettings, alt: "Playnite Settings" },
 ];
+
+const selectedImage = ref<AppImage | undefined>(undefined);
+const dialogVisible = ref(false);
+
+const openDialog = (image: AppImage) => {
+  selectedImage.value = image;
+  dialogVisible.value = true;
+};
 </script>
 
 <template>
@@ -394,10 +408,10 @@ const PLAYNITE_IMAGES = [
 
       <div class="flex flex-col gap-12 lg:gap-24">
         <div
-          class="flex flex-col lg:flex-row gap-8 lg:gap-16 xl:gap-24 m-auto w-10/12"
+          class="flex flex-col lg:flex-row gap-8 lg:gap-16 xl:gap-20 m-auto w-10/12"
         >
           <div
-            class="mx-auto lg:w-[100vw] xl:w-[50vw] py-8 pr-12 shadow-2 rounded-lg bg-light-surface dark:bg-dark-surface"
+            class="mx-auto w-[42rem] py-8 pr-12 shadow-2 rounded-lg bg-light-surface dark:bg-dark-surface"
           >
             <Galleria
               :value="MUOS_IMAGES"
@@ -414,8 +428,9 @@ const PLAYNITE_IMAGES = [
                 <Image
                   :src="slotProps.item.src"
                   :alt="slotProps.item.alt"
-                  class="w-full block shadow-lg"
+                  class="w-full block shadow-lg cursor-pointer"
                   image-class="rounded-lg h-[300px]"
+                  @click="openDialog(slotProps.item)"
                 />
               </template>
             </Galleria>
@@ -471,10 +486,10 @@ const PLAYNITE_IMAGES = [
         </div>
 
         <div
-          class="flex flex-col lg:flex-row-reverse gap-8 lg:gap-16 xl:gap-24 m-auto w-10/12"
+          class="flex flex-col lg:flex-row gap-8 lg:gap-16 xl:gap-20 m-auto w-10/12"
         >
           <div
-            class="mx-auto lg:w-[100vw] xl:w-[50vw] py-8 pr-12 shadow-2 rounded-lg bg-light-surface dark:bg-dark-surface"
+            class="mx-auto w-[42rem] py-8 pr-12 shadow-2 rounded-lg bg-light-surface dark:bg-dark-surface"
           >
             <Galleria
               :value="PLAYNITE_IMAGES"
@@ -491,8 +506,9 @@ const PLAYNITE_IMAGES = [
                 <Image
                   :src="slotProps.item.src"
                   :alt="slotProps.item.alt"
-                  class="w-full block shadow-lg"
+                  class="w-full block shadow-lg cursor-pointer"
                   image-class="rounded-lg h-[250px]"
+                  @click="openDialog(slotProps.item)"
                 />
               </template>
             </Galleria>
@@ -544,6 +560,15 @@ const PLAYNITE_IMAGES = [
           </div>
         </div>
       </div>
+
+      <Dialog
+        v-model:visible="dialogVisible"
+        modal
+        :header="selectedImage?.alt"
+        class="max-w-4xl"
+      >
+        <img :src="selectedImage?.src" class="w-full rounded-lg" />
+      </Dialog>
     </section>
 
     <section
