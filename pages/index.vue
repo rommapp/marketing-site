@@ -16,7 +16,11 @@ import {
   faArrowDown,
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
-import { faGithub, faDiscord } from "@fortawesome/free-brands-svg-icons";
+import {
+  faGithub,
+  faDiscord,
+  faWindows,
+} from "@fortawesome/free-brands-svg-icons";
 
 import casaos from "~/assets/images/logos/casaos-wordmark.png";
 import cloudron from "~/assets/images/logos/cloudron-wordmark.svg";
@@ -372,7 +376,7 @@ const MUOS_IMAGES = [
       </div>
     </section>
 
-    <section id="apps-section" class="mb-12">
+    <section id="apps-section" class="mb-20">
       <div class="text-700 text-2xl text-center mb-16">
         Native apps and integrations to
         <span class="text-primary">play your games anywhere</span>
@@ -406,9 +410,13 @@ const MUOS_IMAGES = [
           </div>
 
           <div class="flex flex-col md:flex-row items-start gap-6">
-            <div class="flex flex-col justify-between h-max pt-4 pb-8">
+            <div class="flex flex-col justify-between h-[100%] pt-4 pb-8">
               <div>
-                <div class="text-4xl font-bold mb-4">muOS App</div>
+                <div class="flex items-center text-primary mb-6">
+                  <FontAwesomeIcon :icon="faGamepad" />
+                  <span class="uppercase ml-2">handheld</span>
+                </div>
+                <div class="text-2xl font-bold mb-4">muOS App</div>
                 <div
                   class="text-lg leading-relaxed md:max-w-screen-md lg:max-w-screen-lg"
                 >
@@ -433,21 +441,15 @@ const MUOS_IMAGES = [
                   of retro handhelds.
                 </div>
               </div>
-              <div class="flex flex-row items-end justify-between">
-                <PButton
-                  raised
-                  outlined
-                  size="large"
-                  as="a"
-                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition duration-200 flex items-center gap-2"
-                  href="https://github.com/rommapp/muos-app?tab=readme-ov-file#installation"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  Download
-                </PButton>
+              <a
+                href="https://github.com/rommapp/muos-app?tab=readme-ov-file#installation"
+                target="_blank"
+                rel="noopener"
+                class="flex flex-row items-end justify-between"
+              >
+                <PButton raised outlined size="large"> Download </PButton>
                 <Image :src="muos" alt="muOS" image-class="w-24 h-24" />
-              </div>
+              </a>
             </div>
           </div>
         </div>
@@ -478,48 +480,41 @@ const MUOS_IMAGES = [
           </div>
 
           <div class="flex flex-col md:flex-row items-start gap-6">
-            <div class="flex flex-col justify-between h-max pt-4 pb-8">
+            <div class="flex flex-col justify-between h-[100%] pt-4 pb-8">
               <div>
-                <div class="text-4xl font-bold mb-4">Playnite Plugin</div>
+                <div class="flex items-center text-primary mb-6">
+                  <FontAwesomeIcon :icon="faWindows" />
+                  <span class="uppercase ml-2">windows</span>
+                </div>
+                <div class="text-2xl font-bold mb-4">Playnite Plugin</div>
                 <div
                   class="text-lg leading-relaxed md:max-w-screen-md lg:max-w-screen-lg"
                 >
-                  Browse and download games directly to your Anbernic device
-                  running muOS over Wi-Fi.
+                  Effortlessly integrate your retro game collection into
+                  Playnite with our plugin.
                   <a
-                    href="https://muos.dev"
-                    target="_blank"
-                    rel="noopener"
-                    class="underline text-primary-600 hover:text-primary-700 active:text-primary-800 visited:text-primary-700"
-                    >muOS</a
-                  >
-                  is highly customizable alternative firmware for the
-                  <a
-                    href="https://muos.dev/devices/anbernic"
+                    href="https://playnite.link/ "
                     target="_blank"
                     rel="noopener"
                     class="underline text-primary-600 hover:text-primary-700 active:text-primary-800 visited:text-primary-700"
                   >
-                    Anbernic family
+                    Playnite
                   </a>
-                  of retro handhelds.
+                  is an open-source game library manager that provide a unified
+                  interface for all of your games on PC. Now you can easily
+                  organize and access your retro game collection alongside the
+                  rest of your library.
                 </div>
               </div>
-              <div class="flex flex-row items-end justify-between">
-                <PButton
-                  raised
-                  outlined
-                  size="large"
-                  as="a"
-                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition duration-200 flex items-center gap-2"
-                  href="https://github.com/rommapp/muos-app?tab=readme-ov-file#installation"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  Download
-                </PButton>
+              <a
+                href="https://github.com/rommapp/playnite-plugin?tab=readme-ov-file#installation"
+                target="_blank"
+                rel="noopener"
+                class="flex flex-row items-end justify-between"
+              >
+                <PButton raised outlined size="large"> Install </PButton>
                 <Image :src="playnite" alt="muOS" image-class="w-24 h-24" />
-              </div>
+              </a>
             </div>
           </div>
         </div>
