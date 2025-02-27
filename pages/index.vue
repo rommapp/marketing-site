@@ -33,14 +33,24 @@ import umbrel from "~/assets/images/logos/umbrel-wordmark.png";
 import unraid from "~/assets/images/logos/unraid-wordmark.svg";
 import muos from "~/assets/images/logos/muos-logo.svg";
 import playnite from "~/assets/images/logos/playnite-logo.svg";
+
 import muosGamelist from "~/assets/images/screenshots/muos/gamelist.png";
 import muosCollection from "~/assets/images/screenshots/muos/collection.png";
 import muosPlatforms from "~/assets/images/screenshots/muos/platforms.png";
+import playniteDetails from "~/assets/images/screenshots/playnite/details.png";
+import playniteLibrary from "~/assets/images/screenshots/playnite/library.png";
+import playniteSettings from "~/assets/images/screenshots/playnite/settings.png";
 
 const MUOS_IMAGES = [
   { src: muosPlatforms, alt: "muOS Platforms" },
   { src: muosGamelist, alt: "muOS Game List" },
   { src: muosCollection, alt: "muOS Collection" },
+];
+
+const PLAYNITE_IMAGES = [
+  { src: playniteLibrary, alt: "Playnite Library" },
+  { src: playniteDetails, alt: "Playnite Details" },
+  { src: playniteSettings, alt: "Playnite Settings" },
 ];
 </script>
 
@@ -382,10 +392,12 @@ const MUOS_IMAGES = [
         <span class="text-primary">play your games anywhere</span>
       </div>
 
-      <div class="flex flex-col gap-24">
-        <div class="flex flex-row gap-16 md:gap-24 m-auto md:w-10/12">
+      <div class="flex flex-col gap-12 lg:gap-24">
+        <div
+          class="flex flex-col lg:flex-row gap-8 lg:gap-16 xl:gap-24 m-auto w-10/12"
+        >
           <div
-            class="py-8 pr-12 shadow-2 rounded-lg bg-light-surface dark:bg-dark-surface"
+            class="mx-auto lg:w-[100vw] xl:w-[50vw] py-8 pr-12 shadow-2 rounded-lg bg-light-surface dark:bg-dark-surface"
           >
             <Galleria
               :value="MUOS_IMAGES"
@@ -403,7 +415,7 @@ const MUOS_IMAGES = [
                   :src="slotProps.item.src"
                   :alt="slotProps.item.alt"
                   class="w-full block shadow-lg"
-                  image-class="rounded-lg"
+                  image-class="rounded-lg h-[300px]"
                 />
               </template>
             </Galleria>
@@ -420,10 +432,10 @@ const MUOS_IMAGES = [
                     </div>
                     <div class="text-2xl font-bold">muOS App</div>
                   </div>
-                  <Image :src="muos" alt="muOS" image-class="w-24 h-24" />
+                  <Image :src="muos" alt="muOS" image-class="w-20 h-20" />
                 </div>
                 <div
-                  class="text-lg leading-relaxed md:max-w-screen-md lg:max-w-screen-lg"
+                  class="leading-relaxed md:max-w-screen-md lg:max-w-screen-lg"
                 >
                   Browse and download games directly to your Anbernic device
                   running muOS over Wi-Fi.
@@ -450,7 +462,7 @@ const MUOS_IMAGES = [
                 href="https://github.com/rommapp/muos-app?tab=readme-ov-file#installation"
                 target="_blank"
                 rel="noopener"
-                class="flex flex-row items-end justify-between"
+                class="flex flex-row items-end justify-between mt-4"
               >
                 <PButton raised outlined size="large"> Download </PButton>
               </a>
@@ -458,12 +470,14 @@ const MUOS_IMAGES = [
           </div>
         </div>
 
-        <div class="flex flex-row-reverse gap-16 md:gap-24 m-auto md:w-10/12">
+        <div
+          class="flex flex-col lg:flex-row-reverse gap-8 lg:gap-16 xl:gap-24 m-auto w-10/12"
+        >
           <div
-            class="py-8 pr-12 shadow-2 rounded-lg bg-light-surface dark:bg-dark-surface"
+            class="mx-auto lg:w-[100vw] xl:w-[50vw] py-8 pr-12 shadow-2 rounded-lg bg-light-surface dark:bg-dark-surface"
           >
             <Galleria
-              :value="MUOS_IMAGES"
+              :value="PLAYNITE_IMAGES"
               :numVisible="5"
               circular
               autoPlay
@@ -478,7 +492,7 @@ const MUOS_IMAGES = [
                   :src="slotProps.item.src"
                   :alt="slotProps.item.alt"
                   class="w-full block shadow-lg"
-                  image-class="rounded-lg"
+                  image-class="rounded-lg h-[250px]"
                 />
               </template>
             </Galleria>
@@ -498,11 +512,11 @@ const MUOS_IMAGES = [
                   <Image
                     :src="playnite"
                     alt="Playnite"
-                    image-class="w-24 h-24"
+                    image-class="w-20 h-20"
                   />
                 </div>
                 <div
-                  class="text-lg leading-relaxed md:max-w-screen-md lg:max-w-screen-lg"
+                  class="leading-relaxed md:max-w-screen-md lg:max-w-screen-lg"
                 >
                   Effortlessly integrate your retro game collection into
                   Playnite with our plugin.
@@ -515,16 +529,14 @@ const MUOS_IMAGES = [
                     Playnite</a
                   >
                   is an open-source game library manager that provide a unified
-                  interface for all of your games on PC. Now you can easily
-                  organize and access your retro game collection alongside the
-                  rest of your library.
+                  interface for all of your games on PC.
                 </div>
               </div>
               <a
                 href="https://github.com/rommapp/playnite-plugin?tab=readme-ov-file#installation"
                 target="_blank"
                 rel="noopener"
-                class="flex flex-row items-end justify-between"
+                class="flex flex-row items-end justify-between mt-4"
               >
                 <PButton raised outlined size="large"> Install </PButton>
               </a>
