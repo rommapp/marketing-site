@@ -5,19 +5,6 @@ const owner = "rommapp";
 const repo = "romm";
 const image = "rommapp/romm";
 
-// Fetch the latest release from GitHub
-async function fetchLatestRelease() {
-  try {
-    const response = await axios.get(
-      `https://api.github.com/repos/${owner}/${repo}/releases/latest`,
-    );
-    return response.data.tag_name;
-  } catch (error) {
-    console.error("Error fetching latest release:", error.message);
-    process.exit(1);
-  }
-}
-
 // Fetch the star count from GitHub
 async function fetchGitHubStars() {
   try {
@@ -46,9 +33,6 @@ async function fetchDockerPulls() {
 
 // Main function to run the update
 (async function main() {
-  const latestVersion = await fetchLatestRelease();
-  console.log(`Latest GitHub version: ${latestVersion}`);
-
   const githubStars = await fetchGitHubStars();
   console.log(`GitHub stars: ${githubStars}`);
 
