@@ -468,8 +468,8 @@ const openDialog = (image: AppImage) => {
                     rel="noopener"
                     class="underline text-primary-600 hover:text-primary-700 active:text-primary-800 visited:text-primary-700"
                   >
-                    Anbernic family
-                  </a>
+                    Anbernic family</a
+                  >
                   of retro handhelds.
                 </div>
               </div>
