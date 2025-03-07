@@ -188,7 +188,7 @@ const openDialog = (image: AppImage) => {
             <div class="text-700 line-height-3">
               Retro or modern, RomM has you covered with support for
               <a
-                href="https://github.com/rommapp/romm/wiki/Supported-Platforms"
+                href="https://docs.romm.app/latest/Platforms-and-Players/Supported-Platforms"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="underline hover:text-primary"
