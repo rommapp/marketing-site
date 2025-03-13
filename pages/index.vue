@@ -158,6 +158,15 @@ const openDialog = (image: AppImage) => {
               >
                 IGDB</a
               >
+              ,
+              <a
+                href="https://www.screenscraper.fr"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="underline hover:text-primary"
+              >
+                Screenscraper</a
+              >
               and
               <a
                 href="https://www.mobygames.com/"
