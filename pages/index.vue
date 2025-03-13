@@ -157,8 +157,7 @@ const openDialog = (image: AppImage) => {
                 class="underline hover:text-primary"
               >
                 IGDB</a
-              >
-              ,
+              >,
               <a
                 href="https://www.screenscraper.fr"
                 target="_blank"
