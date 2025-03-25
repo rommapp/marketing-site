@@ -75,24 +75,27 @@ const menuItems: MenuItem[] = [
       </a>
     </template>
     <template #end>
-      <a
-        href="https://opencollective.com/romm"
-        target="_blank"
-        rel="noopener"
-        class="hover:text-primary border-l ml-4 pl-6 border-light-toplayer dark:border-dark-toplayer"
-        title="support the project"
-      >
-        <FontAwesomeIcon :icon="faDonate" class="text-2xl h-4" />
-      </a>
-      <a
-        href="https://github.com/rommapp/romm"
-        target="_blank"
-        rel="noopener"
-        class="hover:text-primary pl-4"
-        title="github repository"
-      >
-        <FontAwesomeIcon :icon="faGithub" class="text-2xl h-4" />
-      </a>
+      <div class="mt-2">
+        <a
+          href="https://opencollective.com/romm"
+          target="_blank"
+          rel="noopener"
+          class="hover:text-primary border-l ml-4 pl-6 inline-flex border-light-toplayer dark:border-dark-toplayer"
+          title="support the project"
+        >
+          <FontAwesomeIcon :icon="faDonate" class="text-2xl h-4" />
+        </a>
+        <a
+          href="https://github.com/rommapp/romm"
+          target="_blank"
+          rel="noopener"
+          class="hover:text-primary ml-4 pr-2 inline-flex items-center h-[24px] rounded-full bg-light-surface dark:bg-dark-surface"
+          title="github repository"
+        >
+          <FontAwesomeIcon :icon="faGithub" class="text-2xl h-4" />
+          <span class="text-xs pl-1">3.4K</span>
+        </a>
+      </div>
     </template>
   </Menubar>
 </template>
