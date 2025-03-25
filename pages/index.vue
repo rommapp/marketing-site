@@ -619,14 +619,14 @@ const openDialog = (image: AppImage) => {
         <div class="pt-4 md:px-4 xl:px-6">
           <div class="flex items-center">
             <FontAwesomeIcon :icon="faStar" class="text-2xl text-primary" />
-            <div class="font-bold ml-3 text-2xl">3,200+</div>
+            <div class="font-bold ml-3 text-2xl">3,400+</div>
           </div>
           <div class="ml-10">Github stars</div>
         </div>
         <div class="pt-4 md:px-4 xl:px-6">
           <div class="flex items-center">
             <FontAwesomeIcon :icon="faUsers" class="text-2xl text-primary" />
-            <div class="font-bold ml-3 text-2xl">2,300+</div>
+            <div class="font-bold ml-3 text-2xl">2,600+</div>
           </div>
           <div class="ml-10">Discord members</div>
         </div>
@@ -636,7 +636,7 @@ const openDialog = (image: AppImage) => {
               :icon="faArrowDown"
               class="text-2xl text-primary"
             />
-            <div class="font-bold ml-3 text-2xl">1M+</div>
+            <div class="font-bold ml-3 text-2xl">1.1M+</div>
           </div>
           <div class="ml-8">Docker pulls</div>
         </div>
