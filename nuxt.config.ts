@@ -49,13 +49,13 @@ export default defineNuxtConfig({
       link: [
         {
           rel: "stylesheet",
-          href: "https://unpkg.com/primevue@3.52.0/resources/themes/aura-light-purple/theme.css",
+          href: "/css/theme-light.css",
           id: "theme-link",
         },
       ],
       script: [
         {
-          children:
+          innerHTML:
             'let m=window.matchMedia("(prefers-color-scheme: dark)");if(m.matches){const e=document.getElementById("theme-link");e.href=e.href.replace("light","dark");document.documentElement.classList.add("dark")}',
         },
       ],
