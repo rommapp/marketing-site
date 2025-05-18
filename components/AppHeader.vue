@@ -9,7 +9,7 @@ const menuItems: MenuItem[] = [
   {
     label: "Docs",
     url: "https://docs.romm.app",
-    key: "wiki",
+    key: "docs",
     target: "_blank",
     rel: "noopener",
   },
@@ -22,7 +22,7 @@ const menuItems: MenuItem[] = [
   },
   {
     label: "Contact",
-    url: "mailto:romm@fastmail.com",
+    url: "mailto:contact@romm.app",
     key: "contact",
     target: "_blank",
     rel: "noopener",

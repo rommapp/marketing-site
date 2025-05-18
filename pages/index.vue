@@ -42,6 +42,8 @@ import playniteDetails from "~/assets/images/screenshots/playnite/details.png";
 import playniteLibrary from "~/assets/images/screenshots/playnite/library.png";
 import playniteSettings from "~/assets/images/screenshots/playnite/settings.png";
 
+import { ref, onMounted } from "vue";
+
 interface AppImage {
   src: string;
   alt: string;
@@ -62,10 +64,42 @@ const PLAYNITE_IMAGES = [
 const selectedImage = ref<AppImage | undefined>(undefined);
 const dialogVisible = ref(false);
 
+const githubStars = ref<number | null>(null);
+const discordMembers = ref<number | null>(null);
+const dockerPulls = ref<number | null>(null);
+
 const openDialog = (image: AppImage) => {
   selectedImage.value = image;
   dialogVisible.value = true;
 };
+
+const fetchGithubStars = async () => {
+  const res = await fetch("https://api.github.com/repos/rommapp/romm");
+  const data = await res.json();
+  return data.stargazers_count;
+};
+
+const fetchDiscordMembers = async () => {
+  const res = await fetch(
+    "https://discord.com/api/guilds/1052780890496163870/widget.json",
+  );
+  const data = await res.json();
+  return data.presence_count; // or data.members.length for total online
+};
+
+const fetchDockerPulls = async () => {
+  const res = await fetch(
+    "https://hub.docker.com/v2/repositories/rommapp/romm/",
+  );
+  const data = await res.json();
+  return data.pull_count;
+};
+
+onMounted(async () => {
+  githubStars.value = await fetchGithubStars();
+  discordMembers.value = await fetchDiscordMembers();
+  dockerPulls.value = await fetchDockerPulls();
+});
 </script>
 
 <template>
@@ -619,14 +653,22 @@ const openDialog = (image: AppImage) => {
         <div class="pt-4 md:px-4 xl:px-6">
           <div class="flex items-center">
             <FontAwesomeIcon :icon="faStar" class="text-2xl text-primary" />
-            <div class="font-bold ml-3 text-2xl">3,400+</div>
+            <div class="font-bold ml-3 text-2xl">
+              {{ githubStars !== null ? githubStars.toLocaleString() : "..." }}
+            </div>
           </div>
           <div class="ml-10">Github stars</div>
         </div>
         <div class="pt-4 md:px-4 xl:px-6">
           <div class="flex items-center">
             <FontAwesomeIcon :icon="faUsers" class="text-2xl text-primary" />
-            <div class="font-bold ml-3 text-2xl">2,600+</div>
+            <div class="font-bold ml-3 text-2xl">
+              {{
+                discordMembers !== null
+                  ? discordMembers.toLocaleString()
+                  : "..."
+              }}
+            </div>
           </div>
           <div class="ml-10">Discord members</div>
         </div>
@@ -636,7 +678,9 @@ const openDialog = (image: AppImage) => {
               :icon="faArrowDown"
               class="text-2xl text-primary"
             />
-            <div class="font-bold ml-3 text-2xl">1.1M+</div>
+            <div class="font-bold ml-3 text-2xl">
+              {{ dockerPulls !== null ? dockerPulls.toLocaleString() : "..." }}
+            </div>
           </div>
           <div class="ml-8">Docker pulls</div>
         </div>
