@@ -81,24 +81,15 @@ const fetchGithubStars = async () => {
 
 const fetchDiscordMembers = async () => {
   const res = await fetch(
-    "https://discord.com/api/guilds/1052780890496163870/widget.json",
+    "https://discord.com/api/v9/invites/RGPJHNMMwJ?with_counts=true",
   );
   const data = await res.json();
-  return data.presence_count; // or data.members.length for total online
-};
-
-const fetchDockerPulls = async () => {
-  const res = await fetch(
-    "https://hub.docker.com/v2/repositories/rommapp/romm/",
-  );
-  const data = await res.json();
-  return data.pull_count;
+  return data.approximate_member_count;
 };
 
 onMounted(async () => {
   githubStars.value = await fetchGithubStars();
   discordMembers.value = await fetchDiscordMembers();
-  dockerPulls.value = await fetchDockerPulls();
 });
 </script>
 
@@ -678,9 +669,7 @@ onMounted(async () => {
               :icon="faArrowDown"
               class="text-2xl text-primary"
             />
-            <div class="font-bold ml-3 text-2xl">
-              {{ dockerPulls !== null ? dockerPulls.toLocaleString() : "..." }}
-            </div>
+            <div class="font-bold ml-3 text-2xl">1M+</div>
           </div>
           <div class="ml-8">Docker pulls</div>
         </div>
