@@ -506,14 +506,26 @@ onMounted(async () => {
                   of retro handhelds.
                 </div>
               </div>
-              <a
-                href="https://github.com/rommapp/muos-app?tab=readme-ov-file#installation"
-                target="_blank"
-                rel="noopener"
-                class="flex flex-row items-end justify-between mt-4"
-              >
-                <PButton raised outlined size="large"> Download </PButton>
-              </a>
+              <div class="mt-4 flex flex-row">
+                <a
+                  href="https://github.com/rommapp/muos-app?tab=readme-ov-file#installation"
+                  target="_blank"
+                  rel="noopener"
+                  class="flex flex-row items-end justify-between mr-4"
+                >
+                  <PButton raised outlined size="large"> Download </PButton>
+                </a>
+                <a
+                  href="https://portmaster.games/detail.html?name=romm"
+                  target="_blank"
+                  rel="noopener"
+                  class="flex flex-row items-end justify-between"
+                >
+                  <PButton raised outlined variant="link" size="large">
+                    PortMaster
+                  </PButton>
+                </a>
+              </div>
             </div>
           </div>
         </div>
