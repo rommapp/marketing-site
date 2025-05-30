@@ -681,7 +681,7 @@ onMounted(async () => {
               :icon="faArrowDown"
               class="text-2xl text-primary"
             />
-            <div class="font-bold ml-3 text-2xl">1M+</div>
+            <div class="font-bold ml-3 text-2xl">1.5M+</div>
           </div>
           <div class="ml-8">Docker pulls</div>
         </div>
