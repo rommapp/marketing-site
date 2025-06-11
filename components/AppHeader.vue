@@ -5,6 +5,10 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faDonate } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
+defineProps<{
+  githubStars: number;
+}>();
+
 const menuItems: MenuItem[] = [
   {
     label: "Docs",
@@ -93,7 +97,9 @@ const menuItems: MenuItem[] = [
           title="github repository"
         >
           <FontAwesomeIcon :icon="faGithub" class="text-2xl h-4" />
-          <span class="text-xs pl-1">3.4K</span>
+          <span class="text-sm pl-1"
+            >{{ (githubStars / 1000).toFixed(1) }}K</span
+          >
         </a>
       </div>
     </template>

@@ -64,9 +64,8 @@ const PLAYNITE_IMAGES = [
 const selectedImage = ref<AppImage | undefined>(undefined);
 const dialogVisible = ref(false);
 
-const githubStars = ref<number | null>(null);
-const discordMembers = ref<number | null>(null);
-const dockerPulls = ref<number | null>(null);
+const githubStars = ref<number>(3_800);
+const discordMembers = ref<number>(3_000);
 
 const openDialog = (image: AppImage) => {
   selectedImage.value = image;
@@ -95,7 +94,7 @@ onMounted(async () => {
 
 <template>
   <div class="max-w-[100rem] mx-auto">
-    <AppHeader />
+    <AppHeader :githubStars="githubStars" />
 
     <div class="md:grid grid-cols-2 px-6 md:px-0 md:pl-10 md:mb-10">
       <div class="text-left flex items-center">
@@ -657,7 +656,7 @@ onMounted(async () => {
           <div class="flex items-center">
             <FontAwesomeIcon :icon="faStar" class="text-2xl text-primary" />
             <div class="font-bold ml-3 text-2xl">
-              {{ githubStars !== null ? githubStars.toLocaleString() : "..." }}
+              {{ githubStars.toLocaleString() }}
             </div>
           </div>
           <div class="ml-10">Github stars</div>
@@ -666,11 +665,7 @@ onMounted(async () => {
           <div class="flex items-center">
             <FontAwesomeIcon :icon="faUsers" class="text-2xl text-primary" />
             <div class="font-bold ml-3 text-2xl">
-              {{
-                discordMembers !== null
-                  ? discordMembers.toLocaleString()
-                  : "..."
-              }}
+              {{ discordMembers.toLocaleString() }}
             </div>
           </div>
           <div class="ml-10">Discord members</div>
@@ -681,7 +676,7 @@ onMounted(async () => {
               :icon="faArrowDown"
               class="text-2xl text-primary"
             />
-            <div class="font-bold ml-3 text-2xl">1.5M+</div>
+            <div class="font-bold ml-3 text-2xl">1.7M+</div>
           </div>
           <div class="ml-8">Docker pulls</div>
         </div>
