@@ -706,13 +706,15 @@ onMounted(async () => {
       Your collection, perfected.
     </div>
     <a
-      href="https://github.com/rommapp/marketing-site"
+      href="https://app.aikido.dev/audit-report/external/NzayAUgNoqiMuiy7p7yNvI0U/request"
       target="_blank"
-      rel="noopener"
-      class="text-900 hover:text-primary text-end"
-      title="github repository"
+      class="flex items-center justify-end"
     >
-      <FontAwesomeIcon :icon="faGithub" class="text-2xl h-4" />
+      <img
+        src="https://app.aikido.dev/assets/badges/label-only-dark-theme.svg"
+        alt="Aikido Security Audit Report"
+        id="aikido-img"
+      />
     </a>
   </footer>
 </template>
@@ -843,5 +845,9 @@ body,
   @media (prefers-color-scheme: light) {
     filter: invert(1);
   }
+}
+
+#aikido-img {
+  height: 24px;
 }
 </style>
