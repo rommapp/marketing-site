@@ -89,6 +89,11 @@ export default defineNuxtConfig({
           content: "https://romm.app/images/og/og-image.png",
         },
         { name: "theme-color", content: "#cf00fb" },
+        {
+          content:
+            "default-src 'self'; img-src 'self' data: app.aikido.dev; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';connect-src 'self' api.github.com discord.com",
+          "http-equiv": "Content-Security-Policy",
+        },
       ],
     },
   },
