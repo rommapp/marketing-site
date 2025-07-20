@@ -91,7 +91,7 @@ export default defineNuxtConfig({
         { name: "theme-color", content: "#cf00fb" },
         {
           content:
-            "default-src 'self'; img-src 'self' data: app.aikido.dev; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';connect-src 'self' api.github.com discord.com",
+            "default-src 'self'; img-src 'self' data: app.aikido.dev; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';connect-src 'self' api.github.com discord.com; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests;",
           "http-equiv": "Content-Security-Policy",
         },
       ],
