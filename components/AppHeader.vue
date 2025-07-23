@@ -49,10 +49,14 @@ const menuItems: MenuItem[] = [
         <a href="https://romm.app" class="flex items-center">
           <nuxt-img
             :src="`images/blocks/logos/romm.svg`"
-            alt="romm logo"
-            class="w-8 h-8 rounded-full"
+            alt="romm isotipo"
+            class="w-8 rounded-full"
           />
-          <span class="text-900 text-2xl font-semibold ml-2">RomM</span>
+          <nuxt-img
+            :src="`images/blocks/logos/logotipo.svg`"
+            alt="romm logotipo"
+            class="w-16 ml-2"
+          />
         </a>
         <a
           href="https://github.com/rommapp/romm/releases/latest"
