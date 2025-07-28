@@ -10,21 +10,22 @@
     "fetch-stats": "node scripts/fetch-stats.js"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.5.2",
-    "@fortawesome/free-brands-svg-icons": "^6.5.2",
-    "@fortawesome/free-regular-svg-icons": "^6.5.2",
-    "@fortawesome/free-solid-svg-icons": "^6.5.2",
-    "@fortawesome/vue-fontawesome": "^3.0.6",
-    "primevue": "^3.52.0",
-    "sharp": "^0.33.4"
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@fortawesome/free-regular-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/vue-fontawesome": "^3.1.1",
+    "primevue": "^3.53.1",
+    "sharp": "^0.34.3"
   },
   "devDependencies": {
-    "@nuxt/image": "^1.7.0",
-    "@nuxtjs/tailwindcss": "^6.12.0",
+    "@nuxt/image": "^1.10.0",
+    "@nuxtjs/tailwindcss": "^6.14.0",
     "axios": "^1.11.0",
-    "nuxt": "^3.16.1",
+    "ipx": "^3.1.1",
+    "nuxt": "^3.17.7",
     "nuxt-primevue": "^0.3.1",
-    "vue": "^3.4.27",
-    "vue-router": "^4.3.2"
+    "vue": "^3.5.18",
+    "vue-router": "^4.5.1"
   }
 }
