@@ -780,17 +780,13 @@ onMounted(async () => {
     <div class="text-700 text-md text-center hidden sm:block">
       Your collection, perfected.
     </div>
-    <a
-      href="https://app.aikido.dev/audit-report/external/NzayAUgNoqiMuiy7p7yNvI0U/request"
-      target="_blank"
-      class="flex items-center justify-end"
-    >
+    <span class="flex items-center justify-end">
       <img
         src="https://app.aikido.dev/assets/badges/label-only-dark-theme.svg"
         alt="Aikido Security Audit Report"
         id="aikido-img"
       />
-    </a>
+    </span>
   </footer>
 </template>
 
