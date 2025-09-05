@@ -734,7 +734,7 @@ onMounted(async () => {
               {{ githubStars.toLocaleString() }}
             </div>
           </div>
-          <div class="ml-10">Github stars</div>
+          <div class="ml-10">GitHub stars</div>
         </div>
         <div class="pt-4 md:px-4 xl:px-6">
           <div class="flex items-center">
