@@ -23,7 +23,7 @@
     "@nuxtjs/tailwindcss": "^6.14.0",
     "axios": "^1.11.0",
     "ipx": "^3.1.1",
-    "nuxt": "^3.17.7",
+    "nuxt": "^3.19.0",
     "nuxt-primevue": "^0.3.1",
     "vue": "^3.5.18",
     "vue-router": "^4.5.1"
