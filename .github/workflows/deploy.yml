@@ -24,7 +24,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.1.3
         with:
           fetch-depth: 0
 
@@ -32,7 +32,7 @@ jobs:
         run: sed -i "s/<romm_version>/${{ github.event.inputs.version }}/g" components/AppHeader.vue
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5.0.0
         with:
           node-version: "20"
           cache: npm
@@ -44,7 +44,7 @@ jobs:
         run: npx nuxi build --preset github-pages
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4.0.0
         with:
           path: ./dist
 
@@ -57,4 +57,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v4.0.5
