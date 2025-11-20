@@ -107,7 +107,7 @@ onMounted(async () => {
   <div class="max-w-[100rem] mx-auto">
     <AppHeader :githubStars="githubStars" />
 
-    <div class="md:grid grid-cols-2 px-6 md:px-0 md:pl-10 md:mb-10">
+    <div class="md:grid grid-cols-2 px-6 md:px-0 md:pl-10 md:pr-4 md:mb-10">
       <div class="text-left flex items-center">
         <section class="py-8">
           <span class="block text-4xl sm:text-5xl md:text-6xl font-bold mb-2">
@@ -133,13 +133,13 @@ onMounted(async () => {
           </div>
 
           <a href="https://docs.romm.app" target="_blank" rel="noopener">
-            <PButton raised type="button" class="mr-3 px-6 md:text-lg"
-              >Install Now
+            <PButton raised type="button" class="mr-3 px-6 md:text-lg">
+              Install Now
             </PButton>
           </a>
           <a href="https://demo.romm.app" target="_blank" rel="noopener">
-            <PButton raised outlined type="button" class="px-6 md:text-lg"
-              >View Demo
+            <PButton raised outlined type="button" class="px-6 md:text-lg">
+              View Demo
             </PButton>
           </a>
         </section>
