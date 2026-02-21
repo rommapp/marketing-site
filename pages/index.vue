@@ -33,19 +33,17 @@ import synology from "~/assets/images/logos/synology-wordmark.svg";
 import truenas from "~/assets/images/logos/truenas-wordmark.png";
 import umbrel from "~/assets/images/logos/umbrel-wordmark.png";
 import unraid from "~/assets/images/logos/unraid-wordmark.svg";
-import muos from "~/assets/images/logos/muos-logo.svg";
 import playnite from "~/assets/images/logos/playnite-logo.svg";
-import android from "~/assets/images/logos/android-logo.svg";
+import grout from "~/assets/images/logos/grout-logo.svg";
+import argosy from "~/assets/images/logos/argosy-logo.svg";
 
-import muosGamelist from "~/assets/images/screenshots/muos/gamelist.png";
-import muosCollection from "~/assets/images/screenshots/muos/collection.png";
-import muosPlatforms from "~/assets/images/screenshots/muos/platforms.png";
 import playniteDetails from "~/assets/images/screenshots/playnite/details.png";
 import playniteLibrary from "~/assets/images/screenshots/playnite/library.png";
 import playniteSettings from "~/assets/images/screenshots/playnite/settings.png";
-import androidCollections from "~/assets/images/screenshots/android/collections.png";
-import androidLibrary from "~/assets/images/screenshots/android/library.png";
-import androidPlatform from "~/assets/images/screenshots/android/platform.png";
+
+import groutDetails from "~/assets/images/screenshots/grout/game-details.png";
+import groutMultiSelect from "~/assets/images/screenshots/grout/multi-select.png";
+import groutSyncSummary from "~/assets/images/screenshots/grout/sync-summary.png";
 
 import { ref, onMounted } from "vue";
 
@@ -54,23 +52,19 @@ interface AppImage {
   alt: string;
 }
 
-const MUOS_IMAGES = [
-  { src: muosPlatforms, alt: "muOS Platforms" },
-  { src: muosGamelist, alt: "muOS Game List" },
-  { src: muosCollection, alt: "muOS Collection" },
-];
-
 const PLAYNITE_IMAGES = [
   { src: playniteLibrary, alt: "Playnite Library" },
   { src: playniteDetails, alt: "Playnite Details" },
   { src: playniteSettings, alt: "Playnite Settings" },
 ];
 
-const ANDROID_IMAGES = [
-  { src: androidLibrary, alt: "Android Library" },
-  { src: androidCollections, alt: "Android Collections" },
-  { src: androidPlatform, alt: "Android Platform" },
+const GROUT_IMAGES = [
+  { src: groutDetails, alt: "Grout Library" },
+  { src: groutMultiSelect, alt: "Grout Details" },
+  { src: groutSyncSummary, alt: "Grout Settings" },
 ];
+
+const ARGOSY_IMAGES = [];
 
 const selectedImage = ref<AppImage | undefined>(undefined);
 const dialogVisible = ref(false);
@@ -457,96 +451,6 @@ onMounted(async () => {
             class="mx-auto w-[32rem] min-w-[32rem] max-w-[32rem] py-8 pr-12 shadow-2 rounded-lg bg-light-surface dark:bg-dark-surface"
           >
             <Galleria
-              :value="MUOS_IMAGES"
-              :numVisible="5"
-              circular
-              autoPlay
-              class="max-w-2xl mx-auto"
-              :showThumbnails="false"
-              showIndicators
-              changeItemOnIndicatorHover
-              indicatorsPosition="left"
-            >
-              <template #item="slotProps">
-                <Image
-                  :src="slotProps.item.src"
-                  :alt="slotProps.item.alt"
-                  class="w-full block shadow-lg cursor-pointer"
-                  image-class="rounded-lg h-[300px]"
-                  @click="openDialog(slotProps.item)"
-                />
-              </template>
-            </Galleria>
-          </div>
-
-          <div class="flex flex-col flex-grow md:flex-row items-start gap-6">
-            <div class="flex flex-col flex-grow justify-between h-[100%] py-6">
-              <div>
-                <div class="flex flex-row justify-between pr-4 pb-3">
-                  <div>
-                    <div class="flex items-center text-primary mb-6">
-                      <FontAwesomeIcon :icon="faGamepad" />
-                      <span class="uppercase ml-2">handhelds</span>
-                    </div>
-                    <div class="text-2xl font-bold">muOS App</div>
-                  </div>
-                  <Image :src="muos" alt="muOS" image-class="w-20 h-20" />
-                </div>
-                <div
-                  class="leading-relaxed md:max-w-screen-md lg:max-w-screen-lg"
-                >
-                  Browse and download games directly to your Anbernic device
-                  running muOS over Wi-Fi.
-                  <a
-                    href="https://muos.dev"
-                    target="_blank"
-                    rel="noopener"
-                    class="underline text-primary-600 hover:text-primary-700 active:text-primary-800 visited:text-primary-700"
-                    >muOS</a
-                  >
-                  is highly customizable alternative firmware for the
-                  <a
-                    href="https://muos.dev/devices/anbernic"
-                    target="_blank"
-                    rel="noopener"
-                    class="underline text-primary-600 hover:text-primary-700 active:text-primary-800 visited:text-primary-700"
-                  >
-                    Anbernic family</a
-                  >
-                  of retro handhelds.
-                </div>
-              </div>
-              <div class="mt-4 flex flex-row">
-                <a
-                  href="https://github.com/rommapp/muos-app?tab=readme-ov-file#installation"
-                  target="_blank"
-                  rel="noopener"
-                  class="flex flex-row items-end justify-between mr-4"
-                >
-                  <PButton raised outlined size="large"> Download </PButton>
-                </a>
-                <a
-                  href="https://portmaster.games/detail.html?name=romm"
-                  target="_blank"
-                  rel="noopener"
-                  class="flex flex-row items-end justify-between"
-                >
-                  <PButton raised outlined variant="link" size="large">
-                    PortMaster
-                  </PButton>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="flex flex-col lg:flex-row gap-8 lg:gap-16 xl:gap-20 m-auto w-10/12"
-        >
-          <div
-            class="mx-auto w-[32rem] min-w-[32rem] max-w-[32rem] py-8 pr-12 shadow-2 rounded-lg bg-light-surface dark:bg-dark-surface"
-          >
-            <Galleria
               :value="PLAYNITE_IMAGES"
               :numVisible="5"
               circular
@@ -622,7 +526,118 @@ onMounted(async () => {
             class="mx-auto w-[32rem] min-w-[32rem] max-w-[32rem] py-8 pr-12 shadow-2 rounded-lg bg-light-surface dark:bg-dark-surface"
           >
             <Galleria
-              :value="ANDROID_IMAGES"
+              :value="GROUT_IMAGES"
+              :numVisible="5"
+              circular
+              autoPlay
+              class="max-w-2xl mx-auto"
+              :showThumbnails="false"
+              showIndicators
+              changeItemOnIndicatorHover
+              indicatorsPosition="left"
+            >
+              <template #item="slotProps">
+                <Image
+                  :src="slotProps.item.src"
+                  :alt="slotProps.item.alt"
+                  class="w-full block shadow-lg cursor-pointer"
+                  image-class="rounded-lg h-[250px]"
+                  @click="openDialog(slotProps.item)"
+                />
+              </template>
+            </Galleria>
+          </div>
+
+          <div class="flex flex-col flex-grow md:flex-row items-start gap-6">
+            <div class="flex flex-col flex-grow justify-between h-[100%] py-6">
+              <div>
+                <div class="flex flex-row justify-between pr-4 pb-3">
+                  <div>
+                    <div class="flex items-center text-primary mb-6">
+                      <FontAwesomeIcon :icon="faGamepad" />
+                      <span class="uppercase ml-2">handhelds</span>
+                    </div>
+                    <div class="text-2xl font-bold">Grout</div>
+                  </div>
+                  <Image :src="grout" alt="Grout" image-class="w-20 h-20" />
+                </div>
+                <div
+                  class="leading-relaxed md:max-w-screen-md lg:max-w-screen-lg"
+                >
+                  A lightweight client for your favorite handheld CFWs,
+                  available on
+                  <a
+                    href="https://muos.dev"
+                    target="_blank"
+                    rel="noopener"
+                    class="underline text-primary-600 hover:text-primary-700 active:text-primary-800 visited:text-primary-700"
+                  >
+                    muOS</a
+                  >,
+                  <a
+                    href="https://knulli.org"
+                    target="_blank"
+                    rel="noopener"
+                    class="underline text-primary-600 hover:text-primary-700 active:text-primary-800 visited:text-primary-700"
+                  >
+                    Knulli</a
+                  >,
+                  <a
+                    href="https://rocknix.org"
+                    target="_blank"
+                    rel="noopener"
+                    class="underline text-primary-600 hover:text-primary-700 active:text-primary-800 visited:text-primary-700"
+                  >
+                    ROCKNIX</a
+                  >,
+                  <a
+                    href="https://spruceui.github.io/"
+                    target="_blank"
+                    rel="noopener"
+                    class="underline text-primary-600 hover:text-primary-700 active:text-primary-800 visited:text-primary-700"
+                  >
+                    Spruce (v4) </a
+                  >,
+                  <a
+                    href="https://nextui.loveretro.games"
+                    target="_blank"
+                    rel="noopener"
+                    class="underline text-primary-600 hover:text-primary-700 active:text-primary-800 visited:text-primary-700"
+                  >
+                    NextUI
+                  </a>
+                  and
+                  <a
+                    href="https://trimui.com"
+                    target="_blank"
+                    rel="noopener"
+                    class="underline text-primary-600 hover:text-primary-700 active:text-primary-800 visited:text-primary-700"
+                  >
+                    TrimUI </a
+                  >. Download games, box art and BIOS files wirelessly, and sync
+                  your saves automatically as you play.
+                </div>
+              </div>
+              <a
+                href="https://grout.romm.app/getting-started/"
+                target="_blank"
+                rel="noopener"
+                class="flex flex-row items-end justify-between mt-4"
+              >
+                <PButton raised outlined size="large"> Quick Setup </PButton>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="flex flex-col lg:flex-row gap-8 lg:gap-16 xl:gap-20 m-auto w-10/12"
+        >
+          <div
+            class="mx-auto w-[32rem] min-w-[32rem] max-w-[32rem] py-8 pr-12 shadow-2 rounded-lg bg-light-surface dark:bg-dark-surface"
+          >
+            <Galleria
+              :value="ARGOSY_IMAGES"
               :numVisible="5"
               circular
               autoPlay
@@ -653,28 +668,27 @@ onMounted(async () => {
                       <FontAwesomeIcon :icon="faAndroid" />
                       <span class="uppercase ml-2">android</span>
                     </div>
-                    <div class="text-2xl font-bold">Android App</div>
+                    <div class="text-2xl font-bold">Argosy Launcher</div>
                   </div>
-                  <Image :src="android" alt="Android" image-class="w-20 h-20" />
+                  <Image :src="argosy" alt="Argosy" image-class="w-20 h-20" />
                 </div>
                 <div
                   class="leading-relaxed md:max-w-screen-md lg:max-w-screen-lg"
                 >
-                  Browse your library, download games and play them on your
-                  Android device.
+                  Sync your library, download games on demand, track your
+                  achievements, and play across devices with automatic save
+                  sync, all from a gamepad-first interface designed for
+                  Anbernic, Retroid Pocket, Odin, and similar devices.
                 </div>
               </div>
-              <div>
-                <a
-                  href="https://github.com/mattsays/romm-android/releases/latest"
-                  target="_blank"
-                  rel="noopener"
-                  class="flex flex-row items-end justify-between mt-4"
-                >
-                  <PButton raised outlined size="large"> Download APK </PButton>
-                </a>
-                <div class="text-sm text-gray-500 mt-2">*Third-party app</div>
-              </div>
+              <a
+                href="https://github.com/rommapp/argosy-launcher/releases/latest/"
+                target="_blank"
+                rel="noopener"
+                class="flex flex-row items-end justify-between mt-4"
+              >
+                <PButton raised outlined size="large"> Download </PButton>
+              </a>
             </div>
           </div>
         </div>
