@@ -528,6 +528,70 @@ onMounted(async () => {
           </div>
         </div>
 
+        <!-- Argosy -->
+        <div
+          class="flex flex-col lg:flex-row gap-8 lg:gap-16 xl:gap-20 m-auto w-10/12"
+        >
+          <div
+            class="mx-auto w-[32rem] min-w-[32rem] max-w-[32rem] py-8 pr-12 shadow-2 rounded-lg bg-light-surface dark:bg-dark-surface"
+          >
+            <Galleria
+              :value="ARGOSY_IMAGES"
+              :numVisible="5"
+              circular
+              autoPlay
+              class="max-w-2xl mx-auto"
+              :showThumbnails="false"
+              showIndicators
+              changeItemOnIndicatorHover
+              indicatorsPosition="left"
+            >
+              <template #item="slotProps">
+                <Image
+                  :src="slotProps.item.src"
+                  :alt="slotProps.item.alt"
+                  class="w-full block shadow-lg cursor-pointer"
+                  image-class="rounded-lg h-[250px]"
+                  @click="openDialog(slotProps.item)"
+                />
+              </template>
+            </Galleria>
+          </div>
+
+          <div class="flex flex-col flex-grow md:flex-row items-start gap-6">
+            <div class="flex flex-col flex-grow justify-between h-[100%] py-6">
+              <div>
+                <div class="flex flex-row justify-between pr-4 pb-3">
+                  <div>
+                    <div class="flex items-center text-primary mb-6">
+                      <FontAwesomeIcon :icon="faAndroid" />
+                      <span class="uppercase ml-2">android</span>
+                    </div>
+                    <div class="text-2xl font-bold">Argosy Launcher</div>
+                  </div>
+                  <Image :src="argosy" alt="Argosy" image-class="w-20 h-20" />
+                </div>
+                <div
+                  class="leading-relaxed md:max-w-screen-md lg:max-w-screen-lg"
+                >
+                  Sync your library, download games on demand, track your
+                  achievements, and play across devices with automatic save
+                  sync, all from a gamepad-first interface designed for
+                  Anbernic, Retroid Pocket, Odin, and similar devices.
+                </div>
+              </div>
+              <a
+                href="https://github.com/rommapp/argosy-launcher/releases/latest/"
+                target="_blank"
+                rel="noopener"
+                class="flex flex-row items-end justify-between mt-4"
+              >
+                <PButton raised outlined size="large"> Download </PButton>
+              </a>
+            </div>
+          </div>
+        </div>
+
         <!-- Grout -->
         <div
           class="flex flex-col lg:flex-row gap-8 lg:gap-16 xl:gap-20 m-auto w-10/12"
@@ -634,71 +698,7 @@ onMounted(async () => {
                 rel="noopener"
                 class="flex flex-row items-end justify-between mt-4"
               >
-                <PButton raised outlined size="large"> Quick Setup </PButton>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Argosy -->
-        <div
-          class="flex flex-col lg:flex-row gap-8 lg:gap-16 xl:gap-20 m-auto w-10/12"
-        >
-          <div
-            class="mx-auto w-[32rem] min-w-[32rem] max-w-[32rem] py-8 pr-12 shadow-2 rounded-lg bg-light-surface dark:bg-dark-surface"
-          >
-            <Galleria
-              :value="ARGOSY_IMAGES"
-              :numVisible="5"
-              circular
-              autoPlay
-              class="max-w-2xl mx-auto"
-              :showThumbnails="false"
-              showIndicators
-              changeItemOnIndicatorHover
-              indicatorsPosition="left"
-            >
-              <template #item="slotProps">
-                <Image
-                  :src="slotProps.item.src"
-                  :alt="slotProps.item.alt"
-                  class="w-full block shadow-lg cursor-pointer"
-                  image-class="rounded-lg h-[250px]"
-                  @click="openDialog(slotProps.item)"
-                />
-              </template>
-            </Galleria>
-          </div>
-
-          <div class="flex flex-col flex-grow md:flex-row items-start gap-6">
-            <div class="flex flex-col flex-grow justify-between h-[100%] py-6">
-              <div>
-                <div class="flex flex-row justify-between pr-4 pb-3">
-                  <div>
-                    <div class="flex items-center text-primary mb-6">
-                      <FontAwesomeIcon :icon="faAndroid" />
-                      <span class="uppercase ml-2">android</span>
-                    </div>
-                    <div class="text-2xl font-bold">Argosy Launcher</div>
-                  </div>
-                  <Image :src="argosy" alt="Argosy" image-class="w-20 h-20" />
-                </div>
-                <div
-                  class="leading-relaxed md:max-w-screen-md lg:max-w-screen-lg"
-                >
-                  Sync your library, download games on demand, track your
-                  achievements, and play across devices with automatic save
-                  sync, all from a gamepad-first interface designed for
-                  Anbernic, Retroid Pocket, Odin, and similar devices.
-                </div>
-              </div>
-              <a
-                href="https://github.com/rommapp/argosy-launcher/releases/latest/"
-                target="_blank"
-                rel="noopener"
-                class="flex flex-row items-end justify-between mt-4"
-              >
-                <PButton raised outlined size="large"> Download </PButton>
+                <PButton raised outlined size="large"> Quick Start </PButton>
               </a>
             </div>
           </div>
