@@ -45,6 +45,10 @@ import groutDetails from "~/assets/images/screenshots/grout/game-details.png";
 import groutMultiSelect from "~/assets/images/screenshots/grout/multi-select.png";
 import groutSyncSummary from "~/assets/images/screenshots/grout/sync-summary.png";
 
+import argosyDetails from "~/assets/images/screenshots/argosy/game-details.png";
+import argosyLibrary from "~/assets/images/screenshots/argosy/library.png";
+import argosyRecommended from "~/assets/images/screenshots/argosy/recommended.png";
+
 import { ref, onMounted } from "vue";
 
 interface AppImage {
@@ -64,7 +68,11 @@ const GROUT_IMAGES = [
   { src: groutSyncSummary, alt: "Grout Settings" },
 ];
 
-const ARGOSY_IMAGES = [];
+const ARGOSY_IMAGES = [
+  { src: argosyDetails, alt: "Argosy Library" },
+  { src: argosyLibrary, alt: "Argosy Details" },
+  { src: argosyRecommended, alt: "Argosy Settings" },
+];
 
 const selectedImage = ref<AppImage | undefined>(undefined);
 const dialogVisible = ref(false);
@@ -444,6 +452,7 @@ onMounted(async () => {
       </div>
 
       <div class="flex flex-col gap-12 lg:gap-24">
+        <!-- Playnite -->
         <div
           class="flex flex-col lg:flex-row gap-8 lg:gap-16 xl:gap-20 m-auto w-10/12"
         >
@@ -519,6 +528,7 @@ onMounted(async () => {
           </div>
         </div>
 
+        <!-- Grout -->
         <div
           class="flex flex-col lg:flex-row gap-8 lg:gap-16 xl:gap-20 m-auto w-10/12"
         >
@@ -630,6 +640,7 @@ onMounted(async () => {
           </div>
         </div>
 
+        <!-- Argosy -->
         <div
           class="flex flex-col lg:flex-row gap-8 lg:gap-16 xl:gap-20 m-auto w-10/12"
         >
