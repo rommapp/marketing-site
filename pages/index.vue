@@ -826,6 +826,10 @@ body,
   }
 }
 
+.p-menubar:not(.p-menubar-mobile) .p-menubar-root-list > .p-menuitem {
+  margin: 0 !important;
+}
+
 .p-button {
   background-color: theme("colors.primary.600");
   border-color: theme("colors.primary.600");
