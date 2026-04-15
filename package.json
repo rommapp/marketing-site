@@ -21,7 +21,7 @@
   "devDependencies": {
     "@nuxt/image": "^1.10.0",
     "@nuxtjs/tailwindcss": "^6.14.0",
-    "axios": "^1.11.0",
+    "axios": "^1.15.0",
     "ipx": "^3.1.1",
     "nuxt": "^3.19.0",
     "nuxt-primevue": "^0.3.1",
