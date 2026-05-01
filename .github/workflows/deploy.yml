@@ -29,7 +29,9 @@ jobs:
           fetch-depth: 0
 
       - name: Replace version in Nuxt config
-        run: sed -i "s/<romm_version>/${{ github.event.inputs.version }}/g" components/AppHeader.vue
+        env:
+          VERSION: ${{ github.event.inputs.version }}
+        run: sed -i "s/<romm_version>/$VERSION/g" components/AppHeader.vue
 
       - name: Setup Node
         uses: actions/setup-node@v5.0.0
