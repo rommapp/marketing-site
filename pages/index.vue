@@ -290,11 +290,6 @@ onMounted(async () => {
               class="text-900 text-xl mb-1 md:mb-2 font-medium flex flex-row items-center"
             >
               <span>Device sync</span>
-              <tag
-                value="COMING SOON"
-                severity="primary"
-                class="text-xs whitespace-nowrap ml-2"
-              ></tag>
             </div>
             <div class="text-700 line-height-3">
               Sync your games, saves and emulator settings across your devices
