@@ -1,38 +1,19 @@
 import { defineNuxtPlugin } from "#app";
 
 export default defineNuxtPlugin((nuxtApp) => {
-  if (process.client) {
-    const { $primevue } = nuxtApp.vueApp.config.globalProperties;
-    $primevue.config.ripple = true;
-
+  if (import.meta.client) {
     const mediaMatch = window.matchMedia("(prefers-color-scheme: dark)");
-    function handleColorSchemeChange(matches: boolean) {
-      // Set the theme in the runtime config
-      nuxtApp.$config.theme = matches ? "dark" : "light";
 
-      if (matches) {
-        $primevue.changeTheme(
-          "aura-light-purple",
-          "aura-dark-purple",
-          "theme-link",
-        );
-        document.documentElement.classList.add("dark");
-      } else {
-        $primevue.changeTheme(
-          "aura-dark-purple",
-          "aura-light-purple",
-          "theme-link",
-        );
-        document.documentElement.classList.remove("dark");
-      }
+    function applyColorScheme(matches: boolean) {
+      // Track the active theme in the runtime config
+      nuxtApp.$config.theme = matches ? "dark" : "light";
+      // PrimeVue 4 (darkModeSelector: ".dark") and Tailwind (darkMode: "class")
+      // both key off the "dark" class on <html>.
+      document.documentElement.classList.toggle("dark", matches);
     }
 
-    // Call the function initially to set the correct theme
-    handleColorSchemeChange(mediaMatch.matches);
-
-    // Listen for changes
-    mediaMatch.addEventListener("change", (e: MediaQueryListEvent) => {
-      handleColorSchemeChange(e.matches);
-    });
+    // Set the correct theme initially, then react to OS changes
+    applyColorScheme(mediaMatch.matches);
+    mediaMatch.addEventListener("change", (e) => applyColorScheme(e.matches));
   }
 });

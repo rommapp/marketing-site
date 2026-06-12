@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Menubar from "primevue/menubar";
 import type { MenuItem } from "primevue/menuitem";
+import Tag from "primevue/tag";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faDonate } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -38,8 +39,8 @@ const menuItems: MenuItem[] = [
   <Menubar
     :model="menuItems"
     :pt="{
-      root: 'sticky top-3 mb-6 mx-4 z-40 px-4 md:px-8 bg-white dark:bg-transparent backdrop-blur-lg dark:backdrop-brightness-90 transition-colors border-light-toplayer dark:border-dark-toplayer rounded-md',
-      menu: 'ml-auto bg-transparent border-x-0',
+      root: 'sticky top-3 mb-6 mx-4 z-40 px-4 md:px-8 flex items-center bg-white dark:bg-transparent backdrop-blur-lg dark:backdrop-brightness-90 transition-colors border-light-toplayer dark:border-dark-toplayer rounded-md',
+      rootList: 'ml-auto bg-transparent border-x-0',
       button: 'ml-auto dark:text-white',
       end: 'ml-0',
     }"
@@ -63,11 +64,7 @@ const menuItems: MenuItem[] = [
           target="_blank"
           rel="noopener"
         >
-          <tag
-            value="v<romm_version>"
-            severity="primary"
-            class="ml-3 text-xs"
-          ></tag>
+          <Tag value="v<romm_version>" class="ml-3 text-xs"></Tag>
         </a>
       </div>
     </template>

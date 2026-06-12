@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { default as PButton } from "primevue/button";
-import Tag from "primevue/tag";
 import Divider from "primevue/divider";
 import Galleria from "primevue/galleria";
 import Image from "primevue/image";
@@ -202,45 +201,39 @@ onMounted(async () => {
                 class="underline hover:text-primary"
               >
                 Screenscraper</a
-              >
-              and
+              >,
               <a
-                href="https://www.mobygames.com/"
+                href="https://retroachievements.org/"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="underline hover:text-primary"
               >
-                MobyGames</a
-              >.
+                RetroAchievements</a
+              >, and more.
             </div>
           </div>
         </div>
+
         <div class="mb-4 sm:mb-6 md:mb-8 md:px-6 flex flex-row gap-4">
           <div>
             <span
               class="mt-1 p-3 shadow-2 inline-block rounded-md bg-light-surface dark:bg-dark-surface"
             >
               <FontAwesomeIcon
-                :icon="faListCheck"
+                :icon="faRotate"
                 class="text-3xl md:text-4xl w-8 md:w-10 text-primary"
               />
             </span>
           </div>
           <div class="md:px-2 xl:px-6">
-            <div class="text-900 text-xl mb-1 md:mb-2 font-medium">
-              Broad platform support
+            <div
+              class="text-900 text-xl mb-1 md:mb-2 font-medium flex flex-row items-center"
+            >
+              <span>Device sync</span>
             </div>
             <div class="text-700 line-height-3">
-              Retro or modern, RomM has you covered with support for
-              <a
-                href="https://docs.romm.app/latest/Platforms-and-Players/Supported-Platforms"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="underline hover:text-primary"
-              >
-                400+</a
-              >
-              systems and platforms.
+              Sync your games, saves and emulator settings across your devices
+              with ease.
             </div>
           </div>
         </div>
@@ -280,20 +273,26 @@ onMounted(async () => {
               class="mt-1 p-3 shadow-2 inline-block rounded-md bg-light-surface dark:bg-dark-surface"
             >
               <FontAwesomeIcon
-                :icon="faRotate"
+                :icon="faListCheck"
                 class="text-3xl md:text-4xl w-8 md:w-10 text-primary"
               />
             </span>
           </div>
           <div class="md:px-2 xl:px-6">
-            <div
-              class="text-900 text-xl mb-1 md:mb-2 font-medium flex flex-row items-center"
-            >
-              <span>Device sync</span>
+            <div class="text-900 text-xl mb-1 md:mb-2 font-medium">
+              Broad platform support
             </div>
             <div class="text-700 line-height-3">
-              Sync your games, saves and emulator settings across your devices
-              with ease.
+              Retro or modern, RomM has you covered with support for
+              <a
+                href="https://docs.romm.app/latest/Platforms-and-Players/Supported-Platforms"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="underline hover:text-primary"
+              >
+                400+</a
+              >
+              systems and platforms.
             </div>
           </div>
         </div>

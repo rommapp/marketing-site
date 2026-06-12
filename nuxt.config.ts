@@ -1,12 +1,46 @@
 import { defineNuxtConfig } from "nuxt/config";
+import { definePreset } from "@primeuix/themes";
+import Aura from "@primeuix/themes/aura";
+
+// Mirror the brand `primary` palette from tailwind.config.js so PrimeVue's
+// primary color matches the rest of the site (Aura's default primary is green).
+const RommPreset = definePreset(Aura, {
+  semantic: {
+    primary: {
+      50: "#F4F2FC",
+      100: "#E9E6FA",
+      200: "#D3CCEE",
+      300: "#BDB3E3",
+      400: "#A494EB",
+      500: "#8B74E8",
+      600: "#7259D1",
+      700: "#5A41B8",
+      800: "#432D9E",
+      900: "#2D1D84",
+      950: "#1A1066",
+    },
+  },
+});
 
 export default defineNuxtConfig({
   devtools: { enabled: false },
-  modules: ["@nuxtjs/tailwindcss", "nuxt-primevue", "@nuxt/image"],
+  modules: ["@nuxtjs/tailwindcss", "@primevue/nuxt-module", "@nuxt/image"],
   plugins: [{ src: "~/plugins/theme.ts", mode: "client" }],
 
   primevue: {
-    cssLayerOrder: "tailwind-base, primevue, tailwind-utilities",
+    options: {
+      ripple: true,
+      theme: {
+        preset: RommPreset,
+        options: {
+          darkModeSelector: ".dark",
+          cssLayer: {
+            name: "primevue",
+            order: "tailwind-base, primevue, tailwind-utilities",
+          },
+        },
+      },
+    },
     components: {
       include: ["Button", "Tag", "Divider", "Menubar"],
     },
@@ -46,17 +80,10 @@ export default defineNuxtConfig({
       charset: "utf-8",
       viewport: "width=device-width, initial-scale=1",
       title: "The RomM Project",
-      link: [
-        {
-          rel: "stylesheet",
-          href: "/css/theme-light.css",
-          id: "theme-link",
-        },
-      ],
       script: [
         {
           innerHTML:
-            'let m=window.matchMedia("(prefers-color-scheme: dark)");if(m.matches){const e=document.getElementById("theme-link");e.href=e.href.replace("light","dark");document.documentElement.classList.add("dark")}',
+            'if(window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.classList.add("dark")}',
         },
       ],
       meta: [
@@ -98,5 +125,15 @@ export default defineNuxtConfig({
     },
   },
 
-  compatibilityDate: "2025-01-31",
+  compatibilityDate: "2026-06-12",
+
+  vite: {
+    optimizeDeps: {
+      include: [
+        "@fortawesome/free-brands-svg-icons",
+        "@fortawesome/free-solid-svg-icons",
+        "@fortawesome/vue-fontawesome",
+      ],
+    },
+  },
 });
