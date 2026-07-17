@@ -203,7 +203,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
   <div>
     <AppHeader :githubStars="githubStars" />
 
-    <main class="mx-auto max-w-[88rem] border-x border-grid">
+    <main class="mx-auto max-w-[88rem]">
       <!-- ============================== HERO ============================== -->
       <section class="relative overflow-hidden border-b border-grid">
         <div aria-hidden="true" class="dot-grid absolute inset-0" />
