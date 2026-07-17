@@ -57,7 +57,7 @@ onBeforeUnmount(() => clearInterval(timer));
           :key="active"
           :src="current.src"
           :alt="current.alt"
-          class="block aspect-[16/10] w-full cursor-zoom-in bg-ink-950 object-contain"
+          class="block aspect-[16/10] w-full cursor-zoom-in bg-ink-950 object-fill"
           loading="lazy"
           @click="emit('select', current!)"
         />

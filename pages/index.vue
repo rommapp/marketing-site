@@ -222,7 +222,6 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
           class="absolute inset-0 bg-gradient-to-b from-ink-950/80 via-ink-950/70 to-ink-950"
         />
         <div aria-hidden="true" class="dot-grid absolute inset-0" />
-        <GlyphField />
         <div
           aria-hidden="true"
           class="absolute -top-48 left-1/2 h-[38rem] w-[64rem] max-w-none -translate-x-1/2 rounded-full bg-primary-500/10 blur-[120px]"
@@ -234,10 +233,6 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             <div
               class="inline-flex items-center gap-3 border border-grid bg-ink-900/70 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.25em] text-primary-300"
             >
-              <span
-                aria-hidden="true"
-                class="h-1.5 w-1.5 animate-pulse bg-primary-400"
-              />
               Self-hosted rom manager
             </div>
             <a
@@ -254,14 +249,14 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
           </div>
 
           <h1
-            class="mx-auto mt-10 font-pixel text-3xl font-bold uppercase leading-tight text-cream sm:text-4xl md:text-5xl xl:text-6xl"
+            class="mx-auto mt-10 font-pixel text-3xl uppercase leading-tight text-cream sm:text-4xl md:text-5xl xl:text-6xl"
           >
             Your collection,<br />
             <span class="text-primary-400">perfected</span
             ><span class="blink text-primary-400">_</span>
           </h1>
 
-          <p class="mx-auto mt-8 max-w-2xl leading-relaxed text-muted">
+          <p class="mx-auto mt-8 max-w-2xl leading-relaxed">
             Scan, enrich, browse and play your game collection from one
             beautiful self-hosted app. Metadata from seven providers, save sync
             across your devices, and support for 400+ platforms. RomM is a
@@ -290,7 +285,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
         >
           <span>400+ supported platforms</span>
           <span aria-hidden="true" class="hidden text-grid sm:block">
-            consoles // handhelds // computers // arcade
+            consoles • handhelds • computers • arcade
           </span>
         </div>
         <PlatformMarquee />
@@ -303,7 +298,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
       >
         <SectionHeading
           label="Features"
-          title="Every pixel tells a story"
+          title="Every save tells a story"
           subtitle="The most powerful all-in-one app for managing and playing your game collection."
         />
 
@@ -311,17 +306,8 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
         <div
           class="mt-12 grid gap-px border border-grid bg-grid lg:grid-cols-3"
         >
-          <div
-            class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900 lg:p-10"
-          >
-            <div class="flex items-center justify-between">
-              <FontAwesomeIcon :icon="faGamepad" class="h-7 text-primary-400" />
-              <span
-                class="font-mono text-xs text-grid transition-colors group-hover:text-primary-400"
-                >[01]</span
-              >
-            </div>
-            <h3 class="mt-6 font-pixel text-lg font-bold uppercase text-cream">
+          <div class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900">
+            <h3 class="font-pixel text-lg uppercase text-cream">
               Play in your browser
             </h3>
             <p class="mt-3 text-sm leading-relaxed text-muted">
@@ -338,17 +324,8 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             >
           </div>
 
-          <div
-            class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900 lg:p-10"
-          >
-            <div class="flex items-center justify-between">
-              <FontAwesomeIcon :icon="faRotate" class="h-7 text-primary-400" />
-              <span
-                class="font-mono text-xs text-grid transition-colors group-hover:text-primary-400"
-                >[02]</span
-              >
-            </div>
-            <h3 class="mt-6 font-pixel text-lg font-bold uppercase text-cream">
+          <div class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900">
+            <h3 class="font-pixel text-lg uppercase text-cream">
               Saves that follow you
             </h3>
             <p class="mt-3 text-sm leading-relaxed text-muted">
@@ -364,26 +341,14 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             >
           </div>
 
-          <div
-            class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900 lg:p-10"
-          >
-            <div class="flex items-center justify-between">
-              <FontAwesomeIcon
-                :icon="faWandSparkles"
-                class="h-7 text-primary-400"
-              />
-              <span
-                class="font-mono text-xs text-grid transition-colors group-hover:text-primary-400"
-                >[03]</span
-              >
-            </div>
-            <h3 class="mt-6 font-pixel text-lg font-bold uppercase text-cream">
-              A library that curates itself
+          <div class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900">
+            <h3 class="font-pixel text-lg uppercase text-cream">
+              Magical metadata
             </h3>
             <p class="mt-3 text-sm leading-relaxed text-muted">
               Cover art, screenshots and deep metadata from IGDB, ScreenScraper,
-              MobyGames, LaunchBox, Hasheous and more. Games are matched by
-              hash, not guesswork.
+              LaunchBox, RetroAchievements and more. Games are matched by hash,
+              not guesswork.
             </p>
             <a
               href="https://docs.romm.app/latest/getting-started/metadata-providers/"
@@ -400,16 +365,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
           class="grid gap-px border border-t-0 border-grid bg-grid sm:grid-cols-2 lg:grid-cols-4"
         >
           <div class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900">
-            <div class="flex items-center justify-between">
-              <FontAwesomeIcon :icon="faUsers" class="h-6 text-primary-400" />
-              <span
-                class="font-mono text-xs text-grid transition-colors group-hover:text-primary-400"
-                >[04]</span
-              >
-            </div>
-            <h3 class="mt-6 text-lg font-semibold text-cream">
-              Multi-user &amp; SSO
-            </h3>
+            <h3 class="text-lg font-pixel text-cream">Multi-user &amp; SSO</h3>
             <p class="mt-2 text-sm leading-relaxed text-muted">
               Granular per-user and per-group permissions, plus
               <a
@@ -424,17 +380,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
           </div>
 
           <div class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900">
-            <div class="flex items-center justify-between">
-              <FontAwesomeIcon
-                :icon="faScrewdriverWrench"
-                class="h-6 text-primary-400"
-              />
-              <span
-                class="font-mono text-xs text-grid transition-colors group-hover:text-primary-400"
-                >[05]</span
-              >
-            </div>
-            <h3 class="mt-6 text-lg font-semibold text-cream">ROM patcher</h3>
+            <h3 class="text-lg font-pixel text-cream">ROM patcher</h3>
             <p class="mt-2 text-sm leading-relaxed text-muted">
               Apply romhacks and translations
               <a
@@ -449,16 +395,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
           </div>
 
           <div class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900">
-            <div class="flex items-center justify-between">
-              <FontAwesomeIcon :icon="faPlug" class="h-6 text-primary-400" />
-              <span
-                class="font-mono text-xs text-grid transition-colors group-hover:text-primary-400"
-                >[06]</span
-              >
-            </div>
-            <h3 class="mt-6 text-lg font-semibold text-cream">
-              Open ecosystem
-            </h3>
+            <h3 class="text-lg font-pixel text-cream">Open ecosystem</h3>
             <p class="mt-2 text-sm leading-relaxed text-muted">
               ES-DE and Pegasus exports, LaunchBox import,
               <a
@@ -480,19 +417,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
           </div>
 
           <div class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900">
-            <div class="flex items-center justify-between">
-              <FontAwesomeIcon
-                :icon="faShieldHeart"
-                class="h-6 text-primary-400"
-              />
-              <span
-                class="font-mono text-xs text-grid transition-colors group-hover:text-primary-400"
-                >[07]</span
-              >
-            </div>
-            <h3 class="mt-6 text-lg font-semibold text-cream">
-              Free, open, yours
-            </h3>
+            <h3 class="text-lg font-pixel text-cream">Free forever</h3>
             <p class="mt-2 text-sm leading-relaxed text-muted">
               AGPL-3.0, no tracking, no upsells. Your games, your data, your
               server. Built by the community, for the community.
@@ -542,7 +467,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
       >
         <SectionHeading
           label="Play anywhere"
-          title="Your library, on every screen"
+          title="Your library on every screen"
           subtitle="Native apps and integrations that bring your collection to desktops, handhelds and TVs. Pair a device in seconds with a QR code, and your saves follow you everywhere."
         />
 
@@ -573,7 +498,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
                     </div>
                   </div>
                   <h3
-                    class="mt-5 font-pixel text-xl font-bold uppercase text-cream md:text-2xl"
+                    class="mt-5 font-pixel text-xl uppercase text-cream md:text-2xl"
                   >
                     Playnite Plugin
                   </h3>
@@ -635,7 +560,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
                     </div>
                   </div>
                   <h3
-                    class="mt-5 font-pixel text-xl font-bold uppercase text-cream md:text-2xl"
+                    class="mt-5 font-pixel text-xl uppercase text-cream md:text-2xl"
                   >
                     Argosy Launcher
                   </h3>
@@ -685,7 +610,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
                     </div>
                   </div>
                   <h3
-                    class="mt-5 font-pixel text-xl font-bold uppercase text-cream md:text-2xl"
+                    class="mt-5 font-pixel text-xl uppercase text-cream md:text-2xl"
                   >
                     Grout
                   </h3>
@@ -761,11 +686,6 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               Built by the community
             </span>
             <span aria-hidden="true" class="h-px flex-1 bg-grid" />
-            <span
-              aria-hidden="true"
-              class="hidden font-mono text-[10px] tracking-[0.3em] text-grid sm:block"
-              >////////</span
-            >
           </div>
           <div
             class="mt-6 grid gap-px border border-grid bg-grid sm:grid-cols-2 lg:grid-cols-3"
@@ -818,7 +738,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
       <section class="border-b border-grid">
         <div class="grid grid-cols-2 gap-px bg-grid lg:grid-cols-4">
           <div class="bg-ink-950 p-4 text-center">
-            <div class="font-pixel text-2xl font-bold text-cream md:text-4xl">
+            <div class="font-pixel text-2xl text-cream md:text-4xl">
               {{ githubStars.toLocaleString() }}
             </div>
             <div
@@ -828,7 +748,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             </div>
           </div>
           <div class="bg-ink-950 p-4 text-center">
-            <div class="font-pixel text-2xl font-bold text-cream md:text-4xl">
+            <div class="font-pixel text-2xl text-cream md:text-4xl">
               {{ discordMembers.toLocaleString() }}
             </div>
             <div
@@ -838,9 +758,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             </div>
           </div>
           <div class="bg-ink-950 p-4 text-center">
-            <div class="font-pixel text-2xl font-bold text-cream md:text-4xl">
-              1.7M+
-            </div>
+            <div class="font-pixel text-2xl text-cream md:text-4xl">1.7M+</div>
             <div
               class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
             >
@@ -848,9 +766,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             </div>
           </div>
           <div class="bg-ink-950 p-4 text-center">
-            <div class="font-pixel text-2xl font-bold text-cream md:text-4xl">
-              #1
-            </div>
+            <div class="font-pixel text-2xl text-cream md:text-4xl">#1</div>
             <div
               class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
             >
@@ -876,7 +792,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             <span>Powered by friendship</span>
           </div>
           <h2
-            class="mt-6 font-pixel text-2xl font-bold uppercase text-cream sm:text-3xl md:text-4xl"
+            class="mt-6 font-pixel text-2xl uppercase text-cream sm:text-3xl md:text-4xl"
           >
             Join the party
           </h2>
@@ -1095,7 +1011,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
           </div>
           <div
             aria-hidden="true"
-            class="select-none bg-gradient-to-b from-primary-300 via-primary-600 to-ink-950 bg-clip-text px-4 pb-2 pt-4 text-center font-pixel text-[clamp(4rem,17vw,15rem)] font-bold leading-none text-transparent"
+            class="select-none bg-gradient-to-b from-primary-300 via-primary-600 to-ink-950 bg-clip-text px-4 pb-2 pt-4 text-center font-pixel text-[clamp(4rem,17vw,15rem)] leading-none text-transparent"
           >
             ROMM
           </div>
