@@ -65,6 +65,7 @@
 
   /* CRT scanline overlay (CAVIX / Dune) */
   .scanlines {
+    position: relative;
     background: repeating-linear-gradient(
       0deg,
       rgba(255, 255, 255, 0.022) 0px,
@@ -72,6 +73,55 @@
       transparent 1px,
       transparent 3px
     );
+    animation: crt-flicker 5s steps(60) infinite;
+  }
+
+  /* Soft highlight band that slowly rolls down the surface (CRT sweep) */
+  .scanlines::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.03) 45%,
+      rgba(255, 255, 255, 0.045) 50%,
+      rgba(255, 255, 255, 0.03) 55%,
+      transparent 100%
+    );
+    background-size: 100% 22%;
+    background-repeat: no-repeat;
+    animation: crt-scan 7s linear infinite;
+  }
+
+  @keyframes crt-flicker {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.94;
+    }
+  }
+
+  @keyframes crt-scan {
+    from {
+      background-position: 0 -22%;
+    }
+    to {
+      background-position: 0 122%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scanlines {
+      animation: none;
+    }
+
+    .scanlines::after {
+      display: none;
+    }
   }
 }
 
