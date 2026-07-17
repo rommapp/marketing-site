@@ -42,13 +42,6 @@ import argosyDetails from "~/assets/images/screenshots/argosy/game-details.png";
 import argosyLibrary from "~/assets/images/screenshots/argosy/library.png";
 import argosyRecommended from "~/assets/images/screenshots/argosy/recommended.png";
 
-import v5Gallery from "~/assets/images/screenshots/v5/gallery.jpg";
-import v5Details from "~/assets/images/screenshots/v5/details.jpg";
-import v5Crt from "~/assets/images/screenshots/v5/crt.jpg";
-import v5Patcher from "~/assets/images/screenshots/v5/patcher.jpg";
-import v5Permissions from "~/assets/images/screenshots/v5/permissions.jpg";
-import v5Music from "~/assets/images/screenshots/v5/music.jpg";
-
 interface AppImage {
   src: string;
   alt: string;
@@ -70,16 +63,6 @@ const GROUT_IMAGES: AppImage[] = [
   { src: groutDetails, alt: "Grout game details" },
   { src: groutMultiSelect, alt: "Grout multi-select" },
   { src: groutSyncSummary, alt: "Grout sync summary" },
-];
-
-// Official screenshots from the 5.0.0 release notes
-const V5_IMAGES: AppImage[] = [
-  { src: v5Gallery, alt: "RomM 5.0 platform gallery" },
-  { src: v5Details, alt: "RomM 5.0 game details" },
-  { src: v5Crt, alt: "CRT mode shader" },
-  { src: v5Patcher, alt: "Server-side ROM patcher" },
-  { src: v5Permissions, alt: "Granular permission system" },
-  { src: v5Music, alt: "Built-in music player" },
 ];
 
 const CHANGELOG = [
@@ -294,53 +277,44 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
           subtitle="A ground-up UI overhaul and a stack of new toys, fresh from the July 2026 release."
         />
 
-        <div class="mt-12 grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <div>
-            <div class="border border-grid bg-ink-900">
-              <div
-                class="flex items-center justify-between border-b border-grid bg-ink-800 px-3 py-2"
-              >
-                <div class="flex items-center gap-1.5" aria-hidden="true">
-                  <span class="h-2 w-2 bg-primary-500" />
-                  <span class="h-2 w-2 bg-primary-700" />
-                  <span class="h-2 w-2 bg-grid" />
-                </div>
-                <span
-                  class="font-mono text-[10px] uppercase tracking-widest text-muted"
-                >
-                  romm@server:~$ changelog --latest
-                </span>
-              </div>
-              <ul class="space-y-3 p-6 font-mono text-xs leading-relaxed">
-                <li
-                  v-for="entry in CHANGELOG"
-                  :key="entry.title"
-                  class="flex gap-3"
-                >
-                  <span aria-hidden="true" class="text-primary-400">+</span>
-                  <span>
-                    <span class="uppercase text-cream">{{ entry.title }}</span>
-                    <span class="text-muted">: {{ entry.detail }}</span>
-                  </span>
-                </li>
-              </ul>
-            </div>
-            <a
-              href="https://github.com/rommapp/romm/releases/tag/5.0.0"
-              target="_blank"
-              rel="noopener"
-              class="mt-6 inline-block font-mono text-[11px] uppercase tracking-widest text-primary-300 transition-colors hover:text-primary-200"
+        <div class="mt-12 max-w-3xl">
+          <div class="border border-grid bg-ink-900">
+            <div
+              class="flex items-center justify-between border-b border-grid bg-ink-800 px-3 py-2"
             >
-              Read the full release notes ↗
-            </a>
+              <div class="flex items-center gap-1.5" aria-hidden="true">
+                <span class="h-2 w-2 bg-primary-500" />
+                <span class="h-2 w-2 bg-primary-700" />
+                <span class="h-2 w-2 bg-grid" />
+              </div>
+              <span
+                class="font-mono text-[10px] uppercase tracking-widest text-muted"
+              >
+                romm@server:~$ changelog --latest
+              </span>
+            </div>
+            <ul class="space-y-3 p-6 font-mono text-xs leading-relaxed">
+              <li
+                v-for="entry in CHANGELOG"
+                :key="entry.title"
+                class="flex gap-3"
+              >
+                <span aria-hidden="true" class="text-primary-400">+</span>
+                <span>
+                  <span class="uppercase text-cream">{{ entry.title }}</span>
+                  <span class="text-muted">: {{ entry.detail }}</span>
+                </span>
+              </li>
+            </ul>
           </div>
-          <CropFrame>
-            <AppGallery
-              :images="V5_IMAGES"
-              label="~/releases/v5.0.0"
-              @select="selectedImage = $event"
-            />
-          </CropFrame>
+          <a
+            href="https://github.com/rommapp/romm/releases/tag/5.0.0"
+            target="_blank"
+            rel="noopener"
+            class="mt-6 inline-block font-mono text-[11px] uppercase tracking-widest text-primary-300 transition-colors hover:text-primary-200"
+          >
+            Read the full release notes ↗
+          </a>
         </div>
       </section>
 
