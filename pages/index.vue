@@ -271,9 +271,6 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               ><span class="text-primary-400">[license]</span> AGPL-3.0</span
             >
             <span><span class="text-primary-400">[price]</span> $0.00</span>
-            <span
-              ><span class="text-primary-400">[setup]</span> one container</span
-            >
             <span><span class="text-primary-400">[data]</span> 100% yours</span>
           </div>
 
