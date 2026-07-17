@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // Scattered terminal glyphs (Phantom-style). Positions come from a seeded
-// LCG so server and client render the exact same field — no hydration drift.
+// LCG so server and client render the exact same field, with no hydration drift.
 const GLYPHS = ["+", "x", "=", "#", "0", "1", "░", "▒", "@"];
 
 let seed = 1337;

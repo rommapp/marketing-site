@@ -197,7 +197,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
                 aria-hidden="true"
                 class="h-1.5 w-1.5 animate-pulse bg-primary-400"
               />
-              Self-hosted rom manager — system online
+              Self-hosted rom manager
             </div>
             <a
               href="https://github.com/rommapp/romm/releases/tag/5.0.0"
@@ -223,7 +223,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
           <p class="mx-auto mt-8 max-w-2xl leading-relaxed text-muted">
             Scan, enrich, browse and play your game collection from one
             beautiful self-hosted app. Metadata from seven providers, save sync
-            across your devices, and support for 400+ platforms — RomM is a
+            across your devices, and support for 400+ platforms. RomM is a
             must-have for anyone who plays on emulators.
           </p>
 
@@ -264,7 +264,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
                 <span
                   class="font-mono text-[10px] uppercase tracking-widest text-muted"
                 >
-                  romm@server:~/library — v5.0
+                  romm@server:~/library [v5.0]
                 </span>
               </div>
               <img
@@ -320,7 +320,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
                   <span aria-hidden="true" class="text-primary-400">+</span>
                   <span>
                     <span class="uppercase text-cream">{{ entry.title }}</span>
-                    <span class="text-muted"> — {{ entry.detail }}</span>
+                    <span class="text-muted">: {{ entry.detail }}</span>
                   </span>
                 </li>
               </ul>
@@ -436,7 +436,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
           index="02"
           label="Features"
           title="Every pixel tells a story"
-          subtitle="The most powerful all-in-one app for managing — and playing — your game collection."
+          subtitle="The most powerful all-in-one app for managing and playing your game collection."
         />
 
         <!-- Flagship features -->
@@ -458,7 +458,8 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             </h3>
             <p class="mt-3 text-sm leading-relaxed text-muted">
               EmulatorJS, MS-DOS and Flash players are built in. Hit Play and
-              you're in the game — no cores to configure, no files to move.
+              you're in the game. There are no cores to configure and no files
+              to move.
             </p>
             <ul
               class="mt-5 space-y-1.5 font-mono text-[11px] uppercase tracking-wider text-muted"
@@ -541,8 +542,8 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             </h3>
             <p class="mt-3 text-sm leading-relaxed text-muted">
               Cover art, screenshots and deep metadata from IGDB, ScreenScraper,
-              MobyGames, LaunchBox, Hasheous and more — matched by hash, not
-              guesswork.
+              MobyGames, LaunchBox, Hasheous and more. Games are matched by
+              hash, not guesswork.
             </p>
             <ul
               class="mt-5 space-y-1.5 font-mono text-[11px] uppercase tracking-wider text-muted"
@@ -618,7 +619,8 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
                 rel="noopener"
                 class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
                 >server-side</a
-              >, from stored or uploaded patch files — originals stay untouched.
+              >, from stored or uploaded patch files. Your originals stay
+              untouched.
             </p>
           </div>
 
@@ -669,7 +671,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             </h3>
             <p class="mt-2 text-sm leading-relaxed text-muted">
               AGPL-3.0, no tracking, no upsells. Your games, your data, your
-              server — built by the community, for the community.
+              server. Built by the community, for the community.
             </p>
           </div>
         </div>
@@ -684,7 +686,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
           index="03"
           label="Play anywhere"
           title="Your library, on every screen"
-          subtitle="Native apps and integrations that bring your collection to desktops, handhelds and TVs. Pair a device in seconds with a QR code — your saves follow you everywhere."
+          subtitle="Native apps and integrations that bring your collection to desktops, handhelds and TVs. Pair a device in seconds with a QR code, and your saves follow you everywhere."
         />
 
         <div class="mt-16 flex flex-col gap-20">
@@ -1130,7 +1132,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
           class="flex flex-wrap items-center justify-between gap-4 border-t border-grid px-6 py-4 font-mono text-[10px] uppercase tracking-[0.2em] text-muted"
         >
           <span>Your collection, perfected.</span>
-          <span class="hidden md:block">© The RomM Project — AGPL-3.0</span>
+          <span class="hidden md:block">© The RomM Project · AGPL-3.0</span>
           <img
             src="https://app.aikido.dev/assets/badges/label-only-dark-theme.svg"
             alt="Aikido Security Audit Report"
