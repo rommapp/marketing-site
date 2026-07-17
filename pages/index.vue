@@ -287,10 +287,10 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
                 </span>
               </div>
               <img
-                src="/images/blocks/v5/hero-v5.jpg"
+                src="/images/blocks/v5/homepage.jpg"
                 srcset="
-                  /images/blocks/v5/hero-v5.jpg    1x,
-                  /images/blocks/v5/hero-v5@2x.jpg 2x
+                  /images/blocks/v5/homepage.jpg    1x,
+                  /images/blocks/v5/homepage@2x.jpg 2x
                 "
                 alt="RomM 5.0 home view showing a game library"
                 class="block w-full"
