@@ -1,8 +1,105 @@
-@layer tailwind-base {
-  @tailwind base;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Inter var";
+    font-weight: 100 900;
+    font-display: swap;
+    font-style: normal;
+    src: url("/fonts/Inter-roman.var.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "Inter var";
+    font-weight: 100 900;
+    font-display: swap;
+    font-style: italic;
+    src: url("/fonts/Inter-italic.var.woff2") format("woff2");
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ink-950 font-sans text-zinc-300 antialiased;
+  }
+
+  ::selection {
+    @apply bg-primary-500 text-ink-950;
+  }
 }
 
-@layer tailwind-utilities {
-  @tailwind utilities;
-  @tailwind variants;
+@layer components {
+  /* Chunky pixel-shadow button, square corners on purpose */
+  .btn-pixel {
+    @apply inline-flex items-center justify-center gap-2 border border-primary-400 bg-primary-500 px-6 py-3 font-mono text-sm font-bold uppercase tracking-widest text-ink-950 transition-[transform,box-shadow] duration-100;
+    box-shadow: 4px 4px 0 0 theme("colors.primary.900");
+  }
+
+  .btn-pixel:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 5px 5px 0 0 theme("colors.primary.900");
+  }
+
+  .btn-pixel:active {
+    transform: translate(3px, 3px);
+    box-shadow: 1px 1px 0 0 theme("colors.primary.900");
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 border border-grid bg-transparent px-6 py-3 font-mono text-sm font-bold uppercase tracking-widest text-cream transition-colors duration-150 hover:border-primary-400 hover:text-primary-300;
+  }
+
+  /* Dot grid backdrop (Luma / Verdant) */
+  .dot-grid {
+    background-image: radial-gradient(
+      circle,
+      rgba(139, 116, 232, 0.14) 1px,
+      transparent 1px
+    );
+    background-size: 26px 26px;
+  }
+
+  /* CRT scanline overlay (CAVIX / Dune) */
+  .scanlines {
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.022) 0px,
+      rgba(255, 255, 255, 0.022) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  }
+}
+
+@layer utilities {
+  .blink {
+    animation: blink 1.1s steps(2, start) infinite;
+  }
+
+  @keyframes blink {
+    to {
+      visibility: hidden;
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 40s linear infinite;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+  .pause-on-hover:hover .animate-marquee {
+    animation-play-state: paused;
+  }
 }

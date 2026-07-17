@@ -1,9 +1,5 @@
 <script setup lang="ts">
-import { default as PButton } from "primevue/button";
-import Divider from "primevue/divider";
-import Galleria from "primevue/galleria";
-import Image from "primevue/image";
-import Dialog from "primevue/dialog";
+import { ref, onMounted, onBeforeUnmount } from "vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
   faListCheck,
@@ -11,10 +7,7 @@ import {
   faGamepad,
   faShieldHeart,
   faRotate,
-  faStar,
-  faUsers,
-  faArrowDown,
-  faHeart,
+  faCode,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
@@ -48,900 +41,870 @@ import argosyDetails from "~/assets/images/screenshots/argosy/game-details.png";
 import argosyLibrary from "~/assets/images/screenshots/argosy/library.png";
 import argosyRecommended from "~/assets/images/screenshots/argosy/recommended.png";
 
-import { ref, onMounted } from "vue";
-
 interface AppImage {
   src: string;
   alt: string;
 }
 
-const PLAYNITE_IMAGES = [
-  { src: playniteLibrary, alt: "Playnite Library" },
-  { src: playniteDetails, alt: "Playnite Details" },
-  { src: playniteSettings, alt: "Playnite Settings" },
+const PLAYNITE_IMAGES: AppImage[] = [
+  { src: playniteLibrary, alt: "Playnite library" },
+  { src: playniteDetails, alt: "Playnite game details" },
+  { src: playniteSettings, alt: "Playnite settings" },
 ];
 
-const GROUT_IMAGES = [
-  { src: groutDetails, alt: "Grout Library" },
-  { src: groutMultiSelect, alt: "Grout Details" },
-  { src: groutSyncSummary, alt: "Grout Settings" },
+const ARGOSY_IMAGES: AppImage[] = [
+  { src: argosyDetails, alt: "Argosy game details" },
+  { src: argosyLibrary, alt: "Argosy library" },
+  { src: argosyRecommended, alt: "Argosy recommended" },
 ];
 
-const ARGOSY_IMAGES = [
-  { src: argosyDetails, alt: "Argosy Library" },
-  { src: argosyLibrary, alt: "Argosy Details" },
-  { src: argosyRecommended, alt: "Argosy Settings" },
+const GROUT_IMAGES: AppImage[] = [
+  { src: groutDetails, alt: "Grout game details" },
+  { src: groutMultiSelect, alt: "Grout multi-select" },
+  { src: groutSyncSummary, alt: "Grout sync summary" },
 ];
 
-const selectedImage = ref<AppImage | undefined>(undefined);
-const dialogVisible = ref(false);
+const PLATFORMS = [
+  {
+    name: "CasaOS",
+    href: "https://community.bigbeartechworld.com/t/added-romm-to-bigbearcasaos/206",
+    src: casaos,
+  },
+  {
+    name: "Cloudron",
+    href: "https://www.cloudron.io/store/app.romm.cloudronapp.html",
+    src: cloudron,
+  },
+  {
+    name: "Docker",
+    href: "https://hub.docker.com/r/rommapp/romm",
+    src: docker,
+  },
+  { name: "HexOS", href: "https://hexos.com/", src: hexos },
+  { name: "Portainer", href: "https://www.portainer.io/", src: portainer },
+  { name: "Synology", href: "https://www.synology.com/", src: synology },
+  {
+    name: "TrueNAS",
+    href: "https://www.truenas.com/apps/#:~:text=romm",
+    src: truenas,
+  },
+  { name: "Umbrel", href: "https://apps.umbrel.com/app/romm", src: umbrel },
+  {
+    name: "Unraid",
+    href: "https://unraid.net/community/apps?q=romm#r",
+    src: unraid,
+  },
+];
+
+const SLASHES = "/".repeat(240);
 
 const githubStars = ref<number>(3_800);
 const discordMembers = ref<number>(3_000);
+const selectedImage = ref<AppImage | undefined>(undefined);
 
-const openDialog = (image: AppImage) => {
-  selectedImage.value = image;
-  dialogVisible.value = true;
-};
-
-const fetchGithubStars = async () => {
-  const res = await fetch("https://api.github.com/repos/rommapp/romm");
-  const data = await res.json();
-  return data.stargazers_count;
-};
-
-const fetchDiscordMembers = async () => {
-  const res = await fetch(
-    "https://discord.com/api/v9/invites/RGPJHNMMwJ?with_counts=true",
-  );
-  const data = await res.json();
-  return data.approximate_member_count;
+const onKeydown = (e: KeyboardEvent) => {
+  if (e.key === "Escape") selectedImage.value = undefined;
 };
 
 onMounted(async () => {
-  githubStars.value = await fetchGithubStars();
-  discordMembers.value = await fetchDiscordMembers();
+  window.addEventListener("keydown", onKeydown);
+  try {
+    const res = await fetch("https://api.github.com/repos/rommapp/romm");
+    const data = await res.json();
+    if (data.stargazers_count) githubStars.value = data.stargazers_count;
+  } catch {
+    /* keep the fallback count */
+  }
+  try {
+    const res = await fetch(
+      "https://discord.com/api/v9/invites/RGPJHNMMwJ?with_counts=true",
+    );
+    const data = await res.json();
+    if (data.approximate_member_count) {
+      discordMembers.value = data.approximate_member_count;
+    }
+  } catch {
+    /* keep the fallback count */
+  }
 });
+
+onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
 </script>
 
 <template>
-  <div class="max-w-[100rem] mx-auto">
+  <div>
     <AppHeader :githubStars="githubStars" />
 
-    <div class="md:grid grid-cols-2 px-6 md:px-0 md:pl-10 md:pr-4 md:mb-10">
-      <div class="text-left flex items-center">
-        <section class="py-8">
-          <span class="block text-4xl sm:text-5xl md:text-6xl font-bold mb-2">
-            Your beautiful, powerful,
-          </span>
-          <div
-            class="text-4xl sm:text-5xl md:text-6xl text-primary font-bold mb-8 md:mb-4"
-          >
-            self-hosted rom manager
-          </div>
-          <div
-            class="mb-8 md:mb-4 text-lg md:text-md surface-700 leading-relaxed"
-          >
-            <p class="mt-0">
-              Scan, enrich, and browse your game collection with a clean and
-              responsive interface.
-            </p>
-            <p class="hidden md:block mt-0">
-              With support for multiple platforms, various naming schemes and
-              custom tags, RomM is a must-have for anyone who plays on
-              emulators.
-            </p>
-          </div>
-
-          <a href="https://docs.romm.app" target="_blank" rel="noopener">
-            <PButton raised type="button" class="mr-3 px-6 md:text-lg">
-              Install Now
-            </PButton>
-          </a>
-          <a href="https://demo.romm.app" target="_blank" rel="noopener">
-            <PButton raised outlined type="button" class="px-6 md:text-lg">
-              View Demo
-            </PButton>
-          </a>
-        </section>
-      </div>
-      <div>
-        <Image
-          :src="`images/blocks/hero/hero-dark.png`"
-          preset="responsive"
-          alt="list of games in library"
-          class="hero md:ml-auto md:h-full object-cover w-full md:w-auto hidden dark:block"
-          :placeholder="[2190, 1550, 40, 20]"
+    <main class="mx-auto max-w-[88rem] border-x border-grid">
+      <!-- ============================== HERO ============================== -->
+      <section class="relative overflow-hidden border-b border-grid">
+        <div aria-hidden="true" class="dot-grid absolute inset-0" />
+        <GlyphField />
+        <div
+          aria-hidden="true"
+          class="absolute -top-48 left-1/2 h-[38rem] w-[64rem] max-w-none -translate-x-1/2 rounded-full bg-primary-500/10 blur-[120px]"
         />
-        <Image
-          :src="`images/blocks/hero/hero-light.png`"
-          preset="responsive"
-          alt="list of games in library"
-          class="hero md:ml-auto block md:h-full object-cover w-full md:w-auto dark:hidden"
-          :placeholder="[2190, 1550, 40, 20]"
-        />
-      </div>
-    </div>
+        <div aria-hidden="true" class="scanlines absolute inset-0" />
 
-    <div id="features" class="surface-section px-6 py-8 lg:px-8">
-      <div class="text-700 mb-10 md:mb-12 text-2xl text-center">
-        The <span class="text-primary">most powerful</span> all-in-one app for
-        managing your game collection.
-      </div>
-      <div class="grid md:grid-cols-2">
-        <div class="mb-4 sm:mb-6 md:mb-8 md:px-6 flex flex-row gap-4">
-          <div>
+        <div
+          class="relative z-10 px-6 pb-16 pt-16 text-center sm:px-10 md:pt-24 lg:px-16"
+        >
+          <div
+            class="inline-flex items-center gap-3 border border-grid bg-ink-900/70 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.25em] text-primary-300"
+          >
             <span
-              class="mt-1 p-3 shadow-2 inline-block rounded-md bg-light-surface dark:bg-dark-surface"
+              aria-hidden="true"
+              class="h-1.5 w-1.5 animate-pulse bg-primary-400"
+            />
+            Self-hosted rom manager — system online
+          </div>
+
+          <h1
+            class="mx-auto mt-10 font-pixel text-3xl font-bold uppercase leading-tight text-cream sm:text-4xl md:text-5xl xl:text-6xl"
+          >
+            Your collection,<br />
+            <span class="text-primary-400">perfected</span
+            ><span class="blink text-primary-400">_</span>
+          </h1>
+
+          <p class="mx-auto mt-8 max-w-2xl leading-relaxed text-muted">
+            Scan, enrich, and browse your game collection with a clean and
+            responsive interface. With support for 400+ platforms, various
+            naming schemes and custom tags, RomM is a must-have for anyone who
+            plays on emulators.
+          </p>
+
+          <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <a href="https://docs.romm.app" target="_blank" rel="noopener">
+              <span class="btn-pixel">Install now</span>
+            </a>
+            <a href="https://demo.romm.app" target="_blank" rel="noopener">
+              <span class="btn-ghost">View demo ↗</span>
+            </a>
+          </div>
+
+          <div
+            class="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 font-mono text-[11px] uppercase tracking-wider text-muted"
+          >
+            <span
+              ><span class="text-primary-400">[license]</span> AGPL-3.0</span
             >
+            <span><span class="text-primary-400">[price]</span> $0.00</span>
+            <span
+              ><span class="text-primary-400">[setup]</span> one container</span
+            >
+            <span><span class="text-primary-400">[data]</span> 100% yours</span>
+          </div>
+
+          <CropFrame class="mx-auto mt-16 max-w-5xl">
+            <div
+              class="border border-grid bg-ink-900 shadow-2xl shadow-primary-950/50"
+            >
+              <div
+                class="flex items-center justify-between border-b border-grid bg-ink-800 px-3 py-2"
+              >
+                <div class="flex items-center gap-1.5" aria-hidden="true">
+                  <span class="h-2 w-2 bg-primary-500" />
+                  <span class="h-2 w-2 bg-primary-700" />
+                  <span class="h-2 w-2 bg-grid" />
+                </div>
+                <span
+                  class="font-mono text-[10px] uppercase tracking-widest text-muted"
+                >
+                  romm@server:~/library
+                </span>
+              </div>
+              <img
+                src="/images/blocks/hero/hero-dark.png"
+                srcset="
+                  /images/blocks/hero/hero-dark.png    1x,
+                  /images/blocks/hero/hero-dark@2x.png 2x
+                "
+                alt="RomM library of games"
+                class="block w-full"
+                fetchpriority="high"
+              />
+            </div>
+          </CropFrame>
+        </div>
+      </section>
+
+      <!-- ========================= PLATFORM STRIP ========================= -->
+      <section class="border-b border-grid">
+        <div
+          class="flex items-center justify-between gap-4 border-b border-grid px-6 py-3 font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
+        >
+          <span>Runs on everything you already host</span>
+          <span aria-hidden="true" class="hidden text-grid sm:block"
+            >////////////////</span
+          >
+        </div>
+        <div class="pause-on-hover flex overflow-hidden">
+          <div
+            v-for="copy in 2"
+            :key="copy"
+            :aria-hidden="copy === 2"
+            class="animate-marquee flex min-w-full shrink-0 items-center"
+          >
+            <a
+              v-for="platform in PLATFORMS"
+              :key="platform.name"
+              :href="platform.href"
+              target="_blank"
+              rel="noopener noreferrer"
+              :tabindex="copy === 2 ? -1 : undefined"
+              class="flex h-24 w-52 shrink-0 items-center justify-center border-r border-grid px-8 opacity-50 grayscale transition-all duration-200 hover:opacity-100 hover:grayscale-0"
+            >
+              <img
+                :src="platform.src"
+                :alt="platform.name"
+                class="max-h-10 w-auto max-w-[8.5rem]"
+                loading="lazy"
+              />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================= STATS ============================= -->
+      <section class="border-b border-grid">
+        <div class="grid grid-cols-2 gap-px bg-grid lg:grid-cols-4">
+          <div class="bg-ink-950 p-8 text-center md:p-10">
+            <div class="font-pixel text-2xl font-bold text-cream md:text-4xl">
+              {{ githubStars.toLocaleString() }}
+            </div>
+            <div
+              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
+            >
+              GitHub stars
+            </div>
+          </div>
+          <div class="bg-ink-950 p-8 text-center md:p-10">
+            <div class="font-pixel text-2xl font-bold text-cream md:text-4xl">
+              {{ discordMembers.toLocaleString() }}
+            </div>
+            <div
+              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
+            >
+              Discord members
+            </div>
+          </div>
+          <div class="bg-ink-950 p-8 text-center md:p-10">
+            <div class="font-pixel text-2xl font-bold text-cream md:text-4xl">
+              1.7M+
+            </div>
+            <div
+              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
+            >
+              Docker pulls
+            </div>
+          </div>
+          <div class="bg-ink-950 p-8 text-center md:p-10">
+            <div class="font-pixel text-2xl font-bold text-cream md:text-4xl">
+              400+
+            </div>
+            <div
+              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
+            >
+              Platforms supported
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================ FEATURES ============================ -->
+      <section
+        id="features"
+        class="border-b border-grid px-6 py-20 sm:px-10 lg:px-16"
+      >
+        <SectionHeading
+          index="01"
+          label="Features"
+          title="Every pixel tells a story"
+          subtitle="The most powerful all-in-one app for managing your game collection."
+        />
+
+        <div
+          class="mt-12 grid gap-px border border-grid bg-grid sm:grid-cols-2 lg:grid-cols-3"
+        >
+          <div class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900">
+            <div class="flex items-center justify-between">
               <FontAwesomeIcon
                 :icon="faWandSparkles"
-                class="text-3xl md:text-4xl w-8 md:w-10 text-primary"
+                class="h-6 text-primary-400"
               />
-            </span>
-          </div>
-          <div class="md:px-2 xl:px-6">
-            <div class="text-900 text-xl mb-1 md:mb-2 font-medium">
-              Magical metadata
+              <span
+                class="font-mono text-xs text-grid transition-colors group-hover:text-primary-400"
+                >[01]</span
+              >
             </div>
-            <div class="text-700 line-height-3">
+            <h3 class="mt-6 text-lg font-semibold text-cream">
+              Magical metadata
+            </h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">
               Enrich your collection with cover art and detailed metadata from
               <a
                 href="https://www.igdb.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="underline hover:text-primary"
-              >
-                IGDB</a
+                class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
+                >IGDB</a
               >,
               <a
                 href="https://www.screenscraper.fr"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="underline hover:text-primary"
-              >
-                Screenscraper</a
+                class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
+                >Screenscraper</a
               >,
               <a
                 href="https://retroachievements.org/"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="underline hover:text-primary"
-              >
-                RetroAchievements</a
+                class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
+                >RetroAchievements</a
               >, and more.
-            </div>
+            </p>
           </div>
-        </div>
 
-        <div class="mb-4 sm:mb-6 md:mb-8 md:px-6 flex flex-row gap-4">
-          <div>
-            <span
-              class="mt-1 p-3 shadow-2 inline-block rounded-md bg-light-surface dark:bg-dark-surface"
-            >
-              <FontAwesomeIcon
-                :icon="faRotate"
-                class="text-3xl md:text-4xl w-8 md:w-10 text-primary"
-              />
-            </span>
-          </div>
-          <div class="md:px-2 xl:px-6">
-            <div
-              class="text-900 text-xl mb-1 md:mb-2 font-medium flex flex-row items-center"
-            >
-              <span>Device sync</span>
+          <div class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900">
+            <div class="flex items-center justify-between">
+              <FontAwesomeIcon :icon="faRotate" class="h-6 text-primary-400" />
+              <span
+                class="font-mono text-xs text-grid transition-colors group-hover:text-primary-400"
+                >[02]</span
+              >
             </div>
-            <div class="text-700 line-height-3">
+            <h3 class="mt-6 text-lg font-semibold text-cream">Device sync</h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">
               Sync your games, saves and emulator settings across your devices
               with ease.
+            </p>
+          </div>
+
+          <div class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900">
+            <div class="flex items-center justify-between">
+              <FontAwesomeIcon :icon="faGamepad" class="h-6 text-primary-400" />
+              <span
+                class="font-mono text-xs text-grid transition-colors group-hover:text-primary-400"
+                >[03]</span
+              >
             </div>
-          </div>
-        </div>
-        <div class="mb-4 sm:mb-6 md:mb-8 md:px-6 flex flex-row gap-4">
-          <div>
-            <span
-              class="mt-1 p-3 shadow-2 inline-block rounded-md bg-light-surface dark:bg-dark-surface"
-            >
-              <FontAwesomeIcon
-                :icon="faGamepad"
-                class="text-3xl md:text-4xl w-8 md:w-10 text-primary"
-              />
-            </span>
-          </div>
-          <div class="md:px-2 xl:px-6">
-            <div class="text-900 text-xl mb-1 md:mb-2 font-medium">
+            <h3 class="mt-6 text-lg font-semibold text-cream">
               Seamless gameplay
-            </div>
-            <div class="text-700 line-height-3">
+            </h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">
               With
               <a
                 href="https://emulatorjs.org/"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="underline hover:text-primary"
-              >
-                EmulatorJS</a
+                class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
+                >EmulatorJS</a
               >
               built-in, play your favorite games in your browser, no setup
               required.
-            </div>
+            </p>
           </div>
-        </div>
-        <div class="mb-4 sm:mb-6 md:mb-8 md:px-6 flex flex-row gap-4">
-          <div>
-            <span
-              class="mt-1 p-3 shadow-2 inline-block rounded-md bg-light-surface dark:bg-dark-surface"
-            >
+
+          <div class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900">
+            <div class="flex items-center justify-between">
               <FontAwesomeIcon
                 :icon="faListCheck"
-                class="text-3xl md:text-4xl w-8 md:w-10 text-primary"
+                class="h-6 text-primary-400"
               />
-            </span>
-          </div>
-          <div class="md:px-2 xl:px-6">
-            <div class="text-900 text-xl mb-1 md:mb-2 font-medium">
-              Broad platform support
+              <span
+                class="font-mono text-xs text-grid transition-colors group-hover:text-primary-400"
+                >[04]</span
+              >
             </div>
-            <div class="text-700 line-height-3">
+            <h3 class="mt-6 text-lg font-semibold text-cream">
+              Broad platform support
+            </h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">
               Retro or modern, RomM has you covered with support for
               <a
                 href="https://docs.romm.app/latest/Platforms-and-Players/Supported-Platforms"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="underline hover:text-primary"
-              >
-                400+</a
+                class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
+                >400+</a
               >
               systems and platforms.
-            </div>
+            </p>
           </div>
-        </div>
-        <div class="mb-4 sm:mb-6 md:mb-8 md:px-6 flex flex-row gap-4">
-          <div>
-            <span
-              class="mt-1 p-3 shadow-2 inline-block rounded-md bg-light-surface dark:bg-dark-surface"
-            >
-              <FontAwesomeIcon
-                :icon="faGithub"
-                class="text-3xl md:text-4xl w-8 md:w-10 text-primary"
-              />
-            </span>
-          </div>
-          <div class="md:px-2 xl:px-6">
-            <div class="text-900 text-xl mb-1 md:mb-2 font-medium">
-              Open source
+
+          <div class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900">
+            <div class="flex items-center justify-between">
+              <FontAwesomeIcon :icon="faCode" class="h-6 text-primary-400" />
+              <span
+                class="font-mono text-xs text-grid transition-colors group-hover:text-primary-400"
+                >[05]</span
+              >
             </div>
-            <div class="text-700 line-height-3">
-              Built by the community, for the community.<br />
-              Fully transparent and licensed under AGPL-3.0.
-            </div>
+            <h3 class="mt-6 text-lg font-semibold text-cream">Open source</h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">
+              Built by the community, for the community. Fully transparent and
+              licensed under AGPL-3.0.
+            </p>
           </div>
-        </div>
-        <div class="mb-4 sm:mb-6 md:mb-8 md:px-6 flex gap-4">
-          <div>
-            <span
-              class="mt-1 p-3 shadow-2 inline-block rounded-md bg-light-surface dark:bg-dark-surface"
-            >
+
+          <div class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900">
+            <div class="flex items-center justify-between">
               <FontAwesomeIcon
                 :icon="faShieldHeart"
-                class="text-3xl md:text-4xl w-8 md:w-10 text-primary"
+                class="h-6 text-primary-400"
               />
-            </span>
-          </div>
-          <div class="md:px-2 xl:px-6">
-            <div class="text-900 text-xl mb-1 md:mb-2 font-medium">
+              <span
+                class="font-mono text-xs text-grid transition-colors group-hover:text-primary-400"
+                >[06]</span
+              >
+            </div>
+            <h3 class="mt-6 text-lg font-semibold text-cream">
               Private and secure
-            </div>
-            <div class="text-700 line-height-3">
-              Maintain total control of your data.<br />
-              Built with security in mind and regularly updated.
-            </div>
+            </h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">
+              Maintain total control of your data. Built with security in mind
+              and regularly updated.
+            </p>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
 
-    <section id="platforms-section" class="mt-8 mb-12">
-      <div class="text-700 text-2xl text-center">
-        Available on <span class="text-primary">every major platform</span> and
-        operating system
-      </div>
-
-      <div class="relative w-full m-auto md:w-11/12">
-        <div
-          class="fade-left h-[12rem] w-[12rem] block absolute top-0 left-0 z-20"
+      <!-- ============================== APPS ============================== -->
+      <section
+        id="apps"
+        class="border-b border-grid px-6 py-20 sm:px-10 lg:px-16"
+      >
+        <SectionHeading
+          index="02"
+          label="Play anywhere"
+          title="Your library, on every screen"
+          subtitle="Native apps and integrations that bring your collection to desktops, handhelds, and everything in between."
         />
-        <div
-          class="marquee-wrapper overflow-hidden flex items-center justify-center flex-shrink-0 gap-20"
-        >
-          <template v-for="(_, i) in Array.from({ length: 3 })" :key="i">
-            <div
-              class="marquee flex items-center flex-shrink-0 gap-20 justify-around min-w-[100%]"
-            >
-              <a
-                href="https://community.bigbeartechworld.com/t/added-romm-to-bigbearcasaos/206"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="w-full flex items-center justify-center aspect-square h-[12rem]"
-              >
-                <Image class="w-[100%]" :src="casaos" alt="CasaOS" />
-              </a>
-              <a
-                href="https://www.cloudron.io/store/app.romm.cloudronapp.html"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="w-full flex items-center justify-center aspect-square h-[12rem]"
-              >
-                <Image class="w-[100%]" :src="cloudron" alt="Cloudron" />
-              </a>
-              <a
-                href="https://hub.docker.com/r/rommapp/romm"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="w-full flex items-center justify-center aspect-square h-[12rem]"
-              >
-                <Image class="w-[100%]" :src="docker" alt="Docker" />
-              </a>
-              <a
-                href="https://hexos.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="w-full flex items-center justify-center aspect-square h-[12rem]"
-              >
-                <Image class="w-[100%]" :src="hexos" alt="HexOS" />
-              </a>
-              <a
-                href="https://www.portainer.io/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="w-full flex items-center justify-center aspect-square h-[12rem]"
-              >
-                <Image class="w-[100%]" :src="portainer" alt="Portainer" />
-              </a>
-              <a
-                href="https://www.synology.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="w-full flex items-center justify-center aspect-square h-[12rem]"
-              >
-                <Image class="w-[100%]" :src="synology" alt="Synology" />
-              </a>
-              <a
-                href="https://www.truenas.com/apps/#:~:text=romm"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="w-full flex items-center justify-center aspect-square h-[12rem]"
-              >
-                <Image class="w-[100%]" :src="truenas" alt="TrueNAS" />
-              </a>
-              <a
-                href="https://apps.umbrel.com/app/romm"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="w-full flex items-center justify-center aspect-square h-[12rem]"
-              >
-                <Image class="w-[100%]" :src="umbrel" alt="Umbrel" />
-              </a>
-              <a
-                href="https://unraid.net/community/apps?q=romm#r"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="w-full flex items-center justify-center aspect-square h-[12rem]"
-              >
-                <Image class="w-[100%]" :src="unraid" alt="Unraid" />
-              </a>
-            </div>
-          </template>
-        </div>
-        <div
-          class="fade-right h-[12rem] w-[12rem] block absolute top-0 right-0 z-20"
-        />
-      </div>
-    </section>
 
-    <section id="apps-section" class="mb-20">
-      <div class="text-700 text-2xl text-center mb-16">
-        Native apps and integrations to
-        <span class="text-primary">play your games anywhere</span>
-      </div>
-
-      <div class="flex flex-col gap-12 lg:gap-24">
-        <!-- Playnite -->
-        <div
-          class="flex flex-col lg:flex-row gap-8 lg:gap-16 xl:gap-20 m-auto w-10/12"
-        >
-          <div
-            class="mx-auto w-[32rem] min-w-[32rem] max-w-[32rem] py-8 pr-12 shadow-2 rounded-lg bg-light-surface dark:bg-dark-surface"
-          >
-            <Galleria
-              :value="PLAYNITE_IMAGES"
-              :numVisible="5"
-              circular
-              autoPlay
-              class="max-w-2xl mx-auto"
-              :showThumbnails="false"
-              showIndicators
-              changeItemOnIndicatorHover
-              indicatorsPosition="left"
-            >
-              <template #item="slotProps">
-                <Image
-                  :src="slotProps.item.src"
-                  :alt="slotProps.item.alt"
-                  class="w-full block shadow-lg cursor-pointer"
-                  image-class="rounded-lg h-[250px]"
-                  @click="openDialog(slotProps.item)"
-                />
-              </template>
-            </Galleria>
-          </div>
-
-          <div class="flex flex-col flex-grow md:flex-row items-start gap-6">
-            <div class="flex flex-col flex-grow justify-between h-[100%] py-6">
-              <div>
-                <div class="flex flex-row justify-between pr-4 pb-3">
-                  <div>
-                    <div class="flex items-center text-primary mb-6">
-                      <FontAwesomeIcon :icon="faWindows" />
-                      <span class="uppercase ml-2">windows</span>
-                    </div>
-                    <div class="text-2xl font-bold">Playnite Plugin</div>
+        <div class="mt-16 flex flex-col gap-20">
+          <!-- Playnite -->
+          <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+            <CropFrame>
+              <AppGallery
+                :images="PLAYNITE_IMAGES"
+                label="~/integrations/playnite"
+                @select="selectedImage = $event"
+              />
+            </CropFrame>
+            <div>
+              <div class="flex items-start justify-between gap-6">
+                <div>
+                  <div
+                    class="inline-flex items-center gap-2 border border-grid px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-primary-300"
+                  >
+                    <FontAwesomeIcon :icon="faWindows" class="h-3" />
+                    Windows
                   </div>
-                  <Image
-                    :src="playnite"
-                    alt="Playnite"
-                    image-class="w-20 h-20"
-                  />
-                </div>
-                <div
-                  class="leading-relaxed md:max-w-screen-md lg:max-w-screen-lg"
-                >
-                  Effortlessly integrate your retro game collection into
-                  Playnite with our plugin.
-                  <a
-                    href="https://playnite.link/"
-                    target="_blank"
-                    rel="noopener"
-                    class="underline text-primary-600 hover:text-primary-700 active:text-primary-800 visited:text-primary-700"
+                  <h3
+                    class="mt-5 font-pixel text-xl font-bold uppercase text-cream md:text-2xl"
                   >
-                    Playnite</a
-                  >
-                  is an open-source game library manager that provide a unified
-                  interface for all of your games on PC.
+                    Playnite Plugin
+                  </h3>
                 </div>
+                <img :src="playnite" alt="Playnite logo" class="h-16 w-16" />
               </div>
+              <p class="mt-4 leading-relaxed text-muted">
+                Effortlessly integrate your retro game collection into Playnite
+                with our plugin.
+                <a
+                  href="https://playnite.link/"
+                  target="_blank"
+                  rel="noopener"
+                  class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
+                  >Playnite</a
+                >
+                is an open-source game library manager that provides a unified
+                interface for all of your games on PC.
+              </p>
               <a
                 href="https://github.com/rommapp/playnite-plugin?tab=readme-ov-file#installation"
                 target="_blank"
                 rel="noopener"
-                class="flex flex-row items-end justify-between mt-4"
+                class="mt-8 inline-block"
               >
-                <PButton raised outlined size="large"> Install </PButton>
+                <span class="btn-ghost">Install ↗</span>
               </a>
             </div>
           </div>
-        </div>
 
-        <!-- Argosy -->
-        <div
-          class="flex flex-col lg:flex-row gap-8 lg:gap-16 xl:gap-20 m-auto w-10/12"
-        >
-          <div
-            class="mx-auto w-[32rem] min-w-[32rem] max-w-[32rem] py-8 pr-12 shadow-2 rounded-lg bg-light-surface dark:bg-dark-surface"
-          >
-            <Galleria
-              :value="ARGOSY_IMAGES"
-              :numVisible="5"
-              circular
-              autoPlay
-              class="max-w-2xl mx-auto"
-              :showThumbnails="false"
-              showIndicators
-              changeItemOnIndicatorHover
-              indicatorsPosition="left"
-            >
-              <template #item="slotProps">
-                <Image
-                  :src="slotProps.item.src"
-                  :alt="slotProps.item.alt"
-                  class="w-full block shadow-lg cursor-pointer"
-                  image-class="rounded-lg h-[250px]"
-                  @click="openDialog(slotProps.item)"
-                />
-              </template>
-            </Galleria>
-          </div>
-
-          <div class="flex flex-col flex-grow md:flex-row items-start gap-6">
-            <div class="flex flex-col flex-grow justify-between h-[100%] py-6">
-              <div>
-                <div class="flex flex-row justify-between pr-4 pb-3">
-                  <div>
-                    <div class="flex items-center text-primary mb-6">
-                      <FontAwesomeIcon :icon="faAndroid" />
-                      <span class="uppercase ml-2">android</span>
-                    </div>
-                    <div class="text-2xl font-bold">Argosy Launcher</div>
+          <!-- Argosy -->
+          <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+            <CropFrame class="lg:order-2">
+              <AppGallery
+                :images="ARGOSY_IMAGES"
+                label="~/apps/argosy"
+                @select="selectedImage = $event"
+              />
+            </CropFrame>
+            <div class="lg:order-1">
+              <div class="flex items-start justify-between gap-6">
+                <div>
+                  <div
+                    class="inline-flex items-center gap-2 border border-grid px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-primary-300"
+                  >
+                    <FontAwesomeIcon :icon="faAndroid" class="h-3" />
+                    Android
                   </div>
-                  <Image :src="argosy" alt="Argosy" image-class="w-20 h-20" />
+                  <h3
+                    class="mt-5 font-pixel text-xl font-bold uppercase text-cream md:text-2xl"
+                  >
+                    Argosy Launcher
+                  </h3>
                 </div>
-                <div
-                  class="leading-relaxed md:max-w-screen-md lg:max-w-screen-lg"
-                >
-                  Sync your library, download games on demand, track your
-                  achievements, and play across devices with automatic save
-                  sync, all from a gamepad-first interface designed for
-                  Anbernic, Retroid Pocket, Odin, and similar devices.
-                </div>
+                <img :src="argosy" alt="Argosy logo" class="h-16 w-16" />
               </div>
+              <p class="mt-4 leading-relaxed text-muted">
+                Sync your library, download games on demand, track your
+                achievements, and play across devices with automatic save sync,
+                all from a gamepad-first interface designed for Anbernic,
+                Retroid Pocket, Odin, and similar devices.
+              </p>
               <a
                 href="https://github.com/rommapp/argosy-launcher/releases/latest/"
                 target="_blank"
                 rel="noopener"
-                class="flex flex-row items-end justify-between mt-4"
+                class="mt-8 inline-block"
               >
-                <PButton raised outlined size="large"> Download </PButton>
+                <span class="btn-ghost">Download ↗</span>
               </a>
             </div>
           </div>
-        </div>
 
-        <!-- Grout -->
-        <div
-          class="flex flex-col lg:flex-row gap-8 lg:gap-16 xl:gap-20 m-auto w-10/12"
-        >
-          <div
-            class="mx-auto w-[32rem] min-w-[32rem] max-w-[32rem] py-8 pr-12 shadow-2 rounded-lg bg-light-surface dark:bg-dark-surface"
-          >
-            <Galleria
-              :value="GROUT_IMAGES"
-              :numVisible="5"
-              circular
-              autoPlay
-              class="max-w-2xl mx-auto"
-              :showThumbnails="false"
-              showIndicators
-              changeItemOnIndicatorHover
-              indicatorsPosition="left"
-            >
-              <template #item="slotProps">
-                <Image
-                  :src="slotProps.item.src"
-                  :alt="slotProps.item.alt"
-                  class="w-full block shadow-lg cursor-pointer"
-                  image-class="rounded-lg h-[250px]"
-                  @click="openDialog(slotProps.item)"
-                />
-              </template>
-            </Galleria>
-          </div>
-
-          <div class="flex flex-col flex-grow md:flex-row items-start gap-6">
-            <div class="flex flex-col flex-grow justify-between h-[100%] py-6">
-              <div>
-                <div class="flex flex-row justify-between pr-4 pb-3">
-                  <div>
-                    <div class="flex items-center text-primary mb-6">
-                      <FontAwesomeIcon :icon="faGamepad" />
-                      <span class="uppercase ml-2">handhelds</span>
-                    </div>
-                    <div class="text-2xl font-bold">Grout</div>
+          <!-- Grout -->
+          <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+            <CropFrame>
+              <AppGallery
+                :images="GROUT_IMAGES"
+                label="~/apps/grout"
+                @select="selectedImage = $event"
+              />
+            </CropFrame>
+            <div>
+              <div class="flex items-start justify-between gap-6">
+                <div>
+                  <div
+                    class="inline-flex items-center gap-2 border border-grid px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-primary-300"
+                  >
+                    <FontAwesomeIcon :icon="faGamepad" class="h-3" />
+                    Handhelds
                   </div>
-                  <Image :src="grout" alt="Grout" image-class="w-20 h-20" />
+                  <h3
+                    class="mt-5 font-pixel text-xl font-bold uppercase text-cream md:text-2xl"
+                  >
+                    Grout
+                  </h3>
                 </div>
-                <div
-                  class="leading-relaxed md:max-w-screen-md lg:max-w-screen-lg"
-                >
-                  A lightweight client for your favorite handheld CFWs,
-                  available on
-                  <a
-                    href="https://muos.dev"
-                    target="_blank"
-                    rel="noopener"
-                    class="underline text-primary-600 hover:text-primary-700 active:text-primary-800 visited:text-primary-700"
-                  >
-                    muOS</a
-                  >,
-                  <a
-                    href="https://knulli.org"
-                    target="_blank"
-                    rel="noopener"
-                    class="underline text-primary-600 hover:text-primary-700 active:text-primary-800 visited:text-primary-700"
-                  >
-                    Knulli</a
-                  >,
-                  <a
-                    href="https://rocknix.org"
-                    target="_blank"
-                    rel="noopener"
-                    class="underline text-primary-600 hover:text-primary-700 active:text-primary-800 visited:text-primary-700"
-                  >
-                    ROCKNIX</a
-                  >,
-                  <a
-                    href="https://spruceui.github.io/"
-                    target="_blank"
-                    rel="noopener"
-                    class="underline text-primary-600 hover:text-primary-700 active:text-primary-800 visited:text-primary-700"
-                  >
-                    Spruce (v4) </a
-                  >,
-                  <a
-                    href="https://nextui.loveretro.games"
-                    target="_blank"
-                    rel="noopener"
-                    class="underline text-primary-600 hover:text-primary-700 active:text-primary-800 visited:text-primary-700"
-                  >
-                    NextUI
-                  </a>
-                  and
-                  <a
-                    href="https://trimui.com"
-                    target="_blank"
-                    rel="noopener"
-                    class="underline text-primary-600 hover:text-primary-700 active:text-primary-800 visited:text-primary-700"
-                  >
-                    TrimUI </a
-                  >. Download games, box art and BIOS files wirelessly, and sync
-                  your saves automatically as you play.
-                </div>
+                <img :src="grout" alt="Grout logo" class="h-16 w-16" />
               </div>
+              <p class="mt-4 leading-relaxed text-muted">
+                A lightweight client for your favorite handheld CFWs, available
+                on
+                <a
+                  href="https://muos.dev"
+                  target="_blank"
+                  rel="noopener"
+                  class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
+                  >muOS</a
+                >,
+                <a
+                  href="https://knulli.org"
+                  target="_blank"
+                  rel="noopener"
+                  class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
+                  >Knulli</a
+                >,
+                <a
+                  href="https://rocknix.org"
+                  target="_blank"
+                  rel="noopener"
+                  class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
+                  >ROCKNIX</a
+                >,
+                <a
+                  href="https://spruceui.github.io/"
+                  target="_blank"
+                  rel="noopener"
+                  class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
+                  >Spruce (v4)</a
+                >,
+                <a
+                  href="https://nextui.loveretro.games"
+                  target="_blank"
+                  rel="noopener"
+                  class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
+                  >NextUI</a
+                >
+                and
+                <a
+                  href="https://trimui.com"
+                  target="_blank"
+                  rel="noopener"
+                  class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
+                  >TrimUI</a
+                >. Download games, box art and BIOS files wirelessly, and sync
+                your saves automatically as you play.
+              </p>
               <a
                 href="https://grout.romm.app/getting-started/"
                 target="_blank"
                 rel="noopener"
-                class="flex flex-row items-end justify-between mt-4"
+                class="mt-8 inline-block"
               >
-                <PButton raised outlined size="large"> Quick Start </PButton>
+                <span class="btn-ghost">Quick start ↗</span>
               </a>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <Dialog
-        v-model:visible="dialogVisible"
-        modal
-        :header="selectedImage?.alt"
-        class="max-w-4xl"
-      >
-        <img :src="selectedImage?.src" class="w-full rounded-lg" />
-      </Dialog>
-    </section>
-
-    <section
-      id="discord-section"
-      class="surface-section px-6 py-8 md:py-12 md:px-6 lg:px-8 rounded-lg bg-light-surface dark:bg-dark-surface"
-    >
-      <div class="text-700 md:text-center">
-        <div class="text-primary-600 font-bold mb-3">
-          <i class="pi pi-discord"></i>&nbsp;POWERED BY FRIENDSHIP
-        </div>
-        <div class="text-900 font-bold text-5xl mb-3">Join Our Community</div>
-        <div class="text-700 text-2xl mb-6">
-          Get help with your setup, share your ideas, and meet other fans of
-          RomM
-        </div>
-        <a href="https://discord.gg/RGPJHNMMwJ" target="_blank" rel="noopener">
-          <PButton
-            raised
-            rounded
-            class="font-semibold px-5 py-3 white-space-nowrap"
+      <!-- =========================== COMMUNITY =========================== -->
+      <section class="relative overflow-hidden border-b border-grid">
+        <GlyphField />
+        <div
+          aria-hidden="true"
+          class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(139,116,232,0.16),transparent_65%)]"
+        />
+        <div class="relative z-10 px-6 py-24 text-center sm:px-10 lg:px-16">
+          <div
+            class="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.3em] text-primary-400"
           >
-            <FontAwesomeIcon :icon="faDiscord" class="mr-2" />
-            Join us
-          </PButton>
-        </a>
-      </div>
-    </section>
+            <span>03</span>
+            <span class="text-muted">//</span>
+            <span>Powered by friendship</span>
+          </div>
+          <h2
+            class="mt-6 font-pixel text-2xl font-bold uppercase text-cream sm:text-3xl md:text-4xl"
+          >
+            Join the party
+          </h2>
+          <p class="mx-auto mt-4 max-w-xl leading-relaxed text-muted">
+            Get help with your setup, share your ideas, and meet other fans of
+            RomM.
+          </p>
+          <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="https://discord.gg/RGPJHNMMwJ"
+              target="_blank"
+              rel="noopener"
+            >
+              <span class="btn-pixel">
+                <FontAwesomeIcon :icon="faDiscord" class="h-4" />
+                Join the Discord
+              </span>
+            </a>
+            <a
+              href="https://github.com/rommapp/romm"
+              target="_blank"
+              rel="noopener"
+            >
+              <span class="btn-ghost">
+                <FontAwesomeIcon :icon="faGithub" class="h-4" />
+                Contribute
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
 
-    <section
-      class="surface-section px-6 py-8 my-6 md:px-4 lg:px-8 flex flex-col md:items-center"
-    >
-      <div class="text-4xl text-700 font-bold mb-1">
-        People
-        <FontAwesomeIcon :icon="faHeart" class="text-3xl text-primary" /> RomM
-      </div>
+      <!-- ============================= FOOTER ============================= -->
+      <footer>
+        <div class="grid gap-px bg-grid sm:grid-cols-3">
+          <div class="bg-ink-950 p-8">
+            <h4
+              class="font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
+            >
+              Project
+            </h4>
+            <ul class="mt-4 space-y-2 text-sm">
+              <li>
+                <a
+                  href="https://docs.romm.app"
+                  target="_blank"
+                  rel="noopener"
+                  class="transition-colors hover:text-primary-300"
+                  >Documentation</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://demo.romm.app"
+                  target="_blank"
+                  rel="noopener"
+                  class="transition-colors hover:text-primary-300"
+                  >Live demo</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/rommapp/romm"
+                  target="_blank"
+                  rel="noopener"
+                  class="transition-colors hover:text-primary-300"
+                  >GitHub</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/rommapp/romm/releases/latest"
+                  target="_blank"
+                  rel="noopener"
+                  class="transition-colors hover:text-primary-300"
+                  >Latest release</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="bg-ink-950 p-8">
+            <h4
+              class="font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
+            >
+              Apps
+            </h4>
+            <ul class="mt-4 space-y-2 text-sm">
+              <li>
+                <a
+                  href="https://github.com/rommapp/playnite-plugin"
+                  target="_blank"
+                  rel="noopener"
+                  class="transition-colors hover:text-primary-300"
+                  >Playnite plugin</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/rommapp/argosy-launcher"
+                  target="_blank"
+                  rel="noopener"
+                  class="transition-colors hover:text-primary-300"
+                  >Argosy launcher</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://grout.romm.app"
+                  target="_blank"
+                  rel="noopener"
+                  class="transition-colors hover:text-primary-300"
+                  >Grout</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://docs.romm.app/latest/Platforms-and-Players/Supported-Platforms"
+                  target="_blank"
+                  rel="noopener"
+                  class="transition-colors hover:text-primary-300"
+                  >Supported platforms</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="bg-ink-950 p-8">
+            <h4
+              class="font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
+            >
+              Community
+            </h4>
+            <ul class="mt-4 space-y-2 text-sm">
+              <li>
+                <a
+                  href="https://discord.gg/RGPJHNMMwJ"
+                  target="_blank"
+                  rel="noopener"
+                  class="transition-colors hover:text-primary-300"
+                  >Discord</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://opencollective.com/romm"
+                  target="_blank"
+                  rel="noopener"
+                  class="transition-colors hover:text-primary-300"
+                  >Open Collective</a
+                >
+              </li>
+              <li>
+                <a
+                  href="mailto:contact@romm.app"
+                  class="transition-colors hover:text-primary-300"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
 
+        <div
+          class="flex flex-wrap items-center justify-between gap-4 border-t border-grid px-6 py-4 font-mono text-[10px] uppercase tracking-[0.2em] text-muted"
+        >
+          <span>Your collection, perfected.</span>
+          <span class="hidden md:block">© The RomM Project — AGPL-3.0</span>
+          <img
+            src="https://app.aikido.dev/assets/badges/label-only-dark-theme.svg"
+            alt="Aikido Security Audit Report"
+            class="h-6"
+          />
+        </div>
+
+        <div class="relative overflow-hidden border-t border-grid">
+          <div
+            aria-hidden="true"
+            class="overflow-hidden whitespace-nowrap px-2 pt-4 font-mono text-[10px] text-grid"
+          >
+            {{ SLASHES }}
+          </div>
+          <div
+            aria-hidden="true"
+            class="select-none bg-gradient-to-b from-primary-300 via-primary-600 to-ink-950 bg-clip-text px-4 pb-2 pt-4 text-center font-pixel text-[clamp(4rem,17vw,15rem)] font-bold leading-none text-transparent"
+          >
+            ROMM
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <!-- ============================ LIGHTBOX ============================ -->
+    <Teleport to="body">
       <div
-        class="surface-section flex flex-col sm:flex-row justify-around mt-4"
+        v-if="selectedImage"
+        class="fixed inset-0 z-[100] flex items-center justify-center bg-ink-950/90 p-4 backdrop-blur-sm sm:p-10"
+        @click="selectedImage = undefined"
       >
-        <div class="pt-4 md:px-4 xl:px-6">
-          <div class="flex items-center">
-            <FontAwesomeIcon :icon="faStar" class="text-2xl text-primary" />
-            <div class="font-bold ml-3 text-2xl">
-              {{ githubStars.toLocaleString() }}
+        <CropFrame class="w-full max-w-5xl" @click.stop>
+          <div class="border border-grid bg-ink-900">
+            <div
+              class="flex items-center justify-between border-b border-grid bg-ink-800 px-3 py-2"
+            >
+              <span
+                class="font-mono text-[10px] uppercase tracking-widest text-muted"
+              >
+                {{ selectedImage.alt }}
+              </span>
+              <button
+                type="button"
+                class="font-mono text-xs text-muted transition-colors hover:text-cream"
+                aria-label="Close"
+                @click="selectedImage = undefined"
+              >
+                [x]
+              </button>
             </div>
-          </div>
-          <div class="ml-10">GitHub stars</div>
-        </div>
-        <div class="pt-4 md:px-4 xl:px-6">
-          <div class="flex items-center">
-            <FontAwesomeIcon :icon="faUsers" class="text-2xl text-primary" />
-            <div class="font-bold ml-3 text-2xl">
-              {{ discordMembers.toLocaleString() }}
-            </div>
-          </div>
-          <div class="ml-10">Discord members</div>
-        </div>
-        <div class="pt-4 md:px-4 xl:px-6">
-          <div class="flex items-center">
-            <FontAwesomeIcon
-              :icon="faArrowDown"
-              class="text-2xl text-primary"
+            <img
+              :src="selectedImage.src"
+              :alt="selectedImage.alt"
+              class="block max-h-[80vh] w-full object-contain"
             />
-            <div class="font-bold ml-3 text-2xl">1.7M+</div>
           </div>
-          <div class="ml-8">Docker pulls</div>
-        </div>
+        </CropFrame>
       </div>
-    </section>
+    </Teleport>
   </div>
-
-  <divider
-    class="before:border-t-light-toplayer dark:before:border-t-dark-toplayer m-auto"
-  />
-
-  <footer
-    class="surface-section py-4 px-4 md:px-8 flex items-center justify-between sm:grid grid-cols-3 m-auto"
-  >
-    <div class="flex items-center">
-      <Image
-        :src="`images/blocks/logos/romm-light.svg`"
-        alt="romm logo"
-        class="w-6 h-6 footer-logo"
-        loading="lazy"
-      />
-      <div class="text-700 text-lg md:text-xl ml-2">
-        romm<span class="text-primary">.</span>app
-      </div>
-    </div>
-    <div class="text-700 text-md text-center hidden sm:block">
-      Your collection, perfected.
-    </div>
-    <span class="flex items-center justify-end">
-      <img
-        src="https://app.aikido.dev/assets/badges/label-only-dark-theme.svg"
-        alt="Aikido Security Audit Report"
-        id="aikido-img"
-      />
-    </span>
-  </footer>
 </template>
-
-<style>
-body,
-.p-menubar.p-menubar-mobile,
-.p-menubar.p-menubar-mobile .p-menubar-root-list {
-  background-color: theme("colors.light.background");
-
-  @media (prefers-color-scheme: dark) {
-    background-color: theme("colors.dark.background");
-  }
-}
-
-.p-menubar:not(.p-menubar-mobile) .p-menubar-root-list > .p-menuitem {
-  margin: 0 !important;
-}
-
-.p-button {
-  background-color: theme("colors.primary.600");
-  border-color: theme("colors.primary.600");
-  color: theme("colors.white");
-
-  &:hover {
-    background-color: theme("colors.primary.500");
-    border-color: theme("colors.primary.500");
-  }
-
-  &:focus {
-    background-color: theme("colors.primary.400");
-    border-color: theme("colors.primary.400");
-  }
-}
-
-.p-button-outlined {
-  background-color: transparent;
-  color: theme("colors.primary.600");
-
-  &:hover {
-    background-color: transparent;
-    color: theme("colors.primary.500");
-  }
-
-  &:focus {
-    background-color: transparent;
-    color: theme("colors.primary.400");
-  }
-}
-</style>
-
-<style scoped>
-.hero {
-  object-position: top right;
-
-  @media screen and (min-width: 768px) {
-    clip-path: polygon(10% 0, 100% 0%, 100% 100%, 2% 100%);
-  }
-
-  @media screen and (max-width: 767px) {
-    display: none;
-  }
-}
-
-#discord-section {
-  background: linear-gradient(
-    90deg,
-    theme("colors.light.background") 0%,
-    theme("colors.light.surface") 50%,
-    theme("colors.light.background") 100%
-  );
-  @media (prefers-color-scheme: dark) {
-    background: linear-gradient(
-      90deg,
-      theme("colors.dark.background") 0%,
-      theme("colors.dark.surface") 50%,
-      theme("colors.dark.background") 100%
-    );
-  }
-}
-
-.fade-left {
-  background: linear-gradient(
-    to right,
-    theme("colors.light.background"),
-    transparent
-  );
-
-  @media (prefers-color-scheme: dark) {
-    background: linear-gradient(
-      to right,
-      theme("colors.dark.background"),
-      transparent
-    );
-  }
-}
-
-.fade-right {
-  background: linear-gradient(
-    to left,
-    theme("colors.light.background"),
-    transparent
-  );
-
-  @media (prefers-color-scheme: dark) {
-    background: linear-gradient(
-      to left,
-      theme("colors.dark.background"),
-      transparent
-    );
-  }
-}
-
-.marquee-wrapper:hover .marquee {
-  animation-play-state: paused;
-}
-
-.marquee {
-  animation: scroll 30s linear infinite;
-}
-
-@keyframes scroll {
-  0% {
-    transform: translate(0);
-  }
-  to {
-    transform: translate(calc(-100% - 6rem));
-  }
-}
-
-.footer-logo {
-  @media (prefers-color-scheme: light) {
-    filter: invert(1);
-  }
-}
-
-#aikido-img {
-  height: 24px;
-}
-</style>

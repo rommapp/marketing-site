@@ -1,5 +1,4 @@
 export default {
-  darkMode: "class", // This enables dark mode based on the presence of the "dark" class in the HTML tag
   theme: {
     extend: {
       colors: {
@@ -17,16 +16,21 @@ export default {
           900: "#2D1D84",
           950: "#1A1066",
         },
-        dark: {
-          background: "#0D1117",
-          surface: "#161B22",
-          toplayer: "#1C2330",
+        ink: {
+          950: "#07080D",
+          900: "#0B0D14",
+          850: "#0F121B",
+          800: "#141826",
+          700: "#1D2334",
         },
-        light: {
-          background: "#F2F4F8",
-          surface: "#FFFFFF",
-          toplayer: "#E4E9F0",
-        },
+        grid: "#1E2434",
+        cream: "#EDE6D6",
+        muted: "#8D95AB",
+      },
+      fontFamily: {
+        pixel: ["Silkscreen", "monospace"],
+        mono: ['"Space Mono"', "ui-monospace", "SFMono-Regular", "monospace"],
+        sans: ['"Inter var"', "Inter", "system-ui", "sans-serif"],
       },
     },
   },
