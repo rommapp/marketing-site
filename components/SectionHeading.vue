@@ -1,6 +1,5 @@
 <script setup lang="ts">
 defineProps<{
-  index: string;
   label: string;
   title: string;
   subtitle?: string;
@@ -12,8 +11,6 @@ defineProps<{
     <div
       class="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.3em] text-primary-400"
     >
-      <span>{{ index }}</span>
-      <span class="text-muted">//</span>
       <span>{{ label }}</span>
       <span aria-hidden="true" class="h-px flex-1 bg-grid" />
       <span aria-hidden="true" class="hidden text-grid sm:block">////////</span>

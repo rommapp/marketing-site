@@ -203,9 +203,24 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
   <div>
     <AppHeader :githubStars="githubStars" />
 
-    <main class="mx-auto max-w-[88rem]">
+    <main class="mx-auto max-w-[88rem] border-x border-grid">
       <!-- ============================== HERO ============================== -->
       <section class="relative overflow-hidden border-b border-grid">
+        <img
+          aria-hidden="true"
+          alt=""
+          src="/images/blocks/v5/collection.png"
+          srcset="
+            /images/blocks/v5/collection.png    1x,
+            /images/blocks/v5/collection@2x.png 2x
+          "
+          class="absolute inset-0 h-full w-full object-cover object-center opacity-50"
+          fetchpriority="high"
+        />
+        <div
+          aria-hidden="true"
+          class="absolute inset-0 bg-gradient-to-b from-ink-950/80 via-ink-950/70 to-ink-950"
+        />
         <div aria-hidden="true" class="dot-grid absolute inset-0" />
         <GlyphField />
         <div
@@ -214,9 +229,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
         />
         <div aria-hidden="true" class="scanlines absolute inset-0" />
 
-        <div
-          class="relative z-10 px-6 pb-16 pt-16 text-center sm:px-10 lg:px-16"
-        >
+        <div class="relative z-10 px-6 py-24 text-center sm:px-10 lg:px-16">
           <div class="flex flex-wrap items-center justify-center gap-3">
             <div
               class="inline-flex items-center gap-3 border border-grid bg-ink-900/70 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.25em] text-primary-300"
@@ -231,7 +244,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               href="https://github.com/rommapp/romm/releases/tag/5.0.0"
               target="_blank"
               rel="noopener"
-              class="inline-flex items-center gap-2 border border-primary-700 bg-primary-950/40 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.25em] text-primary-300 transition-colors hover:border-primary-400 hover:text-primary-200"
+              class="inline-flex items-center gap-2 border border-primary-700 bg-primary-950/70 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.25em] text-primary-300 transition-colors hover:border-primary-400 hover:text-primary-200"
             >
               <span class="bg-primary-500 px-1.5 font-bold text-ink-950">
                 New
@@ -267,90 +280,6 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               <span class="btn-ghost">View demo ↗</span>
             </a>
           </div>
-
-          <CropFrame class="mx-auto mt-16 max-w-5xl">
-            <div
-              class="border border-grid bg-ink-900 shadow-2xl shadow-primary-950/50"
-            >
-              <div
-                class="flex items-center justify-between border-b border-grid bg-ink-800 px-3 py-2"
-              >
-                <div class="flex items-center gap-1.5" aria-hidden="true">
-                  <span class="h-2 w-2 bg-primary-500" />
-                  <span class="h-2 w-2 bg-primary-700" />
-                  <span class="h-2 w-2 bg-grid" />
-                </div>
-                <span
-                  class="font-mono text-[10px] uppercase tracking-widest text-muted"
-                >
-                  romm@server:~/library [v5.0]
-                </span>
-              </div>
-              <img
-                src="/images/blocks/v5/homepage.jpg"
-                srcset="
-                  /images/blocks/v5/homepage.jpg    1x,
-                  /images/blocks/v5/homepage@2x.jpg 2x
-                "
-                alt="RomM 5.0 home view showing a game library"
-                class="block w-full"
-                fetchpriority="high"
-              />
-            </div>
-          </CropFrame>
-        </div>
-      </section>
-
-      <!-- =========================== WHAT'S NEW =========================== -->
-      <section
-        id="whats-new"
-        class="border-b border-grid px-6 py-20 sm:px-10 lg:px-16"
-      >
-        <SectionHeading
-          index="01"
-          label="What's new"
-          title="5.0 just dropped"
-          subtitle="A ground-up UI overhaul and a stack of new toys, fresh from the July 2026 release."
-        />
-
-        <div class="mt-12 max-w-3xl">
-          <div class="border border-grid bg-ink-900">
-            <div
-              class="flex items-center justify-between border-b border-grid bg-ink-800 px-3 py-2"
-            >
-              <div class="flex items-center gap-1.5" aria-hidden="true">
-                <span class="h-2 w-2 bg-primary-500" />
-                <span class="h-2 w-2 bg-primary-700" />
-                <span class="h-2 w-2 bg-grid" />
-              </div>
-              <span
-                class="font-mono text-[10px] uppercase tracking-widest text-muted"
-              >
-                romm@server:~$ changelog --latest
-              </span>
-            </div>
-            <ul class="space-y-3 p-6 font-mono text-xs leading-relaxed">
-              <li
-                v-for="entry in CHANGELOG"
-                :key="entry.title"
-                class="flex gap-3"
-              >
-                <span aria-hidden="true" class="text-primary-400">+</span>
-                <span>
-                  <span class="uppercase text-cream">{{ entry.title }}</span>
-                  <span class="text-muted">: {{ entry.detail }}</span>
-                </span>
-              </li>
-            </ul>
-          </div>
-          <a
-            href="https://github.com/rommapp/romm/releases/tag/5.0.0"
-            target="_blank"
-            rel="noopener"
-            class="mt-6 inline-block font-mono text-[11px] uppercase tracking-widest text-primary-300 transition-colors hover:text-primary-200"
-          >
-            Read the full release notes ↗
-          </a>
         </div>
       </section>
 
@@ -359,10 +288,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
         <div
           class="flex items-center justify-between gap-4 border-b border-grid px-6 py-3 font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
         >
-          <span>Runs on everything you already host</span>
-          <span aria-hidden="true" class="hidden text-grid sm:block"
-            >////////////////</span
-          >
+          <span>Available on every major platform and operating system</span>
         </div>
         <div class="pause-on-hover flex overflow-hidden">
           <div
@@ -391,59 +317,12 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
         </div>
       </section>
 
-      <!-- ============================= STATS ============================= -->
-      <section class="border-b border-grid">
-        <div class="grid grid-cols-2 gap-px bg-grid lg:grid-cols-4">
-          <div class="bg-ink-950 p-8 text-center md:p-10">
-            <div class="font-pixel text-2xl font-bold text-cream md:text-4xl">
-              {{ githubStars.toLocaleString() }}
-            </div>
-            <div
-              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
-            >
-              GitHub stars
-            </div>
-          </div>
-          <div class="bg-ink-950 p-8 text-center md:p-10">
-            <div class="font-pixel text-2xl font-bold text-cream md:text-4xl">
-              {{ discordMembers.toLocaleString() }}
-            </div>
-            <div
-              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
-            >
-              Discord members
-            </div>
-          </div>
-          <div class="bg-ink-950 p-8 text-center md:p-10">
-            <div class="font-pixel text-2xl font-bold text-cream md:text-4xl">
-              1.7M+
-            </div>
-            <div
-              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
-            >
-              Docker pulls
-            </div>
-          </div>
-          <div class="bg-ink-950 p-8 text-center md:p-10">
-            <div class="font-pixel text-2xl font-bold text-cream md:text-4xl">
-              400+
-            </div>
-            <div
-              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
-            >
-              Platforms supported
-            </div>
-          </div>
-        </div>
-      </section>
-
       <!-- ============================ FEATURES ============================ -->
       <section
         id="features"
-        class="border-b border-grid px-6 py-20 sm:px-10 lg:px-16"
+        class="border-b border-grid px-6 py-16 sm:px-10 lg:px-16"
       >
         <SectionHeading
-          index="02"
           label="Features"
           title="Every pixel tells a story"
           subtitle="The most powerful all-in-one app for managing and playing your game collection."
@@ -471,19 +350,6 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               you're in the game. There are no cores to configure and no files
               to move.
             </p>
-            <ul
-              class="mt-5 space-y-1.5 font-mono text-[11px] uppercase tracking-wider text-muted"
-            >
-              <li>
-                <span class="text-primary-400">&gt;</span> netplay with friends
-              </li>
-              <li>
-                <span class="text-primary-400">&gt;</span> CRT shader mode
-              </li>
-              <li>
-                <span class="text-primary-400">&gt;</span> per-game core memory
-              </li>
-            </ul>
             <a
               href="https://docs.romm.app/latest/using/in-browser-play/emulatorjs/"
               target="_blank"
@@ -510,21 +376,6 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               A full save-sync engine keeps saves and states in step across your
               devices, with conflict detection when two of them disagree.
             </p>
-            <ul
-              class="mt-5 space-y-1.5 font-mono text-[11px] uppercase tracking-wider text-muted"
-            >
-              <li>
-                <span class="text-primary-400">&gt;</span> shared savestates
-                between users
-              </li>
-              <li>
-                <span class="text-primary-400">&gt;</span> on-demand, watched or
-                scheduled
-              </li>
-              <li>
-                <span class="text-primary-400">&gt;</span> play session tracking
-              </li>
-            </ul>
             <a
               href="https://docs.romm.app/latest/using/saves-and-states/"
               target="_blank"
@@ -555,22 +406,6 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               MobyGames, LaunchBox, Hasheous and more. Games are matched by
               hash, not guesswork.
             </p>
-            <ul
-              class="mt-5 space-y-1.5 font-mono text-[11px] uppercase tracking-wider text-muted"
-            >
-              <li>
-                <span class="text-primary-400">&gt;</span> smart &amp; virtual
-                collections
-              </li>
-              <li>
-                <span class="text-primary-400">&gt;</span> RetroAchievements
-                progress
-              </li>
-              <li>
-                <span class="text-primary-400">&gt;</span> region-correct
-                artwork
-              </li>
-            </ul>
             <a
               href="https://docs.romm.app/latest/getting-started/metadata-providers/"
               target="_blank"
@@ -687,13 +522,58 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
         </div>
       </section>
 
+      <!-- ============================= STATS ============================= -->
+      <section class="border-b border-grid">
+        <div class="grid grid-cols-2 gap-px bg-grid lg:grid-cols-4">
+          <div class="bg-ink-950 p-4 text-center">
+            <div class="font-pixel text-2xl font-bold text-cream md:text-4xl">
+              {{ githubStars.toLocaleString() }}
+            </div>
+            <div
+              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
+            >
+              GitHub stars
+            </div>
+          </div>
+          <div class="bg-ink-950 p-4 text-center">
+            <div class="font-pixel text-2xl font-bold text-cream md:text-4xl">
+              {{ discordMembers.toLocaleString() }}
+            </div>
+            <div
+              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
+            >
+              Discord members
+            </div>
+          </div>
+          <div class="bg-ink-950 p-4 text-center">
+            <div class="font-pixel text-2xl font-bold text-cream md:text-4xl">
+              1.7M+
+            </div>
+            <div
+              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
+            >
+              Docker pulls
+            </div>
+          </div>
+          <div class="bg-ink-950 p-4 text-center">
+            <div class="font-pixel text-2xl font-bold text-cream md:text-4xl">
+              #1
+            </div>
+            <div
+              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
+            >
+              on Hackernews
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- ============================== APPS ============================== -->
       <section
         id="apps"
         class="border-b border-grid px-6 py-20 sm:px-10 lg:px-16"
       >
         <SectionHeading
-          index="03"
           label="Play anywhere"
           title="Your library, on every screen"
           subtitle="Native apps and integrations that bring your collection to desktops, handhelds and TVs. Pair a device in seconds with a QR code, and your saves follow you everywhere."
@@ -1062,15 +942,6 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
                   >GitHub</a
                 >
               </li>
-              <li>
-                <a
-                  href="https://github.com/rommapp/romm/releases/latest"
-                  target="_blank"
-                  rel="noopener"
-                  class="transition-colors hover:text-primary-300"
-                  >Latest release</a
-                >
-              </li>
             </ul>
           </div>
           <div class="bg-ink-950 p-8">
@@ -1105,15 +976,6 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
                   rel="noopener"
                   class="transition-colors hover:text-primary-300"
                   >Grout</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://docs.romm.app/latest/ecosystem/first-party-apps/"
-                  target="_blank"
-                  rel="noopener"
-                  class="transition-colors hover:text-primary-300"
-                  >First-party apps</a
                 >
               </li>
             </ul>

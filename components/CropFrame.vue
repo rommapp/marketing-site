@@ -8,8 +8,8 @@
       :class="{
         '-left-[3px] -top-[3px]': corner === 'tl',
         '-right-[3px] -top-[3px]': corner === 'tr',
-        '-bottom-[3px] -left-[3px]': corner === 'bl',
-        '-bottom-[3px] -right-[3px]': corner === 'br',
+        '-bottom-[-18px] -left-[3px]': corner === 'bl',
+        '-bottom-[-18px] -right-[3px]': corner === 'br',
       }"
     />
     <slot />

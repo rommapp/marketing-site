@@ -25,7 +25,7 @@ const navItems = [
     class="sticky top-0 z-50 border-b border-grid bg-ink-950/85 backdrop-blur-md"
   >
     <nav
-      class="mx-auto flex h-16 max-w-[88rem] items-center justify-between border-grid px-4 sm:px-6"
+      class="mx-auto flex h-16 max-w-[88rem] items-center justify-between border-x border-grid px-4 sm:px-6"
     >
       <div class="flex items-center gap-3">
         <a href="#" class="flex flex-row items-center gap-2">
@@ -105,7 +105,7 @@ const navItems = [
 
     <div
       v-if="menuOpen"
-      class="mx-auto max-w-[88rem] border-b border-grid bg-ink-900 md:hidden"
+      class="mx-auto max-w-[88rem] border-x border-b border-grid bg-ink-900 md:hidden"
     >
       <a
         v-for="item in navItems"
