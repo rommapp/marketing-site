@@ -108,34 +108,6 @@ const COMMUNITY_APPS = [
     href: "https://github.com/danielcopper/decky-romm-sync",
     author: "danielcopper",
   },
-  {
-    name: "SwitchRomM",
-    platform: "Switch",
-    description: "Homebrew NRO client for the Switch",
-    href: "https://github.com/Shalasere/SwitchRomM",
-    author: "Shalasere",
-  },
-  {
-    name: "romm-comm",
-    platform: "Discord",
-    description: "Discord bot for your server",
-    href: "https://github.com/idio-sync/romm-comm",
-    author: "idio-sync",
-  },
-  {
-    name: "GGRequestz",
-    platform: "Web",
-    description: "Game discovery and request tool",
-    href: "https://github.com/XTREEMMAK/ggrequestz",
-    author: "XTREEMMAK",
-  },
-  {
-    name: "Syncthing sync",
-    platform: "Tooling",
-    description: "Push a Syncthing library to RomM",
-    href: "https://github.com/amn-96/romm_syncthing_sync",
-    author: "amn-96",
-  },
 ];
 
 const CHANGELOG = [
@@ -958,7 +930,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             >
           </div>
           <div
-            class="mt-6 grid gap-px border border-grid bg-grid sm:grid-cols-2 lg:grid-cols-5"
+            class="mt-6 grid gap-px border border-grid bg-grid sm:grid-cols-2 lg:grid-cols-3"
           >
             <div
               v-for="app in COMMUNITY_APPS"
