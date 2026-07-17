@@ -65,6 +65,79 @@ const GROUT_IMAGES: AppImage[] = [
   { src: groutSyncSummary, alt: "Grout sync summary" },
 ];
 
+const COMMUNITY_APPS = [
+  {
+    name: "romm-ios-app",
+    platform: "iOS",
+    description: "Native iOS app for your library",
+    href: "https://github.com/ilyas-hallak/romm-ios-app",
+    author: "ilyas-hallak",
+  },
+  {
+    name: "RetroArch Sync",
+    platform: "Desktop",
+    description: "Sync your RetroArch library with RomM",
+    href: "https://github.com/Covin90/romm-retroarch-sync",
+    author: "Covin90",
+  },
+  {
+    name: "RomMate",
+    platform: "Desktop",
+    description: "Desktop app for browsing your collection",
+    href: "https://github.com/brenoprata10/rommate",
+    author: "brenoprata10",
+  },
+  {
+    name: "romm-client",
+    platform: "Desktop",
+    description: "Desktop client for your server",
+    href: "https://github.com/chaun14/romm-client",
+    author: "chaun14",
+  },
+  {
+    name: "Freegosy",
+    platform: "Desktop",
+    description: "All-in-one manager: download, launch, sync saves",
+    href: "https://github.com/abduznik/freegosy",
+    author: "abduznik",
+  },
+  {
+    name: "DeckyRommSync",
+    platform: "SteamOS",
+    description: "Downloader and syncer for the Steam Deck",
+    href: "https://github.com/danielcopper/decky-romm-sync",
+    author: "danielcopper",
+  },
+  {
+    name: "SwitchRomM",
+    platform: "Switch",
+    description: "Homebrew NRO client for the Switch",
+    href: "https://github.com/Shalasere/SwitchRomM",
+    author: "Shalasere",
+  },
+  {
+    name: "romm-comm",
+    platform: "Discord",
+    description: "Discord bot for your server",
+    href: "https://github.com/idio-sync/romm-comm",
+    author: "idio-sync",
+  },
+  {
+    name: "GGRequestz",
+    platform: "Web",
+    description: "Game discovery and request tool",
+    href: "https://github.com/XTREEMMAK/ggrequestz",
+    author: "XTREEMMAK",
+  },
+  {
+    name: "Syncthing sync",
+    platform: "Tooling",
+    description: "Push a Syncthing library to RomM",
+    href: "https://github.com/amn-96/romm_syncthing_sync",
+    author: "amn-96",
+  },
+];
+
 const CHANGELOG = [
   {
     title: "UI overhaul",
@@ -865,6 +938,67 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               >
                 <span class="btn-ghost">Quick start ↗</span>
               </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Community apps -->
+        <div class="mt-24">
+          <div class="flex items-center gap-4">
+            <span
+              class="whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.3em] text-primary-400"
+            >
+              Built by the community
+            </span>
+            <span aria-hidden="true" class="h-px flex-1 bg-grid" />
+            <span
+              aria-hidden="true"
+              class="hidden font-mono text-[10px] tracking-[0.3em] text-grid sm:block"
+              >////////</span
+            >
+          </div>
+          <div
+            class="mt-6 grid gap-px border border-grid bg-grid sm:grid-cols-2 lg:grid-cols-5"
+          >
+            <div
+              v-for="app in COMMUNITY_APPS"
+              :key="app.name"
+              class="group relative flex flex-col bg-ink-950 p-6 transition-colors hover:bg-ink-900"
+            >
+              <div class="flex items-center justify-between gap-3">
+                <span
+                  class="border border-grid px-2 py-1 font-mono text-[9px] uppercase tracking-[0.25em] text-primary-300"
+                >
+                  {{ app.platform }}
+                </span>
+                <span
+                  aria-hidden="true"
+                  class="font-mono text-xs text-grid transition-colors group-hover:text-primary-400"
+                  >↗</span
+                >
+              </div>
+              <h4 class="mt-5 font-mono text-sm font-bold text-cream">
+                <a
+                  :href="app.href"
+                  target="_blank"
+                  rel="noopener"
+                  class="after:absolute after:inset-0"
+                  >{{ app.name }}</a
+                >
+              </h4>
+              <p class="mt-2 text-xs leading-relaxed text-muted">
+                {{ app.description }}
+              </p>
+              <p class="mt-auto pt-4 font-mono text-[10px] text-muted">
+                by
+                <a
+                  :href="`https://github.com/${app.author}`"
+                  target="_blank"
+                  rel="noopener"
+                  class="relative z-10 text-primary-300 transition-colors hover:text-primary-200"
+                  >@{{ app.author }}</a
+                >
+              </p>
             </div>
           </div>
         </div>
