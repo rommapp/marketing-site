@@ -256,22 +256,16 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
           </p>
 
           <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <a href="https://docs.romm.app" target="_blank" rel="noopener">
+            <a
+              href="https://docs.romm.app/latest/getting-started/quick-start/"
+              target="_blank"
+              rel="noopener"
+            >
               <span class="btn-pixel">Install now</span>
             </a>
             <a href="https://demo.romm.app" target="_blank" rel="noopener">
               <span class="btn-ghost">View demo ↗</span>
             </a>
-          </div>
-
-          <div
-            class="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 font-mono text-[11px] uppercase tracking-wider text-muted"
-          >
-            <span
-              ><span class="text-primary-400">[license]</span> AGPL-3.0</span
-            >
-            <span><span class="text-primary-400">[price]</span> $0.00</span>
-            <span><span class="text-primary-400">[data]</span> 100% yours</span>
           </div>
 
           <CropFrame class="mx-auto mt-16 max-w-5xl">
