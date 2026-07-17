@@ -6,3 +6,44 @@
   @tailwind utilities;
   @tailwind variants;
 }
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter-roman.var-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+  font-family: "Inter", system-ui, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #f2f0e9;
+}
+
+body {
+  margin: 0;
+  background: #f2f0e9;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  color: #0a090d;
+  background: #b7ff57;
+}
