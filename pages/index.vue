@@ -2,12 +2,13 @@
 import { ref, onMounted, onBeforeUnmount } from "vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
-  faListCheck,
   faWandSparkles,
   faGamepad,
   faShieldHeart,
   faRotate,
-  faCode,
+  faUsers,
+  faScrewdriverWrench,
+  faPlug,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
@@ -41,6 +42,13 @@ import argosyDetails from "~/assets/images/screenshots/argosy/game-details.png";
 import argosyLibrary from "~/assets/images/screenshots/argosy/library.png";
 import argosyRecommended from "~/assets/images/screenshots/argosy/recommended.png";
 
+import v5Gallery from "~/assets/images/screenshots/v5/gallery.jpg";
+import v5Details from "~/assets/images/screenshots/v5/details.jpg";
+import v5Crt from "~/assets/images/screenshots/v5/crt.jpg";
+import v5Patcher from "~/assets/images/screenshots/v5/patcher.jpg";
+import v5Permissions from "~/assets/images/screenshots/v5/permissions.jpg";
+import v5Music from "~/assets/images/screenshots/v5/music.jpg";
+
 interface AppImage {
   src: string;
   alt: string;
@@ -62,6 +70,38 @@ const GROUT_IMAGES: AppImage[] = [
   { src: groutDetails, alt: "Grout game details" },
   { src: groutMultiSelect, alt: "Grout multi-select" },
   { src: groutSyncSummary, alt: "Grout sync summary" },
+];
+
+// Official screenshots from the 5.0.0 release notes
+const V5_IMAGES: AppImage[] = [
+  { src: v5Gallery, alt: "RomM 5.0 platform gallery" },
+  { src: v5Details, alt: "RomM 5.0 game details" },
+  { src: v5Crt, alt: "CRT mode shader" },
+  { src: v5Patcher, alt: "Server-side ROM patcher" },
+  { src: v5Permissions, alt: "Granular permission system" },
+  { src: v5Music, alt: "Built-in music player" },
+];
+
+const CHANGELOG = [
+  {
+    title: "UI overhaul",
+    detail: "a new design system, at home with mouse, touch or gamepad",
+  },
+  { title: "Shared savestates", detail: "pass progress between users" },
+  { title: "CRT mode", detail: "a shader for that 90s glow" },
+  {
+    title: "ROM patching",
+    detail: "apply stored or uploaded patches server-side",
+  },
+  { title: "QR pairing", detail: "connect devices in seconds" },
+  {
+    title: "Permissions",
+    detail: "granular per-user and per-group control",
+  },
+  {
+    title: "And more",
+    detail: "interactive 3D boxart, music player, real-time logs",
+  },
 ];
 
 const PLATFORMS = [
@@ -149,14 +189,27 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
         <div
           class="relative z-10 px-6 pb-16 pt-16 text-center sm:px-10 md:pt-24 lg:px-16"
         >
-          <div
-            class="inline-flex items-center gap-3 border border-grid bg-ink-900/70 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.25em] text-primary-300"
-          >
-            <span
-              aria-hidden="true"
-              class="h-1.5 w-1.5 animate-pulse bg-primary-400"
-            />
-            Self-hosted rom manager — system online
+          <div class="flex flex-wrap items-center justify-center gap-3">
+            <div
+              class="inline-flex items-center gap-3 border border-grid bg-ink-900/70 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.25em] text-primary-300"
+            >
+              <span
+                aria-hidden="true"
+                class="h-1.5 w-1.5 animate-pulse bg-primary-400"
+              />
+              Self-hosted rom manager — system online
+            </div>
+            <a
+              href="https://github.com/rommapp/romm/releases/tag/5.0.0"
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center gap-2 border border-primary-700 bg-primary-950/40 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.25em] text-primary-300 transition-colors hover:border-primary-400 hover:text-primary-200"
+            >
+              <span class="bg-primary-500 px-1.5 font-bold text-ink-950">
+                New
+              </span>
+              RomM 5.0 is out ↗
+            </a>
           </div>
 
           <h1
@@ -168,10 +221,10 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
           </h1>
 
           <p class="mx-auto mt-8 max-w-2xl leading-relaxed text-muted">
-            Scan, enrich, and browse your game collection with a clean and
-            responsive interface. With support for 400+ platforms, various
-            naming schemes and custom tags, RomM is a must-have for anyone who
-            plays on emulators.
+            Scan, enrich, browse and play your game collection from one
+            beautiful self-hosted app. Metadata from seven providers, save sync
+            across your devices, and support for 400+ platforms — RomM is a
+            must-have for anyone who plays on emulators.
           </p>
 
           <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
@@ -211,20 +264,82 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
                 <span
                   class="font-mono text-[10px] uppercase tracking-widest text-muted"
                 >
-                  romm@server:~/library
+                  romm@server:~/library — v5.0
                 </span>
               </div>
               <img
-                src="/images/blocks/hero/hero-dark.png"
+                src="/images/blocks/v5/hero-v5.jpg"
                 srcset="
-                  /images/blocks/hero/hero-dark.png    1x,
-                  /images/blocks/hero/hero-dark@2x.png 2x
+                  /images/blocks/v5/hero-v5.jpg    1x,
+                  /images/blocks/v5/hero-v5@2x.jpg 2x
                 "
-                alt="RomM library of games"
+                alt="RomM 5.0 home view showing a game library"
                 class="block w-full"
                 fetchpriority="high"
               />
             </div>
+          </CropFrame>
+        </div>
+      </section>
+
+      <!-- =========================== WHAT'S NEW =========================== -->
+      <section
+        id="whats-new"
+        class="border-b border-grid px-6 py-20 sm:px-10 lg:px-16"
+      >
+        <SectionHeading
+          index="01"
+          label="What's new"
+          title="5.0 just dropped"
+          subtitle="A ground-up UI overhaul and a stack of new toys, fresh from the July 2026 release."
+        />
+
+        <div class="mt-12 grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <div class="border border-grid bg-ink-900">
+              <div
+                class="flex items-center justify-between border-b border-grid bg-ink-800 px-3 py-2"
+              >
+                <div class="flex items-center gap-1.5" aria-hidden="true">
+                  <span class="h-2 w-2 bg-primary-500" />
+                  <span class="h-2 w-2 bg-primary-700" />
+                  <span class="h-2 w-2 bg-grid" />
+                </div>
+                <span
+                  class="font-mono text-[10px] uppercase tracking-widest text-muted"
+                >
+                  romm@server:~$ changelog --latest
+                </span>
+              </div>
+              <ul class="space-y-3 p-6 font-mono text-xs leading-relaxed">
+                <li
+                  v-for="entry in CHANGELOG"
+                  :key="entry.title"
+                  class="flex gap-3"
+                >
+                  <span aria-hidden="true" class="text-primary-400">+</span>
+                  <span>
+                    <span class="uppercase text-cream">{{ entry.title }}</span>
+                    <span class="text-muted"> — {{ entry.detail }}</span>
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <a
+              href="https://github.com/rommapp/romm/releases/tag/5.0.0"
+              target="_blank"
+              rel="noopener"
+              class="mt-6 inline-block font-mono text-[11px] uppercase tracking-widest text-primary-300 transition-colors hover:text-primary-200"
+            >
+              Read the full release notes ↗
+            </a>
+          </div>
+          <CropFrame>
+            <AppGallery
+              :images="V5_IMAGES"
+              label="~/releases/v5.0.0"
+              @select="selectedImage = $event"
+            />
           </CropFrame>
         </div>
       </section>
@@ -318,134 +433,223 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
         class="border-b border-grid px-6 py-20 sm:px-10 lg:px-16"
       >
         <SectionHeading
-          index="01"
+          index="02"
           label="Features"
           title="Every pixel tells a story"
-          subtitle="The most powerful all-in-one app for managing your game collection."
+          subtitle="The most powerful all-in-one app for managing — and playing — your game collection."
         />
 
+        <!-- Flagship features -->
         <div
-          class="mt-12 grid gap-px border border-grid bg-grid sm:grid-cols-2 lg:grid-cols-3"
+          class="mt-12 grid gap-px border border-grid bg-grid lg:grid-cols-3"
         >
-          <div class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900">
+          <div
+            class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900 lg:p-10"
+          >
             <div class="flex items-center justify-between">
-              <FontAwesomeIcon
-                :icon="faWandSparkles"
-                class="h-6 text-primary-400"
-              />
+              <FontAwesomeIcon :icon="faGamepad" class="h-7 text-primary-400" />
               <span
                 class="font-mono text-xs text-grid transition-colors group-hover:text-primary-400"
                 >[01]</span
               >
             </div>
-            <h3 class="mt-6 text-lg font-semibold text-cream">
-              Magical metadata
+            <h3 class="mt-6 font-pixel text-lg font-bold uppercase text-cream">
+              Play in your browser
             </h3>
-            <p class="mt-2 text-sm leading-relaxed text-muted">
-              Enrich your collection with cover art and detailed metadata from
-              <a
-                href="https://www.igdb.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
-                >IGDB</a
-              >,
-              <a
-                href="https://www.screenscraper.fr"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
-                >Screenscraper</a
-              >,
-              <a
-                href="https://retroachievements.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
-                >RetroAchievements</a
-              >, and more.
+            <p class="mt-3 text-sm leading-relaxed text-muted">
+              EmulatorJS, MS-DOS and Flash players are built in. Hit Play and
+              you're in the game — no cores to configure, no files to move.
             </p>
+            <ul
+              class="mt-5 space-y-1.5 font-mono text-[11px] uppercase tracking-wider text-muted"
+            >
+              <li>
+                <span class="text-primary-400">&gt;</span> netplay with friends
+              </li>
+              <li>
+                <span class="text-primary-400">&gt;</span> CRT shader mode
+              </li>
+              <li>
+                <span class="text-primary-400">&gt;</span> per-game core memory
+              </li>
+            </ul>
+            <a
+              href="https://docs.romm.app/latest/using/in-browser-play/emulatorjs/"
+              target="_blank"
+              rel="noopener"
+              class="mt-6 inline-block font-mono text-[11px] uppercase tracking-widest text-primary-300 transition-colors hover:text-primary-200"
+              >docs ↗</a
+            >
           </div>
 
-          <div class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900">
+          <div
+            class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900 lg:p-10"
+          >
             <div class="flex items-center justify-between">
-              <FontAwesomeIcon :icon="faRotate" class="h-6 text-primary-400" />
+              <FontAwesomeIcon :icon="faRotate" class="h-7 text-primary-400" />
               <span
                 class="font-mono text-xs text-grid transition-colors group-hover:text-primary-400"
                 >[02]</span
               >
             </div>
-            <h3 class="mt-6 text-lg font-semibold text-cream">Device sync</h3>
-            <p class="mt-2 text-sm leading-relaxed text-muted">
-              Sync your games, saves and emulator settings across your devices
-              with ease.
+            <h3 class="mt-6 font-pixel text-lg font-bold uppercase text-cream">
+              Saves that follow you
+            </h3>
+            <p class="mt-3 text-sm leading-relaxed text-muted">
+              A full save-sync engine keeps saves and states in step across your
+              devices, with conflict detection when two of them disagree.
             </p>
+            <ul
+              class="mt-5 space-y-1.5 font-mono text-[11px] uppercase tracking-wider text-muted"
+            >
+              <li>
+                <span class="text-primary-400">&gt;</span> shared savestates
+                between users
+              </li>
+              <li>
+                <span class="text-primary-400">&gt;</span> on-demand, watched or
+                scheduled
+              </li>
+              <li>
+                <span class="text-primary-400">&gt;</span> play session tracking
+              </li>
+            </ul>
+            <a
+              href="https://docs.romm.app/latest/using/saves-and-states/"
+              target="_blank"
+              rel="noopener"
+              class="mt-6 inline-block font-mono text-[11px] uppercase tracking-widest text-primary-300 transition-colors hover:text-primary-200"
+              >docs ↗</a
+            >
           </div>
 
-          <div class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900">
+          <div
+            class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900 lg:p-10"
+          >
             <div class="flex items-center justify-between">
-              <FontAwesomeIcon :icon="faGamepad" class="h-6 text-primary-400" />
+              <FontAwesomeIcon
+                :icon="faWandSparkles"
+                class="h-7 text-primary-400"
+              />
               <span
                 class="font-mono text-xs text-grid transition-colors group-hover:text-primary-400"
                 >[03]</span
               >
             </div>
-            <h3 class="mt-6 text-lg font-semibold text-cream">
-              Seamless gameplay
+            <h3 class="mt-6 font-pixel text-lg font-bold uppercase text-cream">
+              A library that curates itself
             </h3>
-            <p class="mt-2 text-sm leading-relaxed text-muted">
-              With
-              <a
-                href="https://emulatorjs.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
-                >EmulatorJS</a
-              >
-              built-in, play your favorite games in your browser, no setup
-              required.
+            <p class="mt-3 text-sm leading-relaxed text-muted">
+              Cover art, screenshots and deep metadata from IGDB, ScreenScraper,
+              MobyGames, LaunchBox, Hasheous and more — matched by hash, not
+              guesswork.
             </p>
+            <ul
+              class="mt-5 space-y-1.5 font-mono text-[11px] uppercase tracking-wider text-muted"
+            >
+              <li>
+                <span class="text-primary-400">&gt;</span> smart &amp; virtual
+                collections
+              </li>
+              <li>
+                <span class="text-primary-400">&gt;</span> RetroAchievements
+                progress
+              </li>
+              <li>
+                <span class="text-primary-400">&gt;</span> region-correct
+                artwork
+              </li>
+            </ul>
+            <a
+              href="https://docs.romm.app/latest/getting-started/metadata-providers/"
+              target="_blank"
+              rel="noopener"
+              class="mt-6 inline-block font-mono text-[11px] uppercase tracking-widest text-primary-300 transition-colors hover:text-primary-200"
+              >docs ↗</a
+            >
           </div>
+        </div>
 
+        <!-- Supporting features -->
+        <div
+          class="grid gap-px border border-t-0 border-grid bg-grid sm:grid-cols-2 lg:grid-cols-4"
+        >
           <div class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900">
             <div class="flex items-center justify-between">
-              <FontAwesomeIcon
-                :icon="faListCheck"
-                class="h-6 text-primary-400"
-              />
+              <FontAwesomeIcon :icon="faUsers" class="h-6 text-primary-400" />
               <span
                 class="font-mono text-xs text-grid transition-colors group-hover:text-primary-400"
                 >[04]</span
               >
             </div>
             <h3 class="mt-6 text-lg font-semibold text-cream">
-              Broad platform support
+              Multi-user &amp; SSO
             </h3>
             <p class="mt-2 text-sm leading-relaxed text-muted">
-              Retro or modern, RomM has you covered with support for
+              Granular per-user and per-group permissions, plus
               <a
-                href="https://docs.romm.app/latest/Platforms-and-Players/Supported-Platforms"
+                href="https://docs.romm.app/latest/administration/oidc/"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
                 class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
-                >400+</a
+                >OIDC single sign-on</a
               >
-              systems and platforms.
+              with Authelia, Authentik, Keycloak and friends.
             </p>
           </div>
 
           <div class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900">
             <div class="flex items-center justify-between">
-              <FontAwesomeIcon :icon="faCode" class="h-6 text-primary-400" />
+              <FontAwesomeIcon
+                :icon="faScrewdriverWrench"
+                class="h-6 text-primary-400"
+              />
               <span
                 class="font-mono text-xs text-grid transition-colors group-hover:text-primary-400"
                 >[05]</span
               >
             </div>
-            <h3 class="mt-6 text-lg font-semibold text-cream">Open source</h3>
+            <h3 class="mt-6 text-lg font-semibold text-cream">ROM patcher</h3>
             <p class="mt-2 text-sm leading-relaxed text-muted">
-              Built by the community, for the community. Fully transparent and
-              licensed under AGPL-3.0.
+              Apply romhacks and translations
+              <a
+                href="https://docs.romm.app/latest/using/rom-patcher/"
+                target="_blank"
+                rel="noopener"
+                class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
+                >server-side</a
+              >, from stored or uploaded patch files — originals stay untouched.
+            </p>
+          </div>
+
+          <div class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900">
+            <div class="flex items-center justify-between">
+              <FontAwesomeIcon :icon="faPlug" class="h-6 text-primary-400" />
+              <span
+                class="font-mono text-xs text-grid transition-colors group-hover:text-primary-400"
+                >[06]</span
+              >
+            </div>
+            <h3 class="mt-6 text-lg font-semibold text-cream">
+              Open ecosystem
+            </h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">
+              ES-DE and Pegasus exports, LaunchBox import,
+              <a
+                href="https://docs.romm.app/latest/ecosystem/feed-clients/"
+                target="_blank"
+                rel="noopener"
+                class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
+                >feed clients</a
+              >, and a full
+              <a
+                href="https://docs.romm.app/latest/developers/api-reference/"
+                target="_blank"
+                rel="noopener"
+                class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
+                >REST API</a
+              >
+              with device tokens.
             </p>
           </div>
 
@@ -457,15 +661,15 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               />
               <span
                 class="font-mono text-xs text-grid transition-colors group-hover:text-primary-400"
-                >[06]</span
+                >[07]</span
               >
             </div>
             <h3 class="mt-6 text-lg font-semibold text-cream">
-              Private and secure
+              Free, open, yours
             </h3>
             <p class="mt-2 text-sm leading-relaxed text-muted">
-              Maintain total control of your data. Built with security in mind
-              and regularly updated.
+              AGPL-3.0, no tracking, no upsells. Your games, your data, your
+              server — built by the community, for the community.
             </p>
           </div>
         </div>
@@ -477,10 +681,10 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
         class="border-b border-grid px-6 py-20 sm:px-10 lg:px-16"
       >
         <SectionHeading
-          index="02"
+          index="03"
           label="Play anywhere"
           title="Your library, on every screen"
-          subtitle="Native apps and integrations that bring your collection to desktops, handhelds, and everything in between."
+          subtitle="Native apps and integrations that bring your collection to desktops, handhelds and TVs. Pair a device in seconds with a QR code — your saves follow you everywhere."
         />
 
         <div class="mt-16 flex flex-col gap-20">
@@ -496,11 +700,18 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             <div>
               <div class="flex items-start justify-between gap-6">
                 <div>
-                  <div
-                    class="inline-flex items-center gap-2 border border-grid px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-primary-300"
-                  >
-                    <FontAwesomeIcon :icon="faWindows" class="h-3" />
-                    Windows
+                  <div class="flex flex-wrap gap-2">
+                    <div
+                      class="inline-flex items-center gap-2 border border-grid px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-primary-300"
+                    >
+                      <FontAwesomeIcon :icon="faWindows" class="h-3" />
+                      Windows
+                    </div>
+                    <div
+                      class="inline-flex items-center border border-grid px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
+                    >
+                      QR pairing
+                    </div>
                   </div>
                   <h3
                     class="mt-5 font-pixel text-xl font-bold uppercase text-cream md:text-2xl"
@@ -546,11 +757,23 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             <div class="lg:order-1">
               <div class="flex items-start justify-between gap-6">
                 <div>
-                  <div
-                    class="inline-flex items-center gap-2 border border-grid px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-primary-300"
-                  >
-                    <FontAwesomeIcon :icon="faAndroid" class="h-3" />
-                    Android
+                  <div class="flex flex-wrap gap-2">
+                    <div
+                      class="inline-flex items-center gap-2 border border-grid px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-primary-300"
+                    >
+                      <FontAwesomeIcon :icon="faAndroid" class="h-3" />
+                      Android
+                    </div>
+                    <div
+                      class="inline-flex items-center border border-grid px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
+                    >
+                      QR pairing
+                    </div>
+                    <div
+                      class="inline-flex items-center border border-grid px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
+                    >
+                      Save sync
+                    </div>
                   </div>
                   <h3
                     class="mt-5 font-pixel text-xl font-bold uppercase text-cream md:text-2xl"
@@ -589,11 +812,18 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             <div>
               <div class="flex items-start justify-between gap-6">
                 <div>
-                  <div
-                    class="inline-flex items-center gap-2 border border-grid px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-primary-300"
-                  >
-                    <FontAwesomeIcon :icon="faGamepad" class="h-3" />
-                    Handhelds
+                  <div class="flex flex-wrap gap-2">
+                    <div
+                      class="inline-flex items-center gap-2 border border-grid px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-primary-300"
+                    >
+                      <FontAwesomeIcon :icon="faGamepad" class="h-3" />
+                      Handhelds
+                    </div>
+                    <div
+                      class="inline-flex items-center border border-grid px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
+                    >
+                      Save sync
+                    </div>
                   </div>
                   <h3
                     class="mt-5 font-pixel text-xl font-bold uppercase text-cream md:text-2xl"
@@ -675,7 +905,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
           <div
             class="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.3em] text-primary-400"
           >
-            <span>03</span>
+            <span>04</span>
             <span class="text-muted">//</span>
             <span>Powered by friendship</span>
           </div>
@@ -715,7 +945,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
 
       <!-- ============================= FOOTER ============================= -->
       <footer>
-        <div class="grid gap-px bg-grid sm:grid-cols-3">
+        <div class="grid gap-px bg-grid sm:grid-cols-2 lg:grid-cols-4">
           <div class="bg-ink-950 p-8">
             <h4
               class="font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
@@ -730,6 +960,15 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
                   rel="noopener"
                   class="transition-colors hover:text-primary-300"
                   >Documentation</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://docs.romm.app/latest/getting-started/quick-start/"
+                  target="_blank"
+                  rel="noopener"
+                  class="transition-colors hover:text-primary-300"
+                  >Quick start</a
                 >
               </li>
               <li>
@@ -797,11 +1036,56 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               </li>
               <li>
                 <a
-                  href="https://docs.romm.app/latest/Platforms-and-Players/Supported-Platforms"
+                  href="https://docs.romm.app/latest/ecosystem/first-party-apps/"
+                  target="_blank"
+                  rel="noopener"
+                  class="transition-colors hover:text-primary-300"
+                  >First-party apps</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="bg-ink-950 p-8">
+            <h4
+              class="font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
+            >
+              Ecosystem
+            </h4>
+            <ul class="mt-4 space-y-2 text-sm">
+              <li>
+                <a
+                  href="https://docs.romm.app/latest/platforms/supported-platforms/"
                   target="_blank"
                   rel="noopener"
                   class="transition-colors hover:text-primary-300"
                   >Supported platforms</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://docs.romm.app/latest/getting-started/metadata-providers/"
+                  target="_blank"
+                  rel="noopener"
+                  class="transition-colors hover:text-primary-300"
+                  >Metadata providers</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://docs.romm.app/latest/ecosystem/feed-clients/"
+                  target="_blank"
+                  rel="noopener"
+                  class="transition-colors hover:text-primary-300"
+                  >Feed clients</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://docs.romm.app/latest/developers/api-reference/"
+                  target="_blank"
+                  rel="noopener"
+                  class="transition-colors hover:text-primary-300"
+                  >API reference</a
                 >
               </li>
             </ul>

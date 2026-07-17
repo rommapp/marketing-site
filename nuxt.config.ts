@@ -43,28 +43,28 @@ export default defineNuxtConfig({
         {
           name: "description",
           content:
-            "RomM is a self-hosted rom manager for your game collection.",
+            "RomM is a self-hosted rom manager and player for your game collection.",
         },
         { name: "og:title", content: "The RomM Project" },
         {
           name: "og:description",
           content:
-            "RomM is a self-hosted rom manager for your game collection.",
+            "RomM is a self-hosted rom manager and player for your game collection.",
         },
         {
           name: "og:image",
-          content: "https://romm.app/images/og/winter-header.png",
+          content: "https://romm.app/images/og/og-v5.png",
         },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: "The RomM Project" },
         {
           name: "twitter:description",
           content:
-            "RomM is a self-hosted rom manager for your game collection.",
+            "RomM is a self-hosted rom manager and player for your game collection.",
         },
         {
           name: "twitter:image",
-          content: "https://romm.app/images/og/winter-header.png",
+          content: "https://romm.app/images/og/og-v5.png",
         },
         { name: "theme-color", content: "#8B74E8" },
         {
