@@ -215,7 +215,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
         <div aria-hidden="true" class="scanlines absolute inset-0" />
 
         <div
-          class="relative z-10 px-6 pb-16 pt-16 text-center sm:px-10 md:pt-24 lg:px-16"
+          class="relative z-10 px-6 pb-16 pt-16 text-center sm:px-10 lg:px-16"
         >
           <div class="flex flex-wrap items-center justify-center gap-3">
             <div

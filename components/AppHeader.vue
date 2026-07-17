@@ -28,17 +28,17 @@ const navItems = [
       class="mx-auto flex h-16 max-w-[88rem] items-center justify-between border-x border-grid px-4 sm:px-6"
     >
       <div class="flex items-center gap-3">
-        <a href="https://romm.app" class="flex items-center gap-3">
-          <span class="border border-grid bg-ink-800 p-1">
-            <img
-              src="/images/blocks/logos/romm.svg"
-              alt="RomM logo"
-              class="h-7 w-7"
-            />
-          </span>
-          <span class="font-pixel text-lg font-bold tracking-wide text-cream">
-            ROMM
-          </span>
+        <a href="#" class="flex flex-row items-center gap-2">
+          <img
+            src="/images/blocks/logos/romm.svg"
+            alt="RomM logo"
+            class="h-7 w-7"
+          />
+          <img
+            src="/images/blocks/logos/logotipo.svg"
+            alt="RomM logotype"
+            class="h-5"
+          />
         </a>
         <a
           href="https://github.com/rommapp/romm/releases/latest"
@@ -57,7 +57,7 @@ const navItems = [
           :href="item.href"
           target="_blank"
           rel="noopener"
-          class="font-mono text-xs uppercase tracking-[0.2em] text-muted transition-colors hover:text-cream"
+          class="font-mono text-xs uppercase tracking-[0.2em] transition-colors hover:text-cream"
         >
           {{ item.label }}
         </a>
@@ -69,7 +69,7 @@ const navItems = [
           target="_blank"
           rel="noopener"
           title="Support the project"
-          class="hidden h-9 w-9 items-center justify-center border border-grid text-muted transition-colors hover:border-primary-400 hover:text-primary-300 sm:flex"
+          class="hidden h-9 w-9 items-center justify-center border border-grid transition-colors hover:border-primary-400 hover:text-primary-300 sm:flex"
         >
           <FontAwesomeIcon :icon="faHeart" class="h-3.5" />
         </a>
@@ -78,7 +78,7 @@ const navItems = [
           target="_blank"
           rel="noopener"
           title="Join the Discord"
-          class="hidden h-9 w-9 items-center justify-center border border-grid text-muted transition-colors hover:border-primary-400 hover:text-primary-300 sm:flex"
+          class="hidden h-9 w-9 items-center justify-center border border-grid transition-colors hover:border-primary-400 hover:text-primary-300 sm:flex"
         >
           <FontAwesomeIcon :icon="faDiscord" class="h-3.5" />
         </a>
@@ -90,7 +90,7 @@ const navItems = [
           class="flex h-9 items-center gap-2 border border-grid px-3 font-mono text-xs text-cream transition-colors hover:border-primary-400 hover:text-primary-300"
         >
           <FontAwesomeIcon :icon="faGithub" class="h-4" />
-          <span>★ {{ (githubStars / 1000).toFixed(1) }}K</span>
+          <span>{{ (githubStars / 1000).toFixed(1) }}K</span>
         </a>
         <button
           type="button"
@@ -113,7 +113,7 @@ const navItems = [
         :href="item.href"
         target="_blank"
         rel="noopener"
-        class="block border-b border-grid px-6 py-4 font-mono text-xs uppercase tracking-[0.2em] text-muted last:border-b-0 hover:text-cream"
+        class="block border-b border-grid px-6 py-4 font-mono text-xs uppercase tracking-[0.2em] last:border-b-0 hover:text-cream"
         @click="menuOpen = false"
       >
         {{ item.label }}
