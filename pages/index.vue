@@ -283,38 +283,17 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
         </div>
       </section>
 
-      <!-- ========================= PLATFORM STRIP ========================= -->
+      <!-- ======================= SUPPORTED PLATFORMS ======================= -->
       <section class="border-b border-grid">
         <div
           class="flex items-center justify-between gap-4 border-b border-grid px-6 py-3 font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
         >
-          <span>Available on every major platform and operating system</span>
+          <span>400+ supported platforms</span>
+          <span aria-hidden="true" class="hidden text-grid sm:block">
+            consoles // handhelds // computers // arcade
+          </span>
         </div>
-        <div class="pause-on-hover flex overflow-hidden">
-          <div
-            v-for="copy in 2"
-            :key="copy"
-            :aria-hidden="copy === 2"
-            class="animate-marquee flex min-w-full shrink-0 items-center"
-          >
-            <a
-              v-for="platform in PLATFORMS"
-              :key="platform.name"
-              :href="platform.href"
-              target="_blank"
-              rel="noopener noreferrer"
-              :tabindex="copy === 2 ? -1 : undefined"
-              class="flex h-24 w-52 shrink-0 items-center justify-center border-r border-grid px-8 opacity-50 grayscale transition-all duration-200 hover:opacity-100 hover:grayscale-0"
-            >
-              <img
-                :src="platform.src"
-                :alt="platform.name"
-                class="max-h-10 w-auto max-w-[8.5rem]"
-                loading="lazy"
-              />
-            </a>
-          </div>
-        </div>
+        <PlatformMarquee />
       </section>
 
       <!-- ============================ FEATURES ============================ -->
@@ -522,48 +501,36 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
         </div>
       </section>
 
-      <!-- ============================= STATS ============================= -->
+      <!-- ========================= PLATFORM STRIP ========================= -->
       <section class="border-b border-grid">
-        <div class="grid grid-cols-2 gap-px bg-grid lg:grid-cols-4">
-          <div class="bg-ink-950 p-4 text-center">
-            <div class="font-pixel text-2xl font-bold text-cream md:text-4xl">
-              {{ githubStars.toLocaleString() }}
-            </div>
-            <div
-              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
+        <div
+          class="flex items-center justify-between gap-4 border-b border-grid px-6 py-3 font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
+        >
+          <span>Available on every major platform and operating system</span>
+        </div>
+        <div class="pause-on-hover flex overflow-hidden">
+          <div
+            v-for="copy in 2"
+            :key="copy"
+            :aria-hidden="copy === 2"
+            class="animate-marquee flex min-w-full shrink-0 items-center"
+          >
+            <a
+              v-for="platform in PLATFORMS"
+              :key="platform.name"
+              :href="platform.href"
+              target="_blank"
+              rel="noopener noreferrer"
+              :tabindex="copy === 2 ? -1 : undefined"
+              class="flex h-24 w-52 shrink-0 items-center justify-center border-r border-grid px-8 opacity-50 grayscale transition-all duration-200 hover:opacity-100 hover:grayscale-0"
             >
-              GitHub stars
-            </div>
-          </div>
-          <div class="bg-ink-950 p-4 text-center">
-            <div class="font-pixel text-2xl font-bold text-cream md:text-4xl">
-              {{ discordMembers.toLocaleString() }}
-            </div>
-            <div
-              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
-            >
-              Discord members
-            </div>
-          </div>
-          <div class="bg-ink-950 p-4 text-center">
-            <div class="font-pixel text-2xl font-bold text-cream md:text-4xl">
-              1.7M+
-            </div>
-            <div
-              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
-            >
-              Docker pulls
-            </div>
-          </div>
-          <div class="bg-ink-950 p-4 text-center">
-            <div class="font-pixel text-2xl font-bold text-cream md:text-4xl">
-              #1
-            </div>
-            <div
-              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
-            >
-              on Hackernews
-            </div>
+              <img
+                :src="platform.src"
+                :alt="platform.name"
+                class="max-h-10 w-auto max-w-[8.5rem]"
+                loading="lazy"
+              />
+            </a>
           </div>
         </div>
       </section>
@@ -842,6 +809,52 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
                   >@{{ app.author }}</a
                 >
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================= STATS ============================= -->
+      <section class="border-b border-grid">
+        <div class="grid grid-cols-2 gap-px bg-grid lg:grid-cols-4">
+          <div class="bg-ink-950 p-4 text-center">
+            <div class="font-pixel text-2xl font-bold text-cream md:text-4xl">
+              {{ githubStars.toLocaleString() }}
+            </div>
+            <div
+              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
+            >
+              GitHub stars
+            </div>
+          </div>
+          <div class="bg-ink-950 p-4 text-center">
+            <div class="font-pixel text-2xl font-bold text-cream md:text-4xl">
+              {{ discordMembers.toLocaleString() }}
+            </div>
+            <div
+              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
+            >
+              Discord members
+            </div>
+          </div>
+          <div class="bg-ink-950 p-4 text-center">
+            <div class="font-pixel text-2xl font-bold text-cream md:text-4xl">
+              1.7M+
+            </div>
+            <div
+              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
+            >
+              Docker pulls
+            </div>
+          </div>
+          <div class="bg-ink-950 p-4 text-center">
+            <div class="font-pixel text-2xl font-bold text-cream md:text-4xl">
+              #1
+            </div>
+            <div
+              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
+            >
+              on Hackernews
             </div>
           </div>
         </div>

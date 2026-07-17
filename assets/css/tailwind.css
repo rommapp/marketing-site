@@ -149,7 +149,12 @@
     }
   }
 
-  .pause-on-hover:hover .animate-marquee {
+  .animate-marquee-reverse {
+    animation: marquee 40s linear infinite reverse;
+  }
+
+  .pause-on-hover:hover .animate-marquee,
+  .pause-on-hover:hover .animate-marquee-reverse {
     animation-play-state: paused;
   }
 }
