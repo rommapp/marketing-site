@@ -1,32 +1,42 @@
 export default {
-  darkMode: "class", // This enables dark mode based on the presence of the "dark" class in the HTML tag
+  // Dark is the default (no class); light mode adds `.light` on <html>. Point
+  // the `dark:` variant at "not light" so dark: utilities work with that scheme.
+  darkMode: ["selector", "html:not(.light)"],
   theme: {
     extend: {
       colors: {
+        // Colors are backed by CSS variables (channels defined in
+        // assets/css/tailwind.css) so the whole palette flips between the
+        // dark default and the creamy `.light` theme with no markup changes.
         primary: {
-          50: "#F4F2FC",
-          100: "#E9E6FA",
-          200: "#D3CCEE",
-          300: "#BDB3E3",
-          400: "#A494EB",
-          500: "#8B74E8",
-          DEFAULT: "#8B74E8",
-          600: "#7259D1",
-          700: "#5A41B8",
-          800: "#432D9E",
-          900: "#2D1D84",
-          950: "#1A1066",
+          50: "rgb(var(--primary-50) / <alpha-value>)",
+          100: "rgb(var(--primary-100) / <alpha-value>)",
+          200: "rgb(var(--primary-200) / <alpha-value>)",
+          300: "rgb(var(--primary-300) / <alpha-value>)",
+          400: "rgb(var(--primary-400) / <alpha-value>)",
+          500: "rgb(var(--primary-500) / <alpha-value>)",
+          DEFAULT: "rgb(var(--primary-500) / <alpha-value>)",
+          600: "rgb(var(--primary-600) / <alpha-value>)",
+          700: "rgb(var(--primary-700) / <alpha-value>)",
+          800: "rgb(var(--primary-800) / <alpha-value>)",
+          900: "rgb(var(--primary-900) / <alpha-value>)",
+          950: "rgb(var(--primary-950) / <alpha-value>)",
         },
-        dark: {
-          background: "#0D1117",
-          surface: "#161B22",
-          toplayer: "#1C2330",
+        ink: {
+          950: "rgb(var(--ink-950) / <alpha-value>)",
+          900: "rgb(var(--ink-900) / <alpha-value>)",
+          850: "rgb(var(--ink-850) / <alpha-value>)",
+          800: "rgb(var(--ink-800) / <alpha-value>)",
+          700: "rgb(var(--ink-700) / <alpha-value>)",
         },
-        light: {
-          background: "#F2F4F8",
-          surface: "#FFFFFF",
-          toplayer: "#E4E9F0",
-        },
+        grid: "rgb(var(--grid) / <alpha-value>)",
+        cream: "rgb(var(--cream) / <alpha-value>)",
+        muted: "rgb(var(--muted) / <alpha-value>)",
+      },
+      fontFamily: {
+        pixel: ["Silkscreen", "monospace"],
+        mono: ['"Space Mono"', "ui-monospace", "SFMono-Regular", "monospace"],
+        sans: ['"Inter var"', "Inter", "system-ui", "sans-serif"],
       },
     },
   },

@@ -1,58 +1,15 @@
 import { defineNuxtConfig } from "nuxt/config";
-import { definePreset } from "@primeuix/themes";
-import Aura from "@primeuix/themes/aura";
-
-// Mirror the brand `primary` palette from tailwind.config.js so PrimeVue's
-// primary color matches the rest of the site (Aura's default primary is green).
-const RommPreset = definePreset(Aura, {
-  semantic: {
-    primary: {
-      50: "#F4F2FC",
-      100: "#E9E6FA",
-      200: "#D3CCEE",
-      300: "#BDB3E3",
-      400: "#A494EB",
-      500: "#8B74E8",
-      600: "#7259D1",
-      700: "#5A41B8",
-      800: "#432D9E",
-      900: "#2D1D84",
-      950: "#1A1066",
-    },
-  },
-});
 
 export default defineNuxtConfig({
   devtools: { enabled: false },
-  modules: ["@nuxtjs/tailwindcss", "@primevue/nuxt-module", "@nuxt/image"],
-  plugins: [{ src: "~/plugins/theme.ts", mode: "client" }],
+  modules: ["@nuxtjs/tailwindcss", "@nuxt/image"],
 
-  primevue: {
-    options: {
-      ripple: true,
-      theme: {
-        preset: RommPreset,
-        options: {
-          darkModeSelector: ".dark",
-          cssLayer: {
-            name: "primevue",
-            order: "tailwind-base, primevue, tailwind-utilities",
-          },
-        },
-      },
-    },
-    components: {
-      include: ["Button", "Tag", "Divider", "Menubar"],
-    },
-  },
-
-  runtimeConfig: {
-    theme: "dark",
-  },
-
-  build: {
-    transpile: ["primevue"],
-  },
+  css: [
+    "@fontsource/silkscreen/400.css",
+    "@fontsource/silkscreen/700.css",
+    "@fontsource/space-mono/400.css",
+    "@fontsource/space-mono/700.css",
+  ],
 
   nitro: {
     preset: "github-pages",
@@ -82,8 +39,11 @@ export default defineNuxtConfig({
       title: "The RomM Project",
       script: [
         {
+          // Apply the saved/system theme before first paint to avoid a flash.
+          // No stored value means "system": follow prefers-color-scheme.
           innerHTML:
-            'if(window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.classList.add("dark")}',
+            "(function(){try{var t=localStorage.getItem('theme');var light=t==='light'||(t!=='dark'&&window.matchMedia('(prefers-color-scheme: light)').matches);document.documentElement.classList.toggle('light',light);}catch(e){}})();",
+          tagPosition: "head",
         },
       ],
       meta: [
@@ -92,30 +52,30 @@ export default defineNuxtConfig({
         {
           name: "description",
           content:
-            "RomM is a self-hosted rom manager for your game collection.",
+            "RomM is a self-hosted rom manager and player for your game collection.",
         },
         { name: "og:title", content: "The RomM Project" },
         {
           name: "og:description",
           content:
-            "RomM is a self-hosted rom manager for your game collection.",
+            "RomM is a self-hosted rom manager and player for your game collection.",
         },
         {
           name: "og:image",
-          content: "https://romm.app/images/og/winter-header.png",
+          content: "https://romm.app/images/og/og-v5.png",
         },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: "The RomM Project" },
         {
           name: "twitter:description",
           content:
-            "RomM is a self-hosted rom manager for your game collection.",
+            "RomM is a self-hosted rom manager and player for your game collection.",
         },
         {
           name: "twitter:image",
-          content: "https://romm.app/images/og/winter-header.png",
+          content: "https://romm.app/images/og/og-v5.png",
         },
-        { name: "theme-color", content: "#cf00fb" },
+        { name: "theme-color", content: "#8B74E8" },
         {
           content:
             "default-src 'self'; img-src 'self' data: app.aikido.dev; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';connect-src 'self' api.github.com discord.com; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests;",
