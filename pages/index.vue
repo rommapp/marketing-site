@@ -65,6 +65,35 @@ const GROUT_IMAGES: AppImage[] = [
   { src: groutSyncSummary, alt: "Grout sync summary" },
 ];
 
+// Supported metadata sources, icons pulled straight from RomM's scraper set.
+const scraperModules = import.meta.glob("~/assets/images/scrapers/*.png", {
+  eager: true,
+  import: "default",
+}) as Record<string, string>;
+
+const METADATA_SOURCE_NAMES: Record<string, string> = {
+  igdb: "IGDB",
+  ss: "ScreenScraper",
+  moby: "MobyGames",
+  launchbox: "LaunchBox",
+  ra: "RetroAchievements",
+  sgdb: "SteamGridDB",
+  tgdb: "TheGamesDB",
+  hltb: "HowLongToBeat",
+  hasheous: "Hasheous",
+  playmatch: "PlayMatch",
+  flashpoint: "Flashpoint",
+  esde: "ES-DE",
+  libretro: "Libretro",
+};
+
+const METADATA_SOURCES = Object.entries(scraperModules)
+  .map(([path, src]) => {
+    const slug = path.split("/").pop()!.replace(".png", "");
+    return { slug, name: METADATA_SOURCE_NAMES[slug] ?? slug, src };
+  })
+  .sort((a, b) => a.name.localeCompare(b.name));
+
 const APPS = [
   {
     id: "playnite",
@@ -102,7 +131,7 @@ const APPS = [
   {
     id: "grout",
     name: "Grout",
-    system: "Handheld CFWs",
+    system: "Linux · Handhelds",
     logo: grout,
     images: GROUT_IMAGES,
     label: "~/apps/grout",
@@ -160,49 +189,50 @@ const FEATURES = [
   {
     icon: faGamepad,
     title: "Play in your browser",
-    body: "EmulatorJS, MS-DOS and Flash players are built in. Hit Play and you're in the game — no cores to configure, no files to move.",
+    body: "With EmulatorJS and Ruffle built-in, play your favorite games in your browser, no setup required.",
     href: "https://docs.romm.app/latest/using/in-browser-play/emulatorjs/",
     size: "featured",
   },
   {
     icon: faRotate,
     title: "Saves that follow you",
-    body: "A full save-sync engine keeps saves and states in step across your devices, with conflict detection when two of them disagree.",
+    body: "A save-sync engine with conflict resolution keeps saves and states in sync across your devices.",
     href: "https://docs.romm.app/latest/using/saves-and-states/",
     size: "wide",
   },
   {
     icon: faWandSparkles,
     title: "Magical metadata",
-    body: "Cover art, screenshots and deep metadata from IGDB, ScreenScraper, LaunchBox, RetroAchievements and more — matched by hash, not guesswork.",
+    body: "Cover art, screenshots and detailed metadata from IGDB, ScreenScraper, LaunchBox, RetroAchievements and more.",
     href: "https://docs.romm.app/latest/getting-started/metadata-providers/",
     size: "wide",
+    sources: true,
   },
   {
     icon: faUsers,
     title: "Multiplayer",
-    body: "Granular per-user controls, plus OIDC single sign-on with Authelia, Authentik, Keycloak and friends.",
+    body: "Granular per-user controls plus OIDC single sign-on with Authelia, Authentik, Keycloak and friends.",
     href: "https://docs.romm.app/latest/administration/oidc/",
     size: "small",
   },
   {
     icon: faScrewdriverWrench,
     title: "ROM patcher",
-    body: "Apply romhacks and translations server-side, from stored or uploaded patch files.",
+    body: "Apply romhacks and translations on the fly from stored or uploaded patch files.",
     href: "https://docs.romm.app/latest/using/rom-patcher/",
     size: "small",
   },
   {
     icon: faPlug,
     title: "Ecosystem",
-    body: "ES-DE and Pegasus exports, LaunchBox import, feed clients, and a full REST API with device tokens.",
+    body: "ES-DE and Pegasus exports, LaunchBox import, community apps, and a full REST API.",
     href: "https://docs.romm.app/latest/developers/api-reference/",
     size: "small",
   },
   {
     icon: faShieldHeart,
     title: "Free forever",
-    body: "AGPL-3.0, no tracking, no upsells. Your games, your data, your server.",
+    body: "AGPL-3.0, no tracking, no paid features, and total control of your data.",
     href: "https://github.com/rommapp/romm",
     size: "small",
   },
@@ -312,9 +342,9 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
           </h1>
 
           <p class="mx-auto mt-8 max-w-2xl leading-relaxed">
-            Scan, enrich, browse and play your game collection from one
-            beautiful self-hosted app. Metadata from seven providers, save sync
-            across your devices, and support for 400+ platforms. RomM is a
+            Scan, enrich, browse and play your ROM collection from one beautiful
+            & free self-hosted app. Metadata from 10+ providers, save sync
+            across your devices, and support for over 400 platforms. RomM is a
             must-have for anyone who plays on emulators.
           </p>
 
@@ -415,6 +445,23 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             >
               {{ feature.body }}
             </p>
+
+            <!-- supported metadata source logos -->
+            <div
+              v-if="feature.sources"
+              class="relative mt-5 flex flex-wrap items-center gap-x-1"
+            >
+              <img
+                v-for="source in METADATA_SOURCES"
+                :key="source.slug"
+                :src="source.src"
+                :alt="source.name"
+                :title="source.name"
+                class="h-8 w-8 rounded-full object-cover p-1.5 opacity-70 transition-all duration-200 group-hover:border-primary-500/40 group-hover:opacity-100"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
           </a>
         </div>
       </section>
