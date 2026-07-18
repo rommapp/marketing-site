@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faGamepad } from "@fortawesome/free-solid-svg-icons";
-
 defineProps<{
   label: string;
   title: string;
@@ -12,18 +9,23 @@ defineProps<{
 <template>
   <div>
     <div
-      class="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.3em] text-primary-400"
+      class="glass-sm inline-flex items-center gap-2 rounded-full px-4 py-1.5 font-tech text-[11px] font-bold uppercase tracking-[0.3em] text-primary-600"
     >
-      <span>{{ label }}</span>
-      <span aria-hidden="true" class="h-px flex-1 bg-grid" />
-      <FontAwesomeIcon :icon="faGamepad" class="text-grid" size="lg" />
+      <span
+        aria-hidden="true"
+        class="h-2 w-2 rounded-full"
+        style="
+          background: radial-gradient(circle at 35% 30%, #a6e4ff, #00a8e8 70%);
+        "
+      />
+      {{ label }}
     </div>
     <h2
-      class="mt-6 font-pixel text-2xl uppercase leading-snug text-cream sm:text-3xl md:text-4xl"
+      class="mt-6 font-display text-2xl leading-snug text-ink sm:text-3xl md:text-4xl"
     >
       {{ title }}
     </h2>
-    <p v-if="subtitle" class="mt-4 max-w-2xl leading-relaxed text-muted">
+    <p v-if="subtitle" class="mt-4 max-w-2xl leading-relaxed text-ink-soft">
       {{ subtitle }}
     </p>
   </div>

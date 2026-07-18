@@ -24,118 +24,158 @@
   }
 
   body {
-    @apply bg-ink-950 font-sans text-zinc-300 antialiased;
+    @apply bg-ice font-sans text-ink antialiased;
   }
 
   ::selection {
-    @apply bg-primary-500 text-ink-950;
+    @apply bg-primary-400 text-white;
   }
 }
 
 @layer components {
-  /* Chunky pixel-shadow button, square corners on purpose */
-  .btn-pixel {
-    @apply inline-flex items-center justify-center gap-2 border border-primary-400 bg-primary-500 px-6 py-3 font-mono text-sm font-bold uppercase tracking-widest text-ink-950 transition-[transform,box-shadow] duration-100;
-    box-shadow: 4px 4px 0 0 theme("colors.primary.900");
+  /*
+   * Gel button: translucent candy plastic with a specular highlight,
+   * straight off a 2001 "Get QuickTime" badge.
+   */
+  .btn-gel {
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-7 py-3 font-tech text-base font-bold tracking-wide text-white shadow-gel transition-all duration-150;
+    background: linear-gradient(180deg, #6fd2ff 0%, #00a8e8 45%, #0074ab 100%);
+    text-shadow: 0 1px 2px rgba(0, 60, 100, 0.6);
   }
 
-  .btn-pixel:hover {
-    transform: translate(-1px, -1px);
-    box-shadow: 5px 5px 0 0 theme("colors.primary.900");
-  }
-
-  .btn-pixel:active {
-    transform: translate(3px, 3px);
-    box-shadow: 1px 1px 0 0 theme("colors.primary.900");
-  }
-
-  .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 border border-grid bg-transparent px-6 py-3 font-mono text-sm font-bold uppercase tracking-widest text-cream transition-colors duration-150 hover:border-primary-400 hover:text-primary-300;
-  }
-
-  /* Dot grid backdrop (Luma / Verdant) */
-  .dot-grid {
-    background-image: radial-gradient(
-      circle,
-      rgba(139, 116, 232, 0.14) 1px,
-      transparent 1px
+  /* the glossy specular sweep across the top half */
+  .btn-gel::before {
+    content: "";
+    position: absolute;
+    inset: 2px 8% auto 8%;
+    height: 45%;
+    border-radius: 9999px;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0.05)
     );
-    background-size: 26px 26px;
+    pointer-events: none;
   }
 
-  /* CRT scanline overlay (CAVIX / Dune) */
-  .scanlines {
-    position: relative;
-    background: repeating-linear-gradient(
+  .btn-gel:hover {
+    filter: brightness(1.1) saturate(1.1);
+    transform: translateY(-1px);
+  }
+
+  .btn-gel:active {
+    transform: translateY(1px);
+    filter: brightness(0.95);
+  }
+
+  .btn-gel--lime {
+    background: linear-gradient(180deg, #d8f76e 0%, #a5db13 45%, #6f9a05 100%);
+    box-shadow:
+      0 6px 16px rgba(132, 180, 8, 0.4),
+      inset 0 -4px 8px rgba(60, 90, 0, 0.3),
+      inset 0 2px 2px rgba(255, 255, 255, 0.8);
+  }
+
+  .btn-gel--chrome {
+    @apply text-ink;
+    background: linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #dce6ee 45%,
+      #b5c8d6 50%,
+      #e8f0f6 100%
+    );
+    box-shadow:
+      0 6px 16px rgba(6, 38, 63, 0.18),
+      inset 0 -3px 6px rgba(124, 147, 166, 0.4),
+      inset 0 2px 2px rgba(255, 255, 255, 1);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+
+  /* Frosted translucent panel — Aqua window body */
+  .glass {
+    @apply rounded-2xl border border-white/80 bg-white/60 shadow-glass backdrop-blur-md;
+  }
+
+  .glass-sm {
+    @apply rounded-xl border border-white/80 bg-white/60 shadow-glass-sm backdrop-blur-md;
+  }
+
+  /* Chrome title bar / brushed metal strip */
+  .chrome-bar {
+    background: linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #e6edf3 45%,
+      #cdd9e2 50%,
+      #e9f0f5 100%
+    );
+  }
+
+  /* OS-X-style pinstripes */
+  .pinstripes {
+    background-image: repeating-linear-gradient(
       0deg,
-      rgba(255, 255, 255, 0.022) 0px,
-      rgba(255, 255, 255, 0.022) 1px,
+      rgba(6, 38, 63, 0.035) 0px,
+      rgba(6, 38, 63, 0.035) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  }
+
+  /* Holographic CD-sleeve gradient text */
+  .iridescent {
+    background-image: linear-gradient(
+      92deg,
+      #00a8e8 0%,
+      #8a7cff 35%,
+      #ff3eb5 65%,
+      #00a8e8 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Soft gradient-mesh sky of cyan, lime and pink blobs */
+  .mesh {
+    background:
+      radial-gradient(
+        ellipse 45% 40% at 12% 18%,
+        rgba(0, 168, 232, 0.22),
+        transparent 70%
+      ),
+      radial-gradient(
+        ellipse 40% 35% at 88% 12%,
+        rgba(255, 62, 181, 0.14),
+        transparent 70%
+      ),
+      radial-gradient(
+        ellipse 50% 45% at 78% 78%,
+        rgba(165, 219, 19, 0.16),
+        transparent 70%
+      ),
+      radial-gradient(
+        ellipse 45% 40% at 20% 85%,
+        rgba(138, 124, 255, 0.16),
+        transparent 70%
+      );
+  }
+
+  /* Inset LCD screen for counters */
+  .lcd {
+    @apply rounded-lg border border-primary-950/60 bg-primary-950 text-primary-300 shadow-screen;
+    background-image: repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.04) 0px,
+      rgba(255, 255, 255, 0.04) 1px,
       transparent 1px,
       transparent 3px
     );
-    animation: crt-flicker 5s steps(60) infinite;
-  }
-
-  /* Soft highlight band that slowly rolls down the surface (CRT sweep) */
-  .scanlines::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: linear-gradient(
-      180deg,
-      transparent 0%,
-      rgba(255, 255, 255, 0.03) 45%,
-      rgba(255, 255, 255, 0.045) 50%,
-      rgba(255, 255, 255, 0.03) 55%,
-      transparent 100%
-    );
-    background-size: 100% 22%;
-    background-repeat: no-repeat;
-    animation: crt-scan 7s linear infinite;
-  }
-
-  @keyframes crt-flicker {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.94;
-    }
-  }
-
-  @keyframes crt-scan {
-    from {
-      background-position: 0 -22%;
-    }
-    to {
-      background-position: 0 122%;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .scanlines {
-      animation: none;
-    }
-
-    .scanlines::after {
-      display: none;
-    }
   }
 }
 
 @layer utilities {
-  .blink {
-    animation: blink 1.1s steps(2, start) infinite;
-  }
-
-  @keyframes blink {
-    to {
-      visibility: hidden;
-    }
-  }
-
   .animate-marquee {
     animation: marquee 40s linear infinite;
   }
@@ -156,5 +196,44 @@
   .pause-on-hover:hover .animate-marquee,
   .pause-on-hover:hover .animate-marquee-reverse {
     animation-play-state: paused;
+  }
+
+  .animate-float {
+    animation: float 7s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-14px);
+    }
+  }
+
+  .animate-twinkle {
+    animation: twinkle 2.4s ease-in-out infinite;
+  }
+
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+    50% {
+      opacity: 0.25;
+      transform: scale(0.7) rotate(20deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float,
+    .animate-twinkle,
+    .animate-marquee,
+    .animate-marquee-reverse {
+      animation: none;
+    }
   }
 }

@@ -28,7 +28,7 @@ const emit = defineEmits<{ select: [image: AppImage] }>();
 const active = ref(0);
 const app = computed(() => props.apps[active.value]!);
 
-// Attract mode: cycle slots until the visitor interacts, pause on hover
+// Attract mode: cycle tracks until the visitor interacts, pause on hover
 const interacted = ref(false);
 const hovered = ref(false);
 const reducedMotion = ref(false);
@@ -42,7 +42,7 @@ const pick = (i: number) => {
   active.value = (i + props.apps.length) % props.apps.length;
 };
 
-// Attract mode: advance to the next device only once the active device's
+// Attract mode: advance to the next track only once the active track's
 // screenshot carousel has cycled through all of its shots.
 const onGalleryCycled = () => {
   if (interacted.value || hovered.value || reducedMotion.value) return;
@@ -70,24 +70,60 @@ onMounted(() => {
 </script>
 
 <template>
-  <RetroWindow title="DEVICE_SELECT.EXE">
+  <div
+    class="overflow-hidden rounded-2xl border border-chrome-300 bg-white/70 shadow-glass backdrop-blur-md"
+  >
+    <!-- chrome title bar -->
     <div
-      class="grid lg:grid-cols-[20rem_1fr]"
+      class="chrome-bar flex items-center justify-between gap-3 border-b border-chrome-300 px-4 py-2.5"
+    >
+      <span class="flex items-center gap-1.5" aria-hidden="true">
+        <span
+          class="h-3 w-3 rounded-full border border-red-400/60"
+          style="
+            background: radial-gradient(circle at 35% 30%, #ffb3ab, #f4574a);
+          "
+        />
+        <span
+          class="h-3 w-3 rounded-full border border-amber-400/60"
+          style="
+            background: radial-gradient(circle at 35% 30%, #ffe3a3, #f5b31b);
+          "
+        />
+        <span
+          class="h-3 w-3 rounded-full border border-green-500/60"
+          style="
+            background: radial-gradient(circle at 35% 30%, #b8f5b1, #34c748);
+          "
+        />
+      </span>
+      <span class="font-display text-xs tracking-[0.2em] text-ink">
+        RomM Player 5.0
+      </span>
+      <span
+        class="hidden font-tech text-[10px] font-bold uppercase tracking-[0.25em] text-ink-faint sm:block"
+      >
+        ● now streaming
+      </span>
+    </div>
+
+    <div
+      class="pinstripes grid lg:grid-cols-[20rem_1fr]"
       @mouseenter="hovered = true"
       @mouseleave="hovered = false"
     >
-      <!-- ======== Slot menu ======== -->
+      <!-- ======== Playlist ======== -->
       <div
         role="tablist"
         aria-label="Choose an app"
         aria-orientation="vertical"
-        class="relative flex flex-col overflow-hidden border-b border-grid lg:border-b-0 lg:border-r"
+        class="relative flex flex-col border-b border-chrome-300 lg:border-b-0 lg:border-r"
         @keydown="onKeydown"
       >
         <div
-          class="border-b border-grid bg-ink-900 px-5 py-3 font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
+          class="border-b border-chrome-200 px-5 py-3 font-tech text-[10px] font-bold uppercase tracking-[0.3em] text-ink-faint"
         >
-          Select device
+          Playlist
         </div>
 
         <button
@@ -96,68 +132,71 @@ onMounted(() => {
           type="button"
           role="tab"
           :aria-selected="i === active"
-          class="group relative flex items-center gap-4 border-b border-grid px-5 py-5 text-left transition-colors last:border-b-0"
-          :class="i === active ? 'bg-primary-950/40' : 'hover:bg-ink-900'"
+          class="group relative flex items-center gap-4 border-b border-chrome-200 px-5 py-5 text-left transition-all"
+          :class="
+            i === active
+              ? 'bg-gradient-to-r from-primary-100/90 to-transparent'
+              : 'hover:bg-white/60'
+          "
           @click="pick(i)"
           @focus="engage()"
         >
-          <!-- cursor -->
+          <!-- play indicator -->
           <span
             aria-hidden="true"
-            class="w-3 shrink-0 font-mono text-sm text-primary-400"
-            :class="i === active ? 'blink' : 'opacity-0'"
+            class="w-4 shrink-0 text-center font-tech text-sm"
+            :class="i === active ? 'text-primary-500' : 'text-chrome-300'"
           >
-            ▶
+            {{ i === active ? "▶" : "▹" }}
           </span>
           <span
-            class="bevel-out flex h-11 w-11 shrink-0 items-center justify-center border border-grid bg-ink-900 transition-all duration-200"
+            class="glass-sm flex h-11 w-11 shrink-0 items-center justify-center !rounded-full transition-all duration-200"
             :class="
               i === active
-                ? 'border-primary-500'
-                : 'grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0'
+                ? 'ring-2 ring-primary-400'
+                : 'opacity-70 grayscale group-hover:opacity-100 group-hover:grayscale-0'
             "
           >
-            <img :src="item.logo" :alt="`${item.name} logo`" class="h-7 w-7" />
+            <img :src="item.logo" :alt="`${item.name} logo`" class="h-6 w-6" />
           </span>
-          <span class="min-w-0">
+          <span class="min-w-0 flex-1">
             <span
-              class="block font-pixel text-sm uppercase leading-tight"
-              :class="i === active ? 'text-cream' : 'text-muted'"
+              class="block font-tech text-base font-bold leading-tight"
+              :class="i === active ? 'text-ink' : 'text-ink-soft'"
             >
               {{ item.name }}
             </span>
             <span
-              class="mt-1 block font-mono text-[9px] uppercase tracking-[0.25em]"
-              :class="i === active ? 'text-primary-300' : 'text-grid'"
+              class="mt-0.5 block font-tech text-[9px] font-bold uppercase tracking-[0.25em]"
+              :class="i === active ? 'text-primary-600' : 'text-ink-faint'"
             >
               {{ item.system }}
             </span>
           </span>
-          <!-- active edge -->
           <span
             aria-hidden="true"
-            class="absolute inset-y-0 left-0 w-0.5 bg-primary-500 transition-opacity"
-            :class="i === active ? 'opacity-100' : 'opacity-0'"
-          />
+            class="font-mono text-[10px]"
+            :class="i === active ? 'text-primary-500' : 'text-chrome-400'"
+          >
+            {{ String(i + 1).padStart(2, "0") }}
+          </span>
         </button>
 
-        <!-- filler slot, wink at empty cartridge bays -->
         <div
           aria-hidden="true"
-          class="hidden flex-1 items-center justify-center gap-3 px-5 py-5 font-mono text-[10px] uppercase tracking-[0.3em] text-grid lg:flex"
+          class="hidden flex-1 items-center justify-center gap-2 px-5 py-5 font-tech text-[10px] font-bold uppercase tracking-[0.3em] text-chrome-400 lg:flex"
         >
-          ░░ Empty slot ░░
+          ✦ more tracks soon ✦
         </div>
       </div>
 
-      <!-- ======== Active slot ======== -->
+      <!-- ======== Now playing ======== -->
       <Transition name="console-fade" mode="out-in">
         <div :key="app.id" class="grid xl:grid-cols-[1.15fr_1fr]">
           <!-- screen -->
           <div
-            class="relative border-b border-grid p-5 xl:border-b-0 xl:border-r sm:p-7"
+            class="relative border-b border-chrome-300 p-5 sm:p-7 xl:border-b-0 xl:border-r"
           >
-            <div aria-hidden="true" class="dot-grid absolute inset-0" />
             <AppGallery
               class="relative"
               :images="app.images"
@@ -167,13 +206,13 @@ onMounted(() => {
             />
           </div>
 
-          <!-- readout -->
+          <!-- track info -->
           <div class="relative flex flex-col p-6 sm:p-8">
             <div class="flex flex-wrap gap-2">
               <span
                 v-for="tag in app.tags"
                 :key="tag.text"
-                class="inline-flex items-center gap-1.5 border border-grid px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.25em] text-primary-300"
+                class="glass-sm inline-flex items-center gap-1.5 !rounded-full px-3 py-1 font-tech text-[9px] font-bold uppercase tracking-[0.2em] text-primary-700"
               >
                 <FontAwesomeIcon
                   v-if="tag.icon"
@@ -184,20 +223,18 @@ onMounted(() => {
               </span>
             </div>
 
-            <h3
-              class="mt-4 font-pixel text-xl uppercase text-cream md:text-2xl"
-            >
+            <h3 class="mt-4 font-display text-xl text-ink md:text-2xl">
               {{ app.name }}
             </h3>
 
-            <p class="mt-4 text-sm leading-relaxed text-muted">
+            <p class="mt-3 text-sm leading-relaxed text-ink-soft">
               {{ app.body }}
             </p>
 
             <!-- link chips (e.g. supported firmwares) -->
             <div v-if="app.links" class="mt-4">
               <span
-                class="font-mono text-[9px] uppercase tracking-[0.3em] text-muted"
+                class="font-tech text-[9px] font-bold uppercase tracking-[0.3em] text-ink-faint"
               >
                 {{ app.links.label }}
               </span>
@@ -208,7 +245,7 @@ onMounted(() => {
                   :href="link.href"
                   target="_blank"
                   rel="noopener"
-                  class="border border-grid px-2 py-0.5 font-mono text-[10px] text-cream transition-colors hover:border-primary-400 hover:text-primary-300"
+                  class="rounded-full border border-chrome-300 bg-white/70 px-2.5 py-0.5 font-tech text-[10px] font-bold text-ink-soft transition-colors hover:border-primary-400 hover:text-primary-600"
                 >
                   {{ link.text }}
                 </a>
@@ -221,30 +258,38 @@ onMounted(() => {
               rel="noopener"
               class="mt-auto inline-block self-start pt-8"
             >
-              <span class="btn-pixel">{{ app.ctaText }} ↗</span>
+              <span class="btn-gel">
+                <span class="relative">{{ app.ctaText }} →</span>
+              </span>
             </a>
           </div>
         </div>
       </Transition>
     </div>
 
-    <!-- button hints -->
+    <!-- status bar -->
     <div
-      class="flex flex-wrap items-center justify-between gap-3 border-t border-grid bg-ink-900 px-5 py-2.5 font-mono text-[9px] uppercase tracking-[0.25em] text-muted"
+      class="chrome-bar flex flex-wrap items-center justify-between gap-3 border-t border-chrome-300 px-5 py-2 font-tech text-[9px] font-bold uppercase tracking-[0.25em] text-ink-faint"
     >
       <span class="flex items-center gap-4">
-        <span> <span class="text-primary-300">↑↓</span> Navigate </span>
-        <span> <span class="text-primary-300">⏎</span> Launch </span>
+        <span> <span class="text-primary-600">↑↓</span> Browse </span>
+        <span> <span class="text-primary-600">⏎</span> Launch </span>
         <span class="hidden sm:inline">
-          <span class="text-primary-300">🖱</span> Click screen to zoom
+          <span class="text-primary-600">🖱</span> Click screen to zoom
         </span>
       </span>
-      <span aria-hidden="true">
-        Slot {{ active + 1 }}/{{ apps.length
-        }}<span class="blink text-primary-400">_</span>
+      <span aria-hidden="true" class="flex items-center gap-2">
+        <span
+          class="inline-block h-2 w-2 rounded-full"
+          style="
+            background: radial-gradient(circle at 35% 30%, #d8f76e, #84b408);
+            box-shadow: 0 0 6px rgba(165, 219, 19, 0.9);
+          "
+        />
+        Track {{ active + 1 }} / {{ apps.length }}
       </span>
     </div>
-  </RetroWindow>
+  </div>
 </template>
 
 <style scoped>

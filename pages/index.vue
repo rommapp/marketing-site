@@ -9,6 +9,7 @@ import {
   faUsers,
   faScrewdriverWrench,
   faPlug,
+  faLock,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
@@ -72,7 +73,7 @@ const APPS = [
     system: "Windows · Desktop",
     logo: playnite,
     images: PLAYNITE_IMAGES,
-    label: "~/integrations/playnite",
+    label: "playnite.plugin",
     tags: [{ text: "Windows", icon: faWindows }, { text: "QR pairing" }],
     body: "Effortlessly integrate your retro game collection into Playnite, the open-source game library manager that provides a unified interface for all of your games on PC.",
     links: {
@@ -89,7 +90,7 @@ const APPS = [
     system: "Android · Handhelds",
     logo: argosy,
     images: ARGOSY_IMAGES,
-    label: "~/apps/argosy",
+    label: "argosy.launcher",
     tags: [
       { text: "Android", icon: faAndroid },
       { text: "QR pairing" },
@@ -105,7 +106,7 @@ const APPS = [
     system: "Handheld CFWs",
     logo: grout,
     images: GROUT_IMAGES,
-    label: "~/apps/grout",
+    label: "grout.client",
     tags: [{ text: "Handhelds", icon: faGamepad }, { text: "Save sync" }],
     body: "A lightweight client for your favorite handheld custom firmwares. Download games, box art and BIOS files wirelessly, and sync your saves automatically as you play.",
     links: {
@@ -121,51 +122,6 @@ const APPS = [
     },
     ctaText: "Quick start",
     ctaHref: "https://grout.romm.app/getting-started/",
-  },
-];
-
-const COMMUNITY_APPS = [
-  {
-    name: "romm-ios-app",
-    platform: "iOS",
-    description: "Native iOS app for your library",
-    href: "https://github.com/ilyas-hallak/romm-ios-app",
-    author: "ilyas-hallak",
-  },
-  {
-    name: "RetroArch Sync",
-    platform: "Desktop",
-    description: "Sync your RetroArch library with RomM",
-    href: "https://github.com/Covin90/romm-retroarch-sync",
-    author: "Covin90",
-  },
-  {
-    name: "RomMate",
-    platform: "Desktop",
-    description: "Desktop app for browsing your collection",
-    href: "https://github.com/brenoprata10/rommate",
-    author: "brenoprata10",
-  },
-  {
-    name: "romm-client",
-    platform: "Desktop",
-    description: "Desktop client for your server",
-    href: "https://github.com/chaun14/romm-client",
-    author: "chaun14",
-  },
-  {
-    name: "Freegosy",
-    platform: "Desktop",
-    description: "All-in-one manager: download, launch, sync saves",
-    href: "https://github.com/abduznik/freegosy",
-    author: "abduznik",
-  },
-  {
-    name: "DeckyRommSync",
-    platform: "SteamOS",
-    description: "Downloader and syncer for the Steam Deck",
-    href: "https://github.com/danielcopper/decky-romm-sync",
-    author: "danielcopper",
   },
 ];
 
@@ -208,6 +164,8 @@ const FEATURES = [
     body: "EmulatorJS, MS-DOS and Flash players are built in. Hit Play and you're in the game — no cores to configure, no files to move.",
     href: "https://docs.romm.app/latest/using/in-browser-play/emulatorjs/",
     size: "featured",
+    orb: "radial-gradient(circle at 32% 28%, #a6e4ff, #00a8e8 60%, #005076)",
+    glow: "rgba(0, 168, 232, 0.55)",
   },
   {
     icon: faRotate,
@@ -215,6 +173,8 @@ const FEATURES = [
     body: "A full save-sync engine keeps saves and states in step across your devices, with conflict detection when two of them disagree.",
     href: "https://docs.romm.app/latest/using/saves-and-states/",
     size: "wide",
+    orb: "radial-gradient(circle at 32% 28%, #d8f76e, #a5db13 60%, #5c7f04)",
+    glow: "rgba(165, 219, 19, 0.5)",
   },
   {
     icon: faWandSparkles,
@@ -222,6 +182,8 @@ const FEATURES = [
     body: "Cover art, screenshots and deep metadata from IGDB, ScreenScraper, LaunchBox, RetroAchievements and more — matched by hash, not guesswork.",
     href: "https://docs.romm.app/latest/getting-started/metadata-providers/",
     size: "wide",
+    orb: "radial-gradient(circle at 32% 28%, #bdb3ff, #8a7cff 60%, #4d3fb8)",
+    glow: "rgba(138, 124, 255, 0.5)",
   },
   {
     icon: faUsers,
@@ -229,6 +191,8 @@ const FEATURES = [
     body: "Granular per-user controls, plus OIDC single sign-on with Authelia, Authentik, Keycloak and friends.",
     href: "https://docs.romm.app/latest/administration/oidc/",
     size: "small",
+    orb: "radial-gradient(circle at 32% 28%, #ff9bdd, #ff3eb5 60%, #a3126c)",
+    glow: "rgba(255, 62, 181, 0.45)",
   },
   {
     icon: faScrewdriverWrench,
@@ -236,6 +200,8 @@ const FEATURES = [
     body: "Apply romhacks and translations server-side, from stored or uploaded patch files.",
     href: "https://docs.romm.app/latest/using/rom-patcher/",
     size: "small",
+    orb: "radial-gradient(circle at 32% 28%, #a6e4ff, #00a8e8 60%, #005076)",
+    glow: "rgba(0, 168, 232, 0.55)",
   },
   {
     icon: faPlug,
@@ -243,6 +209,8 @@ const FEATURES = [
     body: "ES-DE and Pegasus exports, LaunchBox import, feed clients, and a full REST API with device tokens.",
     href: "https://docs.romm.app/latest/developers/api-reference/",
     size: "small",
+    orb: "radial-gradient(circle at 32% 28%, #d8f76e, #a5db13 60%, #5c7f04)",
+    glow: "rgba(165, 219, 19, 0.5)",
   },
   {
     icon: faShieldHeart,
@@ -250,6 +218,8 @@ const FEATURES = [
     body: "AGPL-3.0, no tracking, no upsells. Your games, your data, your server.",
     href: "https://github.com/rommapp/romm",
     size: "small",
+    orb: "radial-gradient(circle at 32% 28%, #ff9bdd, #ff3eb5 60%, #a3126c)",
+    glow: "rgba(255, 62, 181, 0.45)",
   },
 ];
 
@@ -259,12 +229,12 @@ const FEATURE_SPAN: Record<string, string> = {
   small: "",
 };
 
-// Ghost glyph sized to the card's footprint (col-span × row-span)
-const FEATURE_GLYPH: Record<string, string> = {
-  featured: "text-[13rem] -bottom-10 -right-8",
-  wide: "text-[9rem] -bottom-8 -right-6",
-  small: "text-[6rem] -bottom-5 -right-4",
-};
+const STATS = [
+  { value: "", key: "stars", label: "GitHub stars" },
+  { value: "", key: "discord", label: "Discord members" },
+  { value: "1.7M+", key: "", label: "Docker pulls" },
+  { value: "#1", key: "", label: "on Hackernews" },
+];
 
 const githubStars = ref<number>(3_800);
 const discordMembers = ref<number>(3_000);
@@ -300,67 +270,73 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
 </script>
 
 <template>
-  <div>
+  <div class="mesh min-h-screen">
     <AppHeader :githubStars="githubStars" />
 
-    <main class="mx-auto max-w-[88rem] border-x border-grid">
-      <!-- ============================== HERO ============================== -->
-      <section class="relative overflow-hidden border-b border-grid">
-        <img
-          aria-hidden="true"
-          alt=""
-          src="/images/blocks/v5/collection.png"
-          srcset="
-            /images/blocks/v5/collection.png    1x,
-            /images/blocks/v5/collection@2x.png 2x
-          "
-          class="absolute inset-0 h-full w-full object-cover object-center opacity-50"
-          fetchpriority="high"
-        />
-        <div
-          aria-hidden="true"
-          class="absolute inset-0 bg-gradient-to-b from-ink-950/80 via-ink-950/70 to-ink-950"
-        />
-        <div aria-hidden="true" class="dot-grid absolute inset-0" />
-        <div
-          aria-hidden="true"
-          class="absolute -top-48 left-1/2 h-[38rem] w-[64rem] max-w-none -translate-x-1/2 rounded-full bg-primary-500/10 blur-[120px]"
-        />
-        <div aria-hidden="true" class="scanlines absolute inset-0" />
+    <main>
+      <!-- ========================= WELCOME SPLASH ========================= -->
+      <section class="relative overflow-hidden">
+        <GlyphField />
 
-        <div class="relative z-10 px-6 py-24 text-center sm:px-10 lg:px-16">
+        <!-- big glossy chrome orb, floating off-canvas -->
+        <div
+          aria-hidden="true"
+          class="animate-float pointer-events-none absolute -left-24 top-40 hidden h-64 w-64 rounded-full opacity-70 lg:block"
+          style="
+            background: radial-gradient(
+              circle at 32% 28%,
+              #ffffff 0%,
+              #dce6ee 40%,
+              #9fb4c4 70%,
+              #e9f0f5 100%
+            );
+            box-shadow:
+              inset -14px -18px 40px rgba(62, 96, 118, 0.35),
+              0 20px 60px rgba(6, 38, 63, 0.2);
+          "
+        />
+
+        <div
+          class="relative z-10 mx-auto max-w-7xl px-6 pb-24 pt-20 text-center sm:px-10"
+        >
           <div class="flex flex-wrap items-center justify-center gap-3">
             <div
-              class="inline-flex items-center gap-3 border border-grid bg-ink-900/70 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.25em] text-primary-300"
+              class="glass-sm inline-flex items-center gap-2 !rounded-full px-4 py-1.5 font-tech text-[11px] font-bold uppercase tracking-[0.25em] text-ink-soft"
             >
-              Self-hosted rom manager
+              the self-hosted rom manager
             </div>
             <a
               href="https://github.com/rommapp/romm/releases/tag/5.0.0"
               target="_blank"
               rel="noopener"
-              class="inline-flex items-center gap-2 border border-primary-700 bg-primary-950/70 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.25em] text-primary-300 transition-colors hover:border-primary-400 hover:text-primary-200"
+              class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 font-tech text-[11px] font-bold uppercase tracking-[0.25em] text-white transition-transform hover:scale-105"
+              style="
+                background: linear-gradient(
+                  92deg,
+                  #00a8e8,
+                  #8a7cff 50%,
+                  #ff3eb5
+                );
+                box-shadow: 0 4px 14px rgba(138, 124, 255, 0.45);
+              "
             >
-              <span class="bg-primary-500 px-1.5 font-bold text-ink-950">
-                New
-              </span>
-              RomM 5.0 is out ↗
+              ✦ romm 5.0 is here →
             </a>
           </div>
 
           <h1
-            class="mx-auto mt-10 font-pixel text-3xl uppercase leading-tight text-cream sm:text-4xl md:text-5xl xl:text-6xl"
+            class="mx-auto mt-12 max-w-4xl font-display text-4xl lowercase leading-[1.15] text-ink sm:text-5xl md:text-6xl"
           >
-            Your collection,<br />
-            <span class="text-primary-400">perfected</span
-            ><span class="blink text-primary-400">_</span>
+            your collection.<br />
+            <span class="iridescent">perfected.</span>
           </h1>
 
-          <p class="mx-auto mt-8 max-w-2xl leading-relaxed">
+          <p
+            class="mx-auto mt-8 max-w-2xl font-tech text-lg leading-relaxed text-ink-soft"
+          >
             Scan, enrich, browse and play your game collection from one
             beautiful self-hosted app. Metadata from seven providers, save sync
-            across your devices, and support for 400+ platforms. RomM is a
-            must-have for anyone who plays on emulators.
+            across your devices, and support for 400+ platforms.
           </p>
 
           <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
@@ -369,42 +345,123 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               target="_blank"
               rel="noopener"
             >
-              <span class="btn-pixel">Install now</span>
+              <span class="btn-gel"
+                ><span class="relative">install now</span></span
+              >
             </a>
             <a href="https://demo.romm.app" target="_blank" rel="noopener">
-              <span class="btn-ghost">View demo ↗</span>
+              <span class="btn-gel btn-gel--chrome">
+                <span class="relative">launch demo →</span>
+              </span>
             </a>
+          </div>
+
+          <!-- the library, inside a millennium browser window -->
+          <div class="mx-auto mt-16 max-w-4xl">
+            <div
+              class="overflow-hidden rounded-2xl border border-chrome-300 shadow-glass"
+            >
+              <!-- browser chrome -->
+              <div
+                class="chrome-bar flex items-center gap-3 border-b border-chrome-300 px-4 py-2.5"
+              >
+                <span class="flex items-center gap-1.5" aria-hidden="true">
+                  <span
+                    class="h-3 w-3 rounded-full border border-red-400/60"
+                    style="
+                      background: radial-gradient(
+                        circle at 35% 30%,
+                        #ffb3ab,
+                        #f4574a
+                      );
+                    "
+                  />
+                  <span
+                    class="h-3 w-3 rounded-full border border-amber-400/60"
+                    style="
+                      background: radial-gradient(
+                        circle at 35% 30%,
+                        #ffe3a3,
+                        #f5b31b
+                      );
+                    "
+                  />
+                  <span
+                    class="h-3 w-3 rounded-full border border-green-500/60"
+                    style="
+                      background: radial-gradient(
+                        circle at 35% 30%,
+                        #b8f5b1,
+                        #34c748
+                      );
+                    "
+                  />
+                </span>
+                <span
+                  class="flex flex-1 items-center gap-2 rounded-full border border-chrome-300 bg-white px-3 py-1 text-left font-mono text-[11px] text-ink-soft"
+                >
+                  <FontAwesomeIcon
+                    :icon="faLock"
+                    class="h-2.5 text-lime-600"
+                    aria-hidden="true"
+                  />
+                  http://romm.local/library
+                </span>
+                <span
+                  aria-hidden="true"
+                  class="hidden font-tech text-[10px] font-bold uppercase tracking-[0.2em] text-ink-faint sm:block"
+                >
+                  100%
+                </span>
+              </div>
+              <div class="relative bg-primary-950">
+                <img
+                  alt="The RomM collection view"
+                  src="/images/blocks/v5/collection.png"
+                  srcset="
+                    /images/blocks/v5/collection.png    1x,
+                    /images/blocks/v5/collection@2x.png 2x
+                  "
+                  class="block w-full"
+                  fetchpriority="high"
+                />
+                <!-- glossy screen reflection -->
+                <div
+                  aria-hidden="true"
+                  class="pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-white/20 to-transparent"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- ======================= SUPPORTED PLATFORMS ======================= -->
-      <section class="border-b border-grid">
-        <div
-          class="flex items-center justify-between gap-4 border-b border-grid px-6 py-3 font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
-        >
-          <span>400+ supported platforms</span>
-          <span aria-hidden="true" class="hidden text-grid sm:block">
-            consoles • handhelds • computers • arcade
-          </span>
+      <!-- ======================= PLATFORM TICKER ======================= -->
+      <section class="relative z-10 mx-auto max-w-7xl px-6 sm:px-10">
+        <div class="glass overflow-hidden">
+          <div
+            class="flex items-center justify-between gap-4 border-b border-white/70 px-6 py-3 font-tech text-[10px] font-bold uppercase tracking-[0.3em] text-ink-faint"
+          >
+            <span class="text-primary-600">✦ 400+ supported platforms</span>
+            <span aria-hidden="true" class="hidden sm:block">
+              consoles · handhelds · computers · arcade
+            </span>
+          </div>
+          <PlatformMarquee />
         </div>
-        <PlatformMarquee />
       </section>
 
       <!-- ============================ FEATURES ============================ -->
-      <section
-        id="features"
-        class="border-b border-grid px-6 py-16 sm:px-10 lg:px-16"
-      >
+      <section id="features" class="mx-auto max-w-7xl px-6 py-20 sm:px-10">
         <SectionHeading
           label="Features"
-          title="Every playthrough tells a story"
+          title="every playthrough tells a story"
           subtitle="The most powerful all-in-one app for managing and playing your retro game collection."
         />
 
-        <!-- Bento feature grid -->
+        <!-- glass bento grid -->
         <div
-          class="mt-12 grid auto-rows-fr gap-px border border-grid bg-grid sm:grid-cols-2 lg:grid-cols-4"
+          class="mt-12 grid auto-rows-fr gap-5 sm:grid-cols-2 lg:grid-cols-4"
         >
           <a
             v-for="feature in FEATURES"
@@ -413,47 +470,46 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             target="_blank"
             rel="noopener"
             :class="[FEATURE_SPAN[feature.size]]"
-            class="group relative overflow-hidden bg-ink-950 p-8 transition-colors duration-200 hover:bg-ink-900"
+            class="glass group relative overflow-hidden p-7 transition-all duration-200 hover:-translate-y-1 hover:bg-white/80"
           >
-            <!-- animated top accent -->
+            <!-- soft color glow behind the card content -->
             <span
               aria-hidden="true"
-              class="absolute inset-x-0 top-0 h-0.5 w-0 bg-primary-500 transition-all duration-300 ease-out group-hover:w-full"
-            />
-            <!-- oversized ghost glyph, scaled to the card's footprint -->
-            <FontAwesomeIcon
-              :icon="feature.icon"
-              aria-hidden="true"
-              :class="FEATURE_GLYPH[feature.size]"
-              class="pointer-events-none absolute text-primary-500/[0.04] transition-transform duration-500 group-hover:scale-110 group-hover:text-primary-500/[0.07]"
+              class="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full opacity-25 blur-2xl transition-opacity duration-300 group-hover:opacity-50"
+              :style="{ background: feature.glow }"
             />
 
             <div class="relative flex items-center gap-4">
+              <!-- gel orb icon -->
               <span
-                class="bevel-out flex h-10 w-10 shrink-0 items-center justify-center border border-grid bg-ink-900 text-primary-400 transition-colors duration-200 group-hover:border-primary-500 group-hover:text-primary-300"
+                class="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-white transition-transform duration-200 group-hover:scale-110"
+                :style="{
+                  background: feature.orb,
+                  boxShadow: `0 4px 12px ${feature.glow}, inset 0 2px 3px rgba(255,255,255,0.7)`,
+                }"
               >
-                <FontAwesomeIcon :icon="feature.icon" />
+                <FontAwesomeIcon :icon="feature.icon" class="drop-shadow" />
               </span>
               <h3
-                class="flex-1 font-pixel uppercase leading-snug text-cream"
+                class="flex-1 font-display leading-snug text-ink"
                 :class="
                   feature.size === 'featured'
-                    ? 'text-xl md:text-2xl'
-                    : 'text-lg'
+                    ? 'text-lg md:text-xl'
+                    : 'text-base'
                 "
               >
                 {{ feature.title }}
               </h3>
               <span
                 aria-hidden="true"
-                class="shrink-0 self-start font-mono text-[11px] text-grid transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary-200"
+                class="shrink-0 self-start font-tech text-sm font-bold text-chrome-400 transition-all duration-200 group-hover:translate-x-1 group-hover:text-primary-500"
               >
-                ↗
+                →
               </span>
             </div>
 
             <p
-              class="relative mt-4 text-sm leading-relaxed text-muted"
+              class="relative mt-4 text-sm leading-relaxed text-ink-soft"
               :class="
                 feature.size === 'featured' ? 'max-w-md md:text-base' : ''
               "
@@ -464,115 +520,110 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
         </div>
       </section>
 
-      <!-- ========================= PLATFORM STRIP ========================= -->
-      <section class="border-b border-grid">
-        <div
-          class="flex items-center justify-between gap-4 border-b border-grid px-6 py-3 font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
-        >
-          <span>Available on every major platform and operating system</span>
-        </div>
-        <div class="pause-on-hover flex overflow-hidden">
-          <div
-            v-for="copy in 2"
-            :key="copy"
-            :aria-hidden="copy === 2"
-            class="animate-marquee-reverse flex min-w-full shrink-0 items-center"
-            style="animation-duration: 25s"
-          >
-            <a
-              v-for="platform in PLATFORMS"
-              :key="platform.name"
-              :href="platform.href"
-              target="_blank"
-              rel="noopener noreferrer"
-              :tabindex="copy === 2 ? -1 : undefined"
-              class="flex h-24 w-52 shrink-0 items-center justify-center border-r border-grid px-8 opacity-50 grayscale transition-all duration-200 hover:opacity-100 hover:grayscale-0"
-            >
-              <img
-                :src="platform.src"
-                :alt="platform.name"
-                class="max-h-10 w-auto max-w-[8.5rem]"
-                loading="lazy"
-              />
-            </a>
-          </div>
-        </div>
-      </section>
-
       <!-- ============================== APPS ============================== -->
-      <section id="apps" class="border-grid px-6 pt-20 sm:px-10 lg:px-16">
+      <section id="apps" class="mx-auto max-w-7xl px-6 pb-20 sm:px-10">
         <SectionHeading
           label="Play anywhere"
-          title="Your library on every device"
+          title="your library on every device"
           subtitle="Native apps and integrations that bring your collection to desktops, handhelds and TVs. Pair a device in seconds with a QR code, and your saves follow you everywhere."
         />
+
+        <div class="mt-12">
+          <AppConsole :apps="APPS" @select="selectedImage = $event" />
+        </div>
       </section>
 
-      <div class="mt-16 border-y border-grid">
-        <AppConsole :apps="APPS" @select="selectedImage = $event" />
-      </div>
+      <!-- ====================== STATS + INSTALL BASE ====================== -->
+      <section class="mx-auto max-w-7xl px-6 pb-20 sm:px-10">
+        <div class="glass overflow-hidden">
+          <div class="chrome-bar border-b border-chrome-300 px-6 py-3">
+            <span
+              class="font-tech text-[10px] font-bold uppercase tracking-[0.3em] text-ink-soft"
+            >
+              system status · all systems glossy
+            </span>
+          </div>
 
-      <!-- ============================= STATS ============================= -->
-      <section class="border-b border-grid">
-        <div class="grid grid-cols-2 gap-px bg-grid lg:grid-cols-4">
-          <div class="bg-ink-950 p-4 text-center">
-            <div class="font-pixel text-2xl text-cream md:text-4xl">
-              {{ githubStars.toLocaleString() }}
-            </div>
+          <div class="grid grid-cols-2 gap-4 p-6 lg:grid-cols-4">
             <div
-              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
+              v-for="stat in STATS"
+              :key="stat.label"
+              class="lcd p-4 text-center"
             >
-              GitHub stars
+              <div
+                class="font-display text-2xl md:text-3xl"
+                style="text-shadow: 0 0 12px rgba(111, 210, 255, 0.8)"
+              >
+                <template v-if="stat.key === 'stars'">
+                  {{ githubStars.toLocaleString() }}
+                </template>
+                <template v-else-if="stat.key === 'discord'">
+                  {{ discordMembers.toLocaleString() }}
+                </template>
+                <template v-else>{{ stat.value }}</template>
+              </div>
+              <div
+                class="mt-2 font-tech text-[10px] font-bold uppercase tracking-[0.25em] text-primary-400/80"
+              >
+                {{ stat.label }}
+              </div>
             </div>
           </div>
-          <div class="bg-ink-950 p-4 text-center">
-            <div class="font-pixel text-2xl text-cream md:text-4xl">
-              {{ discordMembers.toLocaleString() }}
-            </div>
-            <div
-              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
-            >
-              Discord members
-            </div>
+
+          <!-- install base -->
+          <div
+            class="border-t border-white/70 px-6 py-3 font-tech text-[10px] font-bold uppercase tracking-[0.3em] text-ink-faint"
+          >
+            runs on every major platform and operating system
           </div>
-          <div class="bg-ink-950 p-4 text-center">
-            <div class="font-pixel text-2xl text-cream md:text-4xl">1.7M+</div>
+          <div
+            class="pause-on-hover flex overflow-hidden border-t border-white/70"
+          >
             <div
-              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
+              v-for="copy in 2"
+              :key="copy"
+              :aria-hidden="copy === 2"
+              class="animate-marquee-reverse flex min-w-full shrink-0 items-center"
+              style="animation-duration: 25s"
             >
-              Docker pulls
-            </div>
-          </div>
-          <div class="bg-ink-950 p-4 text-center">
-            <div class="font-pixel text-2xl text-cream md:text-4xl">#1</div>
-            <div
-              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
-            >
-              on Hackernews
+              <a
+                v-for="platform in PLATFORMS"
+                :key="platform.name"
+                :href="platform.href"
+                target="_blank"
+                rel="noopener noreferrer"
+                :tabindex="copy === 2 ? -1 : undefined"
+                class="flex h-20 w-48 shrink-0 items-center justify-center px-8 opacity-50 grayscale transition-all duration-200 hover:opacity-100 hover:grayscale-0"
+              >
+                <img
+                  :src="platform.src"
+                  :alt="platform.name"
+                  class="max-h-9 w-auto max-w-[8rem]"
+                  loading="lazy"
+                />
+              </a>
             </div>
           </div>
         </div>
       </section>
 
       <!-- =========================== COMMUNITY =========================== -->
-      <section class="relative overflow-hidden border-b border-grid">
+      <section class="relative overflow-hidden">
         <GlyphField />
         <div
-          aria-hidden="true"
-          class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(139,116,232,0.16),transparent_65%)]"
-        />
-        <div class="relative z-10 px-6 py-24 text-center sm:px-10 lg:px-16">
+          class="relative z-10 mx-auto max-w-7xl px-6 pb-24 pt-8 text-center sm:px-10"
+        >
           <div
-            class="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.3em] text-primary-400"
+            class="glass-sm inline-flex items-center gap-2 !rounded-full px-4 py-1.5 font-tech text-[11px] font-bold uppercase tracking-[0.3em] text-magenta-500"
           >
-            <span>Powered by friendship</span>
+            ✦ powered by friendship
           </div>
-          <h2
-            class="mt-6 font-pixel text-2xl uppercase text-cream sm:text-3xl md:text-4xl"
-          >
-            Join the party
+          <h2 class="mt-6 font-display text-3xl lowercase text-ink sm:text-4xl">
+            join the <span class="iridescent">party</span>
           </h2>
-          <p class="mx-auto mt-4 max-w-xl leading-relaxed text-muted">
+          <p
+            class="mx-auto mt-4 max-w-xl font-tech text-lg leading-relaxed text-ink-soft"
+          >
             Get help with your setup, share your ideas, and meet other fans of
             RomM.
           </p>
@@ -582,9 +633,9 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               target="_blank"
               rel="noopener"
             >
-              <span class="btn-pixel">
-                <FontAwesomeIcon :icon="faDiscord" class="h-4" />
-                Join the Discord
+              <span class="btn-gel">
+                <FontAwesomeIcon :icon="faDiscord" class="relative h-4" />
+                <span class="relative">join the discord</span>
               </span>
             </a>
             <a
@@ -592,9 +643,9 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               target="_blank"
               rel="noopener"
             >
-              <span class="btn-ghost">
-                <FontAwesomeIcon :icon="faGithub" class="h-4" />
-                Contribute
+              <span class="btn-gel btn-gel--chrome">
+                <FontAwesomeIcon :icon="faGithub" class="relative h-4" />
+                <span class="relative">contribute</span>
               </span>
             </a>
           </div>
@@ -602,15 +653,32 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
       </section>
 
       <!-- ============================= FOOTER ============================= -->
-      <footer>
-        <div class="grid gap-px bg-grid sm:grid-cols-2 lg:grid-cols-4">
-          <div class="bg-ink-950 p-8">
+      <footer
+        class="relative overflow-hidden text-primary-100"
+        style="
+          background: linear-gradient(
+            180deg,
+            #003852 0%,
+            #062a3d 40%,
+            #041c2b 100%
+          );
+        "
+      >
+        <!-- glossy top reflection -->
+        <div
+          aria-hidden="true"
+          class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/15 to-transparent"
+        />
+        <div
+          class="relative mx-auto grid max-w-7xl gap-10 px-6 py-14 sm:grid-cols-2 sm:px-10 lg:grid-cols-4"
+        >
+          <div>
             <h4
-              class="font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
+              class="font-tech text-[10px] font-bold uppercase tracking-[0.3em] text-primary-300"
             >
               Project
             </h4>
-            <ul class="mt-4 space-y-2 text-sm">
+            <ul class="mt-4 space-y-2 font-tech text-sm">
               <li>
                 <a
                   href="https://docs.romm.app"
@@ -649,13 +717,13 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               </li>
             </ul>
           </div>
-          <div class="bg-ink-950 p-8">
+          <div>
             <h4
-              class="font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
+              class="font-tech text-[10px] font-bold uppercase tracking-[0.3em] text-primary-300"
             >
               Apps
             </h4>
-            <ul class="mt-4 space-y-2 text-sm">
+            <ul class="mt-4 space-y-2 font-tech text-sm">
               <li>
                 <a
                   href="https://github.com/rommapp/playnite-plugin"
@@ -685,13 +753,13 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               </li>
             </ul>
           </div>
-          <div class="bg-ink-950 p-8">
+          <div>
             <h4
-              class="font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
+              class="font-tech text-[10px] font-bold uppercase tracking-[0.3em] text-primary-300"
             >
               Ecosystem
             </h4>
-            <ul class="mt-4 space-y-2 text-sm">
+            <ul class="mt-4 space-y-2 font-tech text-sm">
               <li>
                 <a
                   href="https://docs.romm.app/latest/platforms/supported-platforms/"
@@ -730,13 +798,13 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               </li>
             </ul>
           </div>
-          <div class="bg-ink-950 p-8">
+          <div>
             <h4
-              class="font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
+              class="font-tech text-[10px] font-bold uppercase tracking-[0.3em] text-primary-300"
             >
               Community
             </h4>
-            <ul class="mt-4 space-y-2 text-sm">
+            <ul class="mt-4 space-y-2 font-tech text-sm">
               <li>
                 <a
                   href="https://discord.gg/RGPJHNMMwJ"
@@ -766,30 +834,40 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
           </div>
         </div>
 
-        <div
-          class="flex flex-wrap items-center justify-between gap-4 border-t border-grid px-6 py-4 font-mono text-[10px] uppercase tracking-[0.2em] text-muted"
-        >
-          <span>Your collection, perfected.</span>
-          <span class="hidden md:block">© The RomM Project · AGPL-3.0</span>
-          <span
-            aria-label="Secured with Aikido"
-            class="bevel-out inline-flex items-stretch border border-grid font-mono text-[10px] uppercase tracking-[0.2em]"
+        <div class="relative border-t border-white/10 py-5">
+          <div
+            class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 font-tech text-[10px] font-bold uppercase tracking-[0.2em] text-primary-300/80 sm:px-10"
           >
+            <span>your collection. perfected.</span>
+            <span class="hidden md:block">© The RomM Project · AGPL-3.0</span>
             <span
-              class="flex items-center gap-1.5 bg-ink-800 px-2.5 py-1 text-muted"
+              aria-label="Secured with Aikido"
+              class="inline-flex items-stretch overflow-hidden rounded-full border border-white/20"
             >
-              <FontAwesomeIcon
-                :icon="faShieldHeart"
-                class="h-2.5 text-primary-400"
-              />
-              Secured with
+              <span
+                class="flex items-center gap-1.5 bg-white/10 px-2.5 py-1 text-primary-200"
+              >
+                <FontAwesomeIcon
+                  :icon="faShieldHeart"
+                  class="h-2.5 text-lime-400"
+                />
+                Secured with
+              </span>
+              <span
+                class="flex items-center px-2.5 py-1 font-bold text-primary-950"
+                style="
+                  background: linear-gradient(
+                    180deg,
+                    #6fd2ff,
+                    #00a8e8 50%,
+                    #0089c7
+                  );
+                "
+              >
+                Aikido
+              </span>
             </span>
-            <span
-              class="flex items-center bg-primary-500 px-2.5 py-1 font-bold text-ink-950"
-            >
-              Aikido
-            </span>
-          </span>
+          </div>
         </div>
       </footer>
     </main>
@@ -798,31 +876,40 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
     <Teleport to="body">
       <div
         v-if="selectedImage"
-        class="fixed inset-0 z-[100] flex items-center justify-center bg-ink-950/90 p-4 backdrop-blur-sm sm:p-10"
+        class="fixed inset-0 z-[100] flex items-center justify-center bg-primary-950/80 p-4 backdrop-blur-md sm:p-10"
         @click="selectedImage = undefined"
       >
-        <div class="border border-grid bg-ink-900">
+        <div
+          class="overflow-hidden rounded-2xl border border-chrome-300 bg-white shadow-glass"
+        >
           <div
-            class="flex items-center justify-between border-b border-grid bg-ink-800 px-3 py-2"
+            class="chrome-bar flex items-center justify-between border-b border-chrome-300 px-4 py-2"
           >
             <span
-              class="font-mono text-[10px] uppercase tracking-widest text-muted"
+              class="font-tech text-xs font-bold uppercase tracking-widest text-ink-soft"
             >
               {{ selectedImage.alt }}
             </span>
             <button
               type="button"
-              class="font-mono text-xs text-muted transition-colors hover:text-cream"
+              class="ml-4 flex h-5 w-5 items-center justify-center rounded-full border border-red-400/60 font-mono text-[10px] font-bold text-red-900"
+              style="
+                background: radial-gradient(
+                  circle at 35% 30%,
+                  #ffb3ab,
+                  #f4574a
+                );
+              "
               aria-label="Close"
               @click="selectedImage = undefined"
             >
-              [x]
+              ×
             </button>
           </div>
           <img
             :src="selectedImage.src"
             :alt="selectedImage.alt"
-            class="block max-h-[80vh] w-full object-contain"
+            class="block max-h-[80vh] w-full bg-primary-950 object-contain"
           />
         </div>
       </div>

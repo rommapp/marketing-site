@@ -39,21 +39,9 @@ onBeforeUnmount(() => clearInterval(timer));
 
 <template>
   <div @mouseenter="paused = true" @mouseleave="paused = false">
-    <!-- Terminal chrome -->
+    <!-- inset player screen -->
     <div
-      class="flex items-center justify-between border border-grid bg-ink-800 px-3 py-2"
-    >
-      <div class="flex items-center gap-1.5" aria-hidden="true">
-        <span class="h-2 w-2 bg-primary-500" />
-        <span class="h-2 w-2 bg-primary-700" />
-        <span class="h-2 w-2 bg-grid" />
-      </div>
-      <span class="font-mono text-[10px] uppercase tracking-widest text-muted">
-        {{ label }}
-      </span>
-    </div>
-    <div
-      class="relative overflow-hidden border border-t-0 border-grid bg-ink-900"
+      class="relative overflow-hidden rounded-xl border-2 border-chrome-300 bg-primary-950 p-1.5 shadow-screen"
     >
       <Transition name="gallery-fade" mode="out-in">
         <img
@@ -61,22 +49,45 @@ onBeforeUnmount(() => clearInterval(timer));
           :key="active"
           :src="current.src"
           :alt="current.alt"
-          class="block aspect-[16/10] w-full cursor-zoom-in bg-ink-950 object-fill"
+          class="block aspect-[16/10] w-full cursor-zoom-in rounded-lg bg-primary-950 object-fill"
           loading="lazy"
           @click="emit('select', current!)"
         />
       </Transition>
-    </div>
-    <div class="mt-3 flex items-center justify-center gap-2">
-      <button
-        v-for="(image, i) in images"
-        :key="image.src"
-        type="button"
-        class="h-2 w-2 transition-colors"
-        :class="i === active ? 'bg-primary-400' : 'bg-grid hover:bg-muted'"
-        :aria-label="`Show ${image.alt}`"
-        @click="active = i"
+      <!-- glossy screen reflection -->
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-x-0 top-0 h-1/3 rounded-t-xl bg-gradient-to-b from-white/25 to-transparent"
       />
+    </div>
+    <div class="mt-3 flex items-center justify-between">
+      <span
+        class="font-tech text-[10px] font-bold uppercase tracking-[0.25em] text-ink-faint"
+      >
+        {{ label }}
+      </span>
+      <span class="flex items-center gap-2">
+        <button
+          v-for="(image, i) in images"
+          :key="image.src"
+          type="button"
+          class="h-3 w-3 rounded-full transition-all"
+          :style="
+            i === active
+              ? {
+                  background:
+                    'radial-gradient(circle at 35% 30%, #a6e4ff, #00a8e8 70%)',
+                  boxShadow: '0 0 8px rgba(0,168,232,0.8)',
+                }
+              : {
+                  background:
+                    'radial-gradient(circle at 35% 30%, #ffffff, #c2d2de 70%)',
+                }
+          "
+          :aria-label="`Show ${image.alt}`"
+          @click="active = i"
+        />
+      </span>
     </div>
   </div>
 </template>
