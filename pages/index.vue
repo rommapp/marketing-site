@@ -42,6 +42,10 @@ import argosyDetails from "~/assets/images/screenshots/argosy/game-details.png";
 import argosyLibrary from "~/assets/images/screenshots/argosy/library.png";
 import argosyRecommended from "~/assets/images/screenshots/argosy/recommended.png";
 
+import boxFront from "~/assets/images/box3d/anguna-front.png";
+import boxBack from "~/assets/images/box3d/anguna-back.png";
+import boxSide from "~/assets/images/box3d/anguna-side.png";
+
 interface AppImage {
   src: string;
   alt: string;
@@ -192,6 +196,7 @@ const FEATURES = [
     body: "With EmulatorJS and Ruffle built-in, play your favorite games in your browser, no setup required.",
     href: "https://docs.romm.app/latest/using/in-browser-play/emulatorjs/",
     size: "featured",
+    box3d: true,
   },
   {
     icon: faRotate,
@@ -337,8 +342,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             class="mx-auto mt-10 font-pixel text-3xl uppercase leading-tight text-cream sm:text-4xl md:text-5xl xl:text-6xl"
           >
             Your collection,<br />
-            <span class="text-primary-400">perfected</span
-            ><span class="blink text-primary-400">_</span>
+            <span class="text-primary-400">perfected</span>
           </h1>
 
           <p class="mx-auto mt-8 max-w-2xl leading-relaxed">
@@ -445,6 +449,30 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             >
               {{ feature.body }}
             </p>
+
+            <!-- decorative auto-spinning 3D game box -->
+            <div
+              v-if="feature.box3d"
+              class="relative mt-8 hidden justify-center md:flex"
+            >
+              <div class="w-52 mt-2">
+                <ClientOnly>
+                  <RBox3D
+                    :front="boxFront"
+                    :back="boxBack"
+                    :spine="boxSide"
+                    alt="Anguna: Warriors of Virtue box art"
+                  />
+                  <template #fallback>
+                    <img
+                      :src="boxFront"
+                      alt="Anguna: Warriors of Virtue box art"
+                      class="w-full rounded-sm"
+                    />
+                  </template>
+                </ClientOnly>
+              </div>
+            </div>
 
             <!-- supported metadata source logos -->
             <div
