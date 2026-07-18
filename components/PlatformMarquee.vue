@@ -1,13 +1,20 @@
 <script setup lang="ts">
+import { shuffle } from "lodash-es";
+
 const modules = import.meta.glob("~/assets/images/platforms/*.svg", {
   eager: true,
   import: "default",
 }) as Record<string, string>;
 
-const icons = Object.entries(modules).map(([path, src]) => {
-  const slug = path.split("/").pop()!.replace(".svg", "");
-  return { slug, name: slug.replace(/-/g, " "), src };
-});
+// Shuffle once on the server and reuse the same order on the client via useState
+const icons = useState("platform-icons", () =>
+  shuffle(
+    Object.entries(modules).map(([path, src]) => {
+      const slug = path.split("/").pop()!.replace(".svg", "");
+      return { slug, name: slug.replace(/-/g, " "), src };
+    }),
+  ),
+);
 </script>
 
 <template>
@@ -31,7 +38,7 @@ const icons = Object.entries(modules).map(([path, src]) => {
           <img
             :src="icon.src"
             :alt="icon.name"
-            class="h-11 w-11 object-contain opacity-100 transition-all duration-200"
+            class="h-11 w-11 object-contain opacity-80 transition-all duration-200 group-hover:opacity-100"
             loading="lazy"
             decoding="async"
           />

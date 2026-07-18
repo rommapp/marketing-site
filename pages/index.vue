@@ -124,51 +124,6 @@ const APPS = [
   },
 ];
 
-const COMMUNITY_APPS = [
-  {
-    name: "romm-ios-app",
-    platform: "iOS",
-    description: "Native iOS app for your library",
-    href: "https://github.com/ilyas-hallak/romm-ios-app",
-    author: "ilyas-hallak",
-  },
-  {
-    name: "RetroArch Sync",
-    platform: "Desktop",
-    description: "Sync your RetroArch library with RomM",
-    href: "https://github.com/Covin90/romm-retroarch-sync",
-    author: "Covin90",
-  },
-  {
-    name: "RomMate",
-    platform: "Desktop",
-    description: "Desktop app for browsing your collection",
-    href: "https://github.com/brenoprata10/rommate",
-    author: "brenoprata10",
-  },
-  {
-    name: "romm-client",
-    platform: "Desktop",
-    description: "Desktop client for your server",
-    href: "https://github.com/chaun14/romm-client",
-    author: "chaun14",
-  },
-  {
-    name: "Freegosy",
-    platform: "Desktop",
-    description: "All-in-one manager: download, launch, sync saves",
-    href: "https://github.com/abduznik/freegosy",
-    author: "abduznik",
-  },
-  {
-    name: "DeckyRommSync",
-    platform: "SteamOS",
-    description: "Downloader and syncer for the Steam Deck",
-    href: "https://github.com/danielcopper/decky-romm-sync",
-    author: "danielcopper",
-  },
-];
-
 const PLATFORMS = [
   {
     name: "CasaOS",
@@ -500,7 +455,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
       </section>
 
       <!-- ============================== APPS ============================== -->
-      <section id="apps" class="border-grid px-6 pt-20 sm:px-10 lg:px-16">
+      <section id="apps" class="border-grid px-6 pt-16 sm:px-10 lg:px-16">
         <SectionHeading
           label="Play anywhere"
           title="Your library on every device"

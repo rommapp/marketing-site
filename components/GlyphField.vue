@@ -1,7 +1,8 @@
 <script setup lang="ts">
-// Scattered terminal glyphs (Phantom-style). Positions come from a seeded
-// LCG so server and client render the exact same field, with no hydration drift.
-const GLYPHS = ["+", "x", "=", "#", "0", "1", "░", "▒", "@"];
+// Scattered controller-button glyphs: PlayStation shapes + Nintendo face
+// buttons. Positions come from a seeded LCG so server and client render
+// the exact same field, with no hydration drift.
+const GLYPHS = ["✕", "△", "□", "○"];
 
 let seed = 1337;
 const rand = () => {
