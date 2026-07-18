@@ -44,7 +44,7 @@ const navItems = [
           href="https://github.com/rommapp/romm/releases/latest"
           target="_blank"
           rel="noopener"
-          class="hidden border border-grid px-1.5 py-0.5 font-mono text-[10px] text-primary-300 transition-colors hover:border-primary-400 sm:block"
+          class="hidden border border-grid px-1.5 py-0.5 font-mono text-xs text-primary-300 transition-colors hover:border-primary-400 sm:block"
         >
           {{ version }}
         </a>
