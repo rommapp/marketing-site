@@ -13,6 +13,8 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   select: [image: AppImage];
+  // Fired when the carousel auto-advances back to the first image (full loop)
+  cycled: [];
 }>();
 
 const active = ref(0);
@@ -25,7 +27,9 @@ let timer: ReturnType<typeof setInterval> | undefined;
 onMounted(() => {
   timer = setInterval(() => {
     if (!paused.value) {
-      active.value = (active.value + 1) % props.images.length;
+      const next = (active.value + 1) % props.images.length;
+      active.value = next;
+      if (next === 0) emit("cycled");
     }
   }, 4000);
 });

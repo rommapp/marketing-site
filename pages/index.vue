@@ -65,6 +65,65 @@ const GROUT_IMAGES: AppImage[] = [
   { src: groutSyncSummary, alt: "Grout sync summary" },
 ];
 
+const APPS = [
+  {
+    id: "playnite",
+    name: "Playnite Plugin",
+    system: "Windows · Desktop",
+    logo: playnite,
+    images: PLAYNITE_IMAGES,
+    label: "~/integrations/playnite",
+    tags: [{ text: "Windows", icon: faWindows }, { text: "QR pairing" }],
+    body: "Effortlessly integrate your retro game collection into Playnite, the open-source game library manager that provides a unified interface for all of your games on PC.",
+    links: {
+      label: "Learn more",
+      items: [{ text: "playnite.link", href: "https://playnite.link/" }],
+    },
+    ctaText: "Install",
+    ctaHref:
+      "https://github.com/rommapp/playnite-plugin?tab=readme-ov-file#installation",
+  },
+  {
+    id: "argosy",
+    name: "Argosy Launcher",
+    system: "Android · Handhelds",
+    logo: argosy,
+    images: ARGOSY_IMAGES,
+    label: "~/apps/argosy",
+    tags: [
+      { text: "Android", icon: faAndroid },
+      { text: "QR pairing" },
+      { text: "Save sync" },
+    ],
+    body: "Sync your library, download games on demand, track your achievements, and play across devices with automatic save sync, all from a gamepad-first interface designed for Anbernic, Retroid Pocket, Odin, and similar devices.",
+    ctaText: "Download",
+    ctaHref: "https://github.com/rommapp/argosy-launcher/releases/latest/",
+  },
+  {
+    id: "grout",
+    name: "Grout",
+    system: "Handheld CFWs",
+    logo: grout,
+    images: GROUT_IMAGES,
+    label: "~/apps/grout",
+    tags: [{ text: "Handhelds", icon: faGamepad }, { text: "Save sync" }],
+    body: "A lightweight client for your favorite handheld custom firmwares. Download games, box art and BIOS files wirelessly, and sync your saves automatically as you play.",
+    links: {
+      label: "Works on",
+      items: [
+        { text: "muOS", href: "https://muos.dev" },
+        { text: "Knulli", href: "https://knulli.org" },
+        { text: "ROCKNIX", href: "https://rocknix.org" },
+        { text: "Spruce (v4)", href: "https://spruceui.github.io/" },
+        { text: "NextUI", href: "https://nextui.loveretro.games" },
+        { text: "TrimUI", href: "https://trimui.com" },
+      ],
+    },
+    ctaText: "Quick start",
+    ctaHref: "https://grout.romm.app/getting-started/",
+  },
+];
+
 const COMMUNITY_APPS = [
   {
     name: "romm-ios-app",
@@ -107,28 +166,6 @@ const COMMUNITY_APPS = [
     description: "Downloader and syncer for the Steam Deck",
     href: "https://github.com/danielcopper/decky-romm-sync",
     author: "danielcopper",
-  },
-];
-
-const CHANGELOG = [
-  {
-    title: "UI overhaul",
-    detail: "a new design system, at home with mouse, touch or gamepad",
-  },
-  { title: "Shared savestates", detail: "pass progress between users" },
-  { title: "CRT mode", detail: "a shader for that 90s glow" },
-  {
-    title: "ROM patching",
-    detail: "apply stored or uploaded patches server-side",
-  },
-  { title: "QR pairing", detail: "connect devices in seconds" },
-  {
-    title: "Permissions",
-    detail: "granular per-user and per-group control",
-  },
-  {
-    title: "And more",
-    detail: "interactive 3D boxart, music player, real-time logs",
   },
 ];
 
@@ -416,7 +453,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               </h3>
               <span
                 aria-hidden="true"
-                class="shrink-0 self-start font-mono text-[11px] text-muted transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary-200"
+                class="shrink-0 self-start font-mono text-[11px] text-grid transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary-200"
               >
                 ↗
               </span>
@@ -470,145 +507,21 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
       </section>
 
       <!-- ============================== APPS ============================== -->
-      <section
-        id="apps"
-        class="border-b border-grid px-6 py-20 sm:px-10 lg:px-16"
-      >
+      <section id="apps" class="border-grid px-6 pt-20 sm:px-10 lg:px-16">
         <SectionHeading
           label="Play anywhere"
           title="Your library on every device"
           subtitle="Native apps and integrations that bring your collection to desktops, handhelds and TVs. Pair a device in seconds with a QR code, and your saves follow you everywhere."
         />
+      </section>
 
-        <div class="mt-16 flex flex-col gap-16">
-          <!-- Playnite -->
-          <AppShowcase
-            name="Playnite Plugin"
-            :logo="playnite"
-            :images="PLAYNITE_IMAGES"
-            label="~/integrations/playnite"
-            :tags="[
-              { text: 'Windows', icon: faWindows },
-              { text: 'QR pairing' },
-            ]"
-            :specs="[
-              { k: 'Platform', v: 'Windows' },
-              { k: 'Pairing', v: 'QR code' },
-              { k: 'Type', v: 'Library plugin' },
-            ]"
-            cta-text="Install"
-            cta-href="https://github.com/rommapp/playnite-plugin?tab=readme-ov-file#installation"
-            @select="selectedImage = $event"
-          >
-            Effortlessly integrate your retro game collection into Playnite with
-            our plugin.
-            <a
-              href="https://playnite.link/"
-              target="_blank"
-              rel="noopener"
-              class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
-              >Playnite</a
-            >
-            is an open-source game library manager that provides a unified
-            interface for all of your games on PC.
-          </AppShowcase>
+      <div class="mt-16 border-t border-grid">
+        <AppConsole :apps="APPS" @select="selectedImage = $event" />
+      </div>
 
-          <!-- Argosy -->
-          <AppShowcase
-            name="Argosy Launcher"
-            :logo="argosy"
-            :images="ARGOSY_IMAGES"
-            label="~/apps/argosy"
-            reverse
-            :tags="[
-              { text: 'Android', icon: faAndroid },
-              { text: 'QR pairing' },
-              { text: 'Save sync' },
-            ]"
-            :specs="[
-              { k: 'Platform', v: 'Android' },
-              { k: 'Devices', v: 'Anbernic · Odin' },
-              { k: 'Saves', v: 'Auto-sync' },
-            ]"
-            cta-text="Download"
-            cta-href="https://github.com/rommapp/argosy-launcher/releases/latest/"
-            @select="selectedImage = $event"
-          >
-            Sync your library, download games on demand, track your
-            achievements, and play across devices with automatic save sync, all
-            from a gamepad-first interface designed for Anbernic, Retroid
-            Pocket, Odin, and similar devices.
-          </AppShowcase>
-
-          <!-- Grout -->
-          <AppShowcase
-            name="Grout"
-            :logo="grout"
-            :images="GROUT_IMAGES"
-            label="~/apps/grout"
-            :tags="[
-              { text: 'Handhelds', icon: faGamepad },
-              { text: 'Save sync' },
-            ]"
-            :specs="[
-              { k: 'Platform', v: 'Handheld CFW' },
-              { k: 'Firmware', v: 'muOS · Knulli · +4' },
-              { k: 'Saves', v: 'Auto-sync' },
-            ]"
-            cta-text="Quick start"
-            cta-href="https://grout.romm.app/getting-started/"
-            @select="selectedImage = $event"
-          >
-            A lightweight client for your favorite handheld CFWs, available on
-            <a
-              href="https://muos.dev"
-              target="_blank"
-              rel="noopener"
-              class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
-              >muOS</a
-            >,
-            <a
-              href="https://knulli.org"
-              target="_blank"
-              rel="noopener"
-              class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
-              >Knulli</a
-            >,
-            <a
-              href="https://rocknix.org"
-              target="_blank"
-              rel="noopener"
-              class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
-              >ROCKNIX</a
-            >,
-            <a
-              href="https://spruceui.github.io/"
-              target="_blank"
-              rel="noopener"
-              class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
-              >Spruce (v4)</a
-            >,
-            <a
-              href="https://nextui.loveretro.games"
-              target="_blank"
-              rel="noopener"
-              class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
-              >NextUI</a
-            >
-            and
-            <a
-              href="https://trimui.com"
-              target="_blank"
-              rel="noopener"
-              class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
-              >TrimUI</a
-            >. Download games, box art and BIOS files wirelessly, and sync your
-            saves automatically as you play.
-          </AppShowcase>
-        </div>
-
+      <section class="border-b border-grid px-6 sm:px-10 lg:px-16">
         <!-- Community apps -->
-        <div class="mt-24">
+        <div class="my-16">
           <div class="flex items-center gap-4">
             <span
               class="whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.3em] text-primary-400"
@@ -925,11 +838,25 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
         >
           <span>Your collection, perfected.</span>
           <span class="hidden md:block">© The RomM Project · AGPL-3.0</span>
-          <img
-            src="https://app.aikido.dev/assets/badges/label-only-dark-theme.svg"
-            alt="Aikido Security Audit Report"
-            class="h-6"
-          />
+          <span
+            aria-label="Secured with Aikido"
+            class="bevel-out inline-flex items-stretch border border-grid font-mono text-[10px] uppercase tracking-[0.2em]"
+          >
+            <span
+              class="flex items-center gap-1.5 bg-ink-800 px-2.5 py-1 text-muted"
+            >
+              <FontAwesomeIcon
+                :icon="faShieldHeart"
+                class="h-2.5 text-primary-400"
+              />
+              Secured with
+            </span>
+            <span
+              class="flex items-center bg-primary-500 px-2.5 py-1 font-bold text-ink-950"
+            >
+              Aikido
+            </span>
+          </span>
         </div>
       </footer>
     </main>
