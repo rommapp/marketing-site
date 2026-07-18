@@ -97,7 +97,7 @@ onMounted(() => {
           role="tab"
           :aria-selected="i === active"
           class="group relative flex items-center gap-4 border-b border-grid px-5 py-5 text-left transition-colors last:border-b-0"
-          :class="i === active ? 'bg-primary-950/40' : 'hover:bg-ink-900'"
+          :class="i === active ? 'bg-primary-500/10' : 'hover:bg-ink-900'"
           @click="pick(i)"
           @focus="engage()"
         >
@@ -146,7 +146,7 @@ onMounted(() => {
           aria-hidden="true"
           class="hidden flex-1 items-center justify-center gap-3 px-5 py-5 font-mono text-[10px] uppercase tracking-[0.3em] text-grid lg:flex"
         >
-          ░░ Empty slot ░░
+          Empty slot
         </div>
       </div>
 

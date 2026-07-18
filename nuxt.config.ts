@@ -37,6 +37,15 @@ export default defineNuxtConfig({
       charset: "utf-8",
       viewport: "width=device-width, initial-scale=1",
       title: "The RomM Project",
+      script: [
+        {
+          // Apply the saved/system theme before first paint to avoid a flash.
+          // No stored value means "system": follow prefers-color-scheme.
+          innerHTML:
+            "(function(){try{var t=localStorage.getItem('theme');var light=t==='light'||(t!=='dark'&&window.matchMedia('(prefers-color-scheme: light)').matches);document.documentElement.classList.toggle('light',light);}catch(e){}})();",
+          tagPosition: "head",
+        },
+      ],
       meta: [
         { name: "author", content: "The RomM Team" },
         { name: "keywords", content: "romm, rom, manager, game, collection" },

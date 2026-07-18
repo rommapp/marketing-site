@@ -1,8 +1,14 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { faGithub, faDiscord } from "@fortawesome/free-brands-svg-icons";
-import { faHeart, faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+import {
+  faHeart,
+  faBars,
+  faXmark,
+  faSun,
+  faMoon,
+} from "@fortawesome/free-solid-svg-icons";
 
 defineProps<{
   githubStars: number;
@@ -12,6 +18,9 @@ defineProps<{
 const version = "v<romm_version>";
 
 const menuOpen = ref(false);
+
+const { theme, toggle: toggleTheme, init: initTheme } = useTheme();
+onMounted(initTheme);
 
 const navItems = [
   { label: "Docs", href: "https://docs.romm.app" },
@@ -64,6 +73,22 @@ const navItems = [
       </div>
 
       <div class="flex items-center gap-2">
+        <button
+          type="button"
+          :title="
+            theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'
+          "
+          :aria-label="
+            theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'
+          "
+          class="flex h-9 w-9 items-center justify-center border border-grid text-cream transition-colors hover:border-primary-400 hover:text-primary-300"
+          @click="toggleTheme"
+        >
+          <FontAwesomeIcon
+            :icon="theme === 'light' ? faMoon : faSun"
+            class="h-3.5"
+          />
+        </button>
         <a
           href="https://opencollective.com/romm"
           target="_blank"

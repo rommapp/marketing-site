@@ -304,7 +304,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             /images/blocks/v5/collection.png    1x,
             /images/blocks/v5/collection@2x.png 2x
           "
-          class="absolute inset-0 h-full w-full object-cover object-center opacity-50"
+          class="absolute inset-0 h-full w-full object-cover object-center opacity-75"
           fetchpriority="high"
         />
         <div
@@ -321,7 +321,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
         <div class="relative z-10 px-6 py-24 text-center sm:px-10 lg:px-16">
           <div class="flex flex-wrap items-center justify-center gap-3">
             <div
-              class="inline-flex items-center gap-3 border border-grid bg-ink-900/70 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.25em] text-primary-300"
+              class="inline-flex items-center gap-3 border border-grid bg-ink-900/90 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.25em]"
             >
               Self-hosted rom manager
             </div>
@@ -329,7 +329,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               href="https://github.com/rommapp/romm/releases/tag/5.0.0"
               target="_blank"
               rel="noopener"
-              class="inline-flex items-center gap-2 border border-primary-700 bg-primary-950/70 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.25em] text-primary-300 transition-colors hover:border-primary-400 hover:text-primary-200"
+              class="inline-flex items-center gap-2 border border-primary-500/40 bg-primary-100/80 dark:bg-primary-900/80 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.25em] transition-colors hover:border-primary-400"
             >
               <span class="bg-primary-500 px-1.5 font-bold text-ink-950">
                 New
@@ -453,7 +453,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             <!-- decorative auto-spinning 3D game box -->
             <div
               v-if="feature.box3d"
-              class="relative mt-8 hidden justify-center md:flex"
+              class="relative mt-8 hidden justify-center lg:flex"
             >
               <div class="w-52 mt-2">
                 <ClientOnly>
