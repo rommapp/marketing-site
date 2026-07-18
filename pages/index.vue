@@ -438,7 +438,8 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             v-for="copy in 2"
             :key="copy"
             :aria-hidden="copy === 2"
-            class="animate-marquee flex min-w-full shrink-0 items-center"
+            class="animate-marquee-reverse flex min-w-full shrink-0 items-center"
+            style="animation-duration: 25s"
           >
             <a
               v-for="platform in PLATFORMS"
