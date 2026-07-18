@@ -164,6 +164,78 @@ const PLATFORMS = [
   },
 ];
 
+const FEATURES = [
+  {
+    n: "01",
+    icon: faGamepad,
+    title: "Play in your browser",
+    body: "EmulatorJS, MS-DOS and Flash players are built in. Hit Play and you're in the game — no cores to configure, no files to move.",
+    href: "https://docs.romm.app/latest/using/in-browser-play/emulatorjs/",
+    size: "featured",
+  },
+  {
+    n: "02",
+    icon: faRotate,
+    title: "Saves that follow you",
+    body: "A full save-sync engine keeps saves and states in step across your devices, with conflict detection when two of them disagree.",
+    href: "https://docs.romm.app/latest/using/saves-and-states/",
+    size: "wide",
+  },
+  {
+    n: "03",
+    icon: faWandSparkles,
+    title: "Magical metadata",
+    body: "Cover art, screenshots and deep metadata from IGDB, ScreenScraper, LaunchBox, RetroAchievements and more — matched by hash, not guesswork.",
+    href: "https://docs.romm.app/latest/getting-started/metadata-providers/",
+    size: "wide",
+  },
+  {
+    n: "04",
+    icon: faUsers,
+    title: "Multiplayer",
+    body: "Granular per-user controls, plus OIDC single sign-on with Authelia, Authentik, Keycloak and friends.",
+    href: "https://docs.romm.app/latest/administration/oidc/",
+    size: "small",
+  },
+  {
+    n: "05",
+    icon: faScrewdriverWrench,
+    title: "ROM patcher",
+    body: "Apply romhacks and translations server-side, from stored or uploaded patch files.",
+    href: "https://docs.romm.app/latest/using/rom-patcher/",
+    size: "small",
+  },
+  {
+    n: "06",
+    icon: faPlug,
+    title: "Ecosystem",
+    body: "ES-DE and Pegasus exports, LaunchBox import, feed clients, and a full REST API with device tokens.",
+    href: "https://docs.romm.app/latest/developers/api-reference/",
+    size: "small",
+  },
+  {
+    n: "07",
+    icon: faShieldHeart,
+    title: "Free forever",
+    body: "AGPL-3.0, no tracking, no upsells. Your games, your data, your server.",
+    href: "https://github.com/rommapp/romm",
+    size: "small",
+  },
+];
+
+const FEATURE_SPAN: Record<string, string> = {
+  featured: "lg:col-span-2 lg:row-span-2",
+  wide: "lg:col-span-2",
+  small: "",
+};
+
+// Ghost glyph sized to the card's footprint (col-span × row-span)
+const FEATURE_GLYPH: Record<string, string> = {
+  featured: "text-[13rem] -bottom-10 -right-8",
+  wide: "text-[9rem] -bottom-8 -right-6",
+  small: "text-[6rem] -bottom-5 -right-4",
+};
+
 const githubStars = ref<number>(3_800);
 const discordMembers = ref<number>(3_000);
 const selectedImage = ref<AppImage | undefined>(undefined);
@@ -300,168 +372,63 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
           subtitle="The most powerful all-in-one app for managing and playing your retro game collection."
         />
 
-        <!-- Flagship features -->
+        <!-- Bento feature grid -->
         <div
-          class="mt-12 grid gap-px border border-grid bg-grid lg:grid-cols-3"
+          class="mt-12 grid auto-rows-fr gap-px border border-grid bg-grid sm:grid-cols-2 lg:grid-cols-4"
         >
           <a
-            href="https://docs.romm.app/latest/using/in-browser-play/emulatorjs/"
+            v-for="feature in FEATURES"
+            :key="feature.n"
+            :href="feature.href"
             target="_blank"
             rel="noopener"
-            class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900"
+            :class="[FEATURE_SPAN[feature.size]]"
+            class="group relative overflow-hidden bg-ink-950 p-8 transition-colors duration-200 hover:bg-ink-900"
           >
-            <h3
-              class="font-pixel text-lg uppercase text-cream flex justify-between gap-2"
-            >
-              Play in your browser
-              <div
-                class="font-mono text-[11px] uppercase tracking-widest text-muted transition-colors group-hover:text-primary-200"
-              >
-                ↗
-              </div>
-            </h3>
-            <p class="mt-3 text-sm leading-relaxed text-muted">
-              EmulatorJS, MS-DOS and Flash players are built in. Hit Play and
-              you're in the game. There are no cores to configure and no files
-              to move.
-            </p>
-          </a>
+            <!-- animated top accent -->
+            <span
+              aria-hidden="true"
+              class="absolute inset-x-0 top-0 h-0.5 w-0 bg-primary-500 transition-all duration-300 ease-out group-hover:w-full"
+            />
+            <!-- oversized ghost glyph, scaled to the card's footprint -->
+            <FontAwesomeIcon
+              :icon="feature.icon"
+              aria-hidden="true"
+              :class="FEATURE_GLYPH[feature.size]"
+              class="pointer-events-none absolute text-primary-500/[0.04] transition-transform duration-500 group-hover:scale-110 group-hover:text-primary-500/[0.07]"
+            />
 
-          <a
-            href="https://docs.romm.app/latest/using/saves-and-states/"
-            target="_blank"
-            rel="noopener"
-            class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900"
-          >
-            <h3
-              class="font-pixel text-lg uppercase text-cream flex justify-between gap-2"
-            >
-              Saves that follow you
-              <div
-                class="font-mono text-[11px] uppercase tracking-widest text-primary-300 transition-colors group-hover:text-primary-200"
+            <div class="relative flex items-center gap-4">
+              <span
+                class="bevel-out flex h-10 w-10 shrink-0 items-center justify-center border border-grid bg-ink-900 text-primary-400 transition-colors duration-200 group-hover:border-primary-500 group-hover:text-primary-300"
+              >
+                <FontAwesomeIcon :icon="feature.icon" />
+              </span>
+              <h3
+                class="flex-1 font-pixel uppercase leading-snug text-cream"
+                :class="
+                  feature.size === 'featured'
+                    ? 'text-xl md:text-2xl'
+                    : 'text-lg'
+                "
+              >
+                {{ feature.title }}
+              </h3>
+              <span
+                aria-hidden="true"
+                class="shrink-0 self-start font-mono text-[11px] text-muted transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary-200"
               >
                 ↗
-              </div>
-            </h3>
-            <p class="mt-3 text-sm leading-relaxed text-muted">
-              A full save-sync engine keeps saves and states in step across your
-              devices, with conflict detection when two of them disagree.
-            </p>
-          </a>
+              </span>
+            </div>
 
-          <a
-            href="https://docs.romm.app/latest/getting-started/metadata-providers/"
-            target="_blank"
-            rel="noopener"
-            class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900"
-          >
-            <h3
-              class="font-pixel text-lg uppercase text-cream flex justify-between gap-2"
+            <p
+              class="relative mt-4 text-sm leading-relaxed text-muted"
+              :class="
+                feature.size === 'featured' ? 'max-w-md md:text-base' : ''
+              "
             >
-              Magical metadata
-              <div
-                class="font-mono text-[11px] uppercase tracking-widest text-primary-300 transition-colors group-hover:text-primary-200"
-              >
-                ↗
-              </div>
-            </h3>
-            <p class="mt-3 text-sm leading-relaxed text-muted">
-              Cover art, screenshots and deep metadata from IGDB, ScreenScraper,
-              LaunchBox, RetroAchievements and more. Games are matched by hash,
-              not guesswork.
-            </p>
-          </a>
-        </div>
-
-        <!-- Supporting features -->
-        <div
-          class="grid gap-px border border-t-0 border-grid bg-grid sm:grid-cols-2 lg:grid-cols-4"
-        >
-          <a
-            href="https://docs.romm.app/latest/administration/oidc/"
-            target="_blank"
-            rel="noopener"
-            class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900"
-          >
-            <h3
-              class="text-lg font-pixel uppercase text-cream flex justify-between gap-2"
-            >
-              Multi-user &amp; SSO
-              <div
-                class="font-mono text-[11px] uppercase tracking-widest text-primary-300 transition-colors group-hover:text-primary-200"
-              >
-                ↗
-              </div>
-            </h3>
-            <p class="mt-2 text-sm leading-relaxed text-muted">
-              Granular per-user and per-group permissions, plus OIDC single
-              sign-on with Authelia, Authentik, Keycloak and friends.
-            </p>
-          </a>
-
-          <a
-            href="https://docs.romm.app/latest/using/rom-patcher/"
-            target="_blank"
-            rel="noopener"
-            class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900"
-          >
-            <h3
-              class="text-lg font-pixel uppercase text-cream flex justify-between gap-2"
-            >
-              ROM patcher
-              <div
-                class="font-mono text-[11px] uppercase tracking-widest text-primary-300 transition-colors group-hover:text-primary-200"
-              >
-                ↗
-              </div>
-            </h3>
-            <p class="mt-2 text-sm leading-relaxed text-muted">
-              Apply romhacks and translations server-side from stored or
-              uploaded patch files.
-            </p>
-          </a>
-
-          <a
-            href="https://docs.romm.app/latest/developers/api-reference/"
-            target="_blank"
-            rel="noopener"
-            class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900"
-          >
-            <h3
-              class="text-lg font-pixel uppercase text-cream flex justify-between gap-2"
-            >
-              Open ecosystem
-              <div
-                class="font-mono text-[11px] uppercase tracking-widest text-primary-300 transition-colors group-hover:text-primary-200"
-              >
-                ↗
-              </div>
-            </h3>
-            <p class="mt-2 text-sm leading-relaxed text-muted">
-              ES-DE and Pegasus exports, LaunchBox import, feed clients, and a
-              full REST API with device tokens.
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/rommapp/romm"
-            target="_blank"
-            rel="noopener"
-            class="group bg-ink-950 p-8 transition-colors hover:bg-ink-900"
-          >
-            <h3
-              class="text-lg font-pixel uppercase text-cream flex justify-between gap-2"
-            >
-              Free forever
-              <div
-                class="font-mono text-[11px] uppercase tracking-widest text-primary-300 transition-colors group-hover:text-primary-200"
-              >
-                ↗
-              </div>
-            </h3>
-            <p class="mt-2 text-sm leading-relaxed text-muted">
-              AGPL-3.0, no tracking, no upsells. Your games, your data, your
-              server. Built by the community, for the community.
+              {{ feature.body }}
             </p>
           </a>
         </div>
