@@ -25,12 +25,7 @@ export interface ConsoleApp {
 const props = defineProps<{ apps: ConsoleApp[] }>();
 const emit = defineEmits<{ select: [image: AppImage] }>();
 
-// One bright index-tab color per entry, cycled
-const ACCENTS = [
-  { tab: "bg-cerulean-500", chip: "bg-cerulean-500/15 text-cerulean-600" },
-  { tab: "bg-kelly-500", chip: "bg-kelly-500/15 text-kelly-600" },
-  { tab: "bg-tomato-500", chip: "bg-tomato-500/15 text-tomato-600" },
-];
+const FOLIOS = ["24", "26", "28"];
 
 const active = ref(0);
 const app = computed(() => props.apps[active.value]!);
@@ -77,37 +72,35 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="plate overflow-hidden">
-    <!-- Spine: title bar of the field guide -->
-    <div
-      class="flex items-center justify-between gap-3 border-b-[3px] border-ink bg-primary-600 px-5 py-3"
-    >
-      <span class="font-display text-lg font-bold tracking-wide text-white">
+  <div class="panel overflow-hidden">
+    <!-- Masthead band -->
+    <div class="masthead flex items-baseline justify-between gap-3 px-6 py-3.5">
+      <span
+        class="font-display text-sm font-semibold uppercase tracking-[0.3em]"
+      >
         A Field Guide to Your Devices
       </span>
       <span
-        class="hidden font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-primary-200 sm:block"
+        class="hidden font-display text-[10px] font-semibold uppercase tracking-[0.3em] text-gold-300 sm:block"
       >
-        Illustrated · Vol. 5
+        Illustrated · Vol. V
       </span>
     </div>
 
     <div
-      class="grid bg-paper-card lg:grid-cols-[20rem_1fr]"
+      class="grid lg:grid-cols-[19rem_1fr]"
       @mouseenter="hovered = true"
       @mouseleave="hovered = false"
     >
-      <!-- ======== Index tabs ======== -->
+      <!-- ======== Contents rail ======== -->
       <div
         role="tablist"
         aria-label="Choose an app"
         aria-orientation="vertical"
-        class="relative flex flex-col border-b-2 border-ink/10 lg:border-b-0 lg:border-r-2"
+        class="relative flex flex-col border-b border-ink/15 lg:border-b-0 lg:border-r"
         @keydown="onKeydown"
       >
-        <div
-          class="border-b border-ink/10 bg-paper px-5 py-3 font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-ink-faint"
-        >
+        <div class="kicker border-b border-ink/10 px-6 py-3 text-ink-faint">
           Contents
         </div>
 
@@ -117,40 +110,37 @@ onMounted(() => {
           type="button"
           role="tab"
           :aria-selected="i === active"
-          class="group relative flex items-center gap-4 border-b border-ink/10 px-5 py-5 text-left transition-colors last:border-b-0"
-          :class="i === active ? 'bg-primary-50' : 'hover:bg-paper'"
+          class="group relative flex items-center gap-4 border-b border-ink/10 px-6 py-5 text-left transition-colors last:border-b-0"
+          :class="i === active ? 'bg-paper' : 'hover:bg-paper/60'"
           @click="pick(i)"
           @focus="engage()"
         >
-          <!-- colored index tab -->
+          <!-- active entry mark -->
           <span
             aria-hidden="true"
-            class="absolute inset-y-2 left-0 w-1.5 rounded-r-full transition-opacity"
-            :class="[
-              ACCENTS[i % ACCENTS.length]!.tab,
-              i === active ? 'opacity-100' : 'opacity-25',
-            ]"
+            class="absolute inset-y-0 left-0 w-[3px] bg-vermilion-600 transition-opacity"
+            :class="i === active ? 'opacity-100' : 'opacity-0'"
           />
           <span
-            class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border-2 bg-white transition-all duration-200"
+            class="flex h-11 w-11 shrink-0 items-center justify-center border bg-paper-card transition-all duration-200"
             :class="
               i === active
-                ? 'border-ink shadow-plate-sm'
-                : 'border-ink/15 opacity-70 grayscale group-hover:opacity-100 group-hover:grayscale-0'
+                ? 'border-ink/40'
+                : 'border-ink/15 opacity-60 grayscale group-hover:opacity-100 group-hover:grayscale-0'
             "
           >
             <img :src="item.logo" :alt="`${item.name} logo`" class="h-7 w-7" />
           </span>
           <span class="min-w-0 flex-1">
             <span
-              class="block font-display text-lg font-bold leading-tight"
+              class="block font-display text-lg font-medium leading-tight"
               :class="i === active ? 'text-ink' : 'text-ink-soft'"
             >
               {{ item.name }}
             </span>
             <span
-              class="mt-0.5 block font-mono text-[9px] font-bold uppercase tracking-[0.25em]"
-              :class="i === active ? 'text-primary-600' : 'text-ink-faint'"
+              class="mt-1 block font-display text-[9px] font-semibold uppercase tracking-[0.25em]"
+              :class="i === active ? 'text-vermilion-600' : 'text-ink-faint'"
             >
               {{ item.system }}
             </span>
@@ -158,17 +148,17 @@ onMounted(() => {
           <span
             aria-hidden="true"
             class="font-serif text-sm italic"
-            :class="i === active ? 'text-primary-600' : 'text-ink-faint/50'"
+            :class="i === active ? 'text-ink-soft' : 'text-ink-faint/60'"
           >
-            p.{{ i + 1 }}
+            p. {{ FOLIOS[i] ?? i + 1 }}
           </span>
         </button>
 
         <div
           aria-hidden="true"
-          class="hidden flex-1 items-center justify-center px-5 py-5 font-serif text-sm italic text-ink-faint lg:flex"
+          class="hidden flex-1 items-center justify-center px-6 py-5 font-serif text-sm italic text-ink-faint lg:flex"
         >
-          — more entries every release —
+          — further entries with every release —
         </div>
       </div>
 
@@ -177,7 +167,7 @@ onMounted(() => {
         <div :key="app.id" class="grid xl:grid-cols-[1.15fr_1fr]">
           <!-- figure -->
           <div
-            class="graph-paper relative border-b-2 border-ink/10 p-5 sm:p-7 xl:border-b-0 xl:border-r-2"
+            class="graph-paper relative border-b border-ink/15 p-5 sm:p-7 xl:border-b-0 xl:border-r"
           >
             <AppGallery
               class="relative"
@@ -194,8 +184,7 @@ onMounted(() => {
               <span
                 v-for="tag in app.tags"
                 :key="tag.text"
-                class="inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-[9px] font-bold uppercase tracking-[0.2em]"
-                :class="ACCENTS[active % ACCENTS.length]!.chip"
+                class="inline-flex items-center gap-1.5 border border-ink/25 px-2.5 py-1 font-display text-[9px] font-semibold uppercase tracking-[0.2em] text-ink-soft"
               >
                 <FontAwesomeIcon
                   v-if="tag.icon"
@@ -207,7 +196,7 @@ onMounted(() => {
             </div>
 
             <h3
-              class="mt-4 font-display text-2xl font-bold text-ink md:text-3xl"
+              class="mt-4 font-display text-3xl font-medium text-ink md:text-4xl"
             >
               {{ app.name }}
             </h3>
@@ -217,10 +206,8 @@ onMounted(() => {
             </p>
 
             <!-- link chips (e.g. supported firmwares) -->
-            <div v-if="app.links" class="mt-4">
-              <span
-                class="font-mono text-[9px] font-bold uppercase tracking-[0.3em] text-ink-faint"
-              >
+            <div v-if="app.links" class="mt-5">
+              <span class="kicker text-[9px] text-ink-faint">
                 {{ app.links.label }}
               </span>
               <span class="mt-2 flex flex-wrap gap-1.5">
@@ -230,7 +217,7 @@ onMounted(() => {
                   :href="link.href"
                   target="_blank"
                   rel="noopener"
-                  class="rounded-md border border-ink/20 bg-white px-2 py-0.5 font-mono text-[10px] font-bold text-ink-soft transition-colors hover:border-primary-500 hover:text-primary-600"
+                  class="border border-ink/20 bg-paper-card px-2 py-0.5 font-serif text-xs text-ink-soft transition-colors hover:border-primary-600 hover:text-primary-700"
                 >
                   {{ link.text }}
                 </a>
@@ -243,7 +230,7 @@ onMounted(() => {
               rel="noopener"
               class="mt-auto inline-block self-start pt-8"
             >
-              <span class="btn-cdrom">{{ app.ctaText }} →</span>
+              <span class="btn-folio btn-folio--sm">{{ app.ctaText }} →</span>
             </a>
           </div>
         </div>
@@ -252,18 +239,16 @@ onMounted(() => {
 
     <!-- reading hints -->
     <div
-      class="flex flex-wrap items-center justify-between gap-3 border-t-[3px] border-ink bg-paper px-5 py-2.5 font-mono text-[9px] font-bold uppercase tracking-[0.25em] text-ink-faint"
+      class="flex flex-wrap items-baseline justify-between gap-3 border-t border-ink/15 bg-paper px-6 py-2.5 font-display text-[9px] font-semibold uppercase tracking-[0.25em] text-ink-faint"
     >
-      <span class="flex items-center gap-4">
-        <span> <span class="text-primary-600">↑↓</span> Browse </span>
-        <span> <span class="text-primary-600">⏎</span> Open </span>
-        <span class="hidden sm:inline">
-          <span class="text-primary-600">🖱</span> Click a figure to enlarge
-        </span>
+      <span class="flex items-baseline gap-5">
+        <span> <span class="text-vermilion-600">↑↓</span> Browse </span>
+        <span> <span class="text-vermilion-600">⏎</span> Open </span>
+        <span class="hidden sm:inline"> Click a figure to enlarge </span>
       </span>
       <span
         aria-hidden="true"
-        class="font-serif normal-case italic tracking-normal"
+        class="font-serif text-xs normal-case italic tracking-normal"
       >
         Entry {{ active + 1 }} of {{ apps.length }}
       </span>

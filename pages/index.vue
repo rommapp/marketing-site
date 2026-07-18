@@ -158,95 +158,129 @@ const PLATFORMS = [
   },
 ];
 
+// The hero figure's specimen annotations, Eyewitness-style
+const CALLOUTS_LEFT = [
+  { text: "Metadata from seven providers", top: "16%" },
+  { text: "Box art in full resolution", top: "58%" },
+];
+
+const CALLOUTS_RIGHT = [
+  { text: "Smart collections & filters", top: "30%" },
+  { text: "One click to play in the browser", top: "72%" },
+];
+
+const HERO_WORDS = [
+  "Scanning",
+  "Metadata",
+  "Save Sync",
+  "In-Browser Play",
+  "ROM Patching",
+  "400+ Platforms",
+];
+
 // ------------------------- Table of contents -------------------------
 const CONTENTS = [
   {
-    num: "1",
+    num: "I",
     title: "The Method",
     note: "How a pile of files becomes a library",
+    folio: "2",
     href: "#method",
   },
   {
-    num: "2",
+    num: "II",
     title: "What's Inside",
     note: "Features, figures and findings",
+    folio: "8",
     href: "#features",
   },
   {
-    num: "3",
+    num: "III",
     title: "A Field Guide to Your Devices",
     note: "Apps for desktops, handhelds and TVs",
+    folio: "22",
     href: "#apps",
   },
   {
-    num: "4",
+    num: "IV",
     title: "The Society of Collectors",
     note: "Join the community",
+    folio: "31",
     href: "#community",
   },
   {
     num: "A",
-    title: "Appendix A — Supported platforms",
+    title: "Appendix A — Supported Platforms",
     note: "400+ consoles, computers and arcades",
+    folio: "38",
     href: "#appendix-a",
   },
   {
     num: "B",
-    title: "Appendix B — Where it runs",
+    title: "Appendix B — Where It Runs",
     note: "Install RomM on your favorite server",
+    folio: "42",
     href: "#appendix-b",
   },
   {
-    num: "✶",
+    num: "—",
     title: "Index",
     note: "Every link, alphabetized-ish",
+    folio: "44",
     href: "#index",
   },
 ];
 
-// ------------------------- Chapter 1: the method -------------------------
+// ------------------------- Chapter I: the method -------------------------
 const STEPS = [
   {
     icon: faFolderOpen,
-    accent: "bg-cerulean-500",
+    numeral: "I",
+    accent: "text-primary-600",
     title: "Scan",
     body: "Point RomM at your ROM folders. It identifies your games across 400+ platforms — no renaming, no spreadsheets.",
   },
   {
     icon: faWandSparkles,
-    accent: "bg-grape-500",
+    numeral: "II",
+    accent: "text-vermilion-600",
     title: "Enrich",
     body: "Cover art, screenshots and deep metadata arrive from seven providers, matched by file hash rather than guesswork.",
   },
   {
     icon: faPlay,
-    accent: "bg-kelly-500",
+    numeral: "III",
+    accent: "text-forest-600",
     title: "Play",
     body: "Launch games in your browser or on any paired device, with your saves following you everywhere you go.",
   },
 ];
 
-// ------------------------- Chapter 2: features -------------------------
+// ------------------------- Chapter II: features -------------------------
 const FEATURED = {
   icon: faGamepad,
   title: "Play in your browser",
-  body: "EmulatorJS, MS-DOS and Flash players are built in. Hit Play and you're in the game — no cores to configure, no files to move.",
+  body: "EmulatorJS, MS-DOS and Flash players are built in. Press Play and you are in the game — no cores to configure, no files to move. Your session is saved to the server the moment you set the controller down.",
   href: "https://docs.romm.app/latest/using/in-browser-play/emulatorjs/",
 };
 
 const SIDE_FEATURES = [
   {
     icon: faRotate,
-    accent: "bg-sun-500",
+    bar: "bg-gold-500",
+    accent: "text-gold-600",
     title: "Saves that follow you",
     body: "A full save-sync engine keeps saves and states in step across your devices, with conflict detection when two of them disagree.",
+    xref: "See also — Fig. 3.2, saves in the field.",
     href: "https://docs.romm.app/latest/using/saves-and-states/",
   },
   {
     icon: faWandSparkles,
-    accent: "bg-grape-500",
-    title: "Magical metadata",
+    bar: "bg-plum-500",
+    accent: "text-plum-500",
+    title: "A catalogue, curated",
     body: "Cover art, screenshots and deep metadata from IGDB, ScreenScraper, LaunchBox, RetroAchievements and more — matched by hash, not guesswork.",
+    xref: "See also — Plate I, the collection, catalogued.",
     href: "https://docs.romm.app/latest/getting-started/metadata-providers/",
   },
 ];
@@ -254,21 +288,24 @@ const SIDE_FEATURES = [
 const SMALL_FEATURES = [
   {
     icon: faUsers,
-    accent: "bg-tomato-500",
+    bar: "bg-vermilion-500",
+    accent: "text-vermilion-600",
     title: "Multiplayer",
     body: "Granular per-user controls, plus OIDC single sign-on with Authelia, Authentik, Keycloak and friends.",
     href: "https://docs.romm.app/latest/administration/oidc/",
   },
   {
     icon: faScrewdriverWrench,
-    accent: "bg-kelly-500",
+    bar: "bg-forest-500",
+    accent: "text-forest-600",
     title: "ROM patcher",
     body: "Apply romhacks and translations server-side, from stored or uploaded patch files.",
     href: "https://docs.romm.app/latest/using/rom-patcher/",
   },
   {
     icon: faPlug,
-    accent: "bg-primary-500",
+    bar: "bg-primary-600",
+    accent: "text-primary-600",
     title: "Ecosystem",
     body: "ES-DE and Pegasus exports, LaunchBox import, feed clients, and a full REST API with device tokens.",
     href: "https://docs.romm.app/latest/developers/api-reference/",
@@ -276,27 +313,10 @@ const SMALL_FEATURES = [
 ];
 
 const STATS = [
-  { value: "", key: "stars", label: "GitHub stars", accent: "bg-sun-500" },
-  {
-    value: "",
-    key: "discord",
-    label: "Discord members",
-    accent: "bg-grape-500",
-  },
-  { value: "1.7M+", key: "", label: "Docker pulls", accent: "bg-cerulean-500" },
-  { value: "#1", key: "", label: "on Hackernews", accent: "bg-tomato-500" },
-];
-
-// Hand-placed hero stars — static so server and client agree
-const HERO_STARS = [
-  { top: "12%", left: "8%", size: "text-xl", delay: "0s" },
-  { top: "22%", left: "88%", size: "text-2xl", delay: "0.6s" },
-  { top: "8%", left: "62%", size: "text-base", delay: "1.2s" },
-  { top: "38%", left: "4%", size: "text-base", delay: "1.8s" },
-  { top: "16%", left: "30%", size: "text-sm", delay: "0.9s" },
-  { top: "42%", left: "94%", size: "text-lg", delay: "0.3s" },
-  { top: "55%", left: "10%", size: "text-sm", delay: "1.5s" },
-  { top: "60%", left: "90%", size: "text-base", delay: "2.1s" },
+  { value: "", key: "stars", label: "Stars on GitHub" },
+  { value: "", key: "discord", label: "Members on Discord" },
+  { value: "1.7M+", key: "", label: "Pulls on Docker Hub" },
+  { value: "#1", key: "", label: "On Hacker News" },
 ];
 
 const githubStars = ref<number>(3_800);
@@ -337,167 +357,229 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
     <AppHeader :githubStars="githubStars" />
 
     <main>
-      <!-- ======================= TITLE PAGE (HERO) ======================= -->
-      <section class="sky relative overflow-hidden">
-        <div aria-hidden="true" class="halftone absolute inset-0 opacity-20" />
-
-        <!-- twinkling stars in the upper sky -->
-        <span
-          v-for="(star, i) in HERO_STARS"
-          :key="i"
-          aria-hidden="true"
-          class="animate-twinkle pointer-events-none absolute select-none text-sun-300"
-          :class="star.size"
-          :style="{
-            top: star.top,
-            left: star.left,
-            animationDelay: star.delay,
-          }"
-        >
-          ✶
-        </span>
-
-        <!-- glossy planet rising behind the plate -->
+      <!-- ======================= FRONTISPIECE (HERO) ======================= -->
+      <section class="relative overflow-hidden bg-paper-card">
+        <!-- a compact disc, resting beside the title -->
         <div
           aria-hidden="true"
-          class="animate-bob pointer-events-none absolute -right-16 top-24 hidden h-56 w-56 rounded-full opacity-90 sm:right-[6%] sm:block"
-          style="
-            background: radial-gradient(
-              circle at 32% 28%,
-              #ffe08a 0%,
-              #ffc629 35%,
-              #f0a800 70%,
-              #c78a00 100%
-            );
-            box-shadow:
-              inset -12px -14px 30px rgba(0, 0, 0, 0.25),
-              0 0 60px rgba(255, 198, 41, 0.35);
-          "
+          class="cd absolute left-[6%] top-72 hidden h-24 w-24 lg:block"
         />
 
-        <div
-          class="relative z-10 mx-auto max-w-7xl px-6 pb-20 pt-20 text-center sm:px-10"
+        <!-- ALL NEW · 5.0 EDITION diamond -->
+        <a
+          href="https://github.com/rommapp/romm/releases/tag/5.0.0"
+          target="_blank"
+          rel="noopener"
+          class="absolute right-[7%] top-40 hidden h-24 w-24 rotate-45 items-center justify-center border border-ink bg-ink shadow-card transition-colors hover:bg-primary-700 lg:flex"
         >
-          <div class="flex flex-wrap items-center justify-center gap-3">
-            <div
-              class="inline-flex items-center rounded-full border-2 border-white/40 bg-white/10 px-4 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.25em] text-white backdrop-blur-sm"
-            >
-              The self-hosted ROM manager
-            </div>
-            <a
-              href="https://github.com/rommapp/romm/releases/tag/5.0.0"
-              target="_blank"
-              rel="noopener"
-              class="group inline-flex items-center gap-2 rounded-full border-2 border-sun-500 bg-sun-500 px-4 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.25em] text-ink transition-transform hover:-rotate-1 hover:scale-105"
-            >
-              ✶ New edition! RomM 5.0 →
-            </a>
+          <span
+            class="-rotate-45 text-center font-display text-[9px] font-semibold uppercase leading-relaxed tracking-[0.2em] text-paper-card"
+          >
+            All New
+            <span class="block text-2xl leading-none text-gold-300">5.0</span>
+            Edition
+          </span>
+        </a>
+
+        <div
+          class="relative mx-auto max-w-7xl px-6 pb-24 pt-16 text-center sm:px-10"
+        >
+          <!-- kicker -->
+          <div class="flex items-center justify-center gap-5">
+            <span aria-hidden="true" class="h-px w-10 bg-ink/25 sm:w-24" />
+            <span class="kicker whitespace-nowrap text-ink-faint">
+              The Self-Hosted ROM Manager
+            </span>
+            <span aria-hidden="true" class="h-px w-10 bg-ink/25 sm:w-24" />
           </div>
 
-          <h1
-            class="mx-auto mt-10 max-w-4xl font-display text-5xl font-bold leading-[1.05] text-white sm:text-6xl md:text-7xl"
-            style="text-shadow: 0 3px 0 rgba(16, 28, 70, 0.45)"
-          >
-            The grand atlas of
-            <span class="text-sun-400">your game collection</span>
-          </h1>
+          <!-- masthead title, between its rules -->
+          <div class="mx-auto mt-8 max-w-4xl border-y border-ink/40 py-7">
+            <h1
+              class="font-display text-7xl font-medium uppercase leading-none tracking-[0.16em] text-ink sm:text-8xl md:text-[8.5rem]"
+            >
+              RomM
+            </h1>
+            <div
+              class="mx-auto mt-6 flex max-w-2xl flex-wrap items-baseline justify-center gap-x-3 gap-y-1 border-t border-ink/15 pt-4 font-display text-[10px] font-semibold uppercase tracking-[0.25em] text-ink-faint"
+            >
+              <template v-for="(word, i) in HERO_WORDS" :key="word">
+                <span v-if="i > 0" aria-hidden="true" class="text-ink/30"
+                  >·</span
+                >
+                <span>{{ word }}</span>
+              </template>
+            </div>
+          </div>
 
           <p
-            class="mx-auto mt-8 max-w-2xl font-serif text-lg leading-relaxed text-white/90"
+            class="mx-auto mt-8 max-w-2xl font-display text-2xl italic leading-snug text-ink sm:text-[1.7rem]"
           >
-            Scan, enrich, browse and play your games from one beautiful
-            self-hosted app. Metadata from seven providers, save sync across
-            your devices, and support for 400+ platforms — everything a curious
-            collector could ask for.
+            The library that shows you what other launchers only tell you.
           </p>
 
-          <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <p
+            class="mx-auto mt-5 max-w-xl font-serif text-base leading-relaxed text-ink-soft"
+          >
+            Scan, enrich, browse and play your game collection from one
+            self-hosted app — metadata from seven providers, saves in step
+            across every device, and more than four hundred platforms shelved.
+          </p>
+
+          <div class="mt-9 flex flex-wrap items-center justify-center gap-4">
             <a
               href="https://docs.romm.app/latest/getting-started/quick-start/"
               target="_blank"
               rel="noopener"
             >
-              <span class="btn-cdrom btn-cdrom--sun">Start exploring</span>
+              <span class="btn-folio">Get started</span>
             </a>
             <a href="https://demo.romm.app" target="_blank" rel="noopener">
-              <span class="btn-page">View the demo →</span>
+              <span class="btn-plate">View the demo</span>
             </a>
           </div>
 
-          <!-- Plate I: the collection, pasted onto the sky -->
-          <figure class="mx-auto mt-16 max-w-4xl">
-            <div class="plate -rotate-1 overflow-hidden p-2 sm:p-3">
-              <img
-                alt="The RomM collection view"
-                src="/images/blocks/v5/collection.png"
-                srcset="
-                  /images/blocks/v5/collection.png    1x,
-                  /images/blocks/v5/collection@2x.png 2x
-                "
-                class="block w-full rounded-lg"
-                fetchpriority="high"
-              />
+          <!-- press-clipping badges -->
+          <div class="mt-10 flex flex-wrap items-stretch justify-center gap-3">
+            <span class="border border-ink/25 bg-paper-card px-5 py-2.5">
+              <span
+                class="block font-display text-sm font-semibold tracking-wide text-ink"
+              >
+                “★ {{ (githubStars / 1000).toFixed(1) }}K”
+              </span>
+              <span class="block font-serif text-[11px] italic text-ink-soft">
+                — Stargazers, GitHub
+              </span>
+            </span>
+            <span class="border border-ink/25 bg-paper-card px-5 py-2.5">
+              <span
+                class="block font-display text-sm font-semibold tracking-wide text-ink"
+              >
+                “#1”
+              </span>
+              <span class="block font-serif text-[11px] italic text-ink-soft">
+                — Front page, Hacker News
+              </span>
+            </span>
+            <span class="border border-ink/25 bg-paper-card px-5 py-2.5">
+              <span
+                class="block font-display text-sm font-semibold tracking-wide text-ink"
+              >
+                “1.7M+”
+              </span>
+              <span class="block font-serif text-[11px] italic text-ink-soft">
+                — Pulls, Docker Hub
+              </span>
+            </span>
+          </div>
+
+          <!-- Plate I: the collection, annotated like a specimen -->
+          <figure class="mx-auto mt-16 max-w-6xl">
+            <div class="relative mx-auto max-w-3xl">
+              <div class="panel p-2 shadow-float sm:p-3">
+                <img
+                  alt="The RomM collection view"
+                  src="/images/blocks/v5/collection.png"
+                  srcset="
+                    /images/blocks/v5/collection.png    1x,
+                    /images/blocks/v5/collection@2x.png 2x
+                  "
+                  class="block w-full border border-ink/15"
+                  fetchpriority="high"
+                />
+              </div>
+
+              <div
+                v-for="callout in CALLOUTS_LEFT"
+                :key="callout.text"
+                aria-hidden="true"
+                class="absolute -left-60 hidden w-56 items-center justify-end gap-3 xl:flex"
+                :style="{ top: callout.top }"
+              >
+                <span
+                  class="text-right font-display text-[9px] font-semibold uppercase leading-relaxed tracking-[0.2em] text-ink-soft"
+                >
+                  {{ callout.text }}
+                </span>
+                <span class="h-px w-14 shrink-0 bg-ink/40" />
+                <span
+                  class="h-1.5 w-1.5 shrink-0 rounded-full border border-ink bg-paper-card"
+                />
+              </div>
+
+              <div
+                v-for="callout in CALLOUTS_RIGHT"
+                :key="callout.text"
+                aria-hidden="true"
+                class="absolute -right-60 hidden w-56 items-center justify-start gap-3 xl:flex"
+                :style="{ top: callout.top }"
+              >
+                <span
+                  class="h-1.5 w-1.5 shrink-0 rounded-full border border-ink bg-paper-card"
+                />
+                <span class="h-px w-14 shrink-0 bg-ink/40" />
+                <span
+                  class="text-left font-display text-[9px] font-semibold uppercase leading-relaxed tracking-[0.2em] text-ink-soft"
+                >
+                  {{ callout.text }}
+                </span>
+              </div>
             </div>
-            <figcaption
-              class="mt-5 inline-block -rotate-1 rounded-md bg-white/90 px-4 py-1.5 font-serif text-sm italic text-ink shadow-plate-sm"
-            >
-              Plate I. — A well-kept collection, in its natural habitat.
+
+            <figcaption class="mt-6">
+              <span
+                class="font-display text-[10px] font-semibold uppercase tracking-[0.25em] text-vermilion-600"
+              >
+                Plate I
+              </span>
+              <span class="font-serif text-sm italic text-ink-soft">
+                &nbsp;·&nbsp; The collection, catalogued — RomM 5.0 in its
+                natural habitat.
+              </span>
             </figcaption>
           </figure>
         </div>
-
-        <!-- torn-paper edge into the page -->
-        <svg
-          aria-hidden="true"
-          class="relative z-10 -mb-px block w-full text-paper"
-          viewBox="0 0 1440 40"
-          preserveAspectRatio="none"
-        >
-          <path
-            fill="currentColor"
-            d="M0 40h1440V18c-40 6-90-10-140-4s-90 16-150 10-110-20-170-14-100 18-160 16S690 8 630 12 520 30 460 28 350 8 290 12 180 30 120 26 40 12 0 20z"
-          />
-        </svg>
       </section>
 
       <!-- ======================== TABLE OF CONTENTS ======================== -->
-      <section class="bg-paper">
-        <div class="mx-auto max-w-3xl px-6 py-16 sm:px-10">
-          <div class="plate overflow-hidden">
-            <div
-              class="border-b-[3px] border-ink bg-sun-500 px-6 py-3 text-center"
-            >
+      <section class="border-t border-ink/10 bg-paper">
+        <div class="mx-auto max-w-3xl px-6 py-20 sm:px-10">
+          <div class="panel overflow-hidden">
+            <div class="masthead px-6 py-3.5 text-center">
               <span
-                class="font-display text-xl font-bold tracking-wide text-ink"
+                class="font-display text-sm font-semibold uppercase tracking-[0.3em]"
               >
                 Table of Contents
               </span>
             </div>
-            <nav class="bg-paper-card px-6 py-4 sm:px-8">
+            <nav class="px-6 py-4 sm:px-9">
               <a
                 v-for="entry in CONTENTS"
                 :key="entry.href"
                 :href="entry.href"
-                class="group flex items-baseline gap-3 border-b border-ink/10 py-3.5 last:border-b-0"
+                class="group flex items-baseline gap-4 border-b border-ink/10 py-4 last:border-b-0"
               >
                 <span
-                  class="flex h-7 w-7 shrink-0 -translate-y-0.5 items-center justify-center self-center rounded-full border-2 border-ink bg-paper font-display text-sm font-bold text-ink transition-colors group-hover:bg-sun-500"
+                  class="w-7 shrink-0 text-right font-display text-sm font-semibold text-vermilion-600"
                 >
                   {{ entry.num }}
                 </span>
                 <span
-                  class="font-display text-lg font-bold text-ink transition-colors group-hover:text-primary-600"
+                  class="font-display text-lg font-medium text-ink transition-colors group-hover:text-primary-700"
                 >
                   {{ entry.title }}
                 </span>
                 <span
                   aria-hidden="true"
-                  class="mx-1 flex-1 border-b-2 border-dotted border-ink/25"
+                  class="mx-1 flex-1 border-b border-dotted border-ink/30"
                 />
                 <span
                   class="hidden shrink-0 font-serif text-sm italic text-ink-soft sm:block"
                 >
                   {{ entry.note }}
+                </span>
+                <span class="shrink-0 font-display text-sm text-ink-faint">
+                  {{ entry.folio }}
                 </span>
               </a>
             </nav>
@@ -505,20 +587,22 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
         </div>
       </section>
 
-      <!-- ===================== CHAPTER 1 · THE METHOD ===================== -->
+      <!-- ===================== CHAPTER I · THE METHOD ===================== -->
       <section
         id="method"
-        class="graph-paper scroll-mt-20 border-t-2 border-rule bg-paper"
+        class="graph-paper scroll-mt-20 border-t border-ink/10 bg-paper-card"
       >
-        <div class="mx-auto max-w-7xl px-6 py-20 sm:px-10">
+        <div class="mx-auto max-w-7xl px-6 py-24 sm:px-10">
           <SectionHeading
-            chapter="1"
+            chapter="I"
             label="The Method"
             title="From shoebox to showcase"
             subtitle="Three steps stand between a folder of mystery files and a library you'll want to show off."
           />
 
-          <div class="relative mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
+          <div
+            class="relative mx-auto mt-16 grid max-w-5xl gap-12 md:grid-cols-3 md:gap-8"
+          >
             <div
               v-for="(step, i) in STEPS"
               :key="step.title"
@@ -528,20 +612,18 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               <span
                 v-if="i < STEPS.length - 1"
                 aria-hidden="true"
-                class="absolute left-[60%] top-9 hidden w-[80%] border-t-[3px] border-dotted border-ink/30 md:block"
+                class="absolute left-[62%] top-9 hidden w-[76%] border-t border-dotted border-ink/30 md:block"
               />
               <span
-                class="relative z-10 flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full border-[3px] border-ink text-2xl text-white shadow-plate-sm"
+                class="relative z-10 flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full border border-ink/30 bg-paper-card text-xl shadow-card"
                 :class="step.accent"
               >
                 <FontAwesomeIcon :icon="step.icon" />
               </span>
-              <span
-                class="mt-4 font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-ink-faint"
-              >
-                Step {{ i + 1 }}
+              <span class="kicker mt-5 text-[9px] text-ink-faint">
+                Step {{ step.numeral }}
               </span>
-              <h3 class="mt-1 font-display text-2xl font-bold text-ink">
+              <h3 class="mt-1.5 font-display text-3xl font-medium text-ink">
                 {{ step.title }}
               </h3>
               <p
@@ -554,44 +636,42 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
         </div>
       </section>
 
-      <!-- ==================== CHAPTER 2 · WHAT'S INSIDE ==================== -->
+      <!-- ==================== CHAPTER II · WHAT'S INSIDE ==================== -->
       <section
         id="features"
-        class="scroll-mt-20 border-t-2 border-rule bg-paper"
+        class="scroll-mt-20 border-t border-ink/10 bg-paper"
       >
-        <div class="mx-auto max-w-7xl px-6 py-20 sm:px-10">
+        <div class="mx-auto max-w-7xl px-6 py-24 sm:px-10">
           <SectionHeading
-            chapter="2"
+            chapter="II"
             label="What's Inside"
             title="Every playthrough tells a story"
-            subtitle="The most powerful all-in-one app for managing and playing your retro game collection."
+            subtitle="The most capable all-in-one app for managing and playing your retro game collection."
           />
 
-          <!-- Textbook spread: featured article + sidebar fact boxes -->
-          <div class="mt-12 grid gap-8 lg:grid-cols-[1.5fr_1fr]">
+          <!-- Encyclopedia spread: featured article + sidebar entries -->
+          <div class="mt-14 grid gap-7 lg:grid-cols-[1.5fr_1fr]">
             <!-- main article -->
-            <article
-              class="relative overflow-hidden rounded-xl border-2 border-ink bg-paper-card shadow-plate"
-            >
+            <article class="panel relative overflow-hidden">
               <span
                 aria-hidden="true"
-                class="absolute inset-x-0 top-0 z-10 h-1.5 bg-cerulean-500"
+                class="absolute inset-x-0 top-0 h-[3px] bg-primary-600"
               />
-              <div class="p-7 sm:p-9">
+              <div class="p-7 sm:p-10">
                 <div class="flex items-center gap-4">
                   <span
-                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-ink bg-cerulean-500 text-lg text-white shadow-plate-sm"
+                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-ink/25 bg-paper-card text-lg text-primary-600"
                   >
                     <FontAwesomeIcon :icon="FEATURED.icon" />
                   </span>
                   <h3
-                    class="font-display text-2xl font-bold text-ink md:text-3xl"
+                    class="font-display text-3xl font-medium text-ink md:text-4xl"
                   >
                     {{ FEATURED.title }}
                   </h3>
                 </div>
                 <p
-                  class="mt-4 max-w-xl font-serif text-base leading-relaxed text-ink-soft"
+                  class="drop-cap mt-6 max-w-xl font-serif text-base leading-relaxed text-ink-soft"
                 >
                   {{ FEATURED.body }}
                 </p>
@@ -599,13 +679,13 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
                   :href="FEATURED.href"
                   target="_blank"
                   rel="noopener"
-                  class="mt-5 inline-block"
+                  class="mt-6 inline-block"
                 >
-                  <span class="btn-page">Read the docs →</span>
+                  <span class="btn-plate btn-plate--sm">Read the docs →</span>
                 </a>
               </div>
-              <figure class="px-7 pb-7 sm:px-9 sm:pb-9">
-                <div class="plate rotate-1 overflow-hidden p-1.5">
+              <figure class="px-7 pb-8 sm:px-10 sm:pb-10">
+                <div class="panel overflow-hidden p-1.5 sm:p-2">
                   <img
                     alt="Playing a game in the browser with EmulatorJS"
                     src="/images/blocks/v5/gallery.png"
@@ -613,112 +693,122 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
                       /images/blocks/v5/gallery.png    1x,
                       /images/blocks/v5/gallery@2x.png 2x
                     "
-                    class="block w-full rounded-md"
+                    class="block w-full border border-ink/15"
                     loading="lazy"
                   />
                 </div>
-                <figcaption
-                  class="mt-3 text-center font-serif text-xs italic text-ink-soft"
-                >
-                  Plate II. — The library, ready for launch.
+                <figcaption class="mt-3.5 text-center">
+                  <span
+                    class="font-display text-[10px] font-semibold uppercase tracking-[0.25em] text-vermilion-600"
+                  >
+                    Fig. 2
+                  </span>
+                  <span class="font-serif text-xs italic text-ink-soft">
+                    &nbsp;·&nbsp; The library, ready for launch.
+                  </span>
                 </figcaption>
               </figure>
             </article>
 
-            <!-- sidebar fact boxes -->
-            <div class="flex flex-col gap-8">
+            <!-- sidebar entries -->
+            <div class="flex flex-col gap-7">
               <a
                 v-for="feature in SIDE_FEATURES"
                 :key="feature.href"
                 :href="feature.href"
                 target="_blank"
                 rel="noopener"
-                class="group relative flex-1 overflow-hidden rounded-xl border-2 border-ink bg-paper-card p-7 shadow-plate-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-plate"
+                class="panel group relative flex flex-1 flex-col overflow-hidden p-7 transition-shadow duration-200 hover:shadow-float"
               >
                 <span
                   aria-hidden="true"
-                  class="absolute inset-x-0 top-0 h-1.5"
-                  :class="feature.accent"
+                  class="absolute inset-x-0 top-0 h-[3px]"
+                  :class="feature.bar"
                 />
                 <div class="flex items-center gap-4">
                   <span
-                    class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-ink text-white shadow-plate-sm transition-transform duration-200 group-hover:-rotate-6 group-hover:scale-110"
+                    class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-ink/25 bg-paper-card"
                     :class="feature.accent"
                   >
                     <FontAwesomeIcon :icon="feature.icon" />
                   </span>
                   <h3
-                    class="flex-1 font-display text-xl font-bold leading-snug text-ink"
+                    class="flex-1 font-display text-2xl font-medium leading-snug text-ink"
                   >
                     {{ feature.title }}
                   </h3>
                   <span
                     aria-hidden="true"
-                    class="shrink-0 self-start font-serif text-lg italic text-ink-faint transition-all duration-200 group-hover:translate-x-1 group-hover:text-primary-600"
+                    class="shrink-0 self-start font-serif text-lg italic text-ink-faint transition-all duration-200 group-hover:translate-x-1 group-hover:text-primary-700"
                   >
                     →
                   </span>
                 </div>
                 <p
-                  class="mt-4 font-serif text-sm leading-relaxed text-ink-soft"
+                  class="mb-6 mt-4 font-serif text-sm leading-relaxed text-ink-soft"
                 >
                   {{ feature.body }}
                 </p>
+                <span
+                  class="mt-auto block border-t border-ink/10 pt-3.5 font-serif text-xs italic text-ink-faint"
+                >
+                  {{ feature.xref }}
+                </span>
               </a>
             </div>
           </div>
 
-          <!-- bottom row: compact entries + did-you-know box -->
-          <div class="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <!-- bottom row: compact entries + nota bene -->
+          <div class="mt-7 grid gap-7 sm:grid-cols-2 lg:grid-cols-4">
             <a
               v-for="feature in SMALL_FEATURES"
               :key="feature.href"
               :href="feature.href"
               target="_blank"
               rel="noopener"
-              class="group relative overflow-hidden rounded-xl border-2 border-ink bg-paper-card p-6 shadow-plate-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-plate"
+              class="panel group relative overflow-hidden p-6 transition-shadow duration-200 hover:shadow-float"
             >
               <span
                 aria-hidden="true"
-                class="absolute inset-x-0 top-0 h-1.5"
-                :class="feature.accent"
+                class="absolute inset-x-0 top-0 h-[3px]"
+                :class="feature.bar"
               />
-              <div class="flex items-center gap-3">
+              <div class="flex items-center gap-3.5">
                 <span
-                  class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-ink text-sm text-white shadow-plate-sm transition-transform duration-200 group-hover:-rotate-6 group-hover:scale-110"
+                  class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-ink/25 bg-paper-card text-sm"
                   :class="feature.accent"
                 >
                   <FontAwesomeIcon :icon="feature.icon" />
                 </span>
                 <h3
-                  class="font-display text-lg font-bold leading-snug text-ink"
+                  class="font-display text-xl font-medium leading-snug text-ink"
                 >
                   {{ feature.title }}
                 </h3>
               </div>
-              <p class="mt-3 font-serif text-sm leading-relaxed text-ink-soft">
+              <p
+                class="mt-3.5 font-serif text-sm leading-relaxed text-ink-soft"
+              >
                 {{ feature.body }}
               </p>
             </a>
 
-            <!-- Did you know? -->
+            <!-- nota bene -->
             <a
               href="https://github.com/rommapp/romm"
               target="_blank"
               rel="noopener"
-              class="group relative -rotate-1 overflow-hidden rounded-xl border-2 border-ink bg-sun-500 p-6 shadow-plate-sm transition-all duration-200 hover:rotate-0 hover:shadow-plate"
+              class="group relative overflow-hidden border border-gold-600/40 bg-gold-100 p-6 shadow-card transition-shadow duration-200 hover:shadow-float"
             >
-              <div
-                class="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-ink/70"
-              >
-                ✶ Did you know?
-              </div>
+              <div class="kicker text-[9px] text-gold-700">Did you know?</div>
               <h3
-                class="mt-2 font-display text-lg font-bold leading-snug text-ink"
+                class="mt-2.5 font-display text-xl font-medium leading-snug text-ink"
               >
                 RomM is free, forever.
               </h3>
-              <p class="mt-2 font-serif text-sm leading-relaxed text-ink/80">
+              <p
+                class="mt-2.5 font-serif text-sm leading-relaxed text-ink-soft"
+              >
                 AGPL-3.0, no tracking, no upsells. Your games, your data, your
                 server.
               </p>
@@ -727,52 +817,56 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
         </div>
       </section>
 
-      <!-- ===================== CHAPTER 3 · FIELD GUIDE ===================== -->
+      <!-- ===================== CHAPTER III · FIELD GUIDE ===================== -->
       <section
         id="apps"
-        class="scroll-mt-20 border-t-2 border-rule bg-paper pb-20 pt-20"
+        class="scroll-mt-20 border-t border-ink/10 bg-paper-card py-24"
       >
         <div class="mx-auto max-w-7xl px-6 sm:px-10">
           <SectionHeading
-            chapter="3"
-            label="Play anywhere"
+            chapter="III"
+            label="Play Anywhere"
             title="Your library on every device"
             subtitle="Native apps and integrations that bring your collection to desktops, handhelds and TVs. Pair a device in seconds with a QR code, and your saves follow you everywhere."
           />
 
-          <div class="mt-14">
+          <div class="mt-16">
             <AppConsole :apps="APPS" @select="selectedImage = $event" />
           </div>
         </div>
       </section>
 
-      <!-- ================== CHAPTER 4 · THE SOCIETY + FACTS ================== -->
+      <!-- ================== CHAPTER IV · THE SOCIETY ================== -->
       <section
         id="community"
-        class="relative scroll-mt-20 overflow-hidden border-t-2 border-rule bg-paper-warm"
+        class="relative scroll-mt-20 overflow-hidden border-t border-ink/10 bg-paper-warm"
       >
         <GlyphField />
-        <div class="relative z-10 mx-auto max-w-7xl px-6 py-20 sm:px-10">
+        <div class="relative mx-auto max-w-7xl px-6 py-24 sm:px-10">
           <SectionHeading
-            chapter="4"
+            chapter="IV"
             label="The Society of Collectors"
-            title="Powered by friendship"
-            subtitle="Get help with your setup, share your ideas, and meet other fans of RomM."
+            title="In very good company"
+            subtitle="Get help with your setup, share your ideas, and meet other keepers of well-ordered libraries."
           />
 
-          <!-- by the numbers -->
-          <div class="mt-12 grid grid-cols-2 gap-5 lg:grid-cols-4">
+          <!-- vital statistics, ruled like a reference table -->
+          <div
+            class="mx-auto mt-14 grid max-w-4xl grid-cols-2 border-y border-ink/20 lg:grid-cols-4"
+          >
             <div
-              v-for="stat in STATS"
+              v-for="(stat, i) in STATS"
               :key="stat.label"
-              class="relative overflow-hidden rounded-xl border-2 border-ink bg-paper-card p-6 text-center shadow-plate-sm"
+              class="flex flex-col items-center gap-2 border-ink/15 px-4 py-8 text-center"
+              :class="{
+                'border-l': i % 2 === 1,
+                'lg:border-l': i > 0,
+                'border-t lg:border-t-0': i > 1,
+              }"
             >
-              <span
-                aria-hidden="true"
-                class="absolute inset-x-0 top-0 h-1.5"
-                :class="stat.accent"
-              />
-              <div class="font-display text-4xl font-bold text-ink md:text-5xl">
+              <div
+                class="font-display text-4xl font-medium text-ink md:text-5xl"
+              >
                 <template v-if="stat.key === 'stars'">
                   {{ githubStars.toLocaleString() }}
                 </template>
@@ -781,19 +875,19 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
                 </template>
                 <template v-else>{{ stat.value }}</template>
               </div>
-              <div class="mt-2 font-serif text-sm italic text-ink-soft">
+              <div class="kicker text-[9px] text-ink-faint">
                 {{ stat.label }}
               </div>
             </div>
           </div>
 
-          <div class="mt-12 flex flex-wrap items-center justify-center gap-4">
+          <div class="mt-14 flex flex-wrap items-center justify-center gap-4">
             <a
               href="https://discord.gg/RGPJHNMMwJ"
               target="_blank"
               rel="noopener"
             >
-              <span class="btn-cdrom">
+              <span class="btn-folio">
                 <FontAwesomeIcon :icon="faDiscord" class="h-4" />
                 Join the Discord
               </span>
@@ -803,7 +897,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               target="_blank"
               rel="noopener"
             >
-              <span class="btn-page">
+              <span class="btn-plate">
                 <FontAwesomeIcon :icon="faGithub" class="h-4" />
                 Contribute
               </span>
@@ -815,29 +909,29 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
       <!-- ================= APPENDIX A · SUPPORTED PLATFORMS ================= -->
       <section
         id="appendix-a"
-        class="scroll-mt-20 border-t-2 border-rule bg-paper"
+        class="scroll-mt-20 border-t border-ink/10 bg-paper-card"
       >
-        <div class="mx-auto max-w-7xl px-6 pt-16 sm:px-10">
+        <div class="mx-auto max-w-7xl px-6 pt-20 sm:px-10">
           <SectionHeading
             prefix="Appendix"
             chapter="A"
-            label="Supported platforms"
+            label="Supported Platforms"
             title="400+ platforms, catalogued"
             subtitle="Consoles, handhelds, computers and arcade boards — if you can emulate it, RomM can shelve it."
           />
         </div>
-        <div class="mt-10 border-t border-rule pb-4">
+        <div class="mt-12 border-y border-ink/10">
           <PlatformMarquee />
         </div>
         <div
-          class="mx-auto max-w-7xl px-6 pb-12 text-center font-serif text-sm italic text-ink-soft sm:px-10"
+          class="mx-auto max-w-7xl px-6 py-8 text-center font-serif text-sm italic text-ink-soft sm:px-10"
         >
           A brief excerpt from the
           <a
             href="https://docs.romm.app/latest/platforms/supported-platforms/"
             target="_blank"
             rel="noopener"
-            class="text-primary-600 underline decoration-dotted underline-offset-4 hover:text-primary-700"
+            class="text-primary-700 underline decoration-dotted underline-offset-4 transition-colors hover:text-vermilion-600"
             >full catalogue</a
           >.
         </div>
@@ -846,19 +940,19 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
       <!-- =================== APPENDIX B · WHERE IT RUNS =================== -->
       <section
         id="appendix-b"
-        class="scroll-mt-20 border-t-2 border-rule bg-paper"
+        class="scroll-mt-20 border-t border-ink/10 bg-paper"
       >
-        <div class="mx-auto max-w-7xl px-6 py-16 sm:px-10">
+        <div class="mx-auto max-w-7xl px-6 py-20 sm:px-10">
           <SectionHeading
             prefix="Appendix"
             chapter="B"
-            label="Where it runs"
+            label="Where It Runs"
             title="At home on any server"
             subtitle="One-click installs and templates for every major self-hosting platform and operating system."
           />
 
           <div
-            class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-9 lg:gap-3"
+            class="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-9 lg:gap-3"
           >
             <a
               v-for="platform in PLATFORMS"
@@ -867,7 +961,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               target="_blank"
               rel="noopener noreferrer"
               :title="platform.name"
-              class="flex h-20 items-center justify-center rounded-xl border-2 border-ink/15 bg-paper-card px-4 opacity-70 grayscale transition-all duration-200 hover:-translate-y-1 hover:border-ink hover:opacity-100 hover:shadow-plate-sm hover:grayscale-0"
+              class="flex h-20 items-center justify-center border border-ink/15 bg-paper-card px-4 opacity-70 grayscale transition-all duration-200 hover:border-ink/50 hover:opacity-100 hover:shadow-card hover:grayscale-0"
             >
               <img
                 :src="platform.src"
@@ -881,31 +975,23 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
       </section>
 
       <!-- ============================= INDEX ============================= -->
-      <footer id="index" class="scroll-mt-20 bg-primary-950 text-primary-100">
-        <div class="rainbow-rule" aria-hidden="true" />
-        <div class="mx-auto max-w-7xl px-6 pt-10 sm:px-10">
-          <span
-            class="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-primary-300"
-          >
-            Index
-          </span>
+      <footer id="index" class="scroll-mt-20 bg-ink text-paper">
+        <div class="rule-spectrum" aria-hidden="true" />
+        <div class="mx-auto max-w-7xl px-6 pt-12 sm:px-10">
+          <span class="kicker text-gold-400">Index</span>
         </div>
         <div
           class="mx-auto grid max-w-7xl gap-10 px-6 py-10 sm:grid-cols-2 sm:px-10 lg:grid-cols-4"
         >
           <div>
-            <h4
-              class="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-sun-400"
-            >
-              Project
-            </h4>
-            <ul class="mt-4 space-y-2 font-serif text-sm">
+            <h4 class="kicker text-[10px] text-gold-400">Project</h4>
+            <ul class="mt-5 space-y-2.5 font-serif text-sm text-paper/75">
               <li>
                 <a
                   href="https://docs.romm.app"
                   target="_blank"
                   rel="noopener"
-                  class="transition-colors hover:text-sun-300"
+                  class="transition-colors hover:text-gold-300"
                   >Documentation</a
                 >
               </li>
@@ -914,7 +1000,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
                   href="https://docs.romm.app/latest/getting-started/quick-start/"
                   target="_blank"
                   rel="noopener"
-                  class="transition-colors hover:text-sun-300"
+                  class="transition-colors hover:text-gold-300"
                   >Quick start</a
                 >
               </li>
@@ -923,7 +1009,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
                   href="https://demo.romm.app"
                   target="_blank"
                   rel="noopener"
-                  class="transition-colors hover:text-sun-300"
+                  class="transition-colors hover:text-gold-300"
                   >Live demo</a
                 >
               </li>
@@ -932,25 +1018,21 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
                   href="https://github.com/rommapp/romm"
                   target="_blank"
                   rel="noopener"
-                  class="transition-colors hover:text-sun-300"
+                  class="transition-colors hover:text-gold-300"
                   >GitHub</a
                 >
               </li>
             </ul>
           </div>
           <div>
-            <h4
-              class="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-sun-400"
-            >
-              Apps
-            </h4>
-            <ul class="mt-4 space-y-2 font-serif text-sm">
+            <h4 class="kicker text-[10px] text-gold-400">Apps</h4>
+            <ul class="mt-5 space-y-2.5 font-serif text-sm text-paper/75">
               <li>
                 <a
                   href="https://github.com/rommapp/playnite-plugin"
                   target="_blank"
                   rel="noopener"
-                  class="transition-colors hover:text-sun-300"
+                  class="transition-colors hover:text-gold-300"
                   >Playnite plugin</a
                 >
               </li>
@@ -959,7 +1041,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
                   href="https://github.com/rommapp/argosy-launcher"
                   target="_blank"
                   rel="noopener"
-                  class="transition-colors hover:text-sun-300"
+                  class="transition-colors hover:text-gold-300"
                   >Argosy launcher</a
                 >
               </li>
@@ -968,25 +1050,21 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
                   href="https://grout.romm.app"
                   target="_blank"
                   rel="noopener"
-                  class="transition-colors hover:text-sun-300"
+                  class="transition-colors hover:text-gold-300"
                   >Grout</a
                 >
               </li>
             </ul>
           </div>
           <div>
-            <h4
-              class="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-sun-400"
-            >
-              Ecosystem
-            </h4>
-            <ul class="mt-4 space-y-2 font-serif text-sm">
+            <h4 class="kicker text-[10px] text-gold-400">Ecosystem</h4>
+            <ul class="mt-5 space-y-2.5 font-serif text-sm text-paper/75">
               <li>
                 <a
                   href="https://docs.romm.app/latest/platforms/supported-platforms/"
                   target="_blank"
                   rel="noopener"
-                  class="transition-colors hover:text-sun-300"
+                  class="transition-colors hover:text-gold-300"
                   >Supported platforms</a
                 >
               </li>
@@ -995,7 +1073,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
                   href="https://docs.romm.app/latest/getting-started/metadata-providers/"
                   target="_blank"
                   rel="noopener"
-                  class="transition-colors hover:text-sun-300"
+                  class="transition-colors hover:text-gold-300"
                   >Metadata providers</a
                 >
               </li>
@@ -1004,7 +1082,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
                   href="https://docs.romm.app/latest/ecosystem/feed-clients/"
                   target="_blank"
                   rel="noopener"
-                  class="transition-colors hover:text-sun-300"
+                  class="transition-colors hover:text-gold-300"
                   >Feed clients</a
                 >
               </li>
@@ -1013,25 +1091,21 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
                   href="https://docs.romm.app/latest/developers/api-reference/"
                   target="_blank"
                   rel="noopener"
-                  class="transition-colors hover:text-sun-300"
+                  class="transition-colors hover:text-gold-300"
                   >API reference</a
                 >
               </li>
             </ul>
           </div>
           <div>
-            <h4
-              class="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-sun-400"
-            >
-              Community
-            </h4>
-            <ul class="mt-4 space-y-2 font-serif text-sm">
+            <h4 class="kicker text-[10px] text-gold-400">Community</h4>
+            <ul class="mt-5 space-y-2.5 font-serif text-sm text-paper/75">
               <li>
                 <a
                   href="https://discord.gg/RGPJHNMMwJ"
                   target="_blank"
                   rel="noopener"
-                  class="transition-colors hover:text-sun-300"
+                  class="transition-colors hover:text-gold-300"
                   >Discord</a
                 >
               </li>
@@ -1040,14 +1114,14 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
                   href="https://opencollective.com/romm"
                   target="_blank"
                   rel="noopener"
-                  class="transition-colors hover:text-sun-300"
+                  class="transition-colors hover:text-gold-300"
                   >Open Collective</a
                 >
               </li>
               <li>
                 <a
                   href="mailto:contact@romm.app"
-                  class="transition-colors hover:text-sun-300"
+                  class="transition-colors hover:text-gold-300"
                   >Contact</a
                 >
               </li>
@@ -1055,29 +1129,29 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
           </div>
         </div>
 
-        <div class="border-t border-primary-800 py-5">
+        <div class="border-t border-white/15 py-6">
           <div
-            class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-primary-300 sm:px-10"
+            class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 sm:px-10"
           >
-            <span>The grand atlas of your game collection.</span>
-            <span class="hidden md:block">
-              © The RomM Project · AGPL-3.0
+            <span class="font-serif text-xs italic text-paper/60">
+              Set in EB Garamond &amp; Gelasio · Bound with care by the RomM
+              Project · AGPL-3.0
             </span>
             <span
               aria-label="Secured with Aikido"
-              class="inline-flex items-stretch overflow-hidden rounded-md border border-primary-700"
+              class="inline-flex items-stretch overflow-hidden border border-white/25"
             >
               <span
-                class="flex items-center gap-1.5 bg-primary-900 px-2.5 py-1 text-primary-200"
+                class="flex items-center gap-1.5 px-2.5 py-1 font-display text-[10px] font-semibold uppercase tracking-[0.15em] text-paper/70"
               >
                 <FontAwesomeIcon
                   :icon="faShieldHeart"
-                  class="h-2.5 text-sun-400"
+                  class="h-2.5 text-gold-400"
                 />
                 Secured with
               </span>
               <span
-                class="flex items-center bg-sun-500 px-2.5 py-1 font-bold text-ink"
+                class="flex items-center bg-gold-500 px-2.5 py-1 font-display text-[10px] font-semibold uppercase tracking-[0.15em] text-ink"
               >
                 Aikido
               </span>
@@ -1091,23 +1165,23 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
     <Teleport to="body">
       <div
         v-if="selectedImage"
-        class="fixed inset-0 z-[100] flex items-center justify-center bg-ink/80 p-4 backdrop-blur-sm sm:p-10"
+        class="fixed inset-0 z-[100] flex items-center justify-center bg-ink/85 p-4 backdrop-blur-sm sm:p-10"
         @click="selectedImage = undefined"
       >
-        <div class="plate overflow-hidden">
+        <div class="panel overflow-hidden">
           <div
-            class="flex items-center justify-between border-b-2 border-ink/10 bg-paper px-4 py-2"
+            class="flex items-center justify-between border-b border-ink/15 px-4 py-2.5"
           >
             <span class="font-serif text-sm italic text-ink-soft">
               {{ selectedImage.alt }}
             </span>
             <button
               type="button"
-              class="ml-4 font-mono text-xs font-bold text-ink-faint transition-colors hover:text-ink"
+              class="kicker ml-4 text-[10px] text-ink-faint transition-colors hover:text-ink"
               aria-label="Close"
               @click="selectedImage = undefined"
             >
-              [x]
+              Close ×
             </button>
           </div>
           <img

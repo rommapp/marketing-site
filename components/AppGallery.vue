@@ -39,32 +39,32 @@ onBeforeUnmount(() => clearInterval(timer));
 
 <template>
   <div @mouseenter="paused = true" @mouseleave="paused = false">
-    <!-- Figure plate: photo cut out and pasted onto the page -->
-    <div class="plate overflow-hidden">
-      <div class="relative overflow-hidden bg-white p-2 sm:p-3">
+    <!-- A mounted figure plate -->
+    <div class="panel overflow-hidden">
+      <div class="relative overflow-hidden bg-paper-card p-2 sm:p-3">
         <Transition name="gallery-fade" mode="out-in">
           <img
             v-if="current"
             :key="active"
             :src="current.src"
             :alt="current.alt"
-            class="block aspect-[16/10] w-full cursor-zoom-in rounded-md bg-ink object-fill"
+            class="block aspect-[16/10] w-full cursor-zoom-in border border-ink/15 bg-ink object-fill"
             loading="lazy"
             @click="emit('select', current!)"
           />
         </Transition>
       </div>
       <div
-        class="flex items-center justify-between border-t-2 border-ink/10 bg-paper px-3 py-2"
+        class="flex items-baseline justify-between gap-3 border-t border-ink/15 px-3.5 py-2"
       >
         <span
-          class="font-mono text-[10px] font-bold uppercase tracking-widest text-primary-700"
+          class="whitespace-nowrap font-display text-[10px] font-semibold uppercase tracking-[0.22em] text-vermilion-600"
         >
           {{ label }}
         </span>
         <span
           v-if="current"
-          class="truncate pl-3 font-serif text-xs italic text-ink-soft"
+          class="truncate font-serif text-xs italic text-ink-soft"
         >
           {{ current.alt }}
         </span>
@@ -75,8 +75,8 @@ onBeforeUnmount(() => clearInterval(timer));
         v-for="(image, i) in images"
         :key="image.src"
         type="button"
-        class="h-3 w-3 rounded-full border-2 border-ink transition-colors"
-        :class="i === active ? 'bg-sun-500' : 'bg-white hover:bg-sun-300'"
+        class="h-2.5 w-2.5 rounded-full border border-ink/50 transition-colors"
+        :class="i === active ? 'bg-ink' : 'bg-paper-card hover:bg-ink/20'"
         :aria-label="`Show ${image.alt}`"
         @click="active = i"
       />

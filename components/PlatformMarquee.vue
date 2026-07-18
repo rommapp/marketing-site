@@ -26,17 +26,17 @@ const icons = Object.entries(modules).map(([path, src]) => {
           v-for="icon in icons"
           :key="icon.slug"
           :title="icon.name"
-          class="group flex h-28 w-32 shrink-0 flex-col items-center justify-center gap-2.5 border-r border-rule px-3"
+          class="group flex h-28 w-32 shrink-0 flex-col items-center justify-center gap-2.5 border-r border-ink/10 px-3"
         >
           <img
             :src="icon.src"
             :alt="icon.name"
-            class="h-11 w-11 object-contain transition-transform duration-200 group-hover:-translate-y-1"
+            class="h-10 w-10 object-contain opacity-70 grayscale transition-all duration-200 group-hover:opacity-100 group-hover:grayscale-0"
             loading="lazy"
             decoding="async"
           />
           <span
-            class="w-full truncate text-center font-mono text-[9px] uppercase tracking-widest text-ink-faint transition-colors duration-200 group-hover:text-primary-600"
+            class="w-full truncate text-center font-display text-[9px] font-semibold uppercase tracking-[0.2em] text-ink-faint transition-colors duration-200 group-hover:text-vermilion-600"
           >
             {{ icon.name }}
           </span>

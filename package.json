@@ -11,7 +11,7 @@
     "typecheck": "vue-tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
-    "@fontsource-variable/rokkitt": "^5.2.8",
+    "@fontsource-variable/eb-garamond": "^5.2.7",
     "@fontsource/gelasio": "^5.2.8",
     "@fontsource/space-mono": "^5.2.9",
     "@fortawesome/fontawesome-svg-core": "^7.2.0",

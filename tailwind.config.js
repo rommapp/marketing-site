@@ -2,74 +2,84 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Royal "encyclopedia spine" blue — the workhorse primary
+        // Oxford lapis — the encyclopedia-spine blue
         primary: {
-          50: "#EEF3FE",
-          100: "#DCE6FD",
-          200: "#B7CBFA",
-          300: "#8DAAF3",
-          400: "#5F84E7",
-          500: "#3B63D8",
-          DEFAULT: "#3B63D8",
-          600: "#2B50C8",
-          700: "#2242A8",
-          800: "#1C3585",
-          900: "#182B69",
-          950: "#101C46",
+          50: "#F2F5FA",
+          100: "#E3EAF4",
+          200: "#C5D2E6",
+          300: "#9AB2D1",
+          400: "#6C8DB8",
+          500: "#47699D",
+          DEFAULT: "#35538A",
+          600: "#35538A",
+          700: "#2B4472",
+          800: "#23375C",
+          900: "#1D2C49",
+          950: "#121C2F",
         },
-        // Bright cerulean, for skies and links
-        cerulean: {
-          300: "#9BD7FA",
-          400: "#5FBCF2",
-          500: "#3FA9F5",
-          600: "#1F8FDE",
+        // Deep printer's red, for figure labels and active marks
+        vermilion: {
+          100: "#F5DFD8",
+          400: "#C96A50",
+          500: "#B04A30",
+          600: "#93381F",
+          700: "#772C18",
         },
-        sun: {
-          300: "#FFE08A",
-          400: "#FFD24D",
-          500: "#FFC629",
-          600: "#F0A800",
-          700: "#C78A00",
+        // Old gold, for gilt rules and museum accents
+        gold: {
+          100: "#F5EBD0",
+          300: "#DFC47E",
+          400: "#CDAA52",
+          500: "#B79233",
+          600: "#957526",
+          700: "#755C1E",
         },
-        kelly: {
-          400: "#48B85C",
-          500: "#2E9E44",
-          600: "#1F7F34",
+        // Bookplate green
+        forest: {
+          100: "#E3EEE7",
+          400: "#4E8B68",
+          500: "#356F4E",
+          600: "#2A5A3F",
+          700: "#204832",
         },
-        tomato: {
-          400: "#F26649",
-          500: "#E8442E",
-          600: "#C93321",
+        // Aubergine, sparingly
+        plum: {
+          400: "#8A6AA8",
+          500: "#6F4E8E",
+          600: "#593D74",
         },
-        grape: {
-          400: "#9B6FD0",
-          500: "#7B4FBF",
-          600: "#63399F",
-        },
-        // Warm paper stock and deep print ink
+        // White stock and print ink
         paper: {
-          DEFAULT: "#FAF6EC",
-          warm: "#F4EDDC",
+          DEFAULT: "#FAF8F2",
+          warm: "#F3EFE3",
           card: "#FFFFFF",
         },
         ink: {
-          DEFAULT: "#1B2437",
-          soft: "#4A5468",
-          faint: "#8B92A3",
+          DEFAULT: "#211F1B",
+          soft: "#54514A",
+          faint: "#8B877C",
         },
-        rule: "#D8D2C2",
+        rule: "#E0DCCF",
       },
       fontFamily: {
-        display: ['"Rokkitt Variable"', "Rockwell", "Georgia", "serif"],
+        display: [
+          '"EB Garamond Variable"',
+          "Garamond",
+          '"Times New Roman"',
+          "serif",
+        ],
         serif: ["Gelasio", "Georgia", "serif"],
         mono: ['"Space Mono"', "ui-monospace", "SFMono-Regular", "monospace"],
         sans: ['"Inter var"', "Inter", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        // Hard offset "sticker on the page" shadows
-        plate: "6px 6px 0 0 rgba(27, 36, 55, 0.18)",
-        "plate-sm": "3px 3px 0 0 rgba(27, 36, 55, 0.16)",
-        "plate-primary": "6px 6px 0 0 #2242A8",
+        // A mounted print, resting on the page
+        card: "0 1px 2px rgba(33, 31, 27, 0.05), 0 10px 28px -14px rgba(33, 31, 27, 0.25)",
+        // A window floating above the page, Compton's-ad style
+        float:
+          "0 28px 56px -24px rgba(33, 31, 27, 0.38), 0 8px 20px -10px rgba(33, 31, 27, 0.16)",
+        // A photographic cutout with its soft catalogue shadow
+        cutout: "0 16px 26px -14px rgba(33, 31, 27, 0.4)",
       },
     },
   },

@@ -5,7 +5,8 @@ export default defineNuxtConfig({
   modules: ["@nuxtjs/tailwindcss", "@nuxt/image"],
 
   css: [
-    "@fontsource-variable/rokkitt/wght.css",
+    "@fontsource-variable/eb-garamond/wght.css",
+    "@fontsource-variable/eb-garamond/wght-italic.css",
     "@fontsource/gelasio/400.css",
     "@fontsource/gelasio/400-italic.css",
     "@fontsource/gelasio/700.css",
@@ -68,7 +69,7 @@ export default defineNuxtConfig({
           name: "twitter:image",
           content: "https://romm.app/images/og/og-v5.png",
         },
-        { name: "theme-color", content: "#2B50C8" },
+        { name: "theme-color", content: "#23375C" },
         {
           content:
             "default-src 'self'; img-src 'self' data: app.aikido.dev; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';connect-src 'self' api.github.com discord.com; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests;",

@@ -24,173 +24,118 @@
   }
 
   body {
-    @apply bg-paper font-sans text-ink antialiased;
+    @apply bg-paper font-serif text-ink antialiased;
   }
 
   ::selection {
-    @apply bg-sun-500 text-ink;
+    @apply bg-gold-300 text-ink;
   }
 }
 
 @layer components {
-  /*
-   * Chunky mid-90s CD-ROM button: hard bevel, glossy top highlight,
-   * presses down when clicked.
-   */
-  .btn-cdrom {
-    @apply relative inline-flex items-center justify-center gap-2 rounded-lg border-2 border-primary-800 bg-primary-600 px-6 py-3 font-display text-base font-bold tracking-wide text-white transition-transform duration-75;
-    background-image: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.35) 0%,
-      rgba(255, 255, 255, 0.12) 45%,
-      rgba(0, 0, 0, 0) 50%,
-      rgba(0, 0, 0, 0.08) 100%
+  /* Letterspaced serif small caps — the reference-book label voice */
+  .kicker {
+    @apply font-display text-[11px] font-semibold uppercase tracking-[0.3em];
+  }
+
+  /* A mounted plate: white stock, hairline frame, soft catalogue shadow */
+  .panel {
+    @apply border border-ink/20 bg-paper-card shadow-card;
+  }
+
+  /* Black masthead band, as on an Eyewitness cover */
+  .masthead {
+    @apply bg-ink text-paper-card;
+  }
+
+  /* Primary button: ink block, letterspaced caps */
+  .btn-folio {
+    @apply inline-flex items-center justify-center gap-2.5 border border-ink bg-ink px-7 py-3.5 font-display text-[13px] font-semibold uppercase tracking-[0.22em] text-paper-card transition-colors duration-150;
+  }
+
+  .btn-folio:hover {
+    @apply border-primary-700 bg-primary-700;
+  }
+
+  /* Secondary button: white stock, hairline frame */
+  .btn-plate {
+    @apply inline-flex items-center justify-center gap-2.5 border border-ink/30 bg-paper-card px-7 py-3.5 font-display text-[13px] font-semibold uppercase tracking-[0.22em] text-ink transition-colors duration-150;
+  }
+
+  .btn-plate:hover {
+    @apply border-ink bg-paper;
+  }
+
+  .btn-folio--sm,
+  .btn-plate--sm {
+    @apply px-5 py-2.5 text-[11px];
+  }
+
+  /* Sorted-spectrum rule in jewel tones, an Encarta signature */
+  .rule-spectrum {
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      #8c3b27 0% 20%,
+      #b08a2e 20% 40%,
+      #33664a 40% 60%,
+      #2f4e7e 60% 80%,
+      #5e4374 80% 100%
     );
-    box-shadow:
-      inset 0 2px 0 rgba(255, 255, 255, 0.4),
-      inset 0 -3px 0 rgba(0, 0, 0, 0.25),
-      4px 4px 0 0 theme("colors.primary.900");
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
   }
 
-  .btn-cdrom:hover {
-    filter: brightness(1.08);
-  }
-
-  .btn-cdrom:active {
-    transform: translate(3px, 3px);
-    box-shadow:
-      inset 0 2px 0 rgba(255, 255, 255, 0.2),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.25),
-      1px 1px 0 0 theme("colors.primary.900");
-  }
-
-  .btn-cdrom--sun {
-    @apply border-sun-700 bg-sun-500 text-ink;
-    box-shadow:
-      inset 0 2px 0 rgba(255, 255, 255, 0.5),
-      inset 0 -3px 0 rgba(0, 0, 0, 0.15),
-      4px 4px 0 0 theme("colors.sun.700");
-    text-shadow: none;
-  }
-
-  .btn-cdrom--sun:active {
-    box-shadow:
-      inset 0 2px 0 rgba(255, 255, 255, 0.3),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.15),
-      1px 1px 0 0 theme("colors.sun.700");
-  }
-
-  .btn-page {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg border-2 border-ink bg-paper-card px-6 py-3 font-display text-base font-bold tracking-wide text-ink shadow-plate-sm transition-all duration-100 hover:bg-sun-300;
-  }
-
-  .btn-page:active {
-    transform: translate(2px, 2px);
-    box-shadow: 1px 1px 0 0 rgba(27, 36, 55, 0.16);
-  }
-
-  /* A photo plate cut out and pasted onto the page */
-  .plate {
-    @apply rounded-xl border-[3px] border-ink bg-paper-card shadow-plate;
-  }
-
-  /* Light-blue graph paper, like the endpapers of a science workbook */
+  /* Faint engineering grid, like a workbook endpaper */
   .graph-paper {
     background-image:
-      linear-gradient(to right, rgba(59, 99, 216, 0.08) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(59, 99, 216, 0.08) 1px, transparent 1px);
-    background-size: 28px 28px;
+      linear-gradient(to right, rgba(53, 83, 138, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(53, 83, 138, 0.06) 1px, transparent 1px);
+    background-size: 32px 32px;
   }
 
-  /* Halftone print dots */
-  .halftone {
-    background-image: radial-gradient(
-      circle,
-      rgba(255, 255, 255, 0.35) 1.5px,
-      transparent 1.5px
-    );
-    background-size: 14px 14px;
-  }
-
-  /* The full-bleed encyclopedia sky */
-  .sky {
+  /* A compact disc, pastel refraction and all */
+  .cd {
+    @apply relative rounded-full shadow-cutout;
     background:
       radial-gradient(
-        ellipse 120% 70% at 50% 108%,
-        rgba(255, 214, 77, 0.5) 0%,
-        rgba(255, 214, 77, 0) 55%
+        circle,
+        rgba(255, 255, 255, 0.55) 0%,
+        rgba(255, 255, 255, 0) 55%
       ),
-      linear-gradient(
-        180deg,
-        #182b69 0%,
-        #2b50c8 38%,
-        #3fa9f5 78%,
-        #9bd7fa 100%
+      conic-gradient(
+        from 40deg,
+        #e9e7e1,
+        #ccdcec 12%,
+        #d4e6d3 26%,
+        #f0e4c5 38%,
+        #ecd5cf 52%,
+        #ddd3e8 64%,
+        #ccdcec 78%,
+        #e9e7e1 88%,
+        #d4e6d3 100%
       );
   }
 
-  /* Sorted-spectrum rule, like the top of a Scholastic book-fair flyer */
-  .rainbow-rule {
-    height: 6px;
-    background: linear-gradient(
-      90deg,
-      #e8442e 0% 20%,
-      #ffc629 20% 40%,
-      #2e9e44 40% 60%,
-      #3fa9f5 60% 80%,
-      #7b4fbf 80% 100%
-    );
+  .cd::before {
+    content: "";
+    @apply absolute rounded-full;
+    inset: 3%;
+    border: 1px solid rgba(33, 31, 27, 0.12);
   }
 
-  /* Yellow "NEW!" starburst sticker */
-  .starburst {
-    @apply inline-flex items-center justify-center bg-sun-500 font-display font-bold text-ink;
-    clip-path: polygon(
-      50% 0%,
-      61% 12%,
-      75% 7%,
-      79% 22%,
-      94% 22%,
-      90% 37%,
-      100% 44%,
-      91% 56%,
-      98% 70%,
-      83% 73%,
-      82% 89%,
-      67% 84%,
-      59% 98%,
-      50% 87%,
-      41% 98%,
-      33% 84%,
-      18% 89%,
-      17% 73%,
-      2% 70%,
-      9% 56%,
-      0% 44%,
-      10% 37%,
-      6% 22%,
-      21% 22%,
-      25% 7%,
-      39% 12%
-    );
+  .cd::after {
+    content: "";
+    @apply absolute rounded-full bg-paper-card;
+    inset: 36%;
+    border: 1px solid rgba(33, 31, 27, 0.18);
+    box-shadow:
+      inset 0 0 0 5px #f1efe8,
+      inset 0 0 0 6px rgba(33, 31, 27, 0.1);
   }
 
-  /* Index-card chapter tab */
-  .chapter-tab {
-    @apply inline-flex items-center gap-2 rounded-t-lg border-2 border-b-0 border-ink bg-sun-500 px-4 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-ink;
-  }
-
-  /* Wobbly hand-drawn underline for keywords */
-  .keyword-underline {
-    background-image: linear-gradient(
-      to right,
-      theme("colors.sun.500"),
-      theme("colors.sun.500")
-    );
-    background-repeat: no-repeat;
-    background-size: 100% 0.28em;
-    background-position: 0 88%;
+  /* First-letter drop cap for article openers */
+  .drop-cap::first-letter {
+    @apply float-left mr-2.5 font-display text-[3.4rem] font-medium leading-[0.82] text-ink;
+    margin-top: 0.35rem;
   }
 }
 
@@ -208,64 +153,12 @@
     }
   }
 
-  .animate-marquee-reverse {
-    animation: marquee 40s linear infinite reverse;
-  }
-
-  .pause-on-hover:hover .animate-marquee,
-  .pause-on-hover:hover .animate-marquee-reverse {
+  .pause-on-hover:hover .animate-marquee {
     animation-play-state: paused;
   }
 
-  .animate-orbit {
-    animation: orbit 40s linear infinite;
-  }
-
-  @keyframes orbit {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
-  .animate-bob {
-    animation: bob 5s ease-in-out infinite;
-  }
-
-  @keyframes bob {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-8px);
-    }
-  }
-
-  .animate-twinkle {
-    animation: twinkle 2.6s ease-in-out infinite;
-  }
-
-  @keyframes twinkle {
-    0%,
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.35;
-      transform: scale(0.8);
-    }
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    .animate-orbit,
-    .animate-bob,
-    .animate-twinkle,
-    .animate-marquee,
-    .animate-marquee-reverse {
+    .animate-marquee {
       animation: none;
     }
   }
