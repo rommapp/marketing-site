@@ -36,7 +36,7 @@ const icons = Object.entries(modules).map(([path, src]) => {
             decoding="async"
           />
           <span
-            class="w-full truncate text-center font-mono text-[9px] text-muted uppercase tracking-widest text-grid transition-colors duration-200 group-hover:text-primary-300"
+            class="w-full truncate text-center text-[9px] font-medium uppercase tracking-widest text-muted/60 transition-colors duration-200 group-hover:text-cyber-300"
           >
             {{ icon.name }}
           </span>

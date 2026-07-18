@@ -24,6 +24,11 @@ const navItems = [
   <header
     class="sticky top-0 z-50 border-b border-grid bg-ink-950/85 backdrop-blur-md"
   >
+    <!-- signal strip -->
+    <div
+      aria-hidden="true"
+      class="h-px w-full bg-gradient-to-r from-transparent via-cyber-400/60 to-transparent"
+    />
     <nav
       class="mx-auto flex h-16 max-w-[88rem] items-center justify-between border-x border-grid px-4 sm:px-6"
     >
@@ -44,7 +49,7 @@ const navItems = [
           href="https://github.com/rommapp/romm/releases/latest"
           target="_blank"
           rel="noopener"
-          class="hidden border border-grid px-1.5 py-0.5 font-mono text-[10px] text-primary-300 transition-colors hover:border-primary-400 sm:block"
+          class="bevel-out hidden rounded-full border border-grid bg-ink-900/80 px-2.5 py-0.5 font-mono text-[10px] text-cyber-300 transition-colors hover:border-cyber-400/70 sm:block"
         >
           {{ version }}
         </a>
@@ -57,7 +62,7 @@ const navItems = [
           :href="item.href"
           target="_blank"
           rel="noopener"
-          class="font-mono text-xs uppercase tracking-[0.2em] transition-colors hover:text-cream"
+          class="text-xs font-semibold uppercase tracking-[0.25em] transition-colors hover:text-chrome"
         >
           {{ item.label }}
         </a>
@@ -69,7 +74,7 @@ const navItems = [
           target="_blank"
           rel="noopener"
           title="Support the project"
-          class="hidden h-9 w-9 items-center justify-center border border-grid transition-colors hover:border-primary-400 hover:text-primary-300 sm:flex"
+          class="bevel-out hidden h-9 w-9 items-center justify-center rounded border border-grid bg-ink-900/60 transition-colors hover:border-primary-400 hover:text-primary-300 sm:flex"
         >
           <FontAwesomeIcon :icon="faHeart" class="h-3.5" />
         </a>
@@ -78,7 +83,7 @@ const navItems = [
           target="_blank"
           rel="noopener"
           title="Join the Discord"
-          class="hidden h-9 w-9 items-center justify-center border border-grid transition-colors hover:border-primary-400 hover:text-primary-300 sm:flex"
+          class="bevel-out hidden h-9 w-9 items-center justify-center rounded border border-grid bg-ink-900/60 transition-colors hover:border-primary-400 hover:text-primary-300 sm:flex"
         >
           <FontAwesomeIcon :icon="faDiscord" class="h-3.5" />
         </a>
@@ -87,14 +92,14 @@ const navItems = [
           target="_blank"
           rel="noopener"
           title="GitHub repository"
-          class="flex h-9 items-center gap-2 border border-grid px-3 font-mono text-xs text-cream transition-colors hover:border-primary-400 hover:text-primary-300"
+          class="bevel-out flex h-9 items-center gap-2 rounded border border-grid bg-ink-900/60 px-3 text-xs font-semibold text-chrome transition-colors hover:border-cyber-400/70 hover:text-cyber-300"
         >
           <FontAwesomeIcon :icon="faGithub" class="h-4" />
           <span>{{ (githubStars / 1000).toFixed(1) }}K</span>
         </a>
         <button
           type="button"
-          class="flex h-9 w-9 items-center justify-center border border-grid text-cream md:hidden"
+          class="flex h-9 w-9 items-center justify-center rounded border border-grid text-chrome md:hidden"
           aria-label="Toggle menu"
           @click="menuOpen = !menuOpen"
         >
@@ -113,7 +118,7 @@ const navItems = [
         :href="item.href"
         target="_blank"
         rel="noopener"
-        class="block border-b border-grid px-6 py-4 font-mono text-xs uppercase tracking-[0.2em] last:border-b-0 hover:text-cream"
+        class="block border-b border-grid px-6 py-4 text-xs font-semibold uppercase tracking-[0.25em] last:border-b-0 hover:text-chrome"
         @click="menuOpen = false"
       >
         {{ item.label }}

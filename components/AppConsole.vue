@@ -70,13 +70,29 @@ onMounted(() => {
 </script>
 
 <template>
-  <RetroWindow title="DEVICE_SELECT.EXE">
+  <div class="bg-ink-950">
+    <!-- panel chrome -->
+    <div
+      class="flex flex-wrap items-center justify-between gap-3 border-b border-grid bg-gradient-to-b from-ink-700 to-ink-850 px-5 py-3 shadow-[inset_0_1px_0_rgba(233,239,251,0.12)]"
+    >
+      <span
+        class="font-display text-[11px] uppercase tracking-[0.25em] text-chrome"
+      >
+        Device network
+      </span>
+      <span
+        class="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.25em] text-cyber-300"
+      >
+        <span aria-hidden="true" class="led led-on" />
+        {{ apps.length }} clients online
+      </span>
+    </div>
     <div
       class="grid lg:grid-cols-[20rem_1fr]"
       @mouseenter="hovered = true"
       @mouseleave="hovered = false"
     >
-      <!-- ======== Slot menu ======== -->
+      <!-- ======== Device menu ======== -->
       <div
         role="tablist"
         aria-label="Choose an app"
@@ -85,7 +101,7 @@ onMounted(() => {
         @keydown="onKeydown"
       >
         <div
-          class="border-b border-grid bg-ink-900 px-5 py-3 font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
+          class="border-b border-grid bg-ink-900 px-5 py-3 text-[10px] font-semibold uppercase tracking-[0.3em] text-muted"
         >
           Select device
         </div>
@@ -101,19 +117,15 @@ onMounted(() => {
           @click="pick(i)"
           @focus="engage()"
         >
-          <!-- cursor -->
-          <span
-            aria-hidden="true"
-            class="w-3 shrink-0 font-mono text-sm text-primary-400"
-            :class="i === active ? 'blink' : 'opacity-0'"
-          >
-            ▶
+          <!-- link status -->
+          <span aria-hidden="true" class="flex w-3 shrink-0 justify-center">
+            <span :class="i === active ? 'led led-on' : 'led bg-grid'" />
           </span>
           <span
-            class="bevel-out flex h-11 w-11 shrink-0 items-center justify-center border border-grid bg-ink-900 transition-all duration-200"
+            class="bevel-out flex h-11 w-11 shrink-0 items-center justify-center rounded border border-grid bg-ink-900 transition-all duration-200"
             :class="
               i === active
-                ? 'border-primary-500'
+                ? 'border-cyber-400/70 shadow-[0_0_14px_rgba(76,201,255,0.25)]'
                 : 'grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0'
             "
           >
@@ -121,14 +133,14 @@ onMounted(() => {
           </span>
           <span class="min-w-0">
             <span
-              class="block font-pixel text-sm uppercase leading-tight"
-              :class="i === active ? 'text-cream' : 'text-muted'"
+              class="block font-display text-xs uppercase leading-tight"
+              :class="i === active ? 'text-chrome' : 'text-muted'"
             >
               {{ item.name }}
             </span>
             <span
-              class="mt-1 block font-mono text-[9px] uppercase tracking-[0.25em]"
-              :class="i === active ? 'text-primary-300' : 'text-grid'"
+              class="mt-1 block text-[9px] font-semibold uppercase tracking-[0.25em]"
+              :class="i === active ? 'text-cyber-300' : 'text-muted/60'"
             >
               {{ item.system }}
             </span>
@@ -136,17 +148,18 @@ onMounted(() => {
           <!-- active edge -->
           <span
             aria-hidden="true"
-            class="absolute inset-y-0 left-0 w-0.5 bg-primary-500 transition-opacity"
+            class="absolute inset-y-0 left-0 w-0.5 bg-gradient-to-b from-cyber-400 to-primary-500 transition-opacity"
             :class="i === active ? 'opacity-100' : 'opacity-0'"
           />
         </button>
 
-        <!-- filler slot, wink at empty cartridge bays -->
+        <!-- filler slot, an open port awaiting its uplink -->
         <div
           aria-hidden="true"
-          class="hidden flex-1 items-center justify-center gap-3 px-5 py-5 font-mono text-[10px] uppercase tracking-[0.3em] text-grid lg:flex"
+          class="hidden flex-1 items-center justify-center gap-3 px-5 py-5 text-[10px] font-semibold uppercase tracking-[0.3em] text-muted/50 lg:flex"
         >
-          ░░ Empty slot ░░
+          <span class="led border border-grid bg-transparent" />
+          Port open · awaiting uplink
         </div>
       </div>
 
@@ -173,7 +186,7 @@ onMounted(() => {
               <span
                 v-for="tag in app.tags"
                 :key="tag.text"
-                class="inline-flex items-center gap-1.5 border border-grid px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.25em] text-primary-300"
+                class="bevel-out inline-flex items-center gap-1.5 rounded-full border border-grid bg-ink-900/70 px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.25em] text-cyber-300"
               >
                 <FontAwesomeIcon
                   v-if="tag.icon"
@@ -185,7 +198,7 @@ onMounted(() => {
             </div>
 
             <h3
-              class="mt-4 font-pixel text-xl uppercase text-cream md:text-2xl"
+              class="mt-4 font-display text-lg uppercase text-chrome md:text-xl"
             >
               {{ app.name }}
             </h3>
@@ -197,7 +210,7 @@ onMounted(() => {
             <!-- link chips (e.g. supported firmwares) -->
             <div v-if="app.links" class="mt-4">
               <span
-                class="font-mono text-[9px] uppercase tracking-[0.3em] text-muted"
+                class="text-[9px] font-semibold uppercase tracking-[0.3em] text-muted"
               >
                 {{ app.links.label }}
               </span>
@@ -208,7 +221,7 @@ onMounted(() => {
                   :href="link.href"
                   target="_blank"
                   rel="noopener"
-                  class="border border-grid px-2 py-0.5 font-mono text-[10px] text-cream transition-colors hover:border-primary-400 hover:text-primary-300"
+                  class="rounded border border-grid px-2 py-0.5 text-[10px] text-chrome transition-colors hover:border-cyber-400/70 hover:text-cyber-300"
                 >
                   {{ link.text }}
                 </a>
@@ -221,7 +234,7 @@ onMounted(() => {
               rel="noopener"
               class="mt-auto inline-block self-start pt-8"
             >
-              <span class="btn-pixel">{{ app.ctaText }} ↗</span>
+              <span class="btn-chrome">{{ app.ctaText }} ↗</span>
             </a>
           </div>
         </div>
@@ -230,21 +243,21 @@ onMounted(() => {
 
     <!-- button hints -->
     <div
-      class="flex flex-wrap items-center justify-between gap-3 border-t border-grid bg-ink-900 px-5 py-2.5 font-mono text-[9px] uppercase tracking-[0.25em] text-muted"
+      class="flex flex-wrap items-center justify-between gap-3 border-t border-grid bg-ink-900 px-5 py-2.5 text-[9px] font-semibold uppercase tracking-[0.25em] text-muted"
     >
       <span class="flex items-center gap-4">
-        <span> <span class="text-primary-300">↑↓</span> Navigate </span>
-        <span> <span class="text-primary-300">⏎</span> Launch </span>
+        <span> <span class="text-cyber-300">↑↓</span> Navigate </span>
+        <span> <span class="text-cyber-300">⏎</span> Launch </span>
         <span class="hidden sm:inline">
-          <span class="text-primary-300">🖱</span> Click screen to zoom
+          <span class="text-cyber-300">🖱</span> Click screen to zoom
         </span>
       </span>
-      <span aria-hidden="true">
-        Slot {{ active + 1 }}/{{ apps.length
-        }}<span class="blink text-primary-400">_</span>
+      <span aria-hidden="true" class="flex items-center gap-2">
+        <span class="led led-on" />
+        Link {{ active + 1 }}/{{ apps.length }}
       </span>
     </div>
-  </RetroWindow>
+  </div>
 </template>
 
 <style scoped>

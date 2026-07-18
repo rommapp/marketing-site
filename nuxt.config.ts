@@ -5,8 +5,8 @@ export default defineNuxtConfig({
   modules: ["@nuxtjs/tailwindcss", "@nuxt/image"],
 
   css: [
-    "@fontsource/silkscreen/400.css",
-    "@fontsource/silkscreen/700.css",
+    "@fortawesome/fontawesome-svg-core/styles.css",
+    "@fontsource/michroma/400.css",
     "@fontsource/space-mono/400.css",
     "@fontsource/space-mono/700.css",
   ],

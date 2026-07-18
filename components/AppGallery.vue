@@ -39,16 +39,18 @@ onBeforeUnmount(() => clearInterval(timer));
 
 <template>
   <div @mouseenter="paused = true" @mouseleave="paused = false">
-    <!-- Terminal chrome -->
+    <!-- Viewer chrome -->
     <div
-      class="flex items-center justify-between border border-grid bg-ink-800 px-3 py-2"
+      class="flex items-center justify-between rounded-t border border-grid bg-gradient-to-b from-ink-700 to-ink-850 px-3 py-2 shadow-[inset_0_1px_0_rgba(233,239,251,0.12)]"
     >
       <div class="flex items-center gap-1.5" aria-hidden="true">
-        <span class="h-2 w-2 bg-primary-500" />
-        <span class="h-2 w-2 bg-primary-700" />
-        <span class="h-2 w-2 bg-grid" />
+        <span class="led led-on" />
+        <span class="led led-primary" />
+        <span class="led bg-grid" />
       </div>
-      <span class="font-mono text-[10px] uppercase tracking-widest text-muted">
+      <span
+        class="font-mono text-[10px] lowercase tracking-widest text-cyber-300"
+      >
         {{ label }}
       </span>
     </div>
@@ -72,8 +74,12 @@ onBeforeUnmount(() => clearInterval(timer));
         v-for="(image, i) in images"
         :key="image.src"
         type="button"
-        class="h-2 w-2 transition-colors"
-        :class="i === active ? 'bg-primary-400' : 'bg-grid hover:bg-muted'"
+        class="h-2 w-2 rounded-full transition-all"
+        :class="
+          i === active
+            ? 'bg-cyber-400 shadow-[0_0_6px_1px_rgba(76,201,255,0.7)]'
+            : 'bg-grid hover:bg-muted'
+        "
         :aria-label="`Show ${image.alt}`"
         @click="active = i"
       />

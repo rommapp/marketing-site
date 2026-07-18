@@ -72,7 +72,7 @@ const APPS = [
     system: "Windows · Desktop",
     logo: playnite,
     images: PLAYNITE_IMAGES,
-    label: "~/integrations/playnite",
+    label: "net://playnite",
     tags: [{ text: "Windows", icon: faWindows }, { text: "QR pairing" }],
     body: "Effortlessly integrate your retro game collection into Playnite, the open-source game library manager that provides a unified interface for all of your games on PC.",
     links: {
@@ -89,7 +89,7 @@ const APPS = [
     system: "Android · Handhelds",
     logo: argosy,
     images: ARGOSY_IMAGES,
-    label: "~/apps/argosy",
+    label: "net://argosy",
     tags: [
       { text: "Android", icon: faAndroid },
       { text: "QR pairing" },
@@ -105,7 +105,7 @@ const APPS = [
     system: "Handheld CFWs",
     logo: grout,
     images: GROUT_IMAGES,
-    label: "~/apps/grout",
+    label: "net://grout",
     tags: [{ text: "Handhelds", icon: faGamepad }, { text: "Save sync" }],
     body: "A lightweight client for your favorite handheld custom firmwares. Download games, box art and BIOS files wirelessly, and sync your saves automatically as you play.",
     links: {
@@ -319,29 +319,32 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
         />
         <div
           aria-hidden="true"
-          class="absolute inset-0 bg-gradient-to-b from-ink-950/80 via-ink-950/70 to-ink-950"
+          class="absolute inset-0 bg-gradient-to-b from-ink-950/85 via-ink-950/75 to-ink-950"
         />
-        <div aria-hidden="true" class="dot-grid absolute inset-0" />
         <div
           aria-hidden="true"
           class="absolute -top-48 left-1/2 h-[38rem] w-[64rem] max-w-none -translate-x-1/2 rounded-full bg-primary-500/10 blur-[120px]"
         />
-        <div aria-hidden="true" class="scanlines absolute inset-0" />
+        <!-- the information superhighway -->
+        <div aria-hidden="true" class="horizon-grid" />
 
         <div class="relative z-10 px-6 py-24 text-center sm:px-10 lg:px-16">
           <div class="flex flex-wrap items-center justify-center gap-3">
             <div
-              class="inline-flex items-center gap-3 border border-grid bg-ink-900/70 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.25em] text-primary-300"
+              class="bevel-out inline-flex items-center gap-2.5 rounded-full border border-grid bg-ink-900/70 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-cyber-300"
             >
+              <span aria-hidden="true" class="led led-on" />
               Self-hosted rom manager
             </div>
             <a
               href="https://github.com/rommapp/romm/releases/tag/5.0.0"
               target="_blank"
               rel="noopener"
-              class="inline-flex items-center gap-2 border border-primary-700 bg-primary-950/70 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.25em] text-primary-300 transition-colors hover:border-primary-400 hover:text-primary-200"
+              class="bevel-out inline-flex items-center gap-2 rounded-full border border-primary-700 bg-primary-950/70 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-primary-300 transition-colors hover:border-primary-400 hover:text-primary-200"
             >
-              <span class="bg-primary-500 px-1.5 font-bold text-ink-950">
+              <span
+                class="rounded-sm bg-gradient-to-b from-primary-300 to-primary-600 px-1.5 font-bold text-ink-950"
+              >
                 New
               </span>
               RomM 5.0 is out ↗
@@ -349,11 +352,13 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
           </div>
 
           <h1
-            class="mx-auto mt-10 font-pixel text-3xl uppercase leading-tight text-cream sm:text-4xl md:text-5xl xl:text-6xl"
+            class="mx-auto mt-10 font-display text-2xl uppercase leading-normal sm:text-3xl md:text-4xl xl:text-5xl"
           >
-            Your collection,<br />
-            <span class="text-primary-400">perfected</span
-            ><span class="blink text-primary-400">_</span>
+            <span class="metal-text">Your collection,</span><br />
+            <span
+              class="plasma-text drop-shadow-[0_0_18px_rgba(76,201,255,0.35)]"
+              >perfected</span
+            >
           </h1>
 
           <p class="mx-auto mt-8 max-w-2xl leading-relaxed">
@@ -369,10 +374,10 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               target="_blank"
               rel="noopener"
             >
-              <span class="btn-pixel">Install now</span>
+              <span class="btn-chrome">Install now</span>
             </a>
             <a href="https://demo.romm.app" target="_blank" rel="noopener">
-              <span class="btn-ghost">View demo ↗</span>
+              <span class="btn-glass">View demo ↗</span>
             </a>
           </div>
         </div>
@@ -381,11 +386,14 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
       <!-- ======================= SUPPORTED PLATFORMS ======================= -->
       <section class="border-b border-grid">
         <div
-          class="flex items-center justify-between gap-4 border-b border-grid px-6 py-3 font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
+          class="flex items-center justify-between gap-4 border-b border-grid px-6 py-3 text-[10px] font-semibold uppercase tracking-[0.3em] text-muted"
         >
-          <span>400+ supported platforms</span>
-          <span aria-hidden="true" class="hidden text-grid sm:block">
-            consoles • handhelds • computers • arcade
+          <span class="flex items-center gap-2.5">
+            <span aria-hidden="true" class="led led-on" />
+            400+ supported platforms
+          </span>
+          <span aria-hidden="true" class="hidden text-muted/50 sm:block">
+            consoles ◦ handhelds ◦ computers ◦ arcade
           </span>
         </div>
         <PlatformMarquee />
@@ -418,7 +426,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             <!-- animated top accent -->
             <span
               aria-hidden="true"
-              class="absolute inset-x-0 top-0 h-0.5 w-0 bg-primary-500 transition-all duration-300 ease-out group-hover:w-full"
+              class="absolute inset-x-0 top-0 h-0.5 w-0 bg-gradient-to-r from-cyber-400 to-primary-500 transition-all duration-300 ease-out group-hover:w-full"
             />
             <!-- oversized ghost glyph, scaled to the card's footprint -->
             <FontAwesomeIcon
@@ -430,23 +438,23 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
 
             <div class="relative flex items-center gap-4">
               <span
-                class="bevel-out flex h-10 w-10 shrink-0 items-center justify-center border border-grid bg-ink-900 text-primary-400 transition-colors duration-200 group-hover:border-primary-500 group-hover:text-primary-300"
+                class="bevel-out flex h-10 w-10 shrink-0 items-center justify-center rounded border border-grid bg-gradient-to-b from-ink-700 to-ink-900 text-cyber-300 transition-colors duration-200 group-hover:border-cyber-400/70 group-hover:text-cyber-200"
               >
                 <FontAwesomeIcon :icon="feature.icon" />
               </span>
               <h3
-                class="flex-1 font-pixel uppercase leading-snug text-cream"
+                class="flex-1 font-display uppercase leading-snug text-chrome"
                 :class="
                   feature.size === 'featured'
-                    ? 'text-xl md:text-2xl'
-                    : 'text-lg'
+                    ? 'text-base md:text-lg'
+                    : 'text-sm'
                 "
               >
                 {{ feature.title }}
               </h3>
               <span
                 aria-hidden="true"
-                class="shrink-0 self-start font-mono text-[11px] text-grid transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary-200"
+                class="shrink-0 self-start text-[11px] text-muted/40 transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-cyber-300"
               >
                 ↗
               </span>
@@ -467,9 +475,12 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
       <!-- ========================= PLATFORM STRIP ========================= -->
       <section class="border-b border-grid">
         <div
-          class="flex items-center justify-between gap-4 border-b border-grid px-6 py-3 font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
+          class="flex items-center justify-between gap-4 border-b border-grid px-6 py-3 text-[10px] font-semibold uppercase tracking-[0.3em] text-muted"
         >
-          <span>Available on every major platform and operating system</span>
+          <span class="flex items-center gap-2.5">
+            <span aria-hidden="true" class="led led-primary" />
+            Available on every major platform and operating system
+          </span>
         </div>
         <div class="pause-on-hover flex overflow-hidden">
           <div
@@ -516,37 +527,37 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
       <section class="border-b border-grid">
         <div class="grid grid-cols-2 gap-px bg-grid lg:grid-cols-4">
           <div class="bg-ink-950 p-4 text-center">
-            <div class="font-pixel text-2xl text-cream md:text-4xl">
+            <div class="metal-text font-display text-xl md:text-3xl">
               {{ githubStars.toLocaleString() }}
             </div>
             <div
-              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
+              class="mt-3 text-[10px] font-semibold uppercase tracking-[0.25em] text-muted"
             >
               GitHub stars
             </div>
           </div>
           <div class="bg-ink-950 p-4 text-center">
-            <div class="font-pixel text-2xl text-cream md:text-4xl">
+            <div class="metal-text font-display text-xl md:text-3xl">
               {{ discordMembers.toLocaleString() }}
             </div>
             <div
-              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
+              class="mt-3 text-[10px] font-semibold uppercase tracking-[0.25em] text-muted"
             >
               Discord members
             </div>
           </div>
           <div class="bg-ink-950 p-4 text-center">
-            <div class="font-pixel text-2xl text-cream md:text-4xl">1.7M+</div>
+            <div class="metal-text font-display text-xl md:text-3xl">1.7M+</div>
             <div
-              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
+              class="mt-3 text-[10px] font-semibold uppercase tracking-[0.25em] text-muted"
             >
               Docker pulls
             </div>
           </div>
           <div class="bg-ink-950 p-4 text-center">
-            <div class="font-pixel text-2xl text-cream md:text-4xl">#1</div>
+            <div class="metal-text font-display text-xl md:text-3xl">#1</div>
             <div
-              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
+              class="mt-3 text-[10px] font-semibold uppercase tracking-[0.25em] text-muted"
             >
               on Hackernews
             </div>
@@ -556,19 +567,23 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
 
       <!-- =========================== COMMUNITY =========================== -->
       <section class="relative overflow-hidden border-b border-grid">
-        <GlyphField />
+        <NetworkField />
         <div
           aria-hidden="true"
-          class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(139,116,232,0.16),transparent_65%)]"
+          class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(31,174,255,0.1),transparent_60%)]"
+        />
+        <WireGlobe
+          class="absolute left-1/2 top-1/2 h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 opacity-40"
         />
         <div class="relative z-10 px-6 py-24 text-center sm:px-10 lg:px-16">
           <div
-            class="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.3em] text-primary-400"
+            class="bevel-out inline-flex items-center gap-2.5 rounded-full border border-grid bg-ink-900/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.3em] text-cyber-300"
           >
-            <span>Powered by friendship</span>
+            <span aria-hidden="true" class="led led-on" />
+            Powered by friendship
           </div>
           <h2
-            class="mt-6 font-pixel text-2xl uppercase text-cream sm:text-3xl md:text-4xl"
+            class="metal-text mt-6 font-display text-xl uppercase sm:text-2xl md:text-3xl"
           >
             Join the party
           </h2>
@@ -582,7 +597,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               target="_blank"
               rel="noopener"
             >
-              <span class="btn-pixel">
+              <span class="btn-chrome">
                 <FontAwesomeIcon :icon="faDiscord" class="h-4" />
                 Join the Discord
               </span>
@@ -592,7 +607,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               target="_blank"
               rel="noopener"
             >
-              <span class="btn-ghost">
+              <span class="btn-glass">
                 <FontAwesomeIcon :icon="faGithub" class="h-4" />
                 Contribute
               </span>
@@ -606,7 +621,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
         <div class="grid gap-px bg-grid sm:grid-cols-2 lg:grid-cols-4">
           <div class="bg-ink-950 p-8">
             <h4
-              class="font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
+              class="text-[10px] font-semibold uppercase tracking-[0.3em] text-cyber-300/80"
             >
               Project
             </h4>
@@ -651,7 +666,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
           </div>
           <div class="bg-ink-950 p-8">
             <h4
-              class="font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
+              class="text-[10px] font-semibold uppercase tracking-[0.3em] text-cyber-300/80"
             >
               Apps
             </h4>
@@ -687,7 +702,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
           </div>
           <div class="bg-ink-950 p-8">
             <h4
-              class="font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
+              class="text-[10px] font-semibold uppercase tracking-[0.3em] text-cyber-300/80"
             >
               Ecosystem
             </h4>
@@ -732,7 +747,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
           </div>
           <div class="bg-ink-950 p-8">
             <h4
-              class="font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
+              class="text-[10px] font-semibold uppercase tracking-[0.3em] text-cyber-300/80"
             >
               Community
             </h4>
@@ -767,25 +782,25 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
         </div>
 
         <div
-          class="flex flex-wrap items-center justify-between gap-4 border-t border-grid px-6 py-4 font-mono text-[10px] uppercase tracking-[0.2em] text-muted"
+          class="flex flex-wrap items-center justify-between gap-4 border-t border-grid px-6 py-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted"
         >
           <span>Your collection, perfected.</span>
           <span class="hidden md:block">© The RomM Project · AGPL-3.0</span>
           <span
             aria-label="Secured with Aikido"
-            class="bevel-out inline-flex items-stretch border border-grid font-mono text-[10px] uppercase tracking-[0.2em]"
+            class="bevel-out inline-flex items-stretch overflow-hidden rounded border border-grid text-[10px] uppercase tracking-[0.2em]"
           >
             <span
-              class="flex items-center gap-1.5 bg-ink-800 px-2.5 py-1 text-muted"
+              class="flex items-center gap-1.5 bg-gradient-to-b from-ink-700 to-ink-850 px-2.5 py-1 text-muted"
             >
               <FontAwesomeIcon
                 :icon="faShieldHeart"
-                class="h-2.5 text-primary-400"
+                class="h-2.5 text-cyber-300"
               />
               Secured with
             </span>
             <span
-              class="flex items-center bg-primary-500 px-2.5 py-1 font-bold text-ink-950"
+              class="flex items-center bg-gradient-to-b from-primary-400 to-primary-600 px-2.5 py-1 font-bold text-ink-950"
             >
               Aikido
             </span>
@@ -801,22 +816,23 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
         class="fixed inset-0 z-[100] flex items-center justify-center bg-ink-950/90 p-4 backdrop-blur-sm sm:p-10"
         @click="selectedImage = undefined"
       >
-        <div class="border border-grid bg-ink-900">
+        <div class="overflow-hidden rounded border border-grid bg-ink-900">
           <div
-            class="flex items-center justify-between border-b border-grid bg-ink-800 px-3 py-2"
+            class="flex items-center justify-between border-b border-grid bg-gradient-to-b from-ink-700 to-ink-850 px-3 py-2 shadow-[inset_0_1px_0_rgba(233,239,251,0.12)]"
           >
             <span
-              class="font-mono text-[10px] uppercase tracking-widest text-muted"
+              class="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-widest text-muted"
             >
+              <span aria-hidden="true" class="led led-on" />
               {{ selectedImage.alt }}
             </span>
             <button
               type="button"
-              class="font-mono text-xs text-muted transition-colors hover:text-cream"
+              class="text-xs text-muted transition-colors hover:text-cyber-300"
               aria-label="Close"
               @click="selectedImage = undefined"
             >
-              [x]
+              ✕
             </button>
           </div>
           <img
