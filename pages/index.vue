@@ -480,210 +480,131 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
           subtitle="Native apps and integrations that bring your collection to desktops, handhelds and TVs. Pair a device in seconds with a QR code, and your saves follow you everywhere."
         />
 
-        <div class="mt-16 flex flex-col gap-20">
+        <div class="mt-16 flex flex-col gap-16">
           <!-- Playnite -->
-          <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-            <CropFrame>
-              <AppGallery
-                :images="PLAYNITE_IMAGES"
-                label="~/integrations/playnite"
-                @select="selectedImage = $event"
-              />
-            </CropFrame>
-            <div>
-              <div class="flex items-start justify-between gap-6">
-                <div>
-                  <div class="flex flex-wrap gap-2">
-                    <div
-                      class="inline-flex items-center gap-2 border border-grid px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-primary-300"
-                    >
-                      <FontAwesomeIcon :icon="faWindows" class="h-3" />
-                      Windows
-                    </div>
-                    <div
-                      class="inline-flex items-center border border-grid px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
-                    >
-                      QR pairing
-                    </div>
-                  </div>
-                  <h3
-                    class="mt-5 font-pixel text-xl uppercase text-cream md:text-2xl"
-                  >
-                    Playnite Plugin
-                  </h3>
-                </div>
-                <img :src="playnite" alt="Playnite logo" class="h-16 w-16" />
-              </div>
-              <p class="mt-4 leading-relaxed text-muted">
-                Effortlessly integrate your retro game collection into Playnite
-                with our plugin.
-                <a
-                  href="https://playnite.link/"
-                  target="_blank"
-                  rel="noopener"
-                  class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
-                  >Playnite</a
-                >
-                is an open-source game library manager that provides a unified
-                interface for all of your games on PC.
-              </p>
-              <a
-                href="https://github.com/rommapp/playnite-plugin?tab=readme-ov-file#installation"
-                target="_blank"
-                rel="noopener"
-                class="mt-8 inline-block"
-              >
-                <span class="btn-ghost">Install ↗</span>
-              </a>
-            </div>
-          </div>
+          <AppShowcase
+            name="Playnite Plugin"
+            :logo="playnite"
+            :images="PLAYNITE_IMAGES"
+            label="~/integrations/playnite"
+            :tags="[
+              { text: 'Windows', icon: faWindows },
+              { text: 'QR pairing' },
+            ]"
+            :specs="[
+              { k: 'Platform', v: 'Windows' },
+              { k: 'Pairing', v: 'QR code' },
+              { k: 'Type', v: 'Library plugin' },
+            ]"
+            cta-text="Install"
+            cta-href="https://github.com/rommapp/playnite-plugin?tab=readme-ov-file#installation"
+            @select="selectedImage = $event"
+          >
+            Effortlessly integrate your retro game collection into Playnite with
+            our plugin.
+            <a
+              href="https://playnite.link/"
+              target="_blank"
+              rel="noopener"
+              class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
+              >Playnite</a
+            >
+            is an open-source game library manager that provides a unified
+            interface for all of your games on PC.
+          </AppShowcase>
 
           <!-- Argosy -->
-          <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-            <CropFrame class="lg:order-2">
-              <AppGallery
-                :images="ARGOSY_IMAGES"
-                label="~/apps/argosy"
-                @select="selectedImage = $event"
-              />
-            </CropFrame>
-            <div class="lg:order-1">
-              <div class="flex items-start justify-between gap-6">
-                <div>
-                  <div class="flex flex-wrap gap-2">
-                    <div
-                      class="inline-flex items-center gap-2 border border-grid px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-primary-300"
-                    >
-                      <FontAwesomeIcon :icon="faAndroid" class="h-3" />
-                      Android
-                    </div>
-                    <div
-                      class="inline-flex items-center border border-grid px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
-                    >
-                      QR pairing
-                    </div>
-                    <div
-                      class="inline-flex items-center border border-grid px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
-                    >
-                      Save sync
-                    </div>
-                  </div>
-                  <h3
-                    class="mt-5 font-pixel text-xl uppercase text-cream md:text-2xl"
-                  >
-                    Argosy Launcher
-                  </h3>
-                </div>
-                <img :src="argosy" alt="Argosy logo" class="h-16 w-16" />
-              </div>
-              <p class="mt-4 leading-relaxed text-muted">
-                Sync your library, download games on demand, track your
-                achievements, and play across devices with automatic save sync,
-                all from a gamepad-first interface designed for Anbernic,
-                Retroid Pocket, Odin, and similar devices.
-              </p>
-              <a
-                href="https://github.com/rommapp/argosy-launcher/releases/latest/"
-                target="_blank"
-                rel="noopener"
-                class="mt-8 inline-block"
-              >
-                <span class="btn-ghost">Download ↗</span>
-              </a>
-            </div>
-          </div>
+          <AppShowcase
+            name="Argosy Launcher"
+            :logo="argosy"
+            :images="ARGOSY_IMAGES"
+            label="~/apps/argosy"
+            reverse
+            :tags="[
+              { text: 'Android', icon: faAndroid },
+              { text: 'QR pairing' },
+              { text: 'Save sync' },
+            ]"
+            :specs="[
+              { k: 'Platform', v: 'Android' },
+              { k: 'Devices', v: 'Anbernic · Odin' },
+              { k: 'Saves', v: 'Auto-sync' },
+            ]"
+            cta-text="Download"
+            cta-href="https://github.com/rommapp/argosy-launcher/releases/latest/"
+            @select="selectedImage = $event"
+          >
+            Sync your library, download games on demand, track your
+            achievements, and play across devices with automatic save sync, all
+            from a gamepad-first interface designed for Anbernic, Retroid
+            Pocket, Odin, and similar devices.
+          </AppShowcase>
 
           <!-- Grout -->
-          <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-            <CropFrame>
-              <AppGallery
-                :images="GROUT_IMAGES"
-                label="~/apps/grout"
-                @select="selectedImage = $event"
-              />
-            </CropFrame>
-            <div>
-              <div class="flex items-start justify-between gap-6">
-                <div>
-                  <div class="flex flex-wrap gap-2">
-                    <div
-                      class="inline-flex items-center gap-2 border border-grid px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-primary-300"
-                    >
-                      <FontAwesomeIcon :icon="faGamepad" class="h-3" />
-                      Handhelds
-                    </div>
-                    <div
-                      class="inline-flex items-center border border-grid px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
-                    >
-                      Save sync
-                    </div>
-                  </div>
-                  <h3
-                    class="mt-5 font-pixel text-xl uppercase text-cream md:text-2xl"
-                  >
-                    Grout
-                  </h3>
-                </div>
-                <img :src="grout" alt="Grout logo" class="h-16 w-16" />
-              </div>
-              <p class="mt-4 leading-relaxed text-muted">
-                A lightweight client for your favorite handheld CFWs, available
-                on
-                <a
-                  href="https://muos.dev"
-                  target="_blank"
-                  rel="noopener"
-                  class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
-                  >muOS</a
-                >,
-                <a
-                  href="https://knulli.org"
-                  target="_blank"
-                  rel="noopener"
-                  class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
-                  >Knulli</a
-                >,
-                <a
-                  href="https://rocknix.org"
-                  target="_blank"
-                  rel="noopener"
-                  class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
-                  >ROCKNIX</a
-                >,
-                <a
-                  href="https://spruceui.github.io/"
-                  target="_blank"
-                  rel="noopener"
-                  class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
-                  >Spruce (v4)</a
-                >,
-                <a
-                  href="https://nextui.loveretro.games"
-                  target="_blank"
-                  rel="noopener"
-                  class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
-                  >NextUI</a
-                >
-                and
-                <a
-                  href="https://trimui.com"
-                  target="_blank"
-                  rel="noopener"
-                  class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
-                  >TrimUI</a
-                >. Download games, box art and BIOS files wirelessly, and sync
-                your saves automatically as you play.
-              </p>
-              <a
-                href="https://grout.romm.app/getting-started/"
-                target="_blank"
-                rel="noopener"
-                class="mt-8 inline-block"
-              >
-                <span class="btn-ghost">Quick start ↗</span>
-              </a>
-            </div>
-          </div>
+          <AppShowcase
+            name="Grout"
+            :logo="grout"
+            :images="GROUT_IMAGES"
+            label="~/apps/grout"
+            :tags="[
+              { text: 'Handhelds', icon: faGamepad },
+              { text: 'Save sync' },
+            ]"
+            :specs="[
+              { k: 'Platform', v: 'Handheld CFW' },
+              { k: 'Firmware', v: 'muOS · Knulli · +4' },
+              { k: 'Saves', v: 'Auto-sync' },
+            ]"
+            cta-text="Quick start"
+            cta-href="https://grout.romm.app/getting-started/"
+            @select="selectedImage = $event"
+          >
+            A lightweight client for your favorite handheld CFWs, available on
+            <a
+              href="https://muos.dev"
+              target="_blank"
+              rel="noopener"
+              class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
+              >muOS</a
+            >,
+            <a
+              href="https://knulli.org"
+              target="_blank"
+              rel="noopener"
+              class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
+              >Knulli</a
+            >,
+            <a
+              href="https://rocknix.org"
+              target="_blank"
+              rel="noopener"
+              class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
+              >ROCKNIX</a
+            >,
+            <a
+              href="https://spruceui.github.io/"
+              target="_blank"
+              rel="noopener"
+              class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
+              >Spruce (v4)</a
+            >,
+            <a
+              href="https://nextui.loveretro.games"
+              target="_blank"
+              rel="noopener"
+              class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
+              >NextUI</a
+            >
+            and
+            <a
+              href="https://trimui.com"
+              target="_blank"
+              rel="noopener"
+              class="underline decoration-grid underline-offset-4 transition-colors hover:text-primary-300"
+              >TrimUI</a
+            >. Download games, box art and BIOS files wirelessly, and sync your
+            saves automatically as you play.
+          </AppShowcase>
         </div>
 
         <!-- Community apps -->
@@ -1020,32 +941,30 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
         class="fixed inset-0 z-[100] flex items-center justify-center bg-ink-950/90 p-4 backdrop-blur-sm sm:p-10"
         @click="selectedImage = undefined"
       >
-        <CropFrame class="w-full max-w-5xl" @click.stop>
-          <div class="border border-grid bg-ink-900">
-            <div
-              class="flex items-center justify-between border-b border-grid bg-ink-800 px-3 py-2"
+        <div class="border border-grid bg-ink-900">
+          <div
+            class="flex items-center justify-between border-b border-grid bg-ink-800 px-3 py-2"
+          >
+            <span
+              class="font-mono text-[10px] uppercase tracking-widest text-muted"
             >
-              <span
-                class="font-mono text-[10px] uppercase tracking-widest text-muted"
-              >
-                {{ selectedImage.alt }}
-              </span>
-              <button
-                type="button"
-                class="font-mono text-xs text-muted transition-colors hover:text-cream"
-                aria-label="Close"
-                @click="selectedImage = undefined"
-              >
-                [x]
-              </button>
-            </div>
-            <img
-              :src="selectedImage.src"
-              :alt="selectedImage.alt"
-              class="block max-h-[80vh] w-full object-contain"
-            />
+              {{ selectedImage.alt }}
+            </span>
+            <button
+              type="button"
+              class="font-mono text-xs text-muted transition-colors hover:text-cream"
+              aria-label="Close"
+              @click="selectedImage = undefined"
+            >
+              [x]
+            </button>
           </div>
-        </CropFrame>
+          <img
+            :src="selectedImage.src"
+            :alt="selectedImage.alt"
+            class="block max-h-[80vh] w-full object-contain"
+          />
+        </div>
       </div>
     </Teleport>
   </div>
