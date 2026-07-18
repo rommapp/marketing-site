@@ -203,7 +203,6 @@ const PLATFORMS = [
 
 const FEATURES = [
   {
-    n: "01",
     icon: faGamepad,
     title: "Play in your browser",
     body: "EmulatorJS, MS-DOS and Flash players are built in. Hit Play and you're in the game — no cores to configure, no files to move.",
@@ -211,7 +210,6 @@ const FEATURES = [
     size: "featured",
   },
   {
-    n: "02",
     icon: faRotate,
     title: "Saves that follow you",
     body: "A full save-sync engine keeps saves and states in step across your devices, with conflict detection when two of them disagree.",
@@ -219,7 +217,6 @@ const FEATURES = [
     size: "wide",
   },
   {
-    n: "03",
     icon: faWandSparkles,
     title: "Magical metadata",
     body: "Cover art, screenshots and deep metadata from IGDB, ScreenScraper, LaunchBox, RetroAchievements and more — matched by hash, not guesswork.",
@@ -227,7 +224,6 @@ const FEATURES = [
     size: "wide",
   },
   {
-    n: "04",
     icon: faUsers,
     title: "Multiplayer",
     body: "Granular per-user controls, plus OIDC single sign-on with Authelia, Authentik, Keycloak and friends.",
@@ -235,7 +231,6 @@ const FEATURES = [
     size: "small",
   },
   {
-    n: "05",
     icon: faScrewdriverWrench,
     title: "ROM patcher",
     body: "Apply romhacks and translations server-side, from stored or uploaded patch files.",
@@ -243,7 +238,6 @@ const FEATURES = [
     size: "small",
   },
   {
-    n: "06",
     icon: faPlug,
     title: "Ecosystem",
     body: "ES-DE and Pegasus exports, LaunchBox import, feed clients, and a full REST API with device tokens.",
@@ -251,7 +245,6 @@ const FEATURES = [
     size: "small",
   },
   {
-    n: "07",
     icon: faShieldHeart,
     title: "Free forever",
     body: "AGPL-3.0, no tracking, no upsells. Your games, your data, your server.",
@@ -415,7 +408,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
         >
           <a
             v-for="feature in FEATURES"
-            :key="feature.n"
+            :key="feature.href"
             :href="feature.href"
             target="_blank"
             rel="noopener"
@@ -515,67 +508,9 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
         />
       </section>
 
-      <div class="mt-16 border-t border-grid">
+      <div class="mt-16 border-y border-grid">
         <AppConsole :apps="APPS" @select="selectedImage = $event" />
       </div>
-
-      <section class="border-b border-grid px-6 sm:px-10 lg:px-16">
-        <!-- Community apps -->
-        <div class="my-16">
-          <div class="flex items-center gap-4">
-            <span
-              class="whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.3em] text-primary-400"
-            >
-              Built by the community
-            </span>
-            <span aria-hidden="true" class="h-px flex-1 bg-grid" />
-          </div>
-          <div
-            class="mt-6 grid gap-px border border-grid bg-grid sm:grid-cols-2 lg:grid-cols-3"
-          >
-            <div
-              v-for="app in COMMUNITY_APPS"
-              :key="app.name"
-              class="group relative flex flex-col bg-ink-950 p-6 transition-colors hover:bg-ink-900"
-            >
-              <div class="flex items-center justify-between gap-3">
-                <span
-                  class="border border-grid px-2 py-1 font-mono text-[9px] uppercase tracking-[0.25em] text-primary-300"
-                >
-                  {{ app.platform }}
-                </span>
-                <span
-                  aria-hidden="true"
-                  class="font-mono text-xs text-grid transition-colors group-hover:text-primary-400"
-                  >↗</span
-                >
-              </div>
-              <h4 class="mt-5 font-mono text-sm font-bold text-cream">
-                <a
-                  :href="app.href"
-                  target="_blank"
-                  rel="noopener"
-                  class="after:absolute after:inset-0"
-                  >{{ app.name }}</a
-                >
-              </h4>
-              <p class="mt-2 text-xs leading-relaxed text-muted">
-                {{ app.description }}
-              </p>
-              <p class="mt-auto pt-4 font-mono text-[10px] text-muted">
-                by
-                <a
-                  :href="`https://github.com/${app.author}`"
-                  target="_blank"
-                  rel="noopener"
-                  class="relative z-10 text-primary-300 transition-colors hover:text-primary-200"
-                  >@{{ app.author }}</a
-                >
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <!-- ============================= STATS ============================= -->
       <section class="border-b border-grid">
@@ -630,8 +565,6 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
           <div
             class="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.3em] text-primary-400"
           >
-            <span>04</span>
-            <span class="text-muted">//</span>
             <span>Powered by friendship</span>
           </div>
           <h2
