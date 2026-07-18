@@ -14,7 +14,7 @@ const icons = Object.entries(modules).map(([path, src]) => {
   <div
     class="pause-on-hover [mask-image:linear-gradient(90deg,transparent,black_6%,black_94%,transparent)]"
   >
-    <div class="flex overflow-hidden border-grid">
+    <div class="flex overflow-hidden">
       <div
         v-for="copy in 2"
         :key="copy"
@@ -26,17 +26,17 @@ const icons = Object.entries(modules).map(([path, src]) => {
           v-for="icon in icons"
           :key="icon.slug"
           :title="icon.name"
-          class="group flex h-28 w-32 shrink-0 flex-col items-center justify-center gap-2.5 border-r border-grid px-3"
+          class="group flex h-28 w-32 shrink-0 flex-col items-center justify-center gap-2.5 border-r border-rule px-3"
         >
           <img
             :src="icon.src"
             :alt="icon.name"
-            class="h-11 w-11 object-contain opacity-100 transition-all duration-200"
+            class="h-11 w-11 object-contain transition-transform duration-200 group-hover:-translate-y-1"
             loading="lazy"
             decoding="async"
           />
           <span
-            class="w-full truncate text-center font-mono text-[9px] text-muted uppercase tracking-widest text-grid transition-colors duration-200 group-hover:text-primary-300"
+            class="w-full truncate text-center font-mono text-[9px] uppercase tracking-widest text-ink-faint transition-colors duration-200 group-hover:text-primary-600"
           >
             {{ icon.name }}
           </span>

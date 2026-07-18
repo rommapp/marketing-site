@@ -1,29 +1,43 @@
 <script setup lang="ts">
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faGamepad } from "@fortawesome/free-solid-svg-icons";
-
-defineProps<{
-  label: string;
-  title: string;
-  subtitle?: string;
-}>();
+withDefaults(
+  defineProps<{
+    label: string;
+    title: string;
+    subtitle?: string;
+    chapter?: string;
+    prefix?: string;
+  }>(),
+  { prefix: "Chapter" },
+);
 </script>
 
 <template>
   <div>
-    <div
-      class="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.3em] text-primary-400"
-    >
-      <span>{{ label }}</span>
-      <span aria-hidden="true" class="h-px flex-1 bg-grid" />
-      <FontAwesomeIcon :icon="faGamepad" class="text-grid" size="lg" />
+    <div class="flex items-center gap-4">
+      <span
+        v-if="chapter"
+        class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-ink bg-sun-500 font-display text-xl font-bold text-ink shadow-plate-sm"
+      >
+        {{ chapter }}
+      </span>
+      <div class="min-w-0 flex-1">
+        <div
+          class="font-mono text-[11px] font-bold uppercase tracking-[0.3em] text-primary-600"
+        >
+          {{ chapter ? `${prefix} ${chapter} · ` : "" }}{{ label }}
+        </div>
+        <div class="rainbow-rule mt-2 max-w-xs rounded-full" />
+      </div>
     </div>
     <h2
-      class="mt-6 font-pixel text-2xl uppercase leading-snug text-cream sm:text-3xl md:text-4xl"
+      class="mt-5 font-display text-3xl font-bold leading-tight text-ink sm:text-4xl md:text-5xl"
     >
       {{ title }}
     </h2>
-    <p v-if="subtitle" class="mt-4 max-w-2xl leading-relaxed text-muted">
+    <p
+      v-if="subtitle"
+      class="mt-4 max-w-2xl font-serif text-lg leading-relaxed text-ink-soft"
+    >
       {{ subtitle }}
     </p>
   </div>

@@ -11,7 +11,8 @@
     "typecheck": "vue-tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
-    "@fontsource/silkscreen": "^5.2.8",
+    "@fontsource-variable/rokkitt": "^5.2.8",
+    "@fontsource/gelasio": "^5.2.8",
     "@fontsource/space-mono": "^5.2.9",
     "@fortawesome/fontawesome-svg-core": "^7.2.0",
     "@fortawesome/free-brands-svg-icons": "^7.2.0",
