@@ -304,7 +304,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             /images/blocks/v5/collection.png    1x,
             /images/blocks/v5/collection@2x.png 2x
           "
-          class="absolute inset-0 h-full w-full object-cover object-center opacity-75"
+          class="absolute inset-0 h-full w-full object-cover object-top opacity-75"
           fetchpriority="high"
         />
         <div
