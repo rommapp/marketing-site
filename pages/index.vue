@@ -256,7 +256,7 @@ const FEATURE_GLYPH: Record<string, string> = {
   small: "text-[6rem] -bottom-5 -right-4",
 };
 
-const githubStars = ref<number>(3_800);
+const githubStars = ref<number>(11_000);
 const discordMembers = ref<number>(3_000);
 const selectedImage = ref<AppImage | undefined>(undefined);
 
@@ -293,7 +293,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
   <div>
     <AppHeader :githubStars="githubStars" />
 
-    <main class="mx-auto max-w-[88rem] border-x border-grid">
+    <main class="mx-auto max-w-[88rem]">
       <!-- ============================== HERO ============================== -->
       <section class="relative overflow-hidden border-b border-grid">
         <img
@@ -318,34 +318,15 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
         />
         <div aria-hidden="true" class="scanlines absolute inset-0" />
 
-        <div class="relative z-10 px-6 py-24 text-center sm:px-10 lg:px-16">
-          <div class="flex flex-wrap items-center justify-center gap-3">
-            <div
-              class="inline-flex items-center gap-3 border border-grid bg-ink-900/90 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.25em]"
-            >
-              Self-hosted rom manager
-            </div>
-            <a
-              href="https://github.com/rommapp/romm/releases/tag/5.0.0"
-              target="_blank"
-              rel="noopener"
-              class="inline-flex items-center gap-2 border border-primary-500/40 bg-primary-100/80 dark:bg-primary-900/80 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.25em] transition-colors hover:border-primary-400"
-            >
-              <span class="bg-primary-500 px-1.5 font-bold text-ink-950">
-                New
-              </span>
-              RomM 5.0 is out ↗
-            </a>
-          </div>
-
+        <div class="relative z-10 px-6 py-32 text-center sm:px-10 lg:px-16">
           <h1
-            class="mx-auto mt-10 font-pixel text-3xl uppercase leading-tight text-cream sm:text-4xl md:text-5xl xl:text-6xl"
+            class="mx-auto font-pixel text-3xl uppercase leading-tight text-cream sm:text-4xl md:text-5xl xl:text-6xl"
           >
             Your collection,<br />
             <span class="text-primary-400">perfected</span>
           </h1>
 
-          <p class="mx-auto mt-8 max-w-2xl leading-relaxed">
+          <p class="mx-auto mt-8 max-w-2xl font-medium leading-relaxed">
             Scan, enrich, browse and play your ROM collection from one beautiful
             & free self-hosted app. Metadata from 10+ providers, save sync
             across your devices, and support for over 400 platforms. RomM is a
@@ -361,7 +342,10 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               <span class="btn-pixel">Install now</span>
             </a>
             <a href="https://demo.romm.app" target="_blank" rel="noopener">
-              <span class="btn-ghost">View demo ↗</span>
+              <span class="btn-ghost">
+                View demo
+                <span aria-hidden="true">↗</span>
+              </span>
             </a>
           </div>
         </div>
@@ -370,11 +354,11 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
       <!-- ======================= SUPPORTED PLATFORMS ======================= -->
       <section class="border-b border-grid">
         <div
-          class="flex items-center justify-between gap-4 border-b border-grid px-6 py-3 font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
+          class="flex items-center justify-between gap-4 border-b border-grid px-6 py-3 font-mono text-[10px] capitalize tracking-[0.3em] text-muted"
         >
-          <span>400+ supported platforms</span>
-          <span aria-hidden="true" class="hidden text-grid sm:block">
-            consoles • handhelds • computers • arcade
+          <span>400+ Supported Platforms</span>
+          <span aria-hidden="true" class="hidden sm:block">
+            Consoles • Handhelds • Computers • Arcade
           </span>
         </div>
         <PlatformMarquee />
@@ -386,7 +370,6 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
         class="border-b border-grid px-6 py-16 sm:px-10 lg:px-16"
       >
         <SectionHeading
-          label="Features"
           title="Every playthrough tells a story"
           subtitle="The most powerful all-in-one app for managing and playing your retro game collection."
         />
@@ -435,7 +418,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               </h3>
               <span
                 aria-hidden="true"
-                class="shrink-0 self-start font-mono text-[11px] text-grid transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary-200"
+                class="shrink-0 self-start font-mono text-[11px] text-muted transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary-200"
               >
                 ↗
               </span>
@@ -477,7 +460,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             <!-- supported metadata source logos -->
             <div
               v-if="feature.sources"
-              class="relative mt-5 flex flex-wrap items-center gap-x-1"
+              class="relative mt-5 hidden flex-wrap items-center gap-x-1 sm:flex"
             >
               <img
                 v-for="source in METADATA_SOURCES"
@@ -532,7 +515,6 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
       <!-- ============================== APPS ============================== -->
       <section id="apps" class="border-grid px-6 pt-16 sm:px-10 lg:px-16">
         <SectionHeading
-          label="Play anywhere"
           title="Your library on every device"
           subtitle="Native apps and integrations that bring your collection to desktops, handhelds and TVs. Pair a device in seconds with a QR code, and your saves follow you everywhere."
         />

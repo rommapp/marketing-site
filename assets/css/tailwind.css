@@ -26,9 +26,6 @@
     --grid: 30 36 52;
     --cream: 237 230 214;
     --muted: 141 149 171;
-    /* Faint label text (text-grid), decoupled from the grid line color so it
-       can stay legible independently of borders/backgrounds. */
-    --grid-text: 30 36 52;
 
     /* Default body text (was text-zinc-300). */
     --body-fg: 212 212 216;
@@ -60,8 +57,6 @@
     --cream: 43 39 33;
     /* Darker than before so secondary text reads clearly on cream. */
     --muted: 82 74 60;
-    /* Faint label tone — a touch lighter than muted. */
-    --grid-text: 138 130 111;
 
     --body-fg: 68 62 51;
   }
@@ -125,9 +120,13 @@
     align-items: center;
     justify-content: center;
     gap: 0.625rem;
-    padding: 0.9375rem 1.75rem;
+    /* Fixed height, not min-height: a label that falls back to another font for
+       a glyph (↗) builds a taller line box than pure Silkscreen, which used to
+       make the secondary button outgrow the primary one sitting next to it. */
+    height: 3rem;
+    padding: 0 1.375rem;
     font-family: "Silkscreen", "Space Mono", ui-monospace, monospace;
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
     line-height: 1;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -376,12 +375,6 @@
 }
 
 @layer utilities {
-  /* text-grid is a faint *text* tone, decoupled from the `grid` line color used
-     by borders/backgrounds so it can stay legible in light mode. */
-  .text-grid {
-    color: rgb(var(--grid-text) / var(--tw-text-opacity, 1));
-  }
-
   .blink {
     animation: blink 1.1s steps(2, start) infinite;
   }

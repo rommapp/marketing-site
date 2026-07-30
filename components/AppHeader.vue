@@ -59,20 +59,20 @@ const navItems = [
         </a>
       </div>
 
-      <div class="hidden items-center gap-8 md:flex">
+      <div class="hidden items-center gap-9 md:flex">
         <a
           v-for="item in navItems"
           :key="item.label"
           :href="item.href"
           target="_blank"
           rel="noopener"
-          class="font-mono text-xs uppercase tracking-[0.2em] transition-colors hover:text-cream"
+          class="font-mono text-sm font-medium capitalize tracking-[0.2em] transition-colors hover:text-cream"
         >
           {{ item.label }}
         </a>
       </div>
 
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-1">
         <button
           type="button"
           :title="
@@ -81,7 +81,7 @@ const navItems = [
           :aria-label="
             theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'
           "
-          class="flex h-9 w-9 items-center justify-center border border-grid text-cream transition-colors hover:border-primary-400 hover:text-primary-300"
+          class="flex h-9 w-9 items-center justify-center text-cream transition-colors hover:text-primary-300"
           @click="toggleTheme"
         >
           <FontAwesomeIcon
@@ -94,7 +94,7 @@ const navItems = [
           target="_blank"
           rel="noopener"
           title="Support the project"
-          class="hidden h-9 w-9 items-center justify-center border border-grid transition-colors hover:border-primary-400 hover:text-primary-300 sm:flex"
+          class="hidden h-9 w-9 items-center justify-center transition-colors hover:text-primary-300 sm:flex"
         >
           <FontAwesomeIcon :icon="faHeart" class="h-3.5" />
         </a>
@@ -103,7 +103,7 @@ const navItems = [
           target="_blank"
           rel="noopener"
           title="Join the Discord"
-          class="hidden h-9 w-9 items-center justify-center border border-grid transition-colors hover:border-primary-400 hover:text-primary-300 sm:flex"
+          class="hidden h-9 w-9 items-center justify-center transition-colors hover:text-primary-300 sm:flex"
         >
           <FontAwesomeIcon :icon="faDiscord" class="h-3.5" />
         </a>
@@ -112,14 +112,14 @@ const navItems = [
           target="_blank"
           rel="noopener"
           title="GitHub repository"
-          class="flex h-9 items-center gap-2 border border-grid px-3 font-mono text-xs text-cream transition-colors hover:border-primary-400 hover:text-primary-300"
+          class="ml-1 flex h-9 items-center gap-2 px-3 font-mono text-xs text-cream transition-colors hover:text-primary-300"
         >
           <FontAwesomeIcon :icon="faGithub" class="h-4" />
           <span>{{ (githubStars / 1000).toFixed(1) }}K</span>
         </a>
         <button
           type="button"
-          class="flex h-9 w-9 items-center justify-center border border-grid text-cream md:hidden"
+          class="flex h-9 w-9 items-center justify-center text-cream md:hidden"
           aria-label="Toggle menu"
           @click="menuOpen = !menuOpen"
         >
@@ -138,7 +138,7 @@ const navItems = [
         :href="item.href"
         target="_blank"
         rel="noopener"
-        class="block border-b border-grid px-6 py-4 font-mono text-xs uppercase tracking-[0.2em] last:border-b-0 hover:text-cream"
+        class="block border-b border-grid px-6 py-4 font-mono text-sm font-medium capitalize tracking-[0.2em] last:border-b-0 hover:text-cream"
         @click="menuOpen = false"
       >
         {{ item.label }}

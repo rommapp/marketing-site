@@ -43,7 +43,7 @@ const icons = useState("platform-icons", () =>
             decoding="async"
           />
           <span
-            class="w-full truncate text-center font-mono text-[9px] text-muted uppercase tracking-widest text-grid transition-colors duration-200 group-hover:text-primary-300"
+            class="w-full truncate text-center font-mono text-[9px] text-muted uppercase tracking-widest transition-colors duration-200 group-hover:text-primary-300"
           >
             {{ icon.name }}
           </span>
