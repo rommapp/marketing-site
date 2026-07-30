@@ -375,6 +375,20 @@
 }
 
 @layer utilities {
+  /* Melts the hero art into the page at the sides and bottom. Two masks are
+     intersected so the horizontal and vertical fades multiply rather than
+     replace one another. */
+  .hero-fade {
+    -webkit-mask-image:
+      linear-gradient(90deg, transparent, black 20%, black 80%, transparent),
+      linear-gradient(180deg, black 90%, transparent);
+    mask-image:
+      linear-gradient(90deg, transparent, black 20%, black 80%, transparent),
+      linear-gradient(180deg, black 90%, transparent);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+
   .blink {
     animation: blink 1.1s steps(2, start) infinite;
   }

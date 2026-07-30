@@ -304,21 +304,22 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             /images/blocks/v5/collection.png    1x,
             /images/blocks/v5/collection@2x.png 2x
           "
-          class="absolute inset-0 h-full w-full object-cover object-top opacity-75"
+          class="hero-fade absolute inset-0 h-full w-full object-cover object-top opacity-75"
           fetchpriority="high"
         />
         <div
           aria-hidden="true"
           class="absolute inset-0 bg-gradient-to-b from-ink-950/80 via-ink-950/70 to-ink-950"
         />
-        <div aria-hidden="true" class="dot-grid absolute inset-0" />
         <div
           aria-hidden="true"
           class="absolute -top-48 left-1/2 h-[38rem] w-[64rem] max-w-none -translate-x-1/2 rounded-full bg-primary-500/10 blur-[120px]"
         />
-        <div aria-hidden="true" class="scanlines absolute inset-0" />
+        <div aria-hidden="true" class="hero-fade scanlines absolute inset-0" />
 
-        <div class="relative z-10 px-6 py-32 text-center sm:px-10 lg:px-16">
+        <div
+          class="relative z-10 px-6 pb-36 pt-32 text-center sm:px-10 lg:px-16"
+        >
           <h1
             class="mx-auto font-pixel text-3xl uppercase leading-tight text-cream sm:text-4xl md:text-5xl xl:text-6xl"
           >
@@ -352,11 +353,11 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
       </section>
 
       <!-- ======================= SUPPORTED PLATFORMS ======================= -->
-      <section class="mt-16">
+      <section class="mt-8">
         <div
-          class="flex items-center justify-between gap-4 px-6 py-3 font-mono text-[10px] capitalize tracking-[0.3em] text-muted"
+          class="flex items-center justify-between gap-4 px-6 py-3 font-mono text-[10px] tracking-[0.3em] text-muted"
         >
-          <span>400+ Supported Platforms</span>
+          <span>400+ supported platforms</span>
           <span aria-hidden="true" class="hidden sm:block">
             Consoles • Handhelds • Computers • Arcade
           </span>
@@ -373,7 +374,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
 
         <!-- Bento feature grid -->
         <div
-          class="mt-12 grid auto-rows-fr gap-px border border-grid bg-grid sm:grid-cols-2 lg:grid-cols-4"
+          class="mt-6 grid auto-rows-fr gap-px overflow-hidden rounded-sm border border-grid bg-grid sm:grid-cols-2 lg:grid-cols-4"
         >
           <a
             v-for="feature in FEATURES"
@@ -477,7 +478,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
       <!-- ============================ OS STRIP ============================ -->
       <section>
         <div
-          class="flex items-center justify-between gap-4 px-6 py-3 font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
+          class="flex items-center justify-between gap-4 px-6 py-3 font-mono text-[10px] tracking-[0.3em] text-muted"
         >
           <span>Available on every major platform and operating system</span>
         </div>
@@ -517,15 +518,15 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
           title="Your library on every device"
           subtitle="Native apps and integrations that bring your collection to desktops, handhelds and TVs. Pair a device in seconds with a QR code, and your saves follow you everywhere."
         />
+
+        <div class="mt-6 overflow-hidden rounded-sm border border-grid">
+          <AppConsole :apps="APPS" @select="selectedImage = $event" />
+        </div>
       </section>
 
-      <div class="mt-16 border-y border-grid">
-        <AppConsole :apps="APPS" @select="selectedImage = $event" />
-      </div>
-
       <!-- ============================= STATS ============================= -->
-      <section class="border-b border-grid">
-        <div class="grid grid-cols-2 gap-px bg-grid lg:grid-cols-4">
+      <section class="mt-16">
+        <div class="grid grid-cols-2 lg:grid-cols-4">
           <div class="bg-ink-950 p-4 text-center">
             <div class="font-pixel text-2xl text-cream md:text-4xl">
               {{ githubStars.toLocaleString() }}
@@ -566,7 +567,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
       </section>
 
       <!-- =========================== COMMUNITY =========================== -->
-      <section class="relative overflow-hidden">
+      <section class="relative overflow-hidden py-16">
         <GlyphField />
         <div
           aria-hidden="true"

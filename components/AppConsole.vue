@@ -242,10 +242,7 @@ onMounted(() => {
           <span class="text-primary-300">🖱</span> Click screen to zoom
         </span>
       </span>
-      <span aria-hidden="true">
-        Slot {{ active + 1 }}/{{ apps.length
-        }}<span class="blink text-primary-400">_</span>
-      </span>
+      <span aria-hidden="true"> Slot {{ active + 1 }}/{{ apps.length }} </span>
     </div>
   </div>
 </template>
