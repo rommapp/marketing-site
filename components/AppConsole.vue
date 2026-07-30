@@ -70,7 +70,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <RetroWindow title="DEVICE_SELECT.EXE">
+  <div class="flex flex-col">
     <div
       class="grid lg:grid-cols-[20rem_1fr]"
       @mouseenter="hovered = true"
@@ -128,7 +128,7 @@ onMounted(() => {
             </span>
             <span
               class="mt-1 block font-mono text-[9px] uppercase tracking-[0.25em]"
-              :class="i === active ? 'text-primary-300' : 'text-grid'"
+              :class="i === active ? 'text-primary-300' : 'text-muted'"
             >
               {{ item.system }}
             </span>
@@ -144,7 +144,7 @@ onMounted(() => {
         <!-- filler slot, wink at empty cartridge bays -->
         <div
           aria-hidden="true"
-          class="hidden flex-1 items-center justify-center gap-3 px-5 py-5 font-mono text-[10px] uppercase tracking-[0.3em] text-grid lg:flex"
+          class="hidden flex-1 items-center justify-center gap-3 px-5 py-5 font-mono text-[10px] uppercase tracking-[0.3em] text-muted lg:flex"
         >
           Empty slot
         </div>
@@ -221,7 +221,10 @@ onMounted(() => {
               rel="noopener"
               class="mt-auto inline-block self-start pt-8"
             >
-              <span class="btn-pixel">{{ app.ctaText }} ↗</span>
+              <span class="btn-pixel">
+                {{ app.ctaText }}
+                <span aria-hidden="true">↗</span>
+              </span>
             </a>
           </div>
         </div>
@@ -239,12 +242,9 @@ onMounted(() => {
           <span class="text-primary-300">🖱</span> Click screen to zoom
         </span>
       </span>
-      <span aria-hidden="true">
-        Slot {{ active + 1 }}/{{ apps.length
-        }}<span class="blink text-primary-400">_</span>
-      </span>
+      <span aria-hidden="true"> Slot {{ active + 1 }}/{{ apps.length }} </span>
     </div>
-  </RetroWindow>
+  </div>
 </template>
 
 <style scoped>

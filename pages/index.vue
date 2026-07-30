@@ -256,7 +256,7 @@ const FEATURE_GLYPH: Record<string, string> = {
   small: "text-[6rem] -bottom-5 -right-4",
 };
 
-const githubStars = ref<number>(3_800);
+const githubStars = ref<number>(11_000);
 const discordMembers = ref<number>(3_000);
 const selectedImage = ref<AppImage | undefined>(undefined);
 
@@ -293,9 +293,9 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
   <div>
     <AppHeader :githubStars="githubStars" />
 
-    <main class="mx-auto max-w-[88rem] border-x border-grid">
+    <main class="mx-auto max-w-[88rem]">
       <!-- ============================== HERO ============================== -->
-      <section class="relative overflow-hidden border-b border-grid">
+      <section class="relative overflow-hidden">
         <img
           aria-hidden="true"
           alt=""
@@ -304,48 +304,30 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             /images/blocks/v5/collection.png    1x,
             /images/blocks/v5/collection@2x.png 2x
           "
-          class="absolute inset-0 h-full w-full object-cover object-top opacity-75"
+          class="hero-fade absolute inset-0 h-full w-full object-cover object-top opacity-75"
           fetchpriority="high"
         />
         <div
           aria-hidden="true"
           class="absolute inset-0 bg-gradient-to-b from-ink-950/80 via-ink-950/70 to-ink-950"
         />
-        <div aria-hidden="true" class="dot-grid absolute inset-0" />
         <div
           aria-hidden="true"
           class="absolute -top-48 left-1/2 h-[38rem] w-[64rem] max-w-none -translate-x-1/2 rounded-full bg-primary-500/10 blur-[120px]"
         />
-        <div aria-hidden="true" class="scanlines absolute inset-0" />
+        <div aria-hidden="true" class="hero-fade scanlines absolute inset-0" />
 
-        <div class="relative z-10 px-6 py-24 text-center sm:px-10 lg:px-16">
-          <div class="flex flex-wrap items-center justify-center gap-3">
-            <div
-              class="inline-flex items-center gap-3 border border-grid bg-ink-900/90 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.25em]"
-            >
-              Self-hosted rom manager
-            </div>
-            <a
-              href="https://github.com/rommapp/romm/releases/tag/5.0.0"
-              target="_blank"
-              rel="noopener"
-              class="inline-flex items-center gap-2 border border-primary-500/40 bg-primary-100/80 dark:bg-primary-900/80 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.25em] transition-colors hover:border-primary-400"
-            >
-              <span class="bg-primary-500 px-1.5 font-bold text-ink-950">
-                New
-              </span>
-              RomM 5.0 is out ↗
-            </a>
-          </div>
-
+        <div
+          class="relative z-10 px-6 pb-36 pt-32 text-center sm:px-10 lg:px-16"
+        >
           <h1
-            class="mx-auto mt-10 font-pixel text-3xl uppercase leading-tight text-cream sm:text-4xl md:text-5xl xl:text-6xl"
+            class="mx-auto font-pixel text-3xl uppercase leading-tight text-cream sm:text-4xl md:text-5xl xl:text-6xl"
           >
             Your collection,<br />
             <span class="text-primary-400">perfected</span>
           </h1>
 
-          <p class="mx-auto mt-8 max-w-2xl leading-relaxed">
+          <p class="mx-auto mt-8 max-w-2xl font-medium leading-relaxed">
             Scan, enrich, browse and play your ROM collection from one beautiful
             & free self-hosted app. Metadata from 10+ providers, save sync
             across your devices, and support for over 400 platforms. RomM is a
@@ -361,39 +343,38 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               <span class="btn-pixel">Install now</span>
             </a>
             <a href="https://demo.romm.app" target="_blank" rel="noopener">
-              <span class="btn-ghost">View demo ↗</span>
+              <span class="btn-ghost">
+                View demo
+                <span aria-hidden="true">↗</span>
+              </span>
             </a>
           </div>
         </div>
       </section>
 
       <!-- ======================= SUPPORTED PLATFORMS ======================= -->
-      <section class="border-b border-grid">
+      <section class="mt-8">
         <div
-          class="flex items-center justify-between gap-4 border-b border-grid px-6 py-3 font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
+          class="flex items-center justify-between gap-4 px-6 py-3 font-mono text-[10px] tracking-[0.3em] text-muted"
         >
           <span>400+ supported platforms</span>
-          <span aria-hidden="true" class="hidden text-grid sm:block">
-            consoles • handhelds • computers • arcade
+          <span aria-hidden="true" class="hidden sm:block">
+            Consoles • Handhelds • Computers • Arcade
           </span>
         </div>
         <PlatformMarquee />
       </section>
 
       <!-- ============================ FEATURES ============================ -->
-      <section
-        id="features"
-        class="border-b border-grid px-6 py-16 sm:px-10 lg:px-16"
-      >
+      <section id="features" class="px-4 py-16">
         <SectionHeading
-          label="Features"
           title="Every playthrough tells a story"
           subtitle="The most powerful all-in-one app for managing and playing your retro game collection."
         />
 
         <!-- Bento feature grid -->
         <div
-          class="mt-12 grid auto-rows-fr gap-px border border-grid bg-grid sm:grid-cols-2 lg:grid-cols-4"
+          class="mt-6 grid auto-rows-fr gap-px overflow-hidden rounded-sm border border-grid bg-grid sm:grid-cols-2 lg:grid-cols-4"
         >
           <a
             v-for="feature in FEATURES"
@@ -435,7 +416,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               </h3>
               <span
                 aria-hidden="true"
-                class="shrink-0 self-start font-mono text-[11px] text-grid transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary-200"
+                class="shrink-0 self-start font-mono text-[11px] text-muted transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary-200"
               >
                 ↗
               </span>
@@ -477,7 +458,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             <!-- supported metadata source logos -->
             <div
               v-if="feature.sources"
-              class="relative mt-5 flex flex-wrap items-center gap-x-1"
+              class="relative mt-5 hidden flex-wrap items-center gap-x-1 sm:flex"
             >
               <img
                 v-for="source in METADATA_SOURCES"
@@ -494,14 +475,16 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
         </div>
       </section>
 
-      <!-- ========================= PLATFORM STRIP ========================= -->
-      <section class="border-b border-grid">
+      <!-- ============================ OS STRIP ============================ -->
+      <section>
         <div
-          class="flex items-center justify-between gap-4 border-b border-grid px-6 py-3 font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
+          class="flex items-center justify-between gap-4 px-6 py-3 font-mono text-[10px] tracking-[0.3em] text-muted"
         >
           <span>Available on every major platform and operating system</span>
         </div>
-        <div class="pause-on-hover flex overflow-hidden">
+        <div
+          class="pause-on-hover flex overflow-hidden border-y border-grid [mask-image:linear-gradient(90deg,transparent,black_6%,black_94%,transparent)]"
+        >
           <div
             v-for="copy in 2"
             :key="copy"
@@ -530,21 +513,20 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
       </section>
 
       <!-- ============================== APPS ============================== -->
-      <section id="apps" class="border-grid px-6 pt-16 sm:px-10 lg:px-16">
+      <section id="apps" class="border-grid px-4 pt-16">
         <SectionHeading
-          label="Play anywhere"
           title="Your library on every device"
           subtitle="Native apps and integrations that bring your collection to desktops, handhelds and TVs. Pair a device in seconds with a QR code, and your saves follow you everywhere."
         />
+
+        <div class="mt-6 overflow-hidden rounded-sm border border-grid">
+          <AppConsole :apps="APPS" @select="selectedImage = $event" />
+        </div>
       </section>
 
-      <div class="mt-16 border-y border-grid">
-        <AppConsole :apps="APPS" @select="selectedImage = $event" />
-      </div>
-
       <!-- ============================= STATS ============================= -->
-      <section class="border-b border-grid">
-        <div class="grid grid-cols-2 gap-px bg-grid lg:grid-cols-4">
+      <section class="mt-16">
+        <div class="grid grid-cols-2 lg:grid-cols-4">
           <div class="bg-ink-950 p-4 text-center">
             <div class="font-pixel text-2xl text-cream md:text-4xl">
               {{ githubStars.toLocaleString() }}
@@ -585,7 +567,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
       </section>
 
       <!-- =========================== COMMUNITY =========================== -->
-      <section class="relative overflow-hidden border-b border-grid">
+      <section class="relative overflow-hidden py-16">
         <GlyphField />
         <div
           aria-hidden="true"
@@ -630,199 +612,183 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
           </div>
         </div>
       </section>
-
-      <!-- ============================= FOOTER ============================= -->
-      <footer>
-        <div class="grid gap-px bg-grid sm:grid-cols-2 lg:grid-cols-4">
-          <div class="bg-ink-950 p-8">
-            <h4
-              class="font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
-            >
-              Project
-            </h4>
-            <ul class="mt-4 space-y-2 text-sm">
-              <li>
-                <a
-                  href="https://docs.romm.app"
-                  target="_blank"
-                  rel="noopener"
-                  class="transition-colors hover:text-primary-300"
-                  >Documentation</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://docs.romm.app/latest/getting-started/quick-start/"
-                  target="_blank"
-                  rel="noopener"
-                  class="transition-colors hover:text-primary-300"
-                  >Quick start</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://demo.romm.app"
-                  target="_blank"
-                  rel="noopener"
-                  class="transition-colors hover:text-primary-300"
-                  >Live demo</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://github.com/rommapp/romm"
-                  target="_blank"
-                  rel="noopener"
-                  class="transition-colors hover:text-primary-300"
-                  >GitHub</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="bg-ink-950 p-8">
-            <h4
-              class="font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
-            >
-              Apps
-            </h4>
-            <ul class="mt-4 space-y-2 text-sm">
-              <li>
-                <a
-                  href="https://github.com/rommapp/playnite-plugin"
-                  target="_blank"
-                  rel="noopener"
-                  class="transition-colors hover:text-primary-300"
-                  >Playnite plugin</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://github.com/rommapp/argosy-launcher"
-                  target="_blank"
-                  rel="noopener"
-                  class="transition-colors hover:text-primary-300"
-                  >Argosy launcher</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://grout.romm.app"
-                  target="_blank"
-                  rel="noopener"
-                  class="transition-colors hover:text-primary-300"
-                  >Grout</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="bg-ink-950 p-8">
-            <h4
-              class="font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
-            >
-              Ecosystem
-            </h4>
-            <ul class="mt-4 space-y-2 text-sm">
-              <li>
-                <a
-                  href="https://docs.romm.app/latest/platforms/supported-platforms/"
-                  target="_blank"
-                  rel="noopener"
-                  class="transition-colors hover:text-primary-300"
-                  >Supported platforms</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://docs.romm.app/latest/getting-started/metadata-providers/"
-                  target="_blank"
-                  rel="noopener"
-                  class="transition-colors hover:text-primary-300"
-                  >Metadata providers</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://docs.romm.app/latest/ecosystem/feed-clients/"
-                  target="_blank"
-                  rel="noopener"
-                  class="transition-colors hover:text-primary-300"
-                  >Feed clients</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://docs.romm.app/latest/developers/api-reference/"
-                  target="_blank"
-                  rel="noopener"
-                  class="transition-colors hover:text-primary-300"
-                  >API reference</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="bg-ink-950 p-8">
-            <h4
-              class="font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
-            >
-              Community
-            </h4>
-            <ul class="mt-4 space-y-2 text-sm">
-              <li>
-                <a
-                  href="https://discord.gg/RGPJHNMMwJ"
-                  target="_blank"
-                  rel="noopener"
-                  class="transition-colors hover:text-primary-300"
-                  >Discord</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://opencollective.com/romm"
-                  target="_blank"
-                  rel="noopener"
-                  class="transition-colors hover:text-primary-300"
-                  >Open Collective</a
-                >
-              </li>
-              <li>
-                <a
-                  href="mailto:contact@romm.app"
-                  class="transition-colors hover:text-primary-300"
-                  >Contact</a
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div
-          class="flex flex-wrap items-center justify-between gap-4 border-t border-grid px-6 py-4 font-mono text-[10px] uppercase tracking-[0.2em] text-muted"
-        >
-          <span>Your collection, perfected.</span>
-          <span class="hidden md:block">© The RomM Project · AGPL-3.0</span>
-          <span
-            aria-label="Secured with Aikido"
-            class="bevel-out inline-flex items-stretch border border-grid font-mono text-[10px] uppercase tracking-[0.2em]"
-          >
-            <span
-              class="flex items-center gap-1.5 bg-ink-800 px-2.5 py-1 text-muted"
-            >
-              <FontAwesomeIcon
-                :icon="faShieldHeart"
-                class="h-2.5 text-primary-400"
-              />
-              Secured with
-            </span>
-            <span
-              class="flex items-center bg-primary-500 px-2.5 py-1 font-bold text-ink-950"
-            >
-              Aikido
-            </span>
-          </span>
-        </div>
-      </footer>
     </main>
+
+    <!-- ============================= FOOTER ============================= -->
+    <footer>
+      <div class="mx-auto grid max-w-[88rem] sm:grid-cols-2 lg:grid-cols-4">
+        <div class="bg-ink-950 p-8">
+          <h4
+            class="font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
+          >
+            Project
+          </h4>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li>
+              <a
+                href="https://docs.romm.app"
+                target="_blank"
+                rel="noopener"
+                class="transition-colors hover:text-primary-300"
+                >Documentation</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://docs.romm.app/latest/getting-started/quick-start/"
+                target="_blank"
+                rel="noopener"
+                class="transition-colors hover:text-primary-300"
+                >Quick start</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://demo.romm.app"
+                target="_blank"
+                rel="noopener"
+                class="transition-colors hover:text-primary-300"
+                >Live demo</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://github.com/rommapp/romm"
+                target="_blank"
+                rel="noopener"
+                class="transition-colors hover:text-primary-300"
+                >GitHub</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="bg-ink-950 p-8">
+          <h4
+            class="font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
+          >
+            Apps
+          </h4>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li>
+              <a
+                href="https://github.com/rommapp/playnite-plugin"
+                target="_blank"
+                rel="noopener"
+                class="transition-colors hover:text-primary-300"
+                >Playnite plugin</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://github.com/rommapp/argosy-launcher"
+                target="_blank"
+                rel="noopener"
+                class="transition-colors hover:text-primary-300"
+                >Argosy launcher</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://grout.romm.app"
+                target="_blank"
+                rel="noopener"
+                class="transition-colors hover:text-primary-300"
+                >Grout</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="bg-ink-950 p-8">
+          <h4
+            class="font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
+          >
+            Ecosystem
+          </h4>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li>
+              <a
+                href="https://docs.romm.app/latest/platforms/supported-platforms/"
+                target="_blank"
+                rel="noopener"
+                class="transition-colors hover:text-primary-300"
+                >Supported platforms</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://docs.romm.app/latest/getting-started/metadata-providers/"
+                target="_blank"
+                rel="noopener"
+                class="transition-colors hover:text-primary-300"
+                >Metadata providers</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://docs.romm.app/latest/ecosystem/feed-clients/"
+                target="_blank"
+                rel="noopener"
+                class="transition-colors hover:text-primary-300"
+                >Feed clients</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://docs.romm.app/latest/developers/api-reference/"
+                target="_blank"
+                rel="noopener"
+                class="transition-colors hover:text-primary-300"
+                >API reference</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="bg-ink-950 p-8">
+          <h4
+            class="font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
+          >
+            Community
+          </h4>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li>
+              <a
+                href="https://discord.gg/RGPJHNMMwJ"
+                target="_blank"
+                rel="noopener"
+                class="transition-colors hover:text-primary-300"
+                >Discord</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://opencollective.com/romm"
+                target="_blank"
+                rel="noopener"
+                class="transition-colors hover:text-primary-300"
+                >Open Collective</a
+              >
+            </li>
+            <li>
+              <a
+                href="mailto:contact@romm.app"
+                class="transition-colors hover:text-primary-300"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Full-bleed rule: the bar spans the viewport, its text stays on the
+           88rem page grid. -->
+      <div class="border-t border-grid">
+        <div
+          class="mx-auto flex max-w-[88rem] flex-wrap items-center justify-center gap-4 px-6 py-4 font-mono text-[10px] uppercase tracking-[0.2em] text-muted"
+        >
+          <span>© The RomM Project · AGPL-3.0</span>
+        </div>
+      </div>
+    </footer>
 
     <!-- ============================ LIGHTBOX ============================ -->
     <Teleport to="body">

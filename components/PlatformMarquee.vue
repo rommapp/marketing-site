@@ -19,7 +19,7 @@ const icons = useState("platform-icons", () =>
 
 <template>
   <div
-    class="pause-on-hover [mask-image:linear-gradient(90deg,transparent,black_6%,black_94%,transparent)]"
+    class="pause-on-hover border-y border-grid [mask-image:linear-gradient(90deg,transparent,black_6%,black_94%,transparent)]"
   >
     <div class="flex overflow-hidden border-grid">
       <div
@@ -43,7 +43,7 @@ const icons = useState("platform-icons", () =>
             decoding="async"
           />
           <span
-            class="w-full truncate text-center font-mono text-[9px] text-muted uppercase tracking-widest text-grid transition-colors duration-200 group-hover:text-primary-300"
+            class="w-full truncate text-center font-mono text-[9px] text-muted uppercase tracking-widest transition-colors duration-200 group-hover:text-primary-300"
           >
             {{ icon.name }}
           </span>
