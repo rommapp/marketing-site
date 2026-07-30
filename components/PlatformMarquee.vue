@@ -19,7 +19,7 @@ const icons = useState("platform-icons", () =>
 
 <template>
   <div
-    class="pause-on-hover [mask-image:linear-gradient(90deg,transparent,black_6%,black_94%,transparent)]"
+    class="pause-on-hover border-y border-grid [mask-image:linear-gradient(90deg,transparent,black_6%,black_94%,transparent)]"
   >
     <div class="flex overflow-hidden border-grid">
       <div

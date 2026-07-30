@@ -34,7 +34,7 @@ const navItems = [
     class="sticky top-0 z-50 border-b border-grid bg-ink-950/85 backdrop-blur-md"
   >
     <nav
-      class="mx-auto flex h-16 max-w-[88rem] items-center justify-between border-x border-grid px-4 sm:px-6"
+      class="mx-auto flex h-16 max-w-[88rem] items-center justify-between px-4 sm:px-6"
     >
       <div class="flex items-center gap-3">
         <a href="#" class="flex flex-row items-center gap-2">
