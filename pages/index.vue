@@ -26,6 +26,7 @@ import synology from "~/assets/images/logos/synology-wordmark.svg";
 import truenas from "~/assets/images/logos/truenas-wordmark.png";
 import umbrel from "~/assets/images/logos/umbrel-wordmark.png";
 import unraid from "~/assets/images/logos/unraid-wordmark.svg";
+import zimaos from "~/assets/images/logos/zimaos-wordmark.png";
 import playnite from "~/assets/images/logos/playnite-logo.svg";
 import grout from "~/assets/images/logos/grout-logo.svg";
 import argosy from "~/assets/images/logos/argosy-logo.svg";
@@ -160,7 +161,7 @@ const APPS = [
 const PLATFORMS = [
   {
     name: "CasaOS",
-    href: "https://community.bigbeartechworld.com/t/added-romm-to-bigbearcasaos/206",
+    href: "https://discord.gg/f9nzbmpMtU",
     src: casaos,
   },
   {
@@ -186,6 +187,11 @@ const PLATFORMS = [
     name: "Unraid",
     href: "https://unraid.net/community/apps?q=romm#r",
     src: unraid,
+  },
+  {
+    name: "ZimaOS",
+    href: "https://www.zimaspace.com/zimaos/app-store/app/org.icewhale.romm",
+    src: zimaos,
   },
 ];
 
@@ -499,7 +505,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               target="_blank"
               rel="noopener noreferrer"
               :tabindex="copy === 2 ? -1 : undefined"
-              class="flex h-24 w-52 shrink-0 items-center justify-center border-r border-grid px-8 opacity-50 grayscale transition-all duration-200 hover:opacity-100 hover:grayscale-0"
+              class="flex h-24 w-52 shrink-0 items-center justify-center border-r border-grid px-8 opacity-75 transition-all duration-200 hover:opacity-100"
             >
               <img
                 :src="platform.src"
