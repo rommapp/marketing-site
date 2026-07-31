@@ -17,7 +17,7 @@ export interface ConsoleApp {
   label: string;
   tags: { text: string; icon?: IconDefinition }[];
   body: string;
-  links?: { label: string; items: { text: string; href: string }[] };
+  links?: { items: { text: string; href: string }[] };
   ctaText: string;
   ctaHref: string;
 }
@@ -85,7 +85,7 @@ onMounted(() => {
         @keydown="onKeydown"
       >
         <div
-          class="border-b border-grid bg-ink-900 px-5 py-3 font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
+          class="border-b border-grid bg-ink-900 px-5 py-3 font-mono text-[10px] text-muted"
         >
           Select device
         </div>
@@ -110,12 +110,8 @@ onMounted(() => {
             ▶
           </span>
           <span
-            class="bevel-out flex h-11 w-11 shrink-0 items-center justify-center border border-grid bg-ink-900 transition-all duration-200"
-            :class="
-              i === active
-                ? 'border-primary-500'
-                : 'grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0'
-            "
+            class="flex h-11 w-11 shrink-0 items-center justify-center transition-all duration-200"
+            :class="{ 'opacity-60 group-hover:opacity-100': i !== active }"
           >
             <img :src="item.logo" :alt="`${item.name} logo`" class="h-7 w-7" />
           </span>
@@ -196,12 +192,7 @@ onMounted(() => {
 
             <!-- link chips (e.g. supported firmwares) -->
             <div v-if="app.links" class="mt-4">
-              <span
-                class="font-mono text-[9px] uppercase tracking-[0.3em] text-muted"
-              >
-                {{ app.links.label }}
-              </span>
-              <span class="mt-2 flex flex-wrap gap-1.5">
+              <span class="flex flex-wrap gap-1.5">
                 <a
                   v-for="link in app.links.items"
                   :key="link.text"
@@ -233,7 +224,7 @@ onMounted(() => {
 
     <!-- button hints -->
     <div
-      class="flex flex-wrap items-center justify-between gap-3 border-t border-grid bg-ink-900 px-5 py-2.5 font-mono text-[9px] uppercase tracking-[0.25em] text-muted"
+      class="flex flex-wrap items-center justify-between gap-3 border-t border-grid bg-ink-900 px-5 py-2.5 font-mono text-[9px] text-muted"
     >
       <span class="flex items-center gap-4">
         <span> <span class="text-primary-300">↑↓</span> Navigate </span>
