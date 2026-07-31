@@ -110,7 +110,6 @@ const APPS = [
     tags: [{ text: "Windows", icon: faWindows }, { text: "QR pairing" }],
     body: "Effortlessly integrate your retro game collection into Playnite, the open-source game library manager that provides a unified interface for all of your games on PC.",
     links: {
-      label: "Learn more",
       items: [{ text: "playnite.link", href: "https://playnite.link/" }],
     },
     ctaText: "Install",
@@ -143,7 +142,6 @@ const APPS = [
     tags: [{ text: "Handhelds", icon: faGamepad }, { text: "Save sync" }],
     body: "A lightweight client for your favorite handheld custom firmwares. Download games, box art and BIOS files wirelessly, and sync your saves automatically as you play.",
     links: {
-      label: "Works on",
       items: [
         { text: "muOS", href: "https://muos.dev" },
         { text: "Knulli", href: "https://knulli.org" },
@@ -537,9 +535,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             <div class="font-pixel text-2xl text-cream md:text-4xl">
               {{ githubStars.toLocaleString() }}
             </div>
-            <div
-              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
-            >
+            <div class="mt-3 font-mono text-sm tracking-[0.25em] text-muted">
               GitHub stars
             </div>
           </div>
@@ -547,25 +543,19 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             <div class="font-pixel text-2xl text-cream md:text-4xl">
               {{ discordMembers.toLocaleString() }}
             </div>
-            <div
-              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
-            >
+            <div class="mt-3 font-mono text-sm tracking-[0.25em] text-muted">
               Discord members
             </div>
           </div>
           <div class="bg-ink-950 p-4 text-center">
             <div class="font-pixel text-2xl text-cream md:text-4xl">1.7M+</div>
-            <div
-              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
-            >
+            <div class="mt-3 font-mono text-sm tracking-[0.25em] text-muted">
               Docker pulls
             </div>
           </div>
           <div class="bg-ink-950 p-4 text-center">
             <div class="font-pixel text-2xl text-cream md:text-4xl">#1</div>
-            <div
-              class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted"
-            >
+            <div class="mt-3 font-mono text-sm tracking-[0.25em] text-muted">
               on Hackernews
             </div>
           </div>
@@ -581,7 +571,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
         />
         <div class="relative z-10 px-6 py-24 text-center sm:px-10 lg:px-16">
           <div
-            class="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.3em] text-primary-400"
+            class="inline-flex items-center gap-3 font-mono text-sm tracking-[0.3em] text-primary-400"
           >
             <span>Powered by friendship</span>
           </div>
