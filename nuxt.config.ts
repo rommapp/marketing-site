@@ -62,7 +62,7 @@ export default defineNuxtConfig({
         },
         {
           name: "og:image",
-          content: "https://romm.app/images/og/og-v5.png",
+          content: "https://romm.app/images/og/og-v6.png",
         },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: "The RomM Project" },
@@ -73,7 +73,7 @@ export default defineNuxtConfig({
         },
         {
           name: "twitter:image",
-          content: "https://romm.app/images/og/og-v5.png",
+          content: "https://romm.app/images/og/og-v6.png",
         },
         { name: "theme-color", content: "#8B74E8" },
         {

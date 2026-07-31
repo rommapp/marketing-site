@@ -220,10 +220,14 @@
       inset 0 -3px 0 rgb(255 255 255 / 0.14);
   }
 
-  /* Secondary: an unselected menu row. Pixel outline, hollow face, and a
-     blinking selector arrow that arrives on hover. */
+  /* Secondary: an unselected menu row. Pixel outline, panel face, and a
+     blinking selector arrow that arrives on hover.
+
+     The face is opaque in every state on purpose. It sits on the hero art, so a
+     translucent one let box art through and the label's contrast came down to
+     whichever cover art happened to land behind it. */
   .btn-ghost {
-    background-color: rgb(var(--ink-900) / 0.6);
+    background-color: rgb(var(--ink-900));
     color: rgb(var(--cream));
     filter: drop-shadow(4px 4px 0 rgb(var(--grid)));
     box-shadow:
@@ -244,8 +248,15 @@
     transition: opacity 120ms steps(2);
   }
 
+  /* Selected: the purple wash rides on top of the opaque panel rather than
+     replacing it, so the tint reads without thinning the face. */
   .btn-ghost:hover {
-    background-color: rgb(var(--primary-500) / 0.14);
+    background-color: rgb(var(--ink-900));
+    background-image: linear-gradient(
+      0deg,
+      rgb(var(--primary-500) / 0.16),
+      rgb(var(--primary-500) / 0.16)
+    );
     color: rgb(var(--primary-300));
     transform: translate(-2px, -2px);
     filter: drop-shadow(6px 6px 0 rgb(var(--primary-900)));
