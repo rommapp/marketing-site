@@ -22,6 +22,7 @@ import cloudron from "~/assets/images/logos/cloudron-wordmark.svg";
 import docker from "~/assets/images/logos/docker-wordmark.svg";
 import hexos from "~/assets/images/logos/hexos-wordmark.png";
 import portainer from "~/assets/images/logos/portainer-wordmark.svg";
+import railway from "~/assets/images/logos/railway-wordmark.svg";
 import synology from "~/assets/images/logos/synology-wordmark.svg";
 import truenas from "~/assets/images/logos/truenas-wordmark.png";
 import umbrel from "~/assets/images/logos/umbrel-wordmark.png";
@@ -174,6 +175,7 @@ const PLATFORMS = [
   },
   { name: "HexOS", href: "https://hexos.com/", src: hexos },
   { name: "Portainer", href: "https://www.portainer.io/", src: portainer },
+  { name: "Railway", href: "https://railway.com/deploy/romm", src: railway },
   { name: "Synology", href: "https://www.synology.com/", src: synology },
   {
     name: "TrueNAS",
