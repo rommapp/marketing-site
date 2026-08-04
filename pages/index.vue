@@ -23,6 +23,7 @@ import docker from "~/assets/images/logos/docker-wordmark.svg";
 import hexos from "~/assets/images/logos/hexos-wordmark.png";
 import portainer from "~/assets/images/logos/portainer-wordmark.svg";
 import railway from "~/assets/images/logos/railway-wordmark.svg";
+import runtipi from "~/assets/images/logos/runtipi-wordmark.png";
 import synology from "~/assets/images/logos/synology-wordmark.svg";
 import truenas from "~/assets/images/logos/truenas-wordmark.png";
 import umbrel from "~/assets/images/logos/umbrel-wordmark.png";
@@ -176,6 +177,11 @@ const PLATFORMS = [
   { name: "HexOS", href: "https://hexos.com/", src: hexos },
   { name: "Portainer", href: "https://www.portainer.io/", src: portainer },
   { name: "Railway", href: "https://railway.com/deploy/romm", src: railway },
+  {
+    name: "Runtipi",
+    href: "https://runtipi.io/docs/apps-available#:~:text=RomM",
+    src: runtipi,
+  },
   { name: "Synology", href: "https://www.synology.com/", src: synology },
   {
     name: "TrueNAS",
