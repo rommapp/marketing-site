@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from "vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { faArrowPointer } from "@fortawesome/free-solid-svg-icons";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 interface AppImage {
@@ -37,9 +38,14 @@ const engage = () => {
   interacted.value = true;
 };
 
-const pick = (i: number) => {
+const tabEls = ref<HTMLButtonElement[]>([]);
+
+const pick = (i: number, focus = false) => {
   engage();
   active.value = (i + props.apps.length) % props.apps.length;
+  // Arrow keys move the selection, and the roving tabindex means focus has to
+  // travel with it or the next keypress lands on a tab that is no longer -1.
+  if (focus) tabEls.value[active.value]?.focus();
 };
 
 // Attract mode: advance to the next device only once the active device's
@@ -52,10 +58,16 @@ const onGalleryCycled = () => {
 const onKeydown = (e: KeyboardEvent) => {
   if (e.key === "ArrowDown" || e.key === "ArrowRight") {
     e.preventDefault();
-    pick(active.value + 1);
+    pick(active.value + 1, true);
   } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
     e.preventDefault();
-    pick(active.value - 1);
+    pick(active.value - 1, true);
+  } else if (e.key === "Home") {
+    e.preventDefault();
+    pick(0, true);
+  } else if (e.key === "End") {
+    e.preventDefault();
+    pick(props.apps.length - 1, true);
   } else if (e.key === "Enter") {
     engage();
     window.open(app.value.ctaHref, "_blank", "noopener");
@@ -93,9 +105,17 @@ onMounted(() => {
         <button
           v-for="(item, i) in apps"
           :key="item.id"
+          :ref="
+            (el) => {
+              if (el) tabEls[i] = el as HTMLButtonElement;
+            }
+          "
           type="button"
           role="tab"
+          :id="`app-tab-${item.id}`"
           :aria-selected="i === active"
+          :aria-controls="`app-panel-${item.id}`"
+          :tabindex="i === active ? 0 : -1"
           class="group relative flex items-center gap-4 border-b border-grid px-5 py-5 text-left transition-colors last:border-b-0"
           :class="i === active ? 'bg-primary-500/10' : 'hover:bg-ink-900'"
           @click="pick(i)"
@@ -110,7 +130,7 @@ onMounted(() => {
             ▶
           </span>
           <span
-            class="flex h-11 w-11 shrink-0 items-center justify-center transition-all duration-200"
+            class="flex h-11 w-11 shrink-0 items-center justify-center transition-opacity duration-200"
             :class="{ 'opacity-60 group-hover:opacity-100': i !== active }"
           >
             <img :src="item.logo" :alt="`${item.name} logo`" class="h-7 w-7" />
@@ -148,7 +168,13 @@ onMounted(() => {
 
       <!-- ======== Active slot ======== -->
       <Transition name="console-fade" mode="out-in">
-        <div :key="app.id" class="grid xl:grid-cols-[1.15fr_1fr]">
+        <div
+          :key="app.id"
+          :id="`app-panel-${app.id}`"
+          role="tabpanel"
+          :aria-labelledby="`app-tab-${app.id}`"
+          class="grid xl:grid-cols-[1.15fr_1fr]"
+        >
           <!-- screen -->
           <div
             class="relative border-b border-grid p-5 xl:border-b-0 xl:border-r sm:p-7"
@@ -206,17 +232,19 @@ onMounted(() => {
               </span>
             </div>
 
-            <a
-              :href="app.ctaHref"
-              target="_blank"
-              rel="noopener"
-              class="mt-auto inline-block self-start pt-8"
-            >
-              <span class="btn-pixel">
-                {{ app.ctaText }}
-                <span aria-hidden="true">↗</span>
-              </span>
-            </a>
+            <div class="mt-auto self-start pt-8">
+              <a
+                :href="app.ctaHref"
+                target="_blank"
+                rel="noopener"
+                class="inline-block"
+              >
+                <span class="btn-pixel">
+                  {{ app.ctaText }}
+                  <span aria-hidden="true">↗</span>
+                </span>
+              </a>
+            </div>
           </div>
         </div>
       </Transition>
@@ -229,8 +257,12 @@ onMounted(() => {
       <span class="flex items-center gap-4">
         <span> <span class="text-primary-300">↑↓</span> Navigate </span>
         <span> <span class="text-primary-300">⏎</span> Launch </span>
-        <span class="hidden sm:inline">
-          <span class="text-primary-300">🖱</span> Click screen to zoom
+        <span class="hidden items-center gap-1.5 sm:inline-flex">
+          <FontAwesomeIcon
+            :icon="faArrowPointer"
+            class="h-2.5 text-primary-300"
+          />
+          Click screen to zoom
         </span>
       </span>
       <span aria-hidden="true"> Slot {{ active + 1 }}/{{ apps.length }} </span>

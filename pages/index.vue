@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from "vue";
+import { ref, watch, nextTick, onMounted, onBeforeUnmount } from "vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
   faWandSparkles,
@@ -176,7 +176,12 @@ const PLATFORMS = [
   },
   { name: "HexOS", href: "https://hexos.com/", src: hexos },
   { name: "Portainer", href: "https://www.portainer.io/", src: portainer },
-  { name: "Railway", href: "https://railway.com/deploy/romm", src: railway },
+  {
+    name: "Railway",
+    href: "https://railway.com/deploy/romm",
+    src: railway,
+    plate: true,
+  },
   {
     name: "Runtipi",
     href: "https://runtipi.io/docs/apps-available#:~:text=RomM",
@@ -193,11 +198,13 @@ const PLATFORMS = [
     name: "Unraid",
     href: "https://unraid.net/community/apps?q=romm#r",
     src: unraid,
+    plate: true,
   },
   {
     name: "ZimaOS",
     href: "https://www.zimaspace.com/zimaos/app-store/app/org.icewhale.romm",
     src: zimaos,
+    plate: true,
   },
 ];
 
@@ -271,10 +278,33 @@ const FEATURE_GLYPH: Record<string, string> = {
 const githubStars = ref<number>(11_000);
 const discordMembers = ref<number>(3_000);
 const selectedImage = ref<AppImage | undefined>(undefined);
+const closeButton = ref<HTMLButtonElement | null>(null);
+let restoreFocus: HTMLElement | null = null;
 
 const onKeydown = (e: KeyboardEvent) => {
   if (e.key === "Escape") selectedImage.value = undefined;
 };
+
+// Opening the lightbox used to leave focus on the thumbnail behind the overlay,
+// so Tab walked the page underneath it. Hand focus to Close and give it back.
+watch(selectedImage, async (image, previous) => {
+  if (image && !previous) {
+    restoreFocus = document.activeElement as HTMLElement | null;
+    await nextTick();
+    closeButton.value?.focus();
+  } else if (!image && previous) {
+    // The carousel may have swapped the element that opened the lightbox while
+    // it was on screen; fall back to the tab that owns the panel it lives in.
+    const target =
+      restoreFocus && document.contains(restoreFocus)
+        ? restoreFocus
+        : document.querySelector<HTMLElement>(
+            '[role="tab"][aria-selected="true"]',
+          );
+    target?.focus();
+    restoreFocus = null;
+  }
+});
 
 onMounted(async () => {
   window.addEventListener("keydown", onKeydown);
@@ -400,7 +430,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             <!-- animated top accent -->
             <span
               aria-hidden="true"
-              class="absolute inset-x-0 top-0 h-0.5 w-0 bg-primary-500 transition-all duration-300 ease-out group-hover:w-full"
+              class="absolute inset-x-0 top-0 h-0.5 w-0 bg-primary-500 transition-[width] duration-300 ease-out group-hover:w-full"
             />
             <!-- oversized ghost glyph, scaled to the card's footprint -->
             <FontAwesomeIcon
@@ -428,7 +458,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               </h3>
               <span
                 aria-hidden="true"
-                class="shrink-0 self-start font-mono text-[11px] text-muted transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary-200"
+                class="shrink-0 self-start font-mono text-[11px] text-muted transition-[transform,color] duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary-200"
               >
                 ↗
               </span>
@@ -470,18 +500,17 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             <!-- supported metadata source logos -->
             <div
               v-if="feature.sources"
-              class="relative mt-5 hidden flex-wrap items-center gap-x-1 sm:flex"
+              aria-hidden="true"
+              class="relative mt-5 hidden flex-wrap items-center gap-1.5 sm:flex"
             >
-              <img
+              <span
                 v-for="source in METADATA_SOURCES"
                 :key="source.slug"
-                :src="source.src"
-                :alt="source.name"
                 :title="source.name"
-                class="h-8 w-8 rounded-full object-cover p-1.5 opacity-70 transition-all duration-200 group-hover:border-primary-500/40 group-hover:opacity-100"
-                loading="lazy"
-                decoding="async"
-              />
+                class="brand-tile opacity-80 group-hover:opacity-100"
+              >
+                <img :src="source.src" alt="" loading="lazy" decoding="async" />
+              </span>
             </div>
           </a>
         </div>
@@ -511,12 +540,13 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               target="_blank"
               rel="noopener noreferrer"
               :tabindex="copy === 2 ? -1 : undefined"
-              class="flex h-24 w-52 shrink-0 items-center justify-center border-r border-grid px-8 opacity-75 transition-all duration-200 hover:opacity-100"
+              class="flex h-24 w-52 shrink-0 items-center justify-center border-r border-grid px-8 opacity-75 transition-opacity duration-200 hover:opacity-100"
             >
               <img
                 :src="platform.src"
                 :alt="platform.name"
                 class="max-h-10 w-auto max-w-[8.5rem]"
+                :class="platform.plate ? 'logo-plate' : ''"
                 loading="lazy"
               />
             </a>
@@ -573,16 +603,11 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
       <!-- =========================== COMMUNITY =========================== -->
       <section class="relative overflow-hidden py-16">
         <GlyphField />
-        <div
-          aria-hidden="true"
-          class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(139,116,232,0.16),transparent_65%)]"
-        />
+        <div aria-hidden="true" class="glow-radial absolute inset-0" />
         <div class="relative z-10 px-6 py-24 text-center sm:px-10 lg:px-16">
-          <div
-            class="inline-flex items-center gap-3 font-mono text-sm tracking-[0.3em] text-primary-400"
-          >
-            <span>Powered by friendship</span>
-          </div>
+          <p class="font-mono text-sm tracking-[0.3em] text-primary-400">
+            Powered by friendship
+          </p>
           <h2
             class="mt-6 font-pixel text-2xl uppercase text-cream sm:text-3xl md:text-4xl"
           >
@@ -798,10 +823,13 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
     <Teleport to="body">
       <div
         v-if="selectedImage"
+        role="dialog"
+        aria-modal="true"
+        :aria-label="selectedImage.alt"
         class="fixed inset-0 z-[100] flex items-center justify-center bg-ink-950/90 p-4 backdrop-blur-sm sm:p-10"
         @click="selectedImage = undefined"
       >
-        <div class="border border-grid bg-ink-900">
+        <div class="border border-grid bg-ink-900" @click.stop>
           <div
             class="flex items-center justify-between border-b border-grid bg-ink-800 px-3 py-2"
           >
@@ -811,8 +839,9 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
               {{ selectedImage.alt }}
             </span>
             <button
+              ref="closeButton"
               type="button"
-              class="font-mono text-xs text-muted transition-colors hover:text-cream"
+              class="-mr-1 flex h-6 w-6 items-center justify-center font-mono text-xs text-muted transition-colors hover:text-cream"
               aria-label="Close"
               @click="selectedImage = undefined"
             >
@@ -823,6 +852,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             :src="selectedImage.src"
             :alt="selectedImage.alt"
             class="block max-h-[80vh] w-full object-contain"
+            @click="selectedImage = undefined"
           />
         </div>
       </div>

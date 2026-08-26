@@ -29,6 +29,15 @@
 
     /* Default body text (was text-zinc-300). */
     --body-fg: 212 212 216;
+
+    /* Surface textures. The CRT lines and dot grid are drawn from these so the
+       whole treatment inverts with the theme instead of staying white-on-X. */
+    --scanline: 255 255 255;
+    --scanline-strength: 0.022;
+
+    /* Face for third-party brand marks that only ship a light-on-dark
+       variant. Dark by design in both themes: these logos are drawn for it. */
+    --plate: 20 24 38;
   }
 
   /* Creamy light theme. `ink` becomes warm paper surfaces, `cream` becomes
@@ -59,6 +68,13 @@
     --muted: 82 74 60;
 
     --body-fg: 68 62 51;
+
+    /* On cream the CRT lines have to darken rather than lighten, and they need
+       more strength to read at all against a bright surface. */
+    --scanline: 43 39 33;
+    --scanline-strength: 0.045;
+
+    --plate: 38 34 28;
   }
 
   @font-face {
@@ -79,6 +95,15 @@
 
   html {
     scroll-behavior: smooth;
+    /* The header is sticky and 4rem tall; without this, an in-page anchor
+       parks its target underneath it. */
+    scroll-padding-top: 5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 
   body {
@@ -103,6 +128,15 @@
   ::selection {
     background-color: rgb(var(--primary-500));
     color: rgb(var(--ink-950));
+  }
+
+  /* The default UA ring is a 1px browser blue that belongs to no theme here.
+     Every focusable surface gets the accent instead; .btn-pixel / .btn-ghost
+     draw their own inset ring because clip-path would crop an outline. */
+  :where(a, button, [role="tab"], summary, [tabindex]):focus-visible {
+    outline: 3px solid rgb(var(--primary-400));
+    outline-offset: 2px;
+    border-radius: 1px;
   }
 }
 
@@ -313,14 +347,74 @@
     }
   }
 
-  /* Dot grid backdrop (Luma / Verdant) */
+  /* Dot grid backdrop */
   .dot-grid {
     background-image: radial-gradient(
       circle,
-      rgba(139, 116, 232, 0.14) 1px,
+      rgb(var(--primary-500) / 0.14) 1px,
       transparent 1px
     );
     background-size: 26px 26px;
+  }
+
+  /* Accent bloom behind the community block. Token-driven so it deepens on
+     cream instead of staying a fixed dark-theme purple. */
+  .glow-radial {
+    background-image: radial-gradient(
+      ellipse at center,
+      rgb(var(--primary-500) / 0.16),
+      transparent 65%
+    );
+  }
+
+  /* Hard-edged bevel matching the arcade buttons: a lit top-left and a shaded
+     bottom-right, no blur. Used by the feature-card icon chips. */
+  .bevel-out {
+    box-shadow:
+      inset 0 2px 0 rgb(255 255 255 / 0.14),
+      inset 2px 0 0 rgb(255 255 255 / 0.08),
+      inset 0 -2px 0 rgb(0 0 0 / 0.32),
+      inset -2px 0 0 rgb(0 0 0 / 0.2);
+  }
+
+  :root.light .bevel-out {
+    box-shadow:
+      inset 0 2px 0 rgb(255 255 255 / 0.7),
+      inset 2px 0 0 rgb(255 255 255 / 0.45),
+      inset 0 -2px 0 rgb(var(--cream) / 0.14),
+      inset -2px 0 0 rgb(var(--cream) / 0.09);
+  }
+
+  /* Plate for third-party marks that only exist as light-on-dark artwork.
+     Geometry is identical in both themes so nothing reflows on the toggle;
+     only the face is painted, and only where the mark would otherwise
+     disappear into a cream page. */
+  .logo-plate {
+    box-sizing: content-box;
+    padding: 0.5rem 0.75rem;
+    border-radius: 2px;
+  }
+
+  :root.light .logo-plate {
+    background-color: rgb(var(--plate));
+  }
+
+  /* Uniform cell for the metadata-provider marks. They arrive at mixed aspect
+     ratios — some square, some 1.4:1 — and several carry their own background,
+     so the cell sets the rhythm and object-contain keeps the artwork whole
+     instead of cropping the wide ones into a circle. */
+  .brand-tile {
+    display: grid;
+    place-items: center;
+    height: 2rem;
+    width: 2rem;
+    transition: opacity 200ms ease;
+  }
+
+  .brand-tile > img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
   }
 
   /* CRT scanline overlay (CAVIX / Dune) */
@@ -328,8 +422,8 @@
     position: relative;
     background: repeating-linear-gradient(
       0deg,
-      rgba(255, 255, 255, 0.022) 0px,
-      rgba(255, 255, 255, 0.022) 1px,
+      rgb(var(--scanline) / var(--scanline-strength)) 0px,
+      rgb(var(--scanline) / var(--scanline-strength)) 1px,
       transparent 1px,
       transparent 3px
     );
@@ -345,9 +439,9 @@
     background: linear-gradient(
       180deg,
       transparent 0%,
-      rgba(255, 255, 255, 0.03) 45%,
-      rgba(255, 255, 255, 0.045) 50%,
-      rgba(255, 255, 255, 0.03) 55%,
+      rgb(var(--scanline) / 0.03) 45%,
+      rgb(var(--scanline) / 0.045) 50%,
+      rgb(var(--scanline) / 0.03) 55%,
       transparent 100%
     );
     background-size: 100% 22%;
@@ -430,5 +524,25 @@
   .pause-on-hover:hover .animate-marquee,
   .pause-on-hover:hover .animate-marquee-reverse {
     animation-play-state: paused;
+  }
+
+  /* Focusing anything inside a marquee also stops it, so a keyboard visitor
+     can reach a logo link without it sliding out from under them. */
+  .pause-on-hover:focus-within .animate-marquee,
+  .pause-on-hover:focus-within .animate-marquee-reverse {
+    animation-play-state: paused;
+  }
+
+  /* Nothing here loops on its own for a visitor who asked for less motion:
+     the marquees park at their start and the terminal cursor stops blinking. */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee,
+    .animate-marquee-reverse {
+      animation: none;
+    }
+
+    .blink {
+      animation: none;
+    }
   }
 }

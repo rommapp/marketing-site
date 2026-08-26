@@ -37,22 +37,19 @@ const navItems = [
       class="mx-auto flex h-16 max-w-[88rem] items-center justify-between px-4 sm:px-6"
     >
       <div class="flex items-center gap-3">
-        <a href="#" class="flex flex-row items-center gap-2">
-          <img
-            src="/images/blocks/logos/romm.svg"
-            alt="RomM logo"
-            class="h-7 w-7"
-          />
-          <img
-            src="/images/blocks/logos/logotipo.svg"
-            alt="RomM logotype"
-            class="h-5"
-          />
+        <a
+          href="/"
+          aria-label="RomM home"
+          class="flex flex-row items-center gap-2"
+        >
+          <img src="/images/blocks/logos/romm.svg" alt="" class="h-7 w-7" />
+          <img src="/images/blocks/logos/logotipo.svg" alt="" class="h-5" />
         </a>
         <a
           href="https://github.com/rommapp/romm/releases/latest"
           target="_blank"
           rel="noopener"
+          aria-label="Latest RomM release"
           class="hidden border border-grid px-1.5 py-0.5 font-mono text-xs text-primary-300 transition-colors hover:border-primary-400 sm:block"
         >
           {{ version }}
@@ -94,6 +91,7 @@ const navItems = [
           target="_blank"
           rel="noopener"
           title="Support the project"
+          aria-label="Support the project on Open Collective"
           class="hidden h-9 w-9 items-center justify-center transition-colors hover:text-primary-300 sm:flex"
         >
           <FontAwesomeIcon :icon="faHeart" class="h-3.5" />
@@ -103,6 +101,7 @@ const navItems = [
           target="_blank"
           rel="noopener"
           title="Join the Discord"
+          aria-label="Join the RomM Discord"
           class="hidden h-9 w-9 items-center justify-center transition-colors hover:text-primary-300 sm:flex"
         >
           <FontAwesomeIcon :icon="faDiscord" class="h-3.5" />
@@ -112,15 +111,18 @@ const navItems = [
           target="_blank"
           rel="noopener"
           title="GitHub repository"
+          :aria-label="`RomM on GitHub — ${githubStars.toLocaleString()} stars`"
           class="ml-1 flex h-9 items-center gap-2 px-3 font-mono text-xs text-cream transition-colors hover:text-primary-300"
         >
           <FontAwesomeIcon :icon="faGithub" class="h-4" />
-          <span>{{ (githubStars / 1000).toFixed(1) }}K</span>
+          <span aria-hidden="true">{{ (githubStars / 1000).toFixed(1) }}K</span>
         </a>
         <button
           type="button"
           class="flex h-9 w-9 items-center justify-center text-cream md:hidden"
-          aria-label="Toggle menu"
+          :aria-label="menuOpen ? 'Close menu' : 'Open menu'"
+          :aria-expanded="menuOpen"
+          aria-controls="mobile-nav"
           @click="menuOpen = !menuOpen"
         >
           <FontAwesomeIcon :icon="menuOpen ? faXmark : faBars" class="h-4" />
@@ -130,6 +132,7 @@ const navItems = [
 
     <div
       v-if="menuOpen"
+      id="mobile-nav"
       class="mx-auto max-w-[88rem] border-x border-b border-grid bg-ink-900 md:hidden"
     >
       <a
