@@ -77,8 +77,12 @@ export default defineNuxtConfig({
         },
         { name: "theme-color", content: "#8B74E8" },
         {
+          // `frame-ancestors` is deliberately absent: browsers ignore the
+          // directive when the policy arrives in a meta element, and log an
+          // error for every visitor. On GitHub Pages there is no response
+          // header to carry it instead.
           content:
-            "default-src 'self'; img-src 'self' data: app.aikido.dev; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';connect-src 'self' api.github.com discord.com; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests;",
+            "default-src 'self'; img-src 'self' data: app.aikido.dev; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';connect-src 'self' api.github.com discord.com; form-action 'self'; upgrade-insecure-requests;",
           "http-equiv": "Content-Security-Policy",
         },
       ],

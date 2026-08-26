@@ -38,7 +38,7 @@ const icons = useState("platform-icons", () =>
           <img
             :src="icon.src"
             :alt="icon.name"
-            class="h-11 w-11 object-contain opacity-80 transition-all duration-200 group-hover:opacity-100"
+            class="h-11 w-11 object-contain opacity-80 transition-opacity duration-200 group-hover:opacity-100"
             loading="lazy"
             decoding="async"
           />
