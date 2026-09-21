@@ -82,7 +82,7 @@ export default defineNuxtConfig({
           // error for every visitor. On GitHub Pages there is no response
           // header to carry it instead.
           content:
-            "default-src 'self'; img-src 'self' data: app.aikido.dev; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';connect-src 'self' api.github.com discord.com; form-action 'self'; upgrade-insecure-requests;",
+            "default-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';connect-src 'self' api.github.com discord.com; form-action 'self'; upgrade-insecure-requests;",
           "http-equiv": "Content-Security-Policy",
         },
       ],
