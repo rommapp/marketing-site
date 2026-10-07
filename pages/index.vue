@@ -7,8 +7,8 @@ import {
   faShieldHeart,
   faRotate,
   faUsers,
-  faScrewdriverWrench,
   faPlug,
+  faTowerBroadcast,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
@@ -85,13 +85,16 @@ const METADATA_SOURCE_NAMES: Record<string, string> = {
   launchbox: "LaunchBox",
   ra: "RetroAchievements",
   sgdb: "SteamGridDB",
-  tgdb: "TheGamesDB",
   hltb: "HowLongToBeat",
   hasheous: "Hasheous",
   playmatch: "PlayMatch",
   flashpoint: "Flashpoint",
   esde: "ES-DE",
   libretro: "Libretro",
+  steam: "Steam",
+  demozoo: "Demozoo",
+  pouet: "Pouët",
+  csdb: "CSDb",
 };
 
 const METADATA_SOURCES = Object.entries(scraperModules)
@@ -110,7 +113,7 @@ const APPS = [
     images: PLAYNITE_IMAGES,
     label: "~/integrations/playnite",
     tags: [{ text: "Windows", icon: faWindows }, { text: "QR pairing" }],
-    body: "Effortlessly integrate your retro game collection into Playnite, the open-source game library manager that provides a unified interface for all of your games on PC.",
+    body: "Add your RomM collection to Playnite, the open-source launcher that puts all your PC games in one library.",
     links: {
       items: [{ text: "playnite.link", href: "https://playnite.link/" }],
     },
@@ -130,7 +133,7 @@ const APPS = [
       { text: "QR pairing" },
       { text: "Save sync" },
     ],
-    body: "Sync your library, download games on demand, track your achievements, and play across devices with automatic save sync, all from a gamepad-first interface designed for Anbernic, Retroid Pocket, Odin, and similar devices.",
+    body: "Browse and download your library, track achievements, and keep saves synced between devices, all from a gamepad-first app built for Anbernic, Retroid Pocket, Odin and similar handhelds.",
     ctaText: "Download",
     ctaHref: "https://github.com/rommapp/argosy-launcher/releases/latest/",
   },
@@ -142,7 +145,7 @@ const APPS = [
     images: GROUT_IMAGES,
     label: "~/apps/grout",
     tags: [{ text: "Handhelds", icon: faGamepad }, { text: "Save sync" }],
-    body: "A lightweight client for your favorite handheld custom firmwares. Download games, box art and BIOS files wirelessly, and sync your saves automatically as you play.",
+    body: "A lightweight client for handheld custom firmware. It downloads games, box art and BIOS files over Wi-Fi and syncs your saves as you play.",
     links: {
       items: [
         { text: "muOS", href: "https://muos.dev" },
@@ -212,7 +215,7 @@ const FEATURES = [
   {
     icon: faGamepad,
     title: "Play in your browser",
-    body: "With EmulatorJS and Ruffle built-in, play your favorite games in your browser, no setup required.",
+    body: "EmulatorJS, Ruffle, js-dos, PICO-8 and EasyRPG come built in, so NES, Flash and Windows 95 games all run in your browser without extra setup.",
     href: "https://docs.romm.app/latest/using/in-browser-play/emulatorjs/",
     size: "featured",
     box3d: true,
@@ -220,43 +223,43 @@ const FEATURES = [
   {
     icon: faRotate,
     title: "Saves that follow you",
-    body: "A save-sync engine with conflict resolution keeps saves and states in sync across your devices.",
+    body: "Saves from the browser upload seconds after they're written. Sync resolves conflicts and keeps saves and states matched across your devices and RetroArch.",
     href: "https://docs.romm.app/latest/using/saves-and-states/",
     size: "wide",
   },
   {
     icon: faWandSparkles,
     title: "Magical metadata",
-    body: "Cover art, screenshots and detailed metadata from IGDB, ScreenScraper, LaunchBox, RetroAchievements and more.",
+    body: "Cover art, screenshots and game details from IGDB, ScreenScraper, LaunchBox, Steam, RetroAchievements and more.",
     href: "https://docs.romm.app/latest/getting-started/metadata-providers/",
     size: "wide",
     sources: true,
   },
   {
-    icon: faUsers,
-    title: "Multiplayer",
-    body: "Granular per-user controls plus OIDC single sign-on with Authelia, Authentik, Keycloak and friends.",
-    href: "https://docs.romm.app/latest/administration/oidc/",
+    icon: faTowerBroadcast,
+    title: "Streaming",
+    body: "Stream PS2, GameCube and more from emulators running on your server, with saves, states and memory cards pulled straight back into your library.",
+    href: "https://docs.romm.app/latest/using/emulator-streaming/",
     size: "small",
   },
   {
-    icon: faScrewdriverWrench,
-    title: "ROM patcher",
-    body: "Apply romhacks and translations on the fly from stored or uploaded patch files.",
-    href: "https://docs.romm.app/latest/using/rom-patcher/",
+    icon: faUsers,
+    title: "Multiplayer",
+    body: "Per-user permissions, parental controls, and OIDC single sign-on with Authelia, Authentik, Keycloak and friends.",
+    href: "https://docs.romm.app/latest/administration/oidc/",
     size: "small",
   },
   {
     icon: faPlug,
     title: "Ecosystem",
-    body: "ES-DE and Pegasus exports, LaunchBox import, community apps, and a full REST API.",
+    body: "RetroArch Cloud Sync, ES-DE and Pegasus exports, notifications to Discord, Telegram and more, and a full REST API.",
     href: "https://docs.romm.app/latest/developers/api-reference/",
     size: "small",
   },
   {
     icon: faShieldHeart,
     title: "Free forever",
-    body: "AGPL-3.0, no tracking, no paid features, and total control of your data.",
+    body: "RomM is AGPL-3.0 licensed, with no tracking and no paid features. Your data stays on your server.",
     href: "https://github.com/rommapp/romm",
     size: "small",
   },
@@ -370,10 +373,9 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
           </h1>
 
           <p class="mx-auto mt-8 max-w-2xl font-medium leading-relaxed">
-            Scan, enrich, browse and play your ROM collection from one beautiful
-            & free self-hosted app. Metadata from 10+ providers, save sync
-            across your devices, and support for over 400 platforms. RomM is a
-            must-have for anyone who plays on emulators.
+            RomM is a free, self-hosted app for scanning, organizing and playing
+            your ROM collection. It pulls metadata from over 10 providers, syncs
+            saves between your devices, and supports more than 400 platforms.
           </p>
 
           <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
@@ -411,7 +413,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
       <section id="features" class="px-4 py-16">
         <SectionHeading
           title="Every playthrough tells a story"
-          subtitle="The most powerful all-in-one app for managing and playing your retro game collection."
+          subtitle="Organize and play your whole retro game collection from one app."
         />
 
         <!-- Bento feature grid -->
@@ -558,7 +560,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
       <section id="apps" class="border-grid px-4 pt-16">
         <SectionHeading
           title="Your library on every device"
-          subtitle="Native apps and integrations that bring your collection to desktops, handhelds and TVs. Pair a device in seconds with a QR code, and your saves follow you everywhere."
+          subtitle="Apps and integrations for desktops, handhelds and TVs. Pair a device in seconds with a QR code and your saves sync to it."
         />
 
         <div class="mt-6 overflow-hidden rounded-sm border border-grid">
@@ -614,8 +616,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
             Join the party
           </h2>
           <p class="mx-auto mt-4 max-w-xl leading-relaxed text-muted">
-            Get help with your setup, share your ideas, and meet other fans of
-            RomM.
+            Come get help with your setup or share ideas with other RomM users.
           </p>
           <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
             <a

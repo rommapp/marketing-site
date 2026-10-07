@@ -111,7 +111,7 @@ const navItems = [
           target="_blank"
           rel="noopener"
           title="GitHub repository"
-          :aria-label="`RomM on GitHub — ${githubStars.toLocaleString()} stars`"
+          :aria-label="`RomM on GitHub, ${githubStars.toLocaleString()} stars`"
           class="ml-1 flex h-9 items-center gap-2 px-3 font-mono text-xs text-cream transition-colors hover:text-primary-300"
         >
           <FontAwesomeIcon :icon="faGithub" class="h-4" />
