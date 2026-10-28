@@ -19,6 +19,7 @@ import {
 
 import casaos from "~/assets/images/logos/casaos-wordmark.png";
 import cloudron from "~/assets/images/logos/cloudron-wordmark.svg";
+import corehost from "~/assets/images/logos/corehost-wordmark.svg";
 import docker from "~/assets/images/logos/docker-wordmark.svg";
 import hexos from "~/assets/images/logos/hexos-wordmark.png";
 import portainer from "~/assets/images/logos/portainer-wordmark.svg";
@@ -171,6 +172,11 @@ const PLATFORMS = [
     name: "Cloudron",
     href: "https://www.cloudron.io/store/app.romm.cloudronapp.html",
     src: cloudron,
+  },
+  {
+    name: "CoreHost",
+    href: "https://corehost.io/apps/romm",
+    src: corehost,
   },
   {
     name: "Docker",
