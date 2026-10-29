@@ -175,7 +175,7 @@ const PLATFORMS = [
   },
   {
     name: "CoreHost",
-    href: "https://corehost.io/apps/romm",
+    href: "https://corehost.io/p/romm",
     src: corehost,
   },
   {
