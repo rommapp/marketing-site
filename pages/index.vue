@@ -284,7 +284,7 @@ const FEATURE_GLYPH: Record<string, string> = {
   small: "text-[6rem] -bottom-5 -right-4",
 };
 
-const githubStars = ref<number>(11_000);
+const githubStars = ref<number>(14_000);
 const discordMembers = ref<number>(3_000);
 const selectedImage = ref<AppImage | undefined>(undefined);
 const closeButton = ref<HTMLButtonElement | null>(null);
@@ -353,7 +353,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
           src="/images/blocks/v5/collection.png"
           srcset="
             /images/blocks/v5/collection.png    1x,
-            /images/blocks/v5/collection@2x.png 2x
+            /images/blocks/v5/collection@2x.jpg 2x
           "
           class="hero-fade absolute inset-0 h-full w-full object-cover object-top opacity-75"
           fetchpriority="high"
